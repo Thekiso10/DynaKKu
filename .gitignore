@@ -35,6 +35,8 @@
 .metadata/*
 Servers/*
 RemoteSystemsTempFiles/*
-target-eclipse/*
+
+.classpath
 .project
-*.class
+.settings/
+target/
