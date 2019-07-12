@@ -40,3 +40,5 @@ RemoteSystemsTempFiles/*
 .project
 .settings/
 /target-eclipse/*
+grailsw.*
+application.*
