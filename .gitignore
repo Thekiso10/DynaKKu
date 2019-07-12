@@ -35,3 +35,12 @@
 .metadata/*
 Servers/*
 RemoteSystemsTempFiles/*
+target-eclipse/*
+target-eclipse/classes/JQueryTagLib.class
+target-eclipse/classes/JQueryResourceTagLib.class
+target-eclipse/classes/grails/plugin/databasemigration/DbdocController.class
+target-eclipse/classes/grails/plugin/cache/CacheTagLib.class
+target-eclipse/classes/asset/pipeline/AssetsTagLib.class
+target-eclipse/classes/asset/pipeline/AssetsController.class
+target-eclipse/classes/asset/pipeline/AssetMethodTagLib.class
+.project
