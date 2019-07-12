@@ -39,4 +39,4 @@ RemoteSystemsTempFiles/*
 .classpath
 .project
 .settings/
-target/
+/target-eclipse/*
