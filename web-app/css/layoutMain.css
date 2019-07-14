@@ -30,3 +30,6 @@ body a:hover, a:focus {color:white;}
 #layout-container #layout-menu #BotonesColeccion .btn {font-size: 18px;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra {padding: 0.5em 2.5em; margin:1em 0.15em; border: 3px solid #20354C; border-radius: 10px; background-color: #20354C; color:white; transition: 1s;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra:HOVER {background-color: transparent; border-color: #114D72;}
+#layout-container #layout-menu #BotonesColeccion .btnExtra span.glyphicon {margin-right: 6px;
+    top: 3px;
+    font-size: 1.1em;}

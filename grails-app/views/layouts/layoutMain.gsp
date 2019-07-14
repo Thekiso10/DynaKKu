@@ -16,7 +16,7 @@
 			<div id="header">
 				<div class="container">
 					<div id="grailsLogo" class="col-sm-12 row" role="banner">
-						<g:link action="index">
+						<div action="index">
 							<div class="col-sm-6" id="BannerLogo">
 								<g:img id="LogoLayoutMain" class="col-sm-3" dir="images/imgWeb" file="LogoLayoutMain.png"/>
 								<h1 class="col-sm-9"><g:message code="grailsLogo.bannerLogo.nombrePrograma"/></h1>
@@ -27,7 +27,7 @@
 								<a href="?lang=en"><span class="borderI18n">Eng</span></a>
 								<a href="?lang=pt"><span>Pt</span></a>
 							</div>
-						</g:link>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -36,15 +36,15 @@
 				<div class="container">
 					<div id="BotonesExtra" class="col-sm-5">
 						<div class="row">
-							<g:link class="btn btnExtra">Tablas</g:link>
-							<g:link class="btn btnExtra">Graficas</g:link>
+							<div class="btn btnExtra">Tablas</div>
+							<div class="btn btnExtra">Graficas</div>
 						</div>
 					</div>
 					<div id="BotonesColeccion" class="col-sm-7">
 						<div class="row">
-							<g:link class="btn btnExtra"><span class="glyphicon glyphicon-chevron-down"></span>Mangas</g:link>
-							<g:link class="btn btnExtra"><span class="glyphicon glyphicon-chevron-down"></span>Colecciones</g:link>
-							<g:link class="btn btnExtra"><span class="glyphicon glyphicon-chevron-down"></span>Funciones</g:link>
+							<div class="btn btnExtra"><span class="glyphicon glyphicon-chevron-down"></span>Mangas</div>
+							<div class="btn btnExtra"><span class="glyphicon glyphicon-chevron-down"></span>Colecciones</div>
+							<div class="btn btnExtra"><span class="glyphicon glyphicon-chevron-down"></span>Funciones</div>
 						</div>
 					</div>
 				</div>
