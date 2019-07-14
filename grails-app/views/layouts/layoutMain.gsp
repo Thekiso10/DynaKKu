@@ -32,23 +32,44 @@
 				</div>
 			</div>
 			
-			<div id="layout-menu" class="col-sm-12">
-				<div class="container">
-					<div id="BotonesExtra" class="col-sm-5">
-						<div class="row">
-							<div class="btn btnExtra">Tablas</div>
-							<div class="btn btnExtra">Graficas</div>
-						</div>
-					</div>
-					<div id="BotonesColeccion" class="col-sm-7">
-						<div class="row">
-							<div class="btn btnExtra"><span class="glyphicon glyphicon-chevron-down"></span>Mangas</div>
-							<div class="btn btnExtra"><span class="glyphicon glyphicon-chevron-down"></span>Colecciones</div>
-							<div class="btn btnExtra"><span class="glyphicon glyphicon-chevron-down"></span>Funciones</div>
-						</div>
-					</div>
+			<nav id="layout-menu" class="col-sm-12">
+				<div class="container padding-left-0">
+					<div class="collapse navbar-collapse padding-left-0">
+						<ul class="nav navbar-nav navbar-left" id="BotonesExtra">
+							<li>
+								<g:link class="btn btnExtra">Tablas</g:link>
+							</li>
+							<li>
+								<g:link class="btn btnExtra">Mangas</g:link>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right" id="BotonesColeccion">
+							<li class="dropdown">
+								<a href="#" class="btn btnExtra" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span class="glyphicon glyphicon-chevron-down"></span>Mangas</a>
+								<ul class="dropdown-menu styleDropdown">
+									<li><g:link class="btn btnMenu">Tablas</g:link></li>
+									<li><g:link class="btn btnMenu">Tablas</g:link></li>
+								</ul>	
+							</li>
+							<li class="dropdown">
+								<a href="#" class="btn btnExtra" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span class="glyphicon glyphicon-chevron-down"></span>Colecciones</a>
+								<ul class="dropdown-menu">
+									<li>dd</li>
+								</ul>	
+							</li>
+							<li class="dropdown">
+								<a href="#" class="btn btnExtra" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span class="glyphicon glyphicon-chevron-down"></span>Funciones</a>
+								<ul class="dropdown-menu">
+									<li>dd</li>
+								</ul>
+							</li>
+						</ul>
+					</div>					
 				</div>
-			</div>
+			</nav>
 			
 			<g:layoutBody/>
 			
@@ -57,7 +78,7 @@
 			</div>
 			<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		</div>
-		
-<%--			--%>
+		<%-- Hacer la importacion de archivos --%>
+<%--		<g:javascript src="layoutMain.js"/>--%>
 	</body>
 </html>

@@ -6,6 +6,8 @@
 @font-face {font-family: 'Open Sans Extrabold'; src: url('../fonts/opensans-extrabold-webfont.woff2') format('woff2');}
 body a, body p, body span, body h1, body h2, body h3, body h4, body h5 {font-family: 'Open Sans', sans-serif;}
 body a:hover, a:focus {color:white;}
+/*Clases simples*/
+.padding-left-0 {padding-left: 0 !important;}
 /* HEADER */
 #layout-container {padding: 0; background-color: #10171E}
 /*Banner de los logos*/
@@ -21,7 +23,7 @@ body a:hover, a:focus {color:white;}
 /* Barra de menu */
 #layout-container #layout-menu a {font-family: 'Open Sans Semibold', sans-serif;}
  
-#layout-container #layout-menu {background-color: #15202B; border:3px solid #2B3640; margin-top: 0.5em}
+#layout-container #layout-menu {background-color: #15202B; border:3px solid #2B3640; margin-top: 0.5em; padding-left: 0;}
 #layout-container #layout-menu #BotonesExtra {text-align: left; padding: 0;}
 #layout-container #layout-menu #BotonesExtra .btn {font-size: 18px;}
 #layout-container #layout-menu #BotonesExtra .btnExtra {padding: 0.5em 2.5em; margin:1em 0.5em; border: 3px solid #114D72; border-radius: 10px; background-color: #101A26; color:white; transition: 1s;}
@@ -30,6 +32,7 @@ body a:hover, a:focus {color:white;}
 #layout-container #layout-menu #BotonesColeccion .btn {font-size: 18px;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra {padding: 0.5em 2.5em; margin:1em 0.15em; border: 3px solid #20354C; border-radius: 10px; background-color: #20354C; color:white; transition: 1s;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra:HOVER {background-color: transparent; border-color: #114D72;}
-#layout-container #layout-menu #BotonesColeccion .btnExtra span.glyphicon {margin-right: 6px;
-    top: 3px;
-    font-size: 1.1em;}
+#layout-container #layout-menu #BotonesColeccion .btnExtra span.glyphicon {margin-right: 6px; top: 3px; font-size: 1.1em;}
+
+#layout-container #layout-menu #BotonesColeccion .dropdown .styleDropdown {background-color: transparent; border-color: transparent;}
+#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #20354C; color:white; transition: 1s;}
