@@ -36,7 +36,7 @@
 					<div class="collapse navbar-collapse padding-left-0">
 						<ul class="nav navbar-nav" id="BotonesColeccion">
 							<li class="dropdown">
-								<a href="#" class="btn btnExtra" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 									<span class="glyphicon glyphicon-chevron-down"></span>Mangas</a>
 								<ul class="dropdown-menu styleDropdown">
 									<li><g:link class="btn btnMenu">Tablas</g:link></li>
@@ -44,7 +44,7 @@
 								</ul>	
 							</li>
 							<li class="dropdown">
-								<a href="#" class="btn btnExtra" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 									<span class="glyphicon glyphicon-chevron-down"></span>Colecciones</a>
 								<ul class="dropdown-menu styleDropdown">
 									<li><g:link class="btn btnMenu">Tablas</g:link></li>
@@ -52,7 +52,7 @@
 								</ul>	
 							</li>
 							<li class="dropdown">
-								<a href="#" class="btn btnExtra" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 									<span class="glyphicon glyphicon-chevron-down"></span>Funciones</a>
 								<ul class="dropdown-menu styleDropdown">
 									<li><g:link class="btn btnMenu">Tablas</g:link></li>
@@ -77,6 +77,12 @@
 				</div>
 			</nav>
 			
+			<script type="text/javascript">
+			$('#myCollapsible').on('hidden.bs.collapse', function () {
+				  console.log("zsdasd");
+			})
+			</script>
+			
 			<g:layoutBody/>
 			
 			<div id="footer" class="col-sm-12" role="contentinfo">
@@ -98,6 +104,6 @@
 			<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		</div>
 		<%-- Hacer la importacion de archivos --%>
-<%--		<g:javascript src="layoutMain.js"/>--%>
+		<g:javascript src="layoutMain.js"/>
 	</body>
 </html>
