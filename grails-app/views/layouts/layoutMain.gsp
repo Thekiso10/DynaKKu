@@ -22,9 +22,9 @@
 								<h1 class="col-sm-9"><g:message code="grailsLogo.bannerLogo.nombrePrograma"/></h1>
 							</div>
 							<div class="col-sm-6" id="BannerI18n">
-								<a href="?lang=es"><span class="borderI18n">Es</span></a>
-								<a href="?lang=ca"><span class="borderI18n">Cat</span></a>
-								<a href="?lang=en"><span>Eng</span></a>
+								<a href="?lang=es"><span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.es"/></span></a>
+								<a href="?lang=ca"><span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.cat"/></span></a>
+								<a href="?lang=en"><span><g:message code="grailsLogo.bannerLogo.idiomaLink.eng"/></span></a>
 							</div>
 						</div>
 					</div>
@@ -37,35 +37,35 @@
 						<ul class="nav navbar-nav" id="BotonesColeccion">
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-									<span class="glyphicon glyphicon-chevron-down"></span>Mangas</a>
+									<span class="glyphicon glyphicon-chevron-down"></span><g:message code="layoutMenu.botonesColeccion.mangas"/></a>
 								<ul class="dropdown-menu styleDropdown">
-									<li><g:link class="btn btnMenu">Tablas</g:link></li>
-									<li><g:link class="btn btnMenu">Tablas</g:link></li>
+									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.mangas.crear"/></g:link></li>
+									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.mangas.lista"/></g:link></li>
 								</ul>	
 							</li>
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-									<span class="glyphicon glyphicon-chevron-down"></span>Colecciones</a>
+									<span class="glyphicon glyphicon-chevron-down"></span><g:message code="layoutMenu.botonesColeccion.autores"/></a>
 								<ul class="dropdown-menu styleDropdown">
-									<li><g:link class="btn btnMenu">Tablas</g:link></li>
-									<li><g:link class="btn btnMenu">Tablas</g:link></li>
+									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.autores.crear"/></g:link></li>
+									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.autores.lista"/></g:link></li>
 								</ul>	
 							</li>
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-									<span class="glyphicon glyphicon-chevron-down"></span>Funciones</a>
+									<span class="glyphicon glyphicon-chevron-down"></span><g:message code="layoutMenu.botonesColeccion.funciones"/></a>
 								<ul class="dropdown-menu styleDropdown">
-									<li><g:link class="btn btnMenu">Tablas</g:link></li>
-									<li><g:link class="btn btnMenu">Tablas</g:link></li>
+									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.funciones.stats"/></g:link></li>
+									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.funciones.historial"/></g:link></li>
 								</ul>
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right" id="BotonesExtra">
 							<li>
-								<g:link class="btn btnExtra">Tablas</g:link>
+								<g:link class="btn btnExtra"><g:message code="layoutMenu.BotonesExtra.tablas"/></g:link>
 							</li>
 							<li>
-								<g:link class="btn btnExtra">Mangas</g:link>
+								<g:link class="btn btnExtra"><g:message code="layoutMenu.BotonesExtra.graficas"/></g:link>
 							</li>
 							<li>
 								<button class="btn btnOpcions">
@@ -76,12 +76,6 @@
 					</div>					
 				</div>
 			</nav>
-			
-			<script type="text/javascript">
-			$('#myCollapsible').on('hidden.bs.collapse', function () {
-				  console.log("zsdasd");
-			})
-			</script>
 			
 			<g:layoutBody/>
 			
@@ -95,8 +89,7 @@
 							</h3>
 						</div>
 						<div class="col-sm-9 textCopy">
-							<p>Todos los derechos reservados. No se permite la reproducción total ni parcial de las imágenes o textos de esta página web sin la autorización previa de Thekiso Company. 
-							El material puede estar registrado y protegido, además, por derechos de autor o de reproducción. La entidad gestora de los derechos de reproducción en España es VEGAP.</p>
+							<p><g:message code="footer.texto.textoCopy"/></p>
 						</div>
 					</div>
 				</div>

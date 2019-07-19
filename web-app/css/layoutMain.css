@@ -11,7 +11,7 @@ body a:hover, a:focus {color:white;}
 
 /************* HEADER ***************/
 
-#layout-container {padding: 0; background-color: #10171E}
+#layout-container, html {padding: 0; background-color: #10171E}
 
 /*Banner de los logos*/
 #layout-container #grailsLogo {border-bottom: 12px solid #1b7fbea6;}
@@ -43,7 +43,7 @@ body a:hover, a:focus {color:white;}
 
 #layout-container #layout-menu #BotonesColeccion .dropdown .styleDropdown {background-color: transparent; border-color: transparent; margin-left: 0.15em;}
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #20354C; color:white; border:3px solid #20354C; padding:0.25em; margin:0 0.15em 0.25em; transition: 1.2s;}
-#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #1b7fbe30; border-color: #114D72; color:#114D72;}
+#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#0e8bd8;}
 
 #layout-container #layout-menu #BotonesExtra .btnOpcions {padding: 0.25em 0.35em; margin: 1em 0.5em; border: 3px solid #114D72; border-radius: 10px; background-color: #101A26; color:white; transition: 1s;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions:HOVER {background-color: #20354C; border-color: transparent;}
