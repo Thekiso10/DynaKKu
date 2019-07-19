@@ -48,8 +48,8 @@
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 									<span class="glyphicon glyphicon-chevron-down"></span><g:message code="layoutMenu.botonesColeccion.autores"/></a>
 								<ul class="dropdown-menu styleDropdown">
-									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.autores.crear"/></g:link></li>
-									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.autores.lista"/></g:link></li>
+									<li><g:link class="btn btnMenu" action="create" controller="Autor"><g:message code="layoutMenu.botonesColeccion.autores.crear"/></g:link></li>
+									<li><g:link class="btn btnMenu" action="index" controller="Autor"><g:message code="layoutMenu.botonesColeccion.autores.lista"/></g:link></li>
 								</ul>	
 							</li>
 							<li class="dropdown">
