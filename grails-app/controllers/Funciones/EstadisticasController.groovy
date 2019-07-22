@@ -4,6 +4,6 @@ class EstadisticasController {
 
     def general() { 
 		//TODO: Temporal
-		redirect (uri:"/")
+		render (view:"general", model:[])
 	}
 }
