@@ -2,8 +2,14 @@ package Colecciones
 
 class GenerosMangas {
 	
-	static hasMany = [genero:Genero, manga:Mangas]
-
+	Genero genero
+	Mangas mangas
+	
     static constraints = {
-    }
+    
+	}
+	
+	static mapping = {
+
+	} 
 }

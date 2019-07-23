@@ -17,11 +17,14 @@ class Mangas {
 	Calendar fechaInscripcion
 	Calendar ultimaModificacion
 	
-	static belongsTo = [autor:Autor, demografia:Demografia, genero:GenerosMangas]
+	Autor autor
+	Demografia demografia
+	
+	static constraints = {
+	
+	}
 	
 	static mapping = {
 		id generator: 'uuid', Length: 32 //Para generar un id auto-incrementable
 	}
-    static constraints = {
-    }
 }
