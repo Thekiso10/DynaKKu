@@ -1,0 +1,6 @@
+/* Barra de menu estandar*/
+#layout-container #create-autor .menu {margin-top: 1em; background-color: #0d2238; border: 3px solid #114D72; border-radius: 10px;}
+#layout-container #create-autor .menu ul {padding: 0.5em; margin: 0; list-style: none}
+#layout-container #create-autor .menu ul .btn {padding: 0.5em 1.25em; font-weight: 600; font-size: 1.1em}
+#layout-container #create-autor .menu ul .btnLlist {}
+#layout-container #create-autor .menu ul .btnSkip {background-color: #185b86; color: white;}

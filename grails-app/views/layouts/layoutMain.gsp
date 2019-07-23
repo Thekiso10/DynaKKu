@@ -33,7 +33,7 @@
 			</div>
 			
 			<nav id="layout-menu" class="col-sm-12">
-				<div class="container padding-left-0">
+				<div class="container">
 					<div class="collapse navbar-collapse padding-left-0">
 						<ul class="nav navbar-nav" id="BotonesColeccion">
 							<li class="dropdown">
