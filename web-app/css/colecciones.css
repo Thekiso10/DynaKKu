@@ -1,6 +1,21 @@
 /* Barra de menu estandar*/
 #layout-container #create-autor .menu {margin-top: 1em; background-color: #0d2238; border: 3px solid #114D72; border-radius: 10px;}
 #layout-container #create-autor .menu ul {padding: 0.5em; margin: 0; list-style: none}
+
 #layout-container #create-autor .menu ul .btn {padding: 0.5em 1.25em; font-weight: 600; font-size: 1.1em}
-#layout-container #create-autor .menu ul .btnLlist {}
-#layout-container #create-autor .menu ul .btnSkip {background-color: #185b86; color: white;}
+#layout-container #create-autor .menu ul .btnLlist, 
+#layout-container #create-autor .menu ul .btnSave 	{background-color: #006CB1; color: white; border: 3px solid #009bff; transition: 1s;}
+#layout-container #create-autor .menu ul .btnSave 	{padding:0.47em 1.25em; margin-right: 0.5em;}
+
+#layout-container #create-autor .menu ul .btnSkip 	{background-color: #185b86; border: 3px solid #185b86; color: white; transition: 1s;}
+
+#layout-container #create-autor .menu ul .btnLlist:HOVER, 
+#layout-container #create-autor .menu ul .btnSave:HOVER, 
+#layout-container #create-autor .menu ul .btnSkip:HOVER {background-color: transparent; border: 3px solid #006CB1;}
+
+/** Crear Autor **/
+#layout-container #create-autor #formCreateAutor h1 {color:#adadad; font-size: 2.75em; border-bottom: 1px solid #adadad;}
+#layout-container #create-autor #formCreateAutor .panel-form {margin-top: 1em; padding: 1em; background-color: #2C3E51; border: 5px solid #114D72; border-radius: 15px;}
+#layout-container #create-autor #formCreateAutor .panel-form label {color: #999; margin: 0.25em 0 0 0;}
+#layout-container #create-autor #formCreateAutor .panel-form .fieldcontain {margin: 1em 0 1em 0; font-size: 1.15em;}
+#layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .tamanoInput {width: 75%;}

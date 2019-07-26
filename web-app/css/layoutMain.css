@@ -48,15 +48,3 @@ body a:hover, a:focus {color:white;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions {padding: 0.25em 0.35em; margin: 1em 0.5em; border: 3px solid #114D72; border-radius: 10px; background-color: #101A26; color:white; transition: 1s;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions:HOVER {background-color: #20354C; border-color: transparent;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions span.glyphicon {top: 4px; font-size: 1.2em;}
-
-/*************  FOOTER *************/
-#layout-container #footer {background-color: #111;}
-#layout-container #footer #FooterLogo {display: flex; align-items: center; margin: 1em 0 1em 0; padding: 0;}
-#layout-container #footer #FooterLogo h3 {color:white; font-size: 24px; margin:0; padding:0;}
-#layout-container #footer .textCopy {color: white; font-size: 11px; margin: 1.75em 0 0em 0; padding: 0;}
-
-
-
-
-
-

@@ -9,33 +9,36 @@
 	<body>
 		<div id="create-autor" class="col-sm-12" role="main">
 			<div class="container padding-left-0">
-				
-				<div class="menu navbar-collapse" role="navigation">
-					<ul class="navbar-nav">
-						<li><g:link class="btn btnLlist" action="index"><g:message code="autores.list.label" /></g:link></li>
+				<g:form url="[resource:autorInstance, action:'save']" id="formCreateAutor">
+					<div class="menu navbar-collapse" role="navigation">
+						<ul class="navbar-nav">
+							<li><g:submitButton name="create" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" /></li>
+							<li><g:link class="btn btnLlist" action="index"><g:message code="autores.list.label" /></g:link></li>
+						</ul>
+						<ul class="navbar-nav navbar-right">
+							<li><a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a></li>
+						</ul>
+					</div>
+					
+					<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+					
+					<g:if test="${flash.message}">
+						<div class="message" role="status">${flash.message}</div>
+					</g:if>
+					
+					<g:hasErrors bean="${autorInstance}">
+					<ul class="errors" role="alert">
+						<g:eachError bean="${autorInstance}" var="error">
+						<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+						</g:eachError>
 					</ul>
-					<ul class="navbar-nav navbar-right">
-						<li><a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a></li>
-					</ul>
-				</div>
+					</g:hasErrors>
 				
-				<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 				
-				<g:if test="${flash.message}">
-					<div class="message" role="status">${flash.message}</div>
-				</g:if>
-				
-				<g:hasErrors bean="${autorInstance}">
-				<ul class="errors" role="alert">
-					<g:eachError bean="${autorInstance}" var="error">
-					<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-					</g:eachError>
-				</ul>
-				</g:hasErrors>
-				
-				<g:form url="[resource:autorInstance, action:'save']" >
 					<fieldset class="form">
-						<g:render template="form"/>
+						<div class="panel-form row">
+							<g:render template="form"/>
+						</div>
 					</fieldset>
 					<fieldset class="buttons">
 						<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

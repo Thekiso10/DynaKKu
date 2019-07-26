@@ -79,22 +79,7 @@
 			</nav>
 			
 			<g:layoutBody/>
-			
-			<div id="footer" class="col-sm-12" role="contentinfo">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-3" id="FooterLogo">
-							<g:img id="LogoLayoutFooter" class="col-sm-3" dir="images/imgWeb" file="LogoLayoutMain.png"/>
-							<h3 class="col-sm-9">
-								<g:message code="grailsLogo.bannerLogo.nombrePrograma"/>
-							</h3>
-						</div>
-						<div class="col-sm-9 textCopy">
-							<p><g:message code="footer.texto.textoCopy"/></p>
-						</div>
-					</div>
-				</div>
-			</div>
+
 			<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		</div>
 		<%-- Hacer la importacion de archivos --%>
