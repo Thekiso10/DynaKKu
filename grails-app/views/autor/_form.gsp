@@ -37,29 +37,34 @@
 
 <div class="col-sm-6">
 
-	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'difunto', 'error')} required">
-		<label for="difunto">
-			<g:message code="autor.difunto.label" default="Difunto" />
+	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'difunto', 'error')} required row">
+		<label for="difunto" class="col-sm-4 text-right">
+			<g:message code="autor.difunto.label" default="Difunto"/>
 			<span class="required-indicator">*</span>
 		</label>
-		<g:field name="difunto" type="number" value="${autorInstance.difunto}" required=""/>
-	
+		<div class="col-sm-8">
+			<g:field name="difunto" type="number" value="${autorInstance.difunto}" required="" class="tamanoInput"/>
+		</div>
 	</div>
 	
-	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'nacionalidad', 'error')} required">
-		<label for="difunto">
-			<g:message code="autor.difunto.label" default="Nacionalidad" />
+	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'nacionalidad', 'error')} required row">
+		<label for="difunto" class="col-sm-4 text-right">
+			<g:message code="autor.difunto.label" default="Nacionalidad"/>
 			<span class="required-indicator">*</span>
 		</label>
-		<g:field name="difunto" type="number" value="${autorInstance.difunto}" required=""/>
+		<div class="col-sm-8">
+			<g:field name="difunto" type="number" value="${autorInstance.difunto}" required="" class="tamanoInput"/>
+		</div>
 	</div>
 	
-	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'rutaImagen', 'error')} required">
-		<label for="rutaImagen">
-			<g:message code="autor.rutaImagen.label" default="Ruta Imagen" />
+	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'rutaImagen', 'error')} required row">
+		<label for="rutaImagen" class="col-sm-4 text-right">
+			<g:message code="autor.rutaImagen.label" default="Ruta Imagen"/>
 			<span class="required-indicator">*</span>
 		</label>
-		<g:textField name="rutaImagen" required="" value="${autorInstance?.rutaImagen}"/>
+		<div class="col-sm-8">
+			<g:textField name="rutaImagen" required="" value="${autorInstance?.rutaImagen}" class="tamanoInput"/>
+		</div>
 	</div>
 
 </div>

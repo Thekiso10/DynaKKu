@@ -11,11 +11,15 @@
 
 #layout-container #create-autor .menu ul .btnLlist:HOVER, 
 #layout-container #create-autor .menu ul .btnSave:HOVER, 
-#layout-container #create-autor .menu ul .btnSkip:HOVER {background-color: transparent; border: 3px solid #006CB1;}
+#layout-container #create-autor .menu ul .btnSkip:HOVER,
+#layout-container #create-autor #formCreateAutor .buttons .btnSave:HOVER {background-color: transparent; border: 3px solid #006CB1;}
 
 /** Crear Autor **/
+#layout-container #create-autor #formCreateAutor .buttons {text-align: center;}
+#layout-container #create-autor #formCreateAutor .buttons .btnSave {padding: 0.5em 6em; margin-top: 2em; font-size: 1.5em; background-color: #006CB1; color: white; border: 3px solid #009bff; transition: 1s;}
 #layout-container #create-autor #formCreateAutor h1 {color:#adadad; font-size: 2.75em; border-bottom: 1px solid #adadad;}
 #layout-container #create-autor #formCreateAutor .panel-form {margin-top: 1em; padding: 1em; background-color: #2C3E51; border: 5px solid #114D72; border-radius: 15px;}
 #layout-container #create-autor #formCreateAutor .panel-form label {color: #999; margin: 0.25em 0 0 0;}
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain {margin: 1em 0 1em 0; font-size: 1.15em;}
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .tamanoInput {width: 75%;}
+#layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .col-sm-8 .tamanoInput {width: 90%;}
