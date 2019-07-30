@@ -53,7 +53,7 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<div class="col-sm-8">
-			<g:field name="difunto" type="number" value="${autorInstance.difunto}" required="" class="tamanoInput"/>
+			<g:countrySelect name="difunto" value="${autorInstance.nacionalidad}" noSelection="['':'Escoge la nacionalidad del Autor']" required="" class="tamanoInput"/>
 		</div>
 	</div>
 	

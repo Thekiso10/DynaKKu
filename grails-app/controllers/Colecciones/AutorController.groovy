@@ -18,6 +18,9 @@ class AutorController {
     }
 
     def create() {
+		
+		
+		
         respond new Autor(params)
     }
 
