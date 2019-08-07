@@ -43,7 +43,8 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<div class="col-sm-8">
-			<g:field name="difunto" type="number" value="${autorInstance.difunto}" required="" class="tamanoInput"/>
+<%--			<g:field name="difunto" type="number" value="${autorInstance.difunto}" required="" class="tamanoInput"/>--%>
+			<g:select name="difunto" from="${listaEstados}" value="${params.autorEstado}" noSelection="${['null':' ¿Esta vivo o muerto? '] }"/>
 		</div>
 	</div>
 	
@@ -63,8 +64,12 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<div class="col-sm-8">
-			<g:textField name="rutaImagen" required="" value="${autorInstance?.rutaImagen}" class="tamanoInput"/>
+			<g:field type="file" name="rutaImagen" id="avatar" accept="image/*" class="tamanoInput"/>
+		  	<div class="avatarInfo small" style="color:#fff;">
+		  		<span>
+		  			<g:message code="councilor.avatar.help.text"/>
+		  		</span>
+		  	</div>
 		</div>
 	</div>
-
 </div>

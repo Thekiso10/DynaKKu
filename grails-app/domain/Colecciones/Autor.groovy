@@ -11,7 +11,7 @@ class Autor {
 	String rutaImagen
 	
 	int edad
-	boolean difunto //Hay tres estados: Si, no o no lo se
+	boolean difunto //Hay dos estados: Si, no
 	
 	Calendar fechaInscripcion
 	Calendar ultimaModificacion

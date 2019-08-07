@@ -7,6 +7,9 @@ import grails.transaction.Transactional
 class AutorController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	
+	//Definir el servicio del Autor
+	def autorService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -18,10 +21,13 @@ class AutorController {
     }
 
     def create() {
+		def listaEstados = []
+		//Colocar los estados del Autor
+		listaEstados << message(code: "autores.estado.vivo")
+		listaEstados << message(code: "autores.estado.muerto")
 		
-		
-		
-        respond new Autor(params)
+		//Pasar los parametros a la vista
+        respond new Autor(params), model:[listaEstados:listaEstados]
     }
 
     @Transactional
