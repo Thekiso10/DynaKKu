@@ -24,4 +24,6 @@
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain input,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain select {background-color: #10171E; border: 3px solid #114D72; color: #fff; padding: 5px; font-size: 18px;}
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .tamanoInput {width: 75%;}
+#layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .imgAutorInfo {color: #fff;}
+#layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .col-sm-8 #imgAutor {font-size: 12px;}
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .col-sm-8 .tamanoInput {width: 90%;}

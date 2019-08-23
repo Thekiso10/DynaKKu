@@ -85,6 +85,13 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
+/* Nuevas variables de Configuracion */
+
+//Autores
+dynamicList.autores.edadMax = 110
+dynamicList.autores.edadMin = 0
+dynamicList.autores.rutaImg = "web-app\\imgAutores"
+
 environments {
     development {
         grails.logging.jul.usebridge = true

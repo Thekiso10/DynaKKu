@@ -1,7 +1,9 @@
 package Colecciones
 
 import static org.springframework.http.HttpStatus.*
+import dynamiclist.AutorService;
 import grails.transaction.Transactional
+
 
 @Transactional(readOnly = true)
 class AutorController {
@@ -21,36 +23,33 @@ class AutorController {
     }
 
     def create() {
-		def listaEstados = []
-		//Colocar los estados del Autor
-		listaEstados << message(code: "autores.estado.vivo")
-		listaEstados << message(code: "autores.estado.muerto")
-		
-		//Pasar los parametros a la vista
-        respond new Autor(params), model:[listaEstados:listaEstados]
+        respond new Autor(params)
     }
 
     @Transactional
-    def save(Autor autorInstance) {
-        if (autorInstance == null) {
-            notFound()
-            return
-        }
+    def save(Autor autorInstance, params) {
+		def validadorForm = autorService.validarForm(params)
+        if (validadorForm.error) {
+			flash.message = message(code: validadorForm.mensaje)
+            redirect(action: "create")
+			return
+        }else{
+//			autorInstance.save flush:true
+//			redirect(action:"show", model:[autorInstance:autorInstance])
+		}
+		
+		if(autorService.isEqualsAuthor(params.nombre, params.apellido)){
+			flash.message = message(code: "autores.errores.nombres")
+			redirect(action: "create")
+			return
+		}
 
-        if (autorInstance.hasErrors()) {
-            respond autorInstance.errors, view:'create'
-            return
-        }
-
-        autorInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'autor.label', default: 'Autor'), autorInstance.id])
-                redirect autorInstance
-            }
-            '*' { respond autorInstance, [status: CREATED] }
-        }
+		if(params.rutaImagen){
+			def file = request.getFile('rutaImagen')
+			autorService.saveImage(file, params.nombre, params.apellido)
+		}
+		
+		redirect(action: "create")
     }
 
     def edit(Autor autorInstance) {

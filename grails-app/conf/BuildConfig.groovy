@@ -52,6 +52,8 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         runtime 'mysql:mysql-connector-java:5.1.29'
         test "org.grails:grails-datastore-test-support:1.0-grails-2.4"
+		//Plugins
+		compile "commons-io:commons-io:2.4"
     }
 
     plugins {
@@ -63,16 +65,10 @@ grails.project.dependency.resolution = {
 		runtime ":database-migration:1.4.0"
 		runtime ":jquery:1.11.1"
 		
-        // plugins for the compile step
+        // plugins for the compile stept
         compile ":scaffolding:2.1.2",
 				':cache:1.1.7',
 				":asset-pipeline:1.8.11",
 				":twitter-bootstrap:3.3.4"
-				
-        // Uncomment these to enable additional asset-pipeline capabilities
-        //compile ":sass-asset-pipeline:1.7.4"
-        //compile ":less-asset-pipeline:1.7.0"
-        //compile ":coffee-asset-pipeline:1.7.0"
-        //compile ":handlebars-asset-pipeline:1.3.0.3"
     }
 }

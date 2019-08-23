@@ -9,7 +9,7 @@
 	<body>
 		<div id="create-autor" class="col-sm-12" role="main">
 			<div class="container padding-left-0">
-				<g:form url="[resource:autorInstance, action:'save']" id="formCreateAutor">
+				<g:form url="[resource:autorInstance, action:'save']" enctype='multipart/form-data' id="formCreateAutor">
 					<div class="menu navbar-collapse" role="navigation">
 						<ul class="navbar-nav">
 							<li><g:submitButton name="create" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" /></li>
@@ -23,7 +23,7 @@
 					<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 					
 					<g:if test="${flash.message}">
-						<div class="message" role="status">${flash.message}</div>
+						<div class="errors" role="status">${flash.message}</div>
 					</g:if>
 					
 					<g:hasErrors bean="${autorInstance}">

@@ -33,6 +33,19 @@
 		</div>
 	</div>
 	
+	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'nacionalidad', 'error')} required row">
+		<label for="genero" class="col-sm-3 text-right">
+			<g:message code="autor.genero.label" default="Genero"/>
+			<span class="required-indicator">*</span>
+		</label>
+		<div class="col-sm-9">
+			<select name="genero" id="genero">
+				<option value="1">Masculino</option>
+				<option value="0">Femenido</option>
+			</select>
+		</div>
+	</div>
+	
 </div>
 
 <div class="col-sm-6">
@@ -43,31 +56,32 @@
 			<span class="required-indicator">*</span>
 		</label>
 		<div class="col-sm-8">
-<%--			<g:field name="difunto" type="number" value="${autorInstance.difunto}" required="" class="tamanoInput"/>--%>
-			<g:select name="difunto" from="${listaEstados}" value="${params.autorEstado}" noSelection="${['null':' ¿Esta vivo o muerto? '] }"/>
+			<select name="difunto" id="difunto">
+				<option value="1">Vivo</option>
+				<option value="0">Muerto</option>
+			</select>
 		</div>
 	</div>
 	
 	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'nacionalidad', 'error')} required row">
-		<label for="difunto" class="col-sm-4 text-right">
+		<label for="nacionalidad" class="col-sm-4 text-right">
 			<g:message code="autor.difunto.label" default="Nacionalidad"/>
 			<span class="required-indicator">*</span>
 		</label>
 		<div class="col-sm-8">
-			<g:countrySelect name="difunto" value="${autorInstance.nacionalidad}" noSelection="['':'Escoge la nacionalidad del Autor']" required="" class="tamanoInput"/>
+			<g:countrySelect name="nacionalidad" value="${autorInstance.nacionalidad}" noSelection="['':'Escoge la nacionalidad del Autor']" required="" class="tamanoInput"/>
 		</div>
 	</div>
 	
 	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'rutaImagen', 'error')} required row">
 		<label for="rutaImagen" class="col-sm-4 text-right">
 			<g:message code="autor.rutaImagen.label" default="Ruta Imagen"/>
-			<span class="required-indicator">*</span>
 		</label>
 		<div class="col-sm-8">
-			<g:field type="file" name="rutaImagen" id="avatar" accept="image/*" class="tamanoInput"/>
-		  	<div class="avatarInfo small" style="color:#fff;">
+			<g:field type="file" name="rutaImagen" id="imgAutor" accept="image/*" class="tamanoInput"/>
+		  	<div class="imgAutorInfo small">
 		  		<span>
-		  			<g:message code="councilor.avatar.help.text"/>
+		  			<g:message code="autores.imagen.formatos"/>
 		  		</span>
 		  	</div>
 		</div>

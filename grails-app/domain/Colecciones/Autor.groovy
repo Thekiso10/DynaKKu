@@ -12,6 +12,7 @@ class Autor {
 	
 	int edad
 	boolean difunto //Hay dos estados: Si, no
+	boolean genero //Masculino o Femenido 
 	
 	Calendar fechaInscripcion
 	Calendar ultimaModificacion
