@@ -40,8 +40,8 @@
 		</label>
 		<div class="col-sm-9">
 			<select name="genero" id="genero">
-				<option value="1">Masculino</option>
-				<option value="0">Femenido</option>
+				<option value="Masculino">Masculino</option>
+				<option value="Femenido">Femenido</option>
 			</select>
 		</div>
 	</div>
@@ -57,8 +57,8 @@
 		</label>
 		<div class="col-sm-8">
 			<select name="difunto" id="difunto">
-				<option value="1">Vivo</option>
-				<option value="0">Muerto</option>
+				<option value="false">Vivo</option>
+				<option value="true">Muerto</option>
 			</select>
 		</div>
 	</div>
@@ -73,12 +73,12 @@
 		</div>
 	</div>
 	
-	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'rutaImagen', 'error')} required row">
-		<label for="rutaImagen" class="col-sm-4 text-right">
-			<g:message code="autor.rutaImagen.label" default="Ruta Imagen"/>
+	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'imagen', 'error')} required row">
+		<label for="imagen" class="col-sm-4 text-right">
+			<g:message code="autor.imagen.label" default="Ruta Imagen"/>
 		</label>
 		<div class="col-sm-8">
-			<g:field type="file" name="rutaImagen" id="imgAutor" accept="image/*" class="tamanoInput"/>
+			<g:field type="file" name="imagen" id="imgAutor" accept="image/*" class="tamanoInput"/>
 		  	<div class="imgAutorInfo small">
 		  		<span>
 		  			<g:message code="autores.imagen.formatos"/>

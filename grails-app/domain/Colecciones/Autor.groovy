@@ -9,13 +9,13 @@ class Autor {
 	String apellido
 	String nacionalidad
 	String rutaImagen
+	String genero //Masculino o Femenido
 	
 	int edad
 	boolean difunto //Hay dos estados: Si, no
-	boolean genero //Masculino o Femenido 
 	
-	Calendar fechaInscripcion
-	Calendar ultimaModificacion
+	Date fechaInscripcion
+	Date ultimaModificacion
 		
     static constraints = {
     	nombre 			nullable: true, blank: true

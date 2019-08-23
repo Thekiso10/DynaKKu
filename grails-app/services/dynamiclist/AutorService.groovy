@@ -14,6 +14,7 @@ class AutorService {
 	
 	def grailsApplication
 	
+	//Validar el formulario de Autor
 	def validarForm(params){
 		boolean error = false
 		def mensaje = null
@@ -32,47 +33,50 @@ class AutorService {
 		
 		return [error:error, mensaje:mensaje]
 	}
-	
+	//Comprobar que no exista un Autor con el mismo nombre
 	def isEqualsAuthor(def nombre, def apellido){
 		boolean igual = false
 		
-		def nombreAutor = Autor.findWhere(nombre:nombre)
-		def apellidoAutor = Autor.findWhere(apellido:apellido)
+		def Autor = Autor.findWhere(nombre:nombre, apellido:apellido)
 		
-		if(nombreAutor || apellidoAutor){
+		if(Autor){
 			igual = true
-			log.error "[Autor] Se ha detectado un nombre: [" + nombreAutor + "] o un apellido [" + apellidoAutor + "] igualen"
+			log.error "[Autor] Se ha detectado un nombre: [" + Autor.nombre + " " + Autor.apellido + "] igual"
 		}
 				
 		return igual
 	}
-	
+	//Guardar la foto del Autor
 	def saveImage(def foto, def nombre, def apellido) {
-		def correcto = true
+		def error = false
+		def path = null
+		def mensaje = null
+		
 		File carpeta = new File(grailsApplication.config.dynamicList.autores.rutaImg)
 		
 		if(!foto.empty && carpeta.exists()){
 			def extensiones = FilenameUtils.getExtension(foto.originalFilename)
 			
 			if(!extensiones.toLowerCase().equals("jpg") && !extensiones.toLowerCase().equals("jpeg") && !extensiones.toLowerCase().equals("png")){
-				correcto = false
+				error = true
 				mensaje = "autores.errores.img.formato"
 				log.error "Han intentado introducir un formato invalido de imagen [" + extensiones + "]"
 			}else{
 				try{
 					def nombreAuthor = nombre + "_" + apellido
-					def path = carpeta.getAbsolutePath() + "\\" + nombreAuthor + "." + extensiones
+					path = carpeta.getAbsolutePath() + "\\" + nombreAuthor + "." + extensiones
 					foto.transferTo(new File(path))
 				}catch (Exception e){
 					correcto = false
+					mensaje = "autores.errores.img.saveFolder"
 					log.error e
 				}
 			}
 		}else{
-			correcto = false
+			error = true
 			log.error "[Autor] Validar rutas de la foto a fallado."
 		}
 	
-		return correcto
+		return [error:error, mensaje:mensaje, path:path]
 	}
 }

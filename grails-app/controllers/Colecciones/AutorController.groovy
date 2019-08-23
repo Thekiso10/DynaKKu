@@ -1,8 +1,11 @@
 package Colecciones
 
 import static org.springframework.http.HttpStatus.*
+import java.io.ObjectInputStream.ValidationList;
+import javassist.bytecode.stackmap.BasicBlock.Catch;
 import dynamiclist.AutorService;
 import grails.transaction.Transactional
+import java.text.SimpleDateFormat
 
 
 @Transactional(readOnly = true)
@@ -29,27 +32,53 @@ class AutorController {
     @Transactional
     def save(Autor autorInstance, params) {
 		def validadorForm = autorService.validarForm(params)
+		def validadorFoto = null
+		//Validar los datos del formulario
         if (validadorForm.error) {
 			flash.message = message(code: validadorForm.mensaje)
             redirect(action: "create")
 			return
-        }else{
-//			autorInstance.save flush:true
-//			redirect(action:"show", model:[autorInstance:autorInstance])
-		}
-		
+        }
+		//Validar la existencia de un autor con el mismo nombre
 		if(autorService.isEqualsAuthor(params.nombre, params.apellido)){
 			flash.message = message(code: "autores.errores.nombres")
 			redirect(action: "create")
 			return
 		}
-
-		if(params.rutaImagen){
-			def file = request.getFile('rutaImagen')
-			autorService.saveImage(file, params.nombre, params.apellido)
+		//Si hay foto guardarla en la carpeta configurada 
+		def file = request.getFile('imagen')
+		if(!file.empty){
+			validadorFoto = autorService.saveImage(file, params.nombre, params.apellido)
+			if (validadorFoto.error) {
+				flash.message = message(code: validadorFoto.mensaje)
+				redirect(action: "create")
+				return
+			}
+			autorInstance.rutaImagen = validadorFoto.path
+		}
+		//Guardar en base de datos
+		try{
+			def date = new Date()
+			def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+			
+			autorInstance.fechaInscripcion = new Date()
+			autorInstance.ultimaModificacion = new Date()
+			autorInstance.difunto = (params.difunto.equals("true"))?true:false
+			if(autorInstance.save(flush:true)){
+				//TODO: Fatlta guardar en el historial
+				
+			}else{
+				//TODO: Si hay un error hay que borrar la foto
+			}
+		}catch(Exception e){
+			log.error "No se ha podido guardar en base de datos"
+			log.error e
+			flash.message = message(code: "autores.errores.save.bbdd")
+			redirect(action: "create")
+			return
 		}
 		
-		redirect(action: "create")
+		redirect(action:"show", id:autorInstance.id)
     }
 
     def edit(Autor autorInstance) {
