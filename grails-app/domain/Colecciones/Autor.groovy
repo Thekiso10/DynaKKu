@@ -24,6 +24,7 @@ class Autor {
 		edad			nullable: true, blank: true
 		difunto 		nullable: true, blank: true
 		nacionalidad	nullable: true, blank: true
+		genero			nullable: true, blank: true
 		
 		fechaInscripcion	nullable: true, blank: true
 		ultimaModificacion	nullable: true, blank: true

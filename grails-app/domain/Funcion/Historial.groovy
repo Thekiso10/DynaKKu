@@ -6,18 +6,22 @@ import Colecciones.Mangas;
 class Historial {
 	//Tipo de accions para el historial
 	enum Status {
-		Actualizaion, Creacion, Eliminacion
+		ACTUALIZACION, CREACION, ELIMINACION
 	}
 	
 	String id
 	Status tipoAccion
-	String accion
-	Calendar fecha
+	Date fecha
 	
-	Mangas mangas
-	Autor autor
+	String mangas
+	String autor
 	
     static constraints = {
+		tipoAccion 	nullable: true, blank: true
+		fecha  		nullable: true, blank: true
+		
+		mangas	nullable: true, blank: true
+		autor	nullable: true, blank: true
     }
 	
 	static mapping = {

@@ -15,7 +15,8 @@ class AutorController {
 	
 	//Definir el servicio del Autor
 	def autorService
-
+	def historialService
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Autor.list(params), model:[autorInstanceCount: Autor.count()]
@@ -65,14 +66,13 @@ class AutorController {
 			autorInstance.ultimaModificacion = new Date()
 			autorInstance.difunto = (params.difunto.equals("true"))?true:false
 			if(autorInstance.save(flush:true)){
-				//TODO: Fatlta guardar en el historial
-				
+				log.info "Creando entrada en el historial de un nuevo autor"
+				historialService.registrarAutor(autorInstance, 0)
 			}else{
 				//TODO: Si hay un error hay que borrar la foto
 			}
 		}catch(Exception e){
-			log.error "No se ha podido guardar en base de datos"
-			log.error e
+			log.error "No se ha podido guardar en base de datos " + e
 			flash.message = message(code: "autores.errores.save.bbdd")
 			redirect(action: "create")
 			return
