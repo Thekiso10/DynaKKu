@@ -1,10 +1,10 @@
-dataSource {
-    pooled = true
-    jmxExport = true
-    driverClassName = "com.mysql.jdbc.Driver"
-    username = "root"
-    password = "1234"
-}
+//dataSource {
+//    pooled = true
+//    jmxExport = true
+//    driverClassName = "com.mysql.jdbc.Driver"
+//    username = "root"
+//    password = "1234"
+//}
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
@@ -18,7 +18,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-			url = "jdbc:mysql://localhost:3306/DynamicListPRE?useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true"
+			//url = "jdbc:mysql://localhost:3306/DynamicListPRE?useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true"
             //url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
     }

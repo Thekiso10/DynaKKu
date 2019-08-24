@@ -69,7 +69,7 @@ class AutorController {
 				log.info "Creando entrada en el historial de un nuevo autor"
 				historialService.registrarAutor(autorInstance, 0)
 			}else{
-				//TODO: Si hay un error hay que borrar la foto
+				autorService.deleteImage(validadorFoto.path)
 			}
 		}catch(Exception e){
 			log.error "No se ha podido guardar en base de datos " + e

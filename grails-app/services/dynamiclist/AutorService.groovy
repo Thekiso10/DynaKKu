@@ -5,6 +5,7 @@ import grails.transaction.Transactional
 import org.apache.commons.io.FilenameUtils
 
 import java.io.File
+import java.util.logging.Logger;
 
 import Colecciones.Autor
 
@@ -78,5 +79,20 @@ class AutorService {
 		}
 	
 		return [error:error, mensaje:mensaje, path:path]
+	}
+	//Eliminar la foto del Autor
+	def deleteImage(def path){
+		def error = false
+
+		try{
+			def file = new File(path)
+			file.delete()
+			log.info "Se ha borrado correctamente la foto"	
+		}catch (Exception e){
+			error = true
+			log.error "No se ha borrado correctamente la foto"
+		}
+		
+		return error
 	}
 }
