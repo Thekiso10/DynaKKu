@@ -36,13 +36,13 @@ class AutorController {
 		def validadorFoto = null
 		//Validar los datos del formulario
         if (validadorForm.error) {
-			flash.message = message(code: validadorForm.mensaje)
+			flash.error = message(code: validadorForm.mensaje)
             redirect(action: "create")
 			return
         }
 		//Validar la existencia de un autor con el mismo nombre
 		if(autorService.isEqualsAuthor(params.nombre, params.apellido)){
-			flash.message = message(code: "autores.errores.nombres")
+			flash.error = message(code: "autores.errores.nombres")
 			redirect(action: "create")
 			return
 		}
@@ -51,7 +51,7 @@ class AutorController {
 		if(!file.empty){
 			validadorFoto = autorService.saveImage(file, params.nombre, params.apellido)
 			if (validadorFoto.error) {
-				flash.message = message(code: validadorFoto.mensaje)
+				flash.error = message(code: validadorFoto.mensaje)
 				redirect(action: "create")
 				return
 			}
@@ -67,13 +67,14 @@ class AutorController {
 			autorInstance.difunto = (params.difunto.equals("true"))?true:false
 			if(autorInstance.save(flush:true)){
 				log.info "Creando entrada en el historial de un nuevo autor"
+				flash.message = message(code: "autores.message.save.ok", args: (autorInstance.name + " " + autorInstance.apellido))
 				historialService.registrarAutor(autorInstance, 0)
 			}else{
 				autorService.deleteImage(validadorFoto.path)
 			}
 		}catch(Exception e){
 			log.error "No se ha podido guardar en base de datos " + e
-			flash.message = message(code: "autores.errores.save.bbdd")
+			flash.error = message(code: "autores.errores.save.bbdd")
 			redirect(action: "create")
 			return
 		}
