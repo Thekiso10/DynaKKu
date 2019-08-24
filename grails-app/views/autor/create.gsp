@@ -23,11 +23,11 @@
 					<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 					
 					<g:if test="${flash.message}">
-						<div class="errors" role="status">${flash.message}</div>
+						<div class="flash mensajes iconoMensajes" role="status">${flash.message}</div>
 					</g:if>
 					
 					<g:if test="${flash.error}">
-						<div class="errors" role="status">${flash.error}</div>
+						<div class="flash errors" role="status">${flash.error}</div>
 					</g:if>
 					
 					<g:hasErrors bean="${autorInstance}">

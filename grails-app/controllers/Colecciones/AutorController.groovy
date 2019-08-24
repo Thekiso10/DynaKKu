@@ -59,6 +59,7 @@ class AutorController {
 		}
 		//Guardar en base de datos
 		try{
+			def nombreAutor = autorInstance.nombre + " " + autorInstance.apellido
 			def date = new Date()
 			def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
 			
@@ -67,7 +68,7 @@ class AutorController {
 			autorInstance.difunto = (params.difunto.equals("true"))?true:false
 			if(autorInstance.save(flush:true)){
 				log.info "Creando entrada en el historial de un nuevo autor"
-				flash.message = message(code: "autores.message.save.ok", args: (autorInstance.name + " " + autorInstance.apellido))
+				flash.message = message(code: "autores.message.save.ok", args: [nombreAutor])
 				historialService.registrarAutor(autorInstance, 0)
 			}else{
 				autorService.deleteImage(validadorFoto.path)
