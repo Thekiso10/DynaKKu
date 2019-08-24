@@ -88,9 +88,9 @@ grails.hibernate.osiv.readonly = false
 /* Nuevas variables de Configuracion */
 
 //Autores
-dynamicList.autores.edadMax = 110
-dynamicList.autores.edadMin = 0
-dynamicList.autores.rutaImg = "web-app\\imgAutores"
+dynamicList.autores.edadMax = 110 	//Especificar la edad minima de un Autor
+dynamicList.autores.edadMin = 0 	//Especificar la edad maxima de un Autor
+dynamicList.autores.rutaImg = "web-app\\imgAutores" //Ruta para guardar las imagenes de cada autor
 
 environments {
     development {
@@ -127,10 +127,54 @@ log4j.main = {
            'net.sf.ehcache.hibernate'
 }
 
-///*==================================================================*/
-///* 					   Cargar Dibujo por consola					*/
-///*==================================================================*/
-//
+/*==================================================================*/
+/* 					   Cargar Config Externa       					*/
+/*==================================================================*/
+Properties props = new Properties()
+println "llegint application.properties"
+def arxiuConfig
+def rutaConfig
+
+try {
+	props.load(getClass().getResourceAsStream("application.properties"));
+	rutaConfig = props.get("app.rutaConfig")
+	if (!rutaConfig){
+		throw new Exception("No se ha encontrado la entrada app.rutaConfig en el archivo application.properties")
+		System.exit(1)
+	}
+
+	// determina si la ruta depèn del context de deployment o és absoluta
+	if(rutaConfig.contains('/') || rutaConfig.contains('\\')){
+		println "\tFormat de la ruta: ABSOLUT"
+		arxiuConfig		= rutaConfig + File.separator + "Config.groovy"
+	}
+
+	println "\tFitxer: $arxiuConfig"
+
+	print "Comprovant que existeix l'arxiu de configuració ${arxiuConfig}... "
+
+	File f = new File(arxiuConfig);
+	if (!f.exists())
+		throw new Exception("ERROR: No existeix l'arxiu de configuració ${arxiuConfig}.\n\t - Revisar la ruta a l'arxiu application.properties")
+	f = null;
+} catch (Exception e) {
+	println "Excepció ${e.class}:: Missatge:${e.getMessage()}"
+	System.exit(1)
+}
+
+grails.config.locations = ["file:${arxiuConfig}"]
+
+dir.config  = rutaConfig
+pressoffice.dir.config  = rutaConfig
+
+println "OK!\n\t - dir config: " + rutaConfig
+println "OK!\n\t - Ruta arxiu configuració: " + arxiuConfig
+
+println "Config Loaded...OK"
+/*==================================================================*/
+/* 					   Cargar Dibujo por consola					*/
+/*==================================================================*/
+
 //println "\nConfig Loaded...OK \n"
 //println "			____                                    _        __     _        __ "
 //println "		   / __ \\ __  __ ____   ____ _  ____ ___   (_)_____ / /    (_)_____ / /_ "
