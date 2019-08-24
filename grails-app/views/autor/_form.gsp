@@ -40,8 +40,8 @@
 		</label>
 		<div class="col-sm-9">
 			<select name="genero" id="genero">
-				<option value="Masculino">Masculino</option>
-				<option value="Femenido">Femenido</option>
+				<option value="Masculino"><g:message code="autores.estado.masculino" default="masculino" /></option>
+				<option value="Femenido"><g:message code="autores.estado.femenido" default="femenido" /></option>
 			</select>
 		</div>
 	</div>
@@ -57,15 +57,15 @@
 		</label>
 		<div class="col-sm-8">
 			<select name="difunto" id="difunto">
-				<option value="false">Vivo</option>
-				<option value="true">Muerto</option>
+				<option value="false"><g:message code="autores.estado.vivo" default="vivo" /></option>
+				<option value="true"><g:message code="autores.estado.muerto" default="muerto" /></option>
 			</select>
 		</div>
 	</div>
 	
 	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'nacionalidad', 'error')} required row">
 		<label for="nacionalidad" class="col-sm-4 text-right">
-			<g:message code="autor.difunto.label" default="Nacionalidad"/>
+			<g:message code="autor.nacionalidad.label" default="Nacionalidad"/>
 			<span class="required-indicator">*</span>
 		</label>
 		<div class="col-sm-8">
