@@ -41,7 +41,7 @@ body a:hover, a:focus {color:white;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra:HOVER {background-color: transparent; border-color: #114D72;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra span.glyphicon {margin-right: 6px; top: 3px; font-size: 1.1em;}
 
-#layout-container #layout-menu #BotonesColeccion .dropdown .styleDropdown {background-color: transparent; border-color: transparent; margin-left: 0.15em;}
+#layout-container #layout-menu #BotonesColeccion .dropdown .styleDropdown {background-color: transparent; border-color: transparent; margin-left: 0.15em; box-shadow: none;}
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #20354C; color:white; border:3px solid #20354C; padding:0.25em; margin:0 0.15em 0.25em; transition: 1.2s;}
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#0e8bd8;}
 

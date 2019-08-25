@@ -4,14 +4,40 @@
 	<head>
 		<meta name="layout" content="layoutMain"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
-		<g:set var="entityName" value="${message(code: 'autor.label', default: 'Autor')}" />
+		<g:set var="entityName" value="${message(code: 'layoutMenu.botonesColeccion.autores', default: 'Autor')}" />
 		<title><g:message code="default.list.label" args="[entityName]"/></title>
 	</head>
 	<body>
 		<div id="list-autor" class="col-sm-12" role="main">
 			<div class="container padding-left-0">
-				<div id="list-autor" class="content scaffold-list" role="main">
-				
+				<div class="content scaffold-list" role="main">
+					
+					<div class="menu navbar-collapse" role="navigation">
+						<ul class="navbar-nav">
+							<li><g:link class="btn btnLlist" action="create"><g:message code="autores.create.label" /></g:link></li>
+						</ul>
+						<ul class="navbar-nav">
+							<li><g:link class="btn btnLlist" action="create"><g:message code="default.list.generatePDF.label" args="[entityName]"/></g:link></li>
+						</ul>
+						<ul class="navbar-nav">
+							<li class="dropdown">
+								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span class="glyphicon glyphicon-chevron-down"></span><g:message code="autores.list.manage.label"/></a>
+								<ul class="dropdown-menu styleDropdown">
+									<li>
+										<g:link class="btn btnMenu "><g:message code="autores.list.export.label"/></g:link>
+									</li>
+									<li>
+										<g:link class="btn btnMenu"><g:message code="autores.list.import.label"/></g:link>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<ul class="navbar-nav navbar-right">
+							<li><a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a></li>
+						</ul>
+					</div>
+									
 					<h1>
 						<g:message code="default.list.label" args="[entityName]" />
 					</h1>
@@ -79,7 +105,9 @@
 									
 									<td><g:formatDate date="${autorInstance.fechaInscripcion}" /></td>
 									
-									<td><button>sdfdsf</button></td>
+									<td>
+										<g:link class="btn btnMenu" action="show" id="${autorInstance.id}"><g:message code="default.list.show.label" args="[entityName]"/></g:link>
+									</td>
 									
 								</tr>
 							</g:each>
