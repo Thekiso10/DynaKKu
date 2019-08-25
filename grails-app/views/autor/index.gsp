@@ -115,8 +115,10 @@
 						</table>
 					</div>
 					
-					<div class="pagination">
-						<g:paginate total="${autorInstanceCount ?: 0}" />
+					<div class="col-sm-12 paginacion menu">
+						<div class="pagination row">
+							<g:paginate total="${autorInstanceCount ?: 0}" />
+						</div>
 					</div>
 					
 				</div>

@@ -57,5 +57,10 @@
 #layout-container #list-autor #tableAutorList .table-hover > tbody > tr:hover, 
 #layout-container #list-autor #tableAutorList .table-hover > tbody > tr.even:hover {color: #4CB1F7; background-color: #253140;}
 
+#layout-container #list-autor .paginacion {text-align: center; margin-bottom: 3em; line-height: 0.25em; background: #03090f; border-color: #102f4f;}
+#layout-container #list-autor .paginacion a,
+#layout-container #list-autor .paginacion span {font-size: 1.25em; padding-left: 1em;}
 
+#layout-container #list-autor .paginacion span {color: #4CB1F7; font-weight: 600;}
+#layout-container #list-autor .paginacion a {color: #fff;}
 
