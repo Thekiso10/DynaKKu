@@ -32,8 +32,6 @@
 # "temporary" build files
 /target
 
-/web-app/imgAutores
-
 .metadata/*
 Servers/*
 RemoteSystemsTempFiles/*
@@ -43,5 +41,4 @@ RemoteSystemsTempFiles/*
 .settings/
 /target-eclipse/*
 grailsw.*
-application.*
 grailsw
