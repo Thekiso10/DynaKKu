@@ -40,6 +40,8 @@
 									<g:sortableColumn scope="col" property="rutaImagen" title="${message(code: 'autor.imagen.label', default: 'Ruta Imagen')}" />
 									
 									<g:sortableColumn scope="col" property="fechaInscripcion" title="${message(code: 'autor.fechaInscripcion.label', default: 'Fecha Inscripcion')}" />
+									<%-- Este Th es solo para estetica --%>
+									<th></th>
 								
 								</tr>
 							</thead>
