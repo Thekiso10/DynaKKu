@@ -64,3 +64,15 @@
 #layout-container #list-autor .paginacion span {color: #4CB1F7; font-weight: 600;}
 #layout-container #list-autor .paginacion a {color: #fff;}
 
+#layout-container #list-autor #filtroAutor {background-color: #666; padding: 0.25em 1.75em; margin-top: 1.5em; border: 2px solid #9CC8D9; border-radius: 10px;}
+#layout-container #list-autor #filtroAutor .bodyFilter {margin-bottom: 0.25em;}
+#layout-container #list-autor #filtroAutor .form-group {margin-right: 0.5em; margin-left: 1em;}
+#layout-container #list-autor #filtroAutor .titleFilter {margin-top: 0.25em; padding-bottom: 0.15em; border-bottom:3px dotted #111; font-size: 2.10em; font-weight: 600;}
+#layout-container #list-autor #filtroAutor .labelFilter {font-size: 1.15em;}
+
+#layout-container #list-autor #filtroAutor .btn {padding: 0.35em 1.5em; font-size: 1.10em; font-weight: 600;}
+#layout-container #list-autor #filtroAutor .btn-filter {margin-left: 2em; margin-right: 0.25em;}
+#layout-container #list-autor #filtroAutor .btn-reset {}
+
+
+

@@ -43,10 +43,50 @@
 					</h1>
 					
 					<g:if test="${flash.message}">
-						<div class="message" role="status">${flash.message}</div>
+						<div class="flash mensajes iconoMensajes" role="status">${flash.message}</div>
 					</g:if>
 					
-					<div id="tableAutorList" class="table-responsive">
+					<%-- Filtro --%>
+					<g:form action="list" name="filterAutor" class="form-inline">
+						<div id="filtroAutor" class="col-sm-12">
+							<h3 class="text-center titleFilter">
+								<g:message code="default.filter.label" args="[entityName]" />
+							</h3>
+							<div class="row bodyFilter">
+								<div class="form-group">
+									<label for="nombre" class="labelFilter">
+										<g:message code="autor.nombre.label" default="Nombre" />
+									</label>
+									<g:textField name="nombre" value="${autorInstance?.nombre}" class="tamanoInput"/>
+								</div>
+								<div class="form-group">
+									<label for="apellido" class="labelFilter">
+										<g:message code="autor.apellido.label" default="apellido" />
+									</label>
+									<g:textField name="apellido" value="${autorInstance?.apellido}" class="tamanoInput"/>
+								</div>
+								<div class="form-group">
+									<label for="edad" class="labelFilter">
+										<g:message code="autor.edad.label" default="edad" />
+									</label>
+									<g:field name="edad" type="number" value="${autorInstance?.edad}"class="tamanoInput"/>
+								</div>
+								
+								<button type="submit" class="btn btn-filter" name="search" value="search">
+									<span class="glyphicon glyphicon-search"></span>
+									<g:message code="receiver.filter.label" default="Filter"/>
+								</button>
+										
+								<button type="submit" class="btn btn-reset commit" name="showAll" value="showAll">
+									<span class="glyphicon glyphicon-list"></span>
+				   					<g:message code="default.button.show.all.label" default="Show All"/>
+				   				</button>
+				   				
+							</div>
+						</div>
+					</g:form>
+					
+					<div id="tableAutorList" class="table-responsive ${!autorInstanceList? 'hidden':''}">
 						<table class="table table-dark table-striped table-hover">
 							<thead class="thead-dark">
 								<tr>
@@ -115,7 +155,7 @@
 						</table>
 					</div>
 					
-					<div class="col-sm-12 paginacion menu">
+					<div class="col-sm-12 paginacion menu ${autorInstanceCount <= 10 ? 'hidden':''}">
 						<div class="pagination row">
 							<g:paginate total="${autorInstanceCount ?: 0}" />
 						</div>
