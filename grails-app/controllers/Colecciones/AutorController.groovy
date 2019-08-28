@@ -19,12 +19,13 @@ class AutorController {
 	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+		def filterAutor = null
 		
 		if(Autor.list(params).size() == 0){
 			flash.message = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.autores")])
 		}
 		
-        respond Autor.list(params), model:[autorInstanceCount: Autor.count()]
+        respond Autor.list(params), model:[autorInstanceCount: Autor.count(), filterAutor:filterAutor]
     }
 
     def show(Autor autorInstance) {

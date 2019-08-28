@@ -37,7 +37,22 @@
 /** Lista de los Autor **/
 #layout-container #list-autor h1 {color:#d8d8d8; font-size: 2.75em; border-bottom: 1px solid #d8d8d8;}
 
-#layout-container #list-autor #tableAutorList {border:2px solid #9CC8D9; border-radius: 1em; margin-top: 2em;}
+#layout-container #list-autor #filtroAutor {background-color: #25384b; padding: 0.25em 1.75em; margin: 2.5em 0 0.35em 0; border: 2px solid #48a3ff; border-radius: 10px 10px 7px 7px;}
+#layout-container #list-autor #filtroAutor .bodyFilter {margin-bottom: 0.25em;}
+#layout-container #list-autor #filtroAutor .form-group {margin-right: 0.5em; margin-left: 1em;}
+#layout-container #list-autor #filtroAutor .titleFilter {margin-top: 0.25em; padding-bottom: 0.25em; border-bottom:6px dotted #7aa4d0; color:#48a3ff; font-size: 2.10em; font-weight: 600;}
+#layout-container #list-autor #filtroAutor .labelFilter {font-size: 1.15em; color:#7ebeff;}
+#layout-container #list-autor #filtroAutor .form-group input {background-color: #0e2033; color:#5aacff; border: 2px solid #7aa4d0; box-shadow: 0px 1px 5px 1px #3272b2;}
+#layout-container #list-autor #filtroAutor .form-group input::placeholder {color: #c8e3ff; opacity: 0.5;}
+
+#layout-container #list-autor #filtroAutor .btn {padding: 0.35em 1.5em; font-size: 1.10em; font-weight: 600;}
+#layout-container #list-autor #filtroAutor .btn-filter {margin-left: 5.15em; margin-right: 0.25em; background-color: #15304c; border: 2px solid #7ebeff; color: #ecf5ff;}
+#layout-container #list-autor #filtroAutor .btn-reset {background-color: #ecf5ff; border: 2px solid #7ebeff; color: #24517f;}
+
+#layout-container #list-autor #filtroAutor .btn-filter:hover,
+#layout-container #list-autor #filtroAutor .btn-reset:hover {background-color: transparent; color:#fff; transition: 0.7s;} 
+
+#layout-container #list-autor #tableAutorList {border:2px solid #48a3ff; border-radius: 7px; margin-top: 2em;}
 #layout-container #list-autor #tableAutorList .table {font-family: 'Open Sans'; text-align: center; font-size: 1.10em; margin: 0;}
 #layout-container #list-autor #tableAutorList .table .btnMenu {background-color: #006CB1; border: 3px solid #009bff; color: white; transition: 1s;}
 #layout-container #list-autor #tableAutorList .table .btnMenu:hover {background-color: transparent; color: white;}
@@ -63,16 +78,3 @@
 
 #layout-container #list-autor .paginacion span {color: #4CB1F7; font-weight: 600;}
 #layout-container #list-autor .paginacion a {color: #fff;}
-
-#layout-container #list-autor #filtroAutor {background-color: #666; padding: 0.25em 1.75em; margin-top: 1.5em; border: 2px solid #9CC8D9; border-radius: 10px;}
-#layout-container #list-autor #filtroAutor .bodyFilter {margin-bottom: 0.25em;}
-#layout-container #list-autor #filtroAutor .form-group {margin-right: 0.5em; margin-left: 1em;}
-#layout-container #list-autor #filtroAutor .titleFilter {margin-top: 0.25em; padding-bottom: 0.15em; border-bottom:3px dotted #111; font-size: 2.10em; font-weight: 600;}
-#layout-container #list-autor #filtroAutor .labelFilter {font-size: 1.15em;}
-
-#layout-container #list-autor #filtroAutor .btn {padding: 0.35em 1.5em; font-size: 1.10em; font-weight: 600;}
-#layout-container #list-autor #filtroAutor .btn-filter {margin-left: 2em; margin-right: 0.25em;}
-#layout-container #list-autor #filtroAutor .btn-reset {}
-
-
-

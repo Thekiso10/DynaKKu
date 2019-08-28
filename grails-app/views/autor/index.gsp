@@ -47,7 +47,7 @@
 					</g:if>
 					
 					<%-- Filtro --%>
-					<g:form action="list" name="filterAutor" class="form-inline">
+					<g:form action="index" name="filterAutor" class="form-inline">
 						<div id="filtroAutor" class="col-sm-12">
 							<h3 class="text-center titleFilter">
 								<g:message code="default.filter.label" args="[entityName]" />
@@ -55,21 +55,21 @@
 							<div class="row bodyFilter">
 								<div class="form-group">
 									<label for="nombre" class="labelFilter">
-										<g:message code="autor.nombre.label" default="Nombre" />
+										<g:message code="autor.nombre.label" default="Nombre" />:
 									</label>
-									<g:textField name="nombre" value="${autorInstance?.nombre}" class="tamanoInput"/>
+									<g:textField name="nombre" class="tamanoInput" value="${filterAutor?.nombre}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.nombre.label')])}"/>                                           
 								</div>
 								<div class="form-group">
 									<label for="apellido" class="labelFilter">
-										<g:message code="autor.apellido.label" default="apellido" />
+										<g:message code="autor.apellido.label" default="apellido" />:
 									</label>
-									<g:textField name="apellido" value="${autorInstance?.apellido}" class="tamanoInput"/>
+									<g:textField class="tamanoInput" name="apellido" value="${filterAutor?.apellido}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.apellido.label')])}"/>
 								</div>
 								<div class="form-group">
 									<label for="edad" class="labelFilter">
-										<g:message code="autor.edad.label" default="edad" />
+										<g:message code="autor.edad.label" default="edad" />:
 									</label>
-									<g:field name="edad" type="number" value="${autorInstance?.edad}"class="tamanoInput"/>
+									<g:field name="edad" class="tamanoInput" type="number" value="${filterAutor?.edad}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.edad.label')])}"/>
 								</div>
 								
 								<button type="submit" class="btn btn-filter" name="search" value="search">
