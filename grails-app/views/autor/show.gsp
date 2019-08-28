@@ -5,6 +5,8 @@
 	<head>
 		<meta name="layout" content="layoutMain"/>
 		<g:set var="entityName" value="${message(code: 'autor.label', default: 'Autor')}" />
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'autores.css')}" type="text/css">
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
