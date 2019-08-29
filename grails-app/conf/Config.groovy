@@ -1,3 +1,5 @@
+import java.util.logging.Logger;
+
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
@@ -131,7 +133,7 @@ log4j.main = {
 /* 					   Cargar Config Externa       					*/
 /*==================================================================*/
 Properties props = new Properties()
-println "llegint application.properties"
+log.info "llegint application.properties"
 def arxiuConfig
 def rutaConfig
 
@@ -145,20 +147,15 @@ try {
 
 	// determina si la ruta depèn del context de deployment o és absoluta
 	if(rutaConfig.contains('/') || rutaConfig.contains('\\')){
-		println "\tFormat de la ruta: ABSOLUT"
 		arxiuConfig		= rutaConfig + File.separator + "Config.groovy"
 	}
-
-	println "\tFitxer: $arxiuConfig"
-
-	print "Comprovant que existeix l'arxiu de configuració ${arxiuConfig}... "
 
 	File f = new File(arxiuConfig);
 	if (!f.exists())
 		throw new Exception("ERROR: No existeix l'arxiu de configuració ${arxiuConfig}.\n\t - Revisar la ruta a l'arxiu application.properties")
 	f = null;
 } catch (Exception e) {
-	println "Excepció ${e.class}:: Missatge:${e.getMessage()}"
+	log.error "Excepció ${e.class}:: Missatge:${e.getMessage()}"
 	System.exit(1)
 }
 
@@ -167,22 +164,4 @@ grails.config.locations = ["file:${arxiuConfig}"]
 dir.config  = rutaConfig
 pressoffice.dir.config  = rutaConfig
 
-println "OK!\n\t - dir config: " + rutaConfig
-println "OK!\n\t - Ruta arxiu configuració: " + arxiuConfig
-
-println "Config Loaded...OK"
-/*==================================================================*/
-/* 					   Cargar Dibujo por consola					*/
-/*==================================================================*/
-
-//println "\nConfig Loaded...OK \n"
-//println "			____                                    _        __     _        __ "
-//println "		   / __ \\ __  __ ____   ____ _  ____ ___   (_)_____ / /    (_)_____ / /_ "
-//println "		  / / /  // / / // __\\ / __ ` // __ `__\\ / // ___// /    / // ___// __/ "
-//println "		 / /_/  // /_/ // / / // /_/  // / / / / // // /__ / /___ / /(__  )/ /_ "
-//println "		/_____/ \\__,//_/ /_/ \\__,_//_/ /_/ /_//_/\\___//_____//_//____/ \\__/ "
-//println "			    /____/ "
-//println "\n\n"
-
-
-
+log.info "Config Loaded...OK"
