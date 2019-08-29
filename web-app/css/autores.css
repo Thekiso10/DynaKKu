@@ -14,6 +14,7 @@
 
 /** Lista de los Autor **/
 #layout-container #list-autor h1 {color:#d8d8d8; font-size: 2.75em; border-bottom: 1px solid #d8d8d8;}
+#layout-container #list-autor .borderTransparent {border-color: transparent !important;}
 
 #layout-container #list-autor #filtroAutor {background-color: #25384b; padding: 0.25em 1.75em; margin: 2.5em 0 0.35em 0; border: 2px solid #48a3ff; border-radius: 10px 10px 7px 7px;}
 #layout-container #list-autor #filtroAutor .bodyFilter {margin-bottom: 0.25em;}
@@ -30,7 +31,7 @@
 #layout-container #list-autor #filtroAutor .btn-filter:hover,
 #layout-container #list-autor #filtroAutor .btn-reset:hover {background-color: transparent; color:#fff; transition: 0.7s;} 
 
-#layout-container #list-autor #tableAutorList {border:2px solid #48a3ff; border-radius: 7px; margin-top: 2em;}
+#layout-container #list-autor #tableAutorList {border:2px solid #48a3ff; border-radius: 7px; margin-top: 2em; margin-bottom: 1em;}
 #layout-container #list-autor #tableAutorList .table {font-family: 'Open Sans'; text-align: center; font-size: 1.10em; margin: 0;}
 #layout-container #list-autor #tableAutorList .table .btnMenu {background-color: #006CB1; border: 3px solid #009bff; color: white; transition: 1s;}
 #layout-container #list-autor #tableAutorList .table .btnMenu:hover {background-color: transparent; color: white;}

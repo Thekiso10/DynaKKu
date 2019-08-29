@@ -20,12 +20,45 @@ class AutorController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 		def filterAutor = null
+		def autorInstanceList = Autor.list(params)
+		def autorPaginacion = Autor.count()
+		def offset = (params.offset? params.offset:0)
 		
-		if(Autor.list(params).size() == 0){
-			flash.message = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.autores")])
+		if(params.search){
+			log.info "Se ha ejecutado el filtro de Autores"
+			if(params.nombre || params.apellido || params.edad){ //Para que no se de al filtro con los tres campos vacios 
+				//Ejecutar el createCriteria con los parametros nombre, apellido y edad
+				def autorFiltro = Autor.createCriteria() 
+				def listaFiltro = autorFiltro.list (max: params.max, offset:offset){ //Para la paginacion
+					ilike ("nombre", ("%" + params.nombre + "%"))
+					ilike ("apellido", ("%" + params.apellido + "%"))
+					if(params.edad){ //Por si el campo viene vacio
+						eq ("edad", Integer.parseInt(params.edad))
+					}
+				}
+				autorInstanceList = listaFiltro
+				autorPaginacion = autorInstanceList.totalCount // .totalCount
+				
+				if(listaFiltro.size() != 0) {
+					flash.message = message(code: "default.filter.resultados.label", args:[autorPaginacion, message(code: "layoutMenu.botonesColeccion.autores")])
+				}else{
+					flash.message = message(code: "default.filter.noResultados.label")
+				}
+			}
+			
+		}else if (params.showAll){
+			log.info "Se ha ejecutado la limpieza del filtro de Autores"
+			//Ejecutar la limpieza de los parametros del filtro
+			params.nombre 	= ""
+			params.apellido = ""
+			params.edad 	= ""
 		}
 		
-        respond Autor.list(params), model:[autorInstanceCount: Autor.count(), filterAutor:filterAutor]
+		if(autorInstanceList.size() == 0){
+			flash.warn = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.autores")])
+		}
+
+        respond autorInstanceList, model:[autorInstanceCount: autorPaginacion]
     }
 
     def show(Autor autorInstance) {

@@ -30,7 +30,7 @@
 					</g:if>
 					
 					<g:if test="${flash.error}">
-						<div class="flash errors" role="status">${flash.error}</div>
+						<div class="flash errors iconoError" role="status">${flash.error}</div>
 					</g:if>
 					
 					<g:hasErrors bean="${autorInstance}">

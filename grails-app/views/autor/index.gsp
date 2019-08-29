@@ -58,19 +58,19 @@
 									<label for="nombre" class="labelFilter">
 										<g:message code="autor.nombre.label" default="Nombre" />:
 									</label>
-									<g:textField name="nombre" class="tamanoInput" value="${filterAutor?.nombre}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.nombre.label')])}"/>                                           
+									<g:textField name="nombre" class="tamanoInput" value="${params?.nombre}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.nombre.label')])}"/>                                           
 								</div>
 								<div class="form-group">
 									<label for="apellido" class="labelFilter">
 										<g:message code="autor.apellido.label" default="apellido" />:
 									</label>
-									<g:textField class="tamanoInput" name="apellido" value="${filterAutor?.apellido}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.apellido.label')])}"/>
+									<g:textField class="tamanoInput" name="apellido" value="${params?.apellido}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.apellido.label')])}"/>
 								</div>
 								<div class="form-group">
 									<label for="edad" class="labelFilter">
 										<g:message code="autor.edad.label" default="edad" />:
 									</label>
-									<g:field name="edad" class="tamanoInput" type="number" value="${filterAutor?.edad}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.edad.label')])}"/>
+									<g:field name="edad" class="tamanoInput" type="number" value="${params?.edad}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.edad.label')])}"/>
 								</div>
 								
 								<button type="submit" class="btn btn-filter" name="search" value="search">
@@ -87,8 +87,8 @@
 						</div>
 					</g:form>
 					
-					<div id="tableAutorList" class="table-responsive ${!autorInstanceList? 'hidden':''}">
-						<table class="table table-dark table-striped table-hover">
+					<div id="tableAutorList" class="table-responsive ${!autorInstanceList? 'borderTransparent':''}">
+						<table class="table table-dark table-striped table-hover ${!autorInstanceList? 'hidden':''}">
 							<thead class="thead-dark">
 								<tr>
 									
@@ -156,9 +156,13 @@
 						</table>
 					</div>
 					
+					<g:if test="${flash.warn}">
+						<div class="flash warn iconoWarning" role="status">${flash.warn}</div>
+					</g:if>
+					
 					<div class="col-sm-12 paginacion menu ${autorInstanceCount <= 10 ? 'hidden':''}">
 						<div class="pagination row">
-							<g:paginate total="${autorInstanceCount ?: 0}" />
+							<g:paginate total="${autorInstanceCount ?: 0}" params="${params}"/>
 						</div>
 					</div>
 					

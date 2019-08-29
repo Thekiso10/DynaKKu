@@ -13,11 +13,26 @@
 	padding-left: 2em; 
 	padding-right: 1em;
 }
+
+#layout-container .iconoError{
+	background: url(../images/imgWeb/icons/error.png) 0.5em 50% no-repeat; 
+	padding-left: 2em; 
+	padding-right: 1em;
+}
+
+#layout-container .iconoWarning{
+	background: url(../images/imgWeb/icons/warning.png) 0.5em 50% no-repeat; 
+	padding-left: 2em; 
+	padding-right: 1em;
+}
+
 #layout-container .flash.errors {
 	color:#E53030; 
 	background-color: #fbcdcd; 
 	border-color: #ff8888; 
 	box-shadow: 0 0 0.5em 0.01em #ff8888; 
+	-moz-box-shadow: 0 0 0.5em 0.01em #ff8888;
+	-webkit-box-shadow: 0 0 0.5em 0.01em #ff8888;
 	font-weight: bold;
 }
 #layout-container .flash.mensajes {
@@ -28,4 +43,14 @@
 	-moz-box-shadow: 0 0 0.5em 0.01em #b2d1ff;
 	-webkit-box-shadow: 0 0 0.5em 0.01em #b2d1ff;
     box-shadow: 0 0 0.5em 0.01em #b2d1ff;
+}
+
+#layout-container .flash.warn{
+	background-color: #fff3cd;
+	font-weight: 600; 
+	border: 1px solid #ffeeba; 
+	color: #856404; 
+	-moz-box-shadow: 0 0 0.5em 0.01em #ffeeba;
+	-webkit-box-shadow: 0 0 0.5em 0.01em #ffeeba;
+    box-shadow: 0 0 0.5em 0.01em #ffeeba;
 }
