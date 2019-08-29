@@ -1,12 +1,12 @@
 /** CSS de los Flash Message and Errors **/
 
 #layout-container .flash {
-		position: relative; 
-		padding: .75rem 1.25rem; 
-		margin: 1.5em 0.25em 0.25em 0.25em; 
-		border: 1px solid transparent; 
-		border-radius: 10px; 
-		font-size: 1.10em;
+	position: relative; 
+	padding: .75rem 1.25rem; 
+	margin: 1.5em 0.25em 0.25em 0.25em; 
+	border: 1px solid transparent; 
+	border-radius: 10px; 
+	font-size: 1.10em;
 }
 #layout-container .iconoMensajes{
 	background: url(../images/imgWeb/icons/information.png) 0.5em 50% no-repeat; 
