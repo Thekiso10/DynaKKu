@@ -1,0 +1,5 @@
+body{color:#fff;}
+
+h1, h2, h3, p, dl, dd, dt {text-align: center;}
+#Error-404 h2 {font-size: 3.5em;}
+#Error-404 h3 {font-weight: 600; margin-bottom: 1.5em;}
