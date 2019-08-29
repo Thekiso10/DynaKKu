@@ -21,7 +21,9 @@
 						</ul>
 					</div>
 					
-					<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+					<h1>
+						<g:message code="default.create.label" args="${[message(code: 'layoutMenu.botonesColeccion.autor')]}" />
+					</h1>
 					
 					<g:if test="${flash.message}">
 						<div class="flash mensajes iconoMensajes" role="status">${flash.message}</div>
