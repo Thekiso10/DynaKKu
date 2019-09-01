@@ -16,8 +16,8 @@
 		<div id="layout-container" class="container-fluid">
 			<div id="header">
 				<div class="container">
-					<div id="grailsLogo" class="col-sm-12 row" role="banner">
-						<div action="index">
+					<div id="grailsLogo" class="col-sm-12" role="banner">
+						<g:link action="index">
 							<div class="col-sm-6" id="BannerLogo">
 								<g:img id="LogoLayoutMain" class="col-sm-3" dir="images/imgWeb" file="LogoLayoutMain.png"/>
 								<h1 class="col-sm-9"><g:message code="grailsLogo.bannerLogo.nombrePrograma"/></h1>
@@ -27,14 +27,14 @@
 								<a href="?lang=ca"><span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.cat"/></span></a>
 								<a href="?lang=en"><span><g:message code="grailsLogo.bannerLogo.idiomaLink.eng"/></span></a>
 							</div>
-						</div>
+						</g:link>
 					</div>
 				</div>
 			</div>
 			
 			<nav id="layout-menu" class="col-sm-12">
 				<div class="container">
-					<div class="collapse navbar-collapse padding-left-0">
+					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav" id="BotonesColeccion">
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
