@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<div id="ver-autor" class="col-sm-12" role="main">
-			<div class="container padding-left-0">
+			<div class="container">
 				
 				<g:form url="[resource:autorInstance, action:'delete']" method="DELETE">
 					<div class="menu navbar-collapse" role="navigation">

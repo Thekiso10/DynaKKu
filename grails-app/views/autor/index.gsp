@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div id="list-autor" class="col-sm-12" role="main">
-		<div class="container padding-left-0">
+		<div class="container">
 			<div class="content scaffold-list" role="main">
 
 				<div class="menu navbar-collapse" role="navigation">
