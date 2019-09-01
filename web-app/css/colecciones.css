@@ -6,8 +6,9 @@
 #layout-container .menu ul .btn {padding: 0.5em 1.25em; font-weight: 600; font-size: 1.1em}
 #layout-container .menu ul .btnLlist, 
 #layout-container .menu ul .btnSave {background-color: #006CB1; color: white; border: 3px solid #009bff; transition: 1s;}
-#layout-container .menu ul .btnSave {padding:0.47em 1.25em; margin-right: 0.5em;}
+#layout-container .menu ul .btnSave {padding:0.5em 1.25em; margin-right: 0.5em;}
 #layout-container .menu ul .btnExtra {background-color: #00568e; color: white; border: 3px solid #12689f; transition: 1s;}
+#layout-container .menu ul .btnDelete {background-color: #B30E18; color: white; border: 3px solid #F50010; margin-right: 0.75em; transition: 1s;}
 
 #layout-container .menu ul .btnSkip {background-color: #185b86; border: 3px solid #185b86; color: white; transition: 1s;}
 #layout-container .menu .dropdown .styleDropdown {background-color: transparent; border-color: transparent; box-shadow: none; padding: 0;}

@@ -2,11 +2,11 @@
 #layout-container #create-autor #formCreateAutor .buttons {text-align: center;}
 #layout-container #create-autor #formCreateAutor .buttons .btnSave {padding: 0.5em 6em; margin-top: 2em; font-size: 1.5em; background-color: #006CB1; color: white; border: 3px solid #009bff; transition: 1s;}
 #layout-container #create-autor #formCreateAutor h1 {color:#d8d8d8; font-size: 2.75em; border-bottom: 1px solid #d8d8d8;}
-#layout-container #create-autor #formCreateAutor .panel-form {margin-top: 1em; padding: 1em; background-color: #6F8CA6; border: 5px solid #114D72; border-radius: 15px;}
-#layout-container #create-autor #formCreateAutor .panel-form label {color: #253140; margin: 0.25em 0 0 0;}
+#layout-container #create-autor #formCreateAutor .panel-form {margin-top: 1em; padding: 1em; background-color: #08457e; border: 5px solid #114D72; border-radius: 15px;}
+#layout-container #create-autor #formCreateAutor .panel-form label {color: #d9dfe6; margin: 0.25em 0 0 0;}
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain {margin: 1em 0 1em 0; font-size: 1.15em;}
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain input,
-#layout-container #create-autor #formCreateAutor .panel-form .fieldcontain select {background-color: #10171E; border: 3px solid #114D72; color: #fff; padding: 5px; font-size: 18px;}
+#layout-container #create-autor #formCreateAutor .panel-form .fieldcontain select {background-color: #10171E; border: 3px solid #009bff; color: #fff; padding: 5px; font-size: 18px;}
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .tamanoInput {width: 75%;}
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .imgAutorInfo {color: #fff;}
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .col-sm-8 #imgAutor {font-size: 12px;}
@@ -57,3 +57,13 @@
 
 #layout-container #list-autor .paginacion span {color: #4CB1F7; font-weight: 600;}
 #layout-container #list-autor .paginacion a {color: #fff;}
+
+/** Mostrar un Autor **/
+#layout-container #ver-autor h2 {color: #d8d8d8; font-size: 2.75em; border-bottom: 1px solid #d8d8d8;}
+
+#layout-container #ver-autor #panel-ver-autor {color:#fff;} /*Que el color de los textos sea blanco*/
+#layout-container #ver-autor #panel-ver-autor.panel-show-autor {margin-top: 1em; padding: 1em 4em; background-color: #08457e; border: 5px solid #0652CE; border-radius: 15px;}
+#layout-container #ver-autor #panel-ver-autor h3 {margin: 0; border-bottom: 1px solid #fff; padding-bottom: 0.15em; font-family: 'Open Sans Semibold';}
+
+
+
