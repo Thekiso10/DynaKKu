@@ -67,7 +67,7 @@
 						<h3 class="text-center titleFilter">
 							<g:message code="default.filter.label" args="[entityName]" />
 						</h3>
-						<div class="row bodyFilter">
+						<div class="bodyFilter">
 							<div class="form-group">
 								<label for="nombre" class="labelFilter"> <g:message
 										code="autor.nombre.label" default="Nombre" />:
