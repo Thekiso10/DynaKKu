@@ -40,11 +40,72 @@
 				
 				<div id="panel-ver-autor" class="panel-show-autor row">
 					<h3>${autorInstance?.nombre} ${autorInstance?.apellido}</h3>
-					<div id="imgAutor">
-					
+					<div id="imgAutor" class="col-sm-3">
+						<g:if test="${autorInstance?.rutaImagen}">
+<%--							<img src="${autorInstance?.rutaImagen}" alt="Imagen del Autor" />--%>
+							<img class="img-responsive" src="${createLink(controller:'Autor', action:'autor_image', id:autorInstance.id)}" alt="${autorInstance?.nombre}"/>
+						</g:if>
+						<g:else>
+							<g:img class="img-responsive" dir="images/imgWeb" file="userNoFoto.png"/>
+						</g:else>
 					</div>
-					<div id="infoAutor">
-					
+					<div id="infoAutor" class="col-sm-9">
+						<div class="col-sm-6">
+							<g:if test="${autorInstance?.nombre}">
+								<div class="row">
+									<h4 id="nombre-label" class="property-label col-sm-4"><g:message code="autor.nombre.label" default="nombre" />:</h4>
+									<span class="property-value col-sm-8" aria-labelledby="nombre-label"><g:fieldValue bean="${autorInstance}" field="nombre"/></span>
+								</div>
+							</g:if>
+							
+							<g:if test="${autorInstance?.apellido}">
+								<div class="row">
+									<h4 id="apellido-label" class="property-label col-sm-4"><g:message code="autor.apellido.label" default="Apellido" />:</h4>
+									<span class="property-value col-sm-8" aria-labelledby="apellido-label"><g:fieldValue bean="${autorInstance}" field="apellido"/></span>
+								</div>
+							</g:if>
+							
+							<g:if test="${autorInstance?.difunto == false || autorInstance?.difunto == true}">
+								<div class="row">
+									<h4 id="difunto-label" class="property-label col-sm-4"><g:message code="autor.difunto.label" default="Difunto" />:</h4>
+									<g:if test="${autorInstance?.difunto}">
+										<span class="property-value col-sm-8" aria-labelledby="difunto-label"><g:message code="autores.estado.vivo" default="Vivo" /></span>
+									</g:if>
+									<g:else>
+										<span class="property-value col-sm-8" aria-labelledby="difunto-label"><g:message code="autores.estado.muerto" default="Muerto" /></span>
+									</g:else>
+								</div>
+							</g:if>
+							
+						</div>
+						<div class="col-sm-6">
+							<g:if test="${autorInstance?.edad}">
+								<div class="row">
+									<h4 id="edad-label" class="property-label col-sm-3"><g:message code="autor.edad.label" default="edad" />:</h4>
+									<span class="property-value col-sm-9" aria-labelledby="edad-label">
+										<g:fieldValue bean="${autorInstance}" field="edad"/>
+										<g:message code="autor.edad.anyos.label" default="anyos" />
+									</span>
+								</div>
+							</g:if>
+							
+							<g:if test="${autorInstance?.nacionalidad}">
+								<div class="row">
+									<h4 id="nacionalidad-label" class="property-label col-sm-5"><g:message code="autor.nacionalidad.label" default="nacionalidad" />:</h4>
+									<span class="nacionalidad-value col-sm-7" aria-labelledby="nacionalidad-label"><g:country code="${autorInstance.nacionalidad}"/></span>
+								</div>
+							</g:if>
+							
+							<g:if test="${autorInstance?.fechaInscripcion}">
+								<div class="row">
+									<h4 id="fechaInscripcion-label" class="property-label col-sm-5"><g:message code="autor.registro.label" default="fechaInscripcion" />:</h4>
+									<span class="property-value col-sm-7" aria-labelledby="fechaInscripcion-label">
+										<g:formatDate date="${autorInstance.fechaInscripcion}" format="dd/MM/yyyy HH:mm"/>
+									</span>
+								</div>
+							</g:if>
+							
+						</div>
 					</div>
 				</div>
 				

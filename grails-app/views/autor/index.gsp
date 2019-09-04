@@ -162,7 +162,7 @@
 									</td>
 
 									<td>
-										${autorInstance.nacionalidad.toString().toUpperCase()}
+										<g:country code="${autorInstance.nacionalidad}"/>
 									</td>
 
 									<td>
@@ -183,12 +183,15 @@
 												default="Tiene Foto" />
 										</g:else></td>
 
-									<td><g:formatDate date="${autorInstance.fechaInscripcion}" /></td>
+									<td>
+										<g:formatDate date="${autorInstance.fechaInscripcion}" format="dd/MM/yyyy HH:mm"/>
+									</td>
 
-									<td><g:link class="btn btnMenu" action="show"
-											id="${autorInstance.id}">
+									<td>
+										<g:link class="btn btnMenu" action="show" id="${autorInstance.id}">
 											<g:message code="default.list.show.label" args="[entityName]" />
-										</g:link></td>
+										</g:link>
+									</td>
 
 								</tr>
 							</g:each>

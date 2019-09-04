@@ -167,7 +167,28 @@ class AutorController {
             '*'{ render status: NO_CONTENT }
         }
     }
-
+	
+	/*--------------------- avatar_image -----------------------*/
+	/*															*/
+	/* 				Renderizar la imagen del Autor				*/
+	/*----------------------------------------------------------*/
+	def autor_image() {
+		
+		def autorInstance = Autor.get(params.id)
+		
+		def rutaImg = autorInstance.rutaImagen
+		File file = new File(rutaImg)
+		
+		if (!file) {
+			response.sendError(404)
+			return "no photo"
+		}
+		
+		OutputStream out = response.outputStream
+		out.write(file.bytes)
+		out.close()
+	}
+	
     protected void notFound() {
         request.withFormat {
             form multipartForm {
