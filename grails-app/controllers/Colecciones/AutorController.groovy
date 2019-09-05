@@ -128,25 +128,25 @@ class AutorController {
 
     @Transactional
     def update(Autor autorInstance) {
-        if (autorInstance == null) {
-            notFound()
-            return
-        }
-
-        if (autorInstance.hasErrors()) {
-            respond autorInstance.errors, view:'edit'
-            return
-        }
-
-        autorInstance.save(flush:true)
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Autor.label', default: 'Autor'), autorInstance.id])
-                redirect autorInstance
-            }
-            '*'{ respond autorInstance, [status: OK] }
-        }
+		println "dasdas"
+		def validadorForm = autorService.validarForm(params)
+		def validadorFoto = null
+		//Validar los datos del formulario
+		if (validadorForm.error) {
+			flash.error = message(code: validadorForm.mensaje)
+			redirect(action: "edit", autorInstance:autorInstance)
+			return
+		}
+		//Validar la existencia de un autor con el mismo nombre
+		if(autorService.isEqualsAuthor(params.nombre, params.apellido)){
+			flash.error = message(code: "autores.errores.nombres")
+			redirect(action: "edit", autorInstance:autorInstance)
+			return
+		}
+		
+        //autorInstance.save(flush:true)
+		redirect(action:"show", id:autorInstance.id)
+		
     }
 
     @Transactional
