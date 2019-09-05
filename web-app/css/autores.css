@@ -1,15 +1,38 @@
 /** Crear Autor **/
+#layout-container #edit-autor #formEditAutor .buttons,
 #layout-container #create-autor #formCreateAutor .buttons {text-align: center;}
+
+#layout-container #edit-autor #formEditAutor .buttons .btnSave,
 #layout-container #create-autor #formCreateAutor .buttons .btnSave {padding: 0.5em 6em; margin-top: 2em; font-size: 1.5em; background-color: #006CB1; color: white; border: 3px solid #009bff; transition: 1s;}
+
+#layout-container #edit-autor #formEditAutor h1,
 #layout-container #create-autor #formCreateAutor h1 {color:#d8d8d8; font-size: 2.75em; border-bottom: 1px solid #d8d8d8;}
+
+#layout-container #edit-autor #formEditAutor .panel-form,
 #layout-container #create-autor #formCreateAutor .panel-form {margin-top: 1em; padding: 1em; background-color: #08457e; border: 5px solid #114D72; border-radius: 15px;}
+
+#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .checkboxImg,
+#layout-container #edit-autor #formEditAutor .panel-form label,
 #layout-container #create-autor #formCreateAutor .panel-form label {color: #d9dfe6; margin: 0.25em 0 0 0;}
+
+#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain {margin: 1em 0 1em 0; font-size: 1.15em;}
+
+#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain input,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain input,
+#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain select,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain select {background-color: #10171E; border: 3px solid #009bff; color: #fff; padding: 5px; font-size: 18px;}
+
+#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .tamanoInput,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .tamanoInput {width: 75%;}
+
+#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .imgAutorInfo,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .imgAutorInfo {color: #fff;}
+
+#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .col-sm-8 #imgAutor,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .col-sm-8 #imgAutor {font-size: 12px;}
+
+#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .col-sm-8 .tamanoInput,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .col-sm-8 .tamanoInput {width: 90%;}
 
 /** Lista de los Autor **/
