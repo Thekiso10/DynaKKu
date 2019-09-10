@@ -175,15 +175,13 @@ class AutorController {
 				autorInstance.rutaImagen = validadorFoto.path
 			}
 		}
-		
-		//Guardar el nuevo Autor
+		//Actualizar el nuevo Autor
 		try{
 			def nombreAutor = params.nombre + " " + params.apellido
 			def date = new Date()
 			def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
 			
 			autorInstance.ultimaModificacion = new Date()
-			//autorInstance.difunto = (params.difunto.equals("true"))?true:false
 			autorInstance.properties = params //Guardamos los datos restantes
 			if(autorInstance.save(flush:true)){
 				log.info "Creando entrada en el historial de una actualizacion de un autor"
@@ -193,7 +191,7 @@ class AutorController {
 		}catch(Exception e){
 			log.error "No se ha podido guardar en base de datos " + e
 			flash.error = message(code: "autores.errores.update.bbdd")
-			edirect(action: "edit", id:autorInstance.id)
+			redirect(action: "edit", id:autorInstance.id)
 			return
 		}
 		
@@ -202,21 +200,34 @@ class AutorController {
 	
     @Transactional
     def delete(Autor autorInstance) {
-
         if (autorInstance == null) {
             notFound()
             return
         }
-
-        autorInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Autor.label', default: 'Autor'), autorInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+		//Si tiene foto, la borramos de la carpeta.
+		if(autorInstance.rutaImagen){
+			if(autorService.deleteImage(autorInstance.rutaImagen)){
+				flash.error = message(code: "autores.errores.update.noDeleteFoto")
+				redirect(action: "show", id:autorInstance.id)
+				return
+			}
+		}
+        try{
+			def nombreAutor = autorInstance.nombre + " " + autorInstance.apellido
+			autorInstance.delete(flush:true)
+			
+			log.info "Creando entrada en el historial de una actualizacion de un autor"
+			flash.message = message(code: "autores.message.delete.ok", args: [nombreAutor])
+			historialService.registrarEliminacionAutor(nombreAutor)
+			
+        }catch(Exception e){
+			log.error "No se ha podido borrar en base de datos " + e
+			flash.error = message(code: "autores.errores.update.bbdd")
+			redirect(action: "show", id:autorInstance.id)
+			return
+		}
+		
+		redirect(action: "index")
     }
 	
 	/*--------------------- avatar_image -----------------------*/
@@ -239,14 +250,4 @@ class AutorController {
 		out.write(file.bytes)
 		out.close()
 	}
-	
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'autor.label', default: 'Autor'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
 }

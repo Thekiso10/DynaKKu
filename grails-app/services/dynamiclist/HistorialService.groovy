@@ -19,9 +19,6 @@ class HistorialService {
 			case 1:
 				tipoAccion = Historial.Status.ACTUALIZACION;
 				break;
-			case 2:
-				tipoAccion = Historial.Status.ELIMINACION;
-				break;
 		}
 		
 		def h = new Historial(tipoAccion: tipoAccion, fecha:new Date(),mangas:null, autor:nombre)
@@ -31,4 +28,15 @@ class HistorialService {
 			log.error "No se ha podido crear la entrada de [" + tipoAccion + "] de " + nombre + " correctamente"
 		}
     }
+	
+	def registrarEliminacionAutor(def nombre){
+		def tipoAccion = Historial.Status.ELIMINACION;
+		def h = new Historial(tipoAccion: tipoAccion, fecha:new Date(),mangas:null, autor:nombre)
+		
+		if(h.save(flush:true)){
+			log.info "Se ha creado la entrada de [" + tipoAccion + "] de " + nombre + " correctamente"
+		}else{
+			log.error "No se ha podido crear la entrada de [" + tipoAccion + "] de " + nombre + " correctamente"
+		}
+	}
 }
