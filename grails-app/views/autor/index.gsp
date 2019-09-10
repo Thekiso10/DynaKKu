@@ -137,9 +137,6 @@
 
 								<g:sortableColumn scope="col" property="rutaImagen"
 									title="${message(code: 'autor.imagen.label', default: 'Ruta Imagen')}" />
-
-								<g:sortableColumn scope="col" property="fechaInscripcion"
-									title="${message(code: 'autor.fechaInscripcion.label', default: 'Fecha Inscripcion')}" />
 								<%-- Este Th es solo para estetica --%>
 								<th></th>
 
@@ -169,22 +166,24 @@
 										${fieldValue(bean: autorInstance, field: "genero")}
 									</td>
 
-									<td><g:if test="${!autorInstance.difunto}">
+									<td>
+										<g:if test="${!autorInstance.difunto}">
 											<g:message code="autores.estado.vivo" default="Vivo" />
-										</g:if> <g:else>
+										</g:if> 
+										<g:else>
 											<g:message code="autores.estado.muerto" default="Muerto" />
-										</g:else></td>
-
-									<td><g:if test="${!autorInstance.rutaImagen}">
-											<g:message code="autor.rutaImagen.label.noFoto"
-												default="No hay Foto" />
-										</g:if> <g:else>
-											<g:message code="autor.rutaImagen.label.siFoto"
-												default="Tiene Foto" />
-										</g:else></td>
+										</g:else>
+									</td>
 
 									<td>
-										<g:formatDate date="${autorInstance.fechaInscripcion}" format="dd/MM/yyyy HH:mm"/>
+										<g:if test="${!autorInstance.rutaImagen}">
+											<g:message code="autor.rutaImagen.label.noFoto"
+												default="No hay Foto" />
+										</g:if> 
+										<g:else>
+											<g:message code="autor.rutaImagen.label.siFoto"
+												default="Tiene Foto" />
+										</g:else>
 									</td>
 
 									<td>
