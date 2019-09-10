@@ -22,7 +22,7 @@
 					</div>
 					
 					<h1>
-						<g:message code="default.create.label" args="${[message(code: 'layoutMenu.botonesColeccion.autor')]}" />
+						<g:message code="default.create.label" args="[entityName]" />
 					</h1>
 					
 					<g:if test="${flash.message}">
