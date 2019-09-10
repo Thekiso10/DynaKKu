@@ -47,6 +47,19 @@ class AutorService {
 				
 		return igual
 	}
+	//Comprobar si ha habido un cambio de nombre y si es correcto
+	def validateUpdateNames(Autor autorInstance, def nombre, def apellido){
+		boolean correcto = true
+		
+		if(!autorInstance.nombre.equals(nombre) || !autorInstance.apellido.equals(apellido)){
+			if(isEqualsAuthor(nombre, apellido)){
+				log.error "[Autor] Se ha detectado que se queria actualizar los campos nombres con datos ya registrados"
+				correcto = false
+			}
+		}
+		
+		return correcto
+	}
 	//Guardar la foto del Autor
 	def saveImage(def foto, def nombre, def apellido) {
 		def error = false

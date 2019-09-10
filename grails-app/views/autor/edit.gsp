@@ -10,10 +10,11 @@
 	</head>
 	<body>
 		<div id="edit-autor" class="col-sm-12" role="main">
-			<div class="container">
-				<div id="formEditAutor" >
+			<div class="container" id="formEditAutor" >
+				<g:uploadForm action="updateAutor" controller="Autor">
 					<div class="menu navbar-collapse" role="navigation">
 						<ul class="navbar-nav">
+							<li><g:submitButton name="update" class="save btn btnSave" value="${message(code: 'default.button.update.label', args: [message(code: 'layoutMenu.botonesColeccion.autor')])}" /></li>
 							<li><g:link class="btn btnLlist" action="index"><g:message code="autores.list.label" /></g:link></li>
 						</ul>
 						<ul class="navbar-nav navbar-right">
@@ -39,18 +40,19 @@
 						</g:eachError>
 					</ul>
 					
-					<g:form url="[resource:autorInstance, action:'update']" method="PUT" >
-						<g:hiddenField name="version" value="${autorInstance?.version}" />
-						<fieldset class="form">
-							<div class="panel-form row">
-								<g:render template="form"/>
-							</div>
-						</fieldset>
-						<fieldset class="buttons">
-							<g:actionSubmit class="save btn btnSave" action="update" value="${message(code: 'default.button.update.label', args: [message(code: 'layoutMenu.botonesColeccion.autor')])}" />
-						</fieldset>
-					</g:form>
-				</div>	
+					<g:hiddenField name="version" value="${autorInstance?.version}" />
+					<g:hiddenField name="id" value="${autorInstance?.id}" />
+					
+					<fieldset class="form">
+						<div class="panel-form row">
+							<g:render template="form"/>
+						</div>
+					</fieldset>
+					
+					<fieldset class="buttons">
+						<g:submitButton name="update" class="save btn btnSave" value="${message(code: 'default.button.update.label', args: [message(code: 'layoutMenu.botonesColeccion.autor')])}" />
+					</fieldset>
+				</g:uploadForm>
 			</div>	
 		</div>
 	</body>

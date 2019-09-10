@@ -127,28 +127,79 @@ class AutorController {
     }
 
     @Transactional
-    def update(Autor autorInstance) {
-		println "dasdas"
+    def updateAutor() {
+		def autorInstance = Autor.get(params.id)
 		def validadorForm = autorService.validarForm(params)
 		def validadorFoto = null
+		//Comprobar que no ha cambiado la version == problemas de concurrencia
+		if (params.version != null) {
+			if (autorInstance.version > Integer.parseInt(params.version)) {
+				flash.error = message(code: "autores.errores.update.updateExitente")
+				redirect(action: "edit", id:autorInstance.id)
+				return
+			}
+		}
 		//Validar los datos del formulario
 		if (validadorForm.error) {
 			flash.error = message(code: validadorForm.mensaje)
-			redirect(action: "edit", autorInstance:autorInstance)
+			redirect(action: "edit", id:autorInstance.id)
 			return
 		}
-		//Validar la existencia de un autor con el mismo nombre
-		if(autorService.isEqualsAuthor(params.nombre, params.apellido)){
-			flash.error = message(code: "autores.errores.nombres")
-			redirect(action: "edit", autorInstance:autorInstance)
+		//Validar el campo del nombre y apellido
+		if(!autorService.validateUpdateNames(autorInstance, params.nombre, params.apellido)){
+			flash.error = message(code: "autores.errores.update.nombresExistentes")
+			redirect(action: "edit", id:autorInstance.id)
+			return
+		}
+		//Condicional para saber como trabajar con las imagenes
+		if(params.checkImg){
+			if(params.CheckboxImg){ //Tiene foto y la quiere borrar
+				if(autorService.deleteImage(autorInstance.rutaImagen)){
+					flash.error = message(code: "autores.errores.update.noDeleteFoto")
+					redirect(action: "edit", id:autorInstance.id)
+					return
+				}
+				//Quitamos la ruta en BBDD
+				autorInstance.rutaImagen = null
+			}
+		}else{ //No tiene foto
+			//Si hay foto guardarla en la carpeta configurada
+			def file = request.getFile('imagen')
+			if(!file.empty){
+				validadorFoto = autorService.saveImage(file, params.nombre, params.apellido)
+				if (validadorFoto.error) {
+					flash.error = message(code: validadorFoto.mensaje)
+					edirect(action: "edit", id:autorInstance.id)
+					return
+				}
+				autorInstance.rutaImagen = validadorFoto.path
+			}
+		}
+		
+		//Guardar el nuevo Autor
+		try{
+			def nombreAutor = params.nombre + " " + params.apellido
+			def date = new Date()
+			def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+			
+			autorInstance.ultimaModificacion = new Date()
+			//autorInstance.difunto = (params.difunto.equals("true"))?true:false
+			autorInstance.properties = params //Guardamos los datos restantes
+			if(autorInstance.save(flush:true)){
+				log.info "Creando entrada en el historial de una actualizacion de un autor"
+				flash.message = message(code: "autores.message.update.ok", args: [nombreAutor])
+				historialService.registrarAutor(autorInstance, 1)
+			}
+		}catch(Exception e){
+			log.error "No se ha podido guardar en base de datos " + e
+			flash.error = message(code: "autores.errores.update.bbdd")
+			edirect(action: "edit", id:autorInstance.id)
 			return
 		}
 		
-        //autorInstance.save(flush:true)
 		redirect(action:"show", id:autorInstance.id)
-		
     }
-
+	
     @Transactional
     def delete(Autor autorInstance) {
 

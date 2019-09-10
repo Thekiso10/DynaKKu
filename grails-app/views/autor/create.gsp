@@ -41,7 +41,6 @@
 						</ul>
 					</g:hasErrors>
 				
-				
 					<fieldset class="form">
 						<div class="panel-form row">
 							<g:render template="form"/>

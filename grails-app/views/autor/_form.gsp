@@ -89,7 +89,8 @@
 		</g:if>
 		<g:else>
 			<div class="col-sm-8 checkboxImg">
-				<g:checkBox name="CheckboxImg"/>
+				<g:hiddenField name="checkImg" value="${true}"/>
+				<g:checkBox name="CheckboxImg" />
 				<span>
 		  			<g:message code="autores.imagen.checBoxDelete"/>
 		  		</span>

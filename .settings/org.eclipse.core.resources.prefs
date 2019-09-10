@@ -5,4 +5,5 @@ encoding//grails-app/i18n/messages.properties=UTF-8
 encoding//grails-app/i18n/messages_ca_ES.properties=UTF-8
 encoding//grails-app/i18n/messages_en_US.properties=UTF-8
 encoding//grails-app/i18n/messages_es.properties=UTF-8
+encoding//grails-app/views/autor/show.gsp=UTF-8
 encoding/<project>=UTF-8
