@@ -11,18 +11,18 @@ body a:hover, a:focus {color:white;}
 
 /************* HEADER ***************/
 
-#layout-container, html {padding: 0; background-color: #10171E}
+#layout-container, html {padding: 0;}
 
 /*Banner de los logos*/
-#layout-container #grailsLogo {border-bottom: 12px solid #1b7fbea6;}
+#layout-container #grailsLogo {border-bottom: 12px solid;}
 
 #layout-container #grailsLogo #BannerLogo {display: flex; align-items: center; margin: 1em 0 1em 0; padding: 0;}
 #layout-container #grailsLogo #BannerLogo #LogoLayoutMain {width: 19%;}
-#layout-container #grailsLogo #BannerLogo h1 {color:white; font-size: 48px; margin:0; padding:0;}
+#layout-container #grailsLogo #BannerLogo h1 {font-size: 48px; margin:0; padding:0;}
 
 #layout-container #grailsLogo #BannerI18n {text-align: right; margin: 1em 0 1em 0; padding: 1em 2em 1em 0;}
-#layout-container #grailsLogo #BannerI18n span {color: white; font-size: 24px; margin-left: 0.5em; line-height: 2em;}
-#layout-container #grailsLogo #BannerI18n .borderI18n {border-right: 2px solid white; padding-right: 0.5em}
+#layout-container #grailsLogo #BannerI18n span {font-size: 24px; margin-left: 0.5em; line-height: 2em;}
+#layout-container #grailsLogo #BannerI18n .borderI18n {border-right: 2px solid; padding-right: 0.5em}
 
 /*************  Barra de menu *************/
 
@@ -31,20 +31,15 @@ body a:hover, a:focus {color:white;}
 #layout-container #layout-menu #BotonesColeccion .btn,
 #layout-container #layout-menu #BotonesExtra .btn {font-size: 18px;}
  
-#layout-container #layout-menu .container {background-color: #15202B; border:3px solid #2B3640; margin-top: 0.5em; padding-left: 0;}
+#layout-container #layout-menu .container {border:3px solid; margin-top: 0.5em; padding-left: 0;}
 #layout-container #layout-menu #BotonesExtra {text-align: left; padding: 0;}
-#layout-container #layout-menu #BotonesExtra .btnExtra {padding: 0.5em 2.5em; margin:1em 0.5em; border: 3px solid #114D72; border-radius: 10px; background-color: #101A26; color:white; transition: 1s;}
-#layout-container #layout-menu #BotonesExtra .btnExtra:HOVER {background-color: #20354C; border-color: transparent;}
+#layout-container #layout-menu #BotonesExtra .btnExtra {padding: 0.5em 2.5em; border:3px solid; margin:1em 0.5em; border-radius: 10px; transition: 1s;}
 
-
-#layout-container #layout-menu #BotonesColeccion .btnExtra {padding: 0.5em 2.5em; margin:1em 0.15em; border: 3px solid #20354C; border-radius: 10px; background-color: #20354C; color:white; transition: 1s;}
-#layout-container #layout-menu #BotonesColeccion .btnExtra:HOVER {background-color: transparent; border-color: #114D72;}
+#layout-container #layout-menu #BotonesColeccion .btnExtra {padding: 0.5em 2.5em; margin:1em 0.15em; border: 3px solid; border-radius: 10px; transition: 1s;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra span.glyphicon {margin-right: 6px; top: 3px; font-size: 1.1em;}
 
-#layout-container #layout-menu #BotonesColeccion .dropdown .styleDropdown {background-color: transparent; border-color: transparent; margin-left: 0.15em; box-shadow: none;}
-#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #20354C; color:white; border:3px solid #20354C; padding:0.25em; margin:0 0.15em 0.25em; transition: 1.2s;}
-#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#0e8bd8;}
+#layout-container #layout-menu #BotonesColeccion .dropdown .styleDropdown {margin-left: 0.15em; box-shadow: none;}
+#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {border:3px solid; padding:0.25em; margin:0 0.15em 0.25em; transition: 1.2s;}
 
-#layout-container #layout-menu #BotonesExtra .btnOpcions {padding: 0.25em 0.35em; margin: 1em 0.5em; border: 3px solid #114D72; border-radius: 10px; background-color: #101A26; color:white; transition: 1s;}
-#layout-container #layout-menu #BotonesExtra .btnOpcions:HOVER {background-color: #20354C; border-color: transparent;}
+#layout-container #layout-menu #BotonesExtra .btnOpcions {padding: 0.25em 0.35em; margin: 1em 0.5em; border: 3px solid; border-radius: 10px; transition: 1s;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions span.glyphicon {top: 4px; font-size: 1.2em;}
