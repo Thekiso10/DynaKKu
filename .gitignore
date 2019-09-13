@@ -42,3 +42,7 @@ RemoteSystemsTempFiles/*
 /target-eclipse/*
 grailsw.*
 grailsw
+/.idea/*
+/.slcache/*
+DynamicList_Grails.iml
+DynamicList_Grails-grailsPlugins.iml
