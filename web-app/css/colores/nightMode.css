@@ -1,15 +1,15 @@
 /**** Layout ****/
 /************* HEADER ***************/
-#layout-container, html {background-color: #10171E;}
-#layout-container #grailsLogo {border-color: #1b7fbea6;}
+#layout-container, html {background-color: #15202B;}
+#layout-container #grailsLogo {border-color: #9ad7f5;}
 #layout-container #grailsLogo #BannerI18n span,
-#layout-container #grailsLogo #BannerLogo h1 {color:white;}
-#layout-container #grailsLogo #BannerI18n .borderI18n {border-color:white;}
+#layout-container #grailsLogo #BannerLogo h1 {color: #E1EDF1;}
+#layout-container #grailsLogo #BannerI18n .borderI18n {border-color: #dbe9ee;}
 /*************  Barra de menu *************/
-#layout-container #layout-menu .container {background-color: #15202B; border-color:#2B3640;}
+#layout-container #layout-menu .container {background-image: linear-gradient(#166088 0%, #29b8e5 50%, #166088 100%); border-color: #166088;}
 
-#layout-container #layout-menu #BotonesExtra .btnExtra {border-color:#114D72; background-color: #101A26; color:white;}
-#layout-container #layout-menu #BotonesExtra .btnExtra:HOVER {background-color: #20354C; border-color: transparent;}
+#layout-container #layout-menu #BotonesExtra .btnExtra {border-color:#558BA8; background-color: #1F2E45; color: #dbe9ee;}
+#layout-container #layout-menu #BotonesExtra .btnExtra:HOVER {background-color: transparent; color: #E1EDF1; border-color: #E1EDF1;}
 
 #layout-container #layout-menu #BotonesColeccion .btnExtra {border-color: #20354C; background-color: #20354C; color:white;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra:HOVER {background-color: transparent; border-color: #114D72;}
