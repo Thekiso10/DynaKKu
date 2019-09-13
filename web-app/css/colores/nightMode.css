@@ -1,32 +1,32 @@
 /**** Layout ****/
 /************* HEADER ***************/
 #layout-container, html {background-color: #15202B;}
-#layout-container #grailsLogo {border-color: #9ad7f5;}
+#layout-container #grailsLogo {border-color: #13658e;}
 #layout-container #grailsLogo #BannerI18n span,
-#layout-container #grailsLogo #BannerLogo h1 {color: #E1EDF1;}
-#layout-container #grailsLogo #BannerI18n .borderI18n {border-color: #dbe9ee;}
+#layout-container #grailsLogo #BannerLogo h1 {color: #fff;}
+#layout-container #grailsLogo #BannerI18n .borderI18n {border-color: #13658e;}
 /*************  Barra de menu *************/
-#layout-container #layout-menu .container {background-image: linear-gradient(#166088 0%, #29b8e5 50%, #166088 100%); border-color: #166088;}
+#layout-container #layout-menu .container {background-image: linear-gradient(#2990C4 0%, #68C8FF 50%, #2990C4 100%); border-color: #166088;}
 
-#layout-container #layout-menu #BotonesExtra .btnExtra {border-color:#558BA8; background-color: #1F2E45; color: #dbe9ee;}
-#layout-container #layout-menu #BotonesExtra .btnExtra:HOVER {background-color: transparent; color: #E1EDF1; border-color: #E1EDF1;}
-
-#layout-container #layout-menu #BotonesColeccion .btnExtra {border-color: #20354C; background-color: #20354C; color:white;}
+#layout-container #layout-menu #BotonesColeccion .btnExtra {border-color: #20354C; background-color: #2a343ee6; color:#fff;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra:HOVER {background-color: transparent; border-color: #114D72;}
 
-#layout-container #layout-menu #BotonesColeccion .dropdown .styleDropdown {background-color: transparent; border-color: transparent;}
-#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #20354C; color:white; border-color:#20354C;}
-#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#0e8bd8;}
+#layout-container #layout-menu #BotonesExtra .btnExtra {border-color:#20354C; background-color: #1f2e45cc; color: #fff;}
+#layout-container #layout-menu #BotonesExtra .btnExtra:HOVER {background-color: transparent; border-color: #B1B4B6;}
 
-#layout-container #layout-menu #BotonesExtra .btnOpcions {border-color:#114D72; background-color: #101A26; color:white;}
-#layout-container #layout-menu #BotonesExtra .btnOpcions:HOVER {background-color: #20354C; border-color: transparent;}
+#layout-container #layout-menu #BotonesExtra .btnOpcions {border-color:#20354C; background-color: #15202b75; color:white;}
+#layout-container #layout-menu #BotonesExtra .btnOpcions:HOVER {background-color: transparent;}
+
+#layout-container #layout-menu #BotonesColeccion .dropdown .styleDropdown {background-color: transparent; border-color: transparent;}
+#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #2A343E; color:#2990C4; border-color:#2990C4}
+#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#fff;}
 
 /*** Colecciones ***/
 /* Barra de menu estandar*/
 #layout-container .menu {background-color: #0d2238; border-color:#114D72;}
 #layout-container tr .menu {background-color: transparent; border-color: transparent;}
 
-#layout-container .menu ul .btnLlist, 
+#layout-container .menu ul .btnLlist,
 #layout-container .menu ul .btnSave {background-color: #006CB1; color: white; border-color: #009bff;}
 #layout-container .menu ul .btnExtra {background-color: #00568e; color: white; border-color: #12689f;}
 #layout-container .menu ul .btnDelete {background-color: #B30E18; color: white; border-color: #F50010;}
@@ -72,7 +72,7 @@
 #layout-container #list-autor #filtroAutor {background-color: #25384b; border-color: #48a3ff;}
 #layout-container #list-autor #filtroAutor .titleFilter {border-bottom-color: #7aa4d0; color:#48a3ff;}
 #layout-container #list-autor #filtroAutor .labelFilter {color:#7ebeff;}
-#layout-container #list-autor #filtroAutor .form-group input {background-color: #0e2033; color:#5aacff; border-color: #7aa4d0; box-shadow: 0px 1px 5px 1px #3272b2;}
+#layout-container #list-autor #filtroAutor .form-group input {background-color: #0e2033; color:#5aacff; bodiier-color: #7aa4d0; box-shadow: 0 1px 5px 1px #3272b2;}
 #layout-container #list-autor #filtroAutor .form-group input::placeholder {color: #c8e3ff; opacity: 0.5;}
 #layout-container #list-autor #filtroAutor .btn-reset {background-color: #ecf5ff; border: 2px solid #7ebeff; color: #24517f;}
 #layout-container #list-autor #filtroAutor .btn-filter {background-color: #15304c; border-color: #7ebeff; color: #ecf5ff;}

@@ -39,7 +39,7 @@ body a:hover, a:focus {color:white;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra span.glyphicon {margin-right: 6px; top: 3px; font-size: 1.1em;}
 
 #layout-container #layout-menu #BotonesColeccion .dropdown .styleDropdown {margin-left: 0.15em; box-shadow: none;}
-#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {border:3px solid; padding:0.25em; margin:0 0.15em 0.25em; transition: 1.2s;}
+#layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {border:3px solid; padding:0.25em; margin:0 0.15em 0.35em; transition: 1.2s;}
 
 #layout-container #layout-menu #BotonesExtra .btnOpcions {padding: 0.25em 0.35em; margin: 1em 0.5em; border: 3px solid; border-radius: 10px; transition: 1s;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions span.glyphicon {top: 4px; font-size: 1.2em;}
