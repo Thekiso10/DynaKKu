@@ -1,12 +1,7 @@
 package Colecciones
 
-import static org.springframework.http.HttpStatus.*
-import java.io.ObjectInputStream.ValidationList;
-import javassist.bytecode.stackmap.BasicBlock.Catch;
-import dynamiclist.AutorService;
 import grails.transaction.Transactional
 import java.text.SimpleDateFormat
-
 
 @Transactional(readOnly = true)
 class AutorController {
@@ -19,21 +14,20 @@ class AutorController {
 	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-		def filterAutor = null
 		def autorInstanceList = Autor.list(params)
 		def autorPaginacion = Autor.count()
 		def offset = (params.offset? params.offset:0)
-		
+
 		if(params.search){
 			log.info "Se ha ejecutado el filtro de Autores"
 			if(params.nombre || params.apellido || params.edad){ //Para que no se de al filtro con los tres campos vacios 
 				//Ejecutar el createCriteria con los parametros nombre, apellido y edad
 				def autorFiltro = Autor.createCriteria() 
 				def listaFiltro = autorFiltro.list (max: params.max, offset:offset){ //Para la paginacion
-					ilike ("nombre", ("%" + params.nombre + "%"))
-					ilike ("apellido", ("%" + params.apellido + "%"))
+					ilike ("nombre", ("%" + params.nombre.toString() + "%"))
+					ilike ("apellido", ("%" + params.apellido.toString() + "%"))
 					if(params.edad){ //Por si el campo viene vacio
-						eq ("edad", Integer.parseInt(params.edad))
+						eq ("edad", Integer.parseInt(params.edad.toString()))
 					}
 				}
 				autorInstanceList = listaFiltro
@@ -99,12 +93,10 @@ class AutorController {
 		//Guardar en base de datos
 		try{
 			def nombreAutor = autorInstance.nombre + " " + autorInstance.apellido
-			def date = new Date()
-			def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
-			
+
 			autorInstance.fechaInscripcion = new Date()
 			autorInstance.ultimaModificacion = new Date()
-			autorInstance.difunto = (params.difunto.equals("true"))?true:false
+			autorInstance.difunto = (params.difunto.equals("true")?true:false)
 			if(autorInstance.save(flush:true)){
 				log.info "Creando entrada en el historial de un nuevo autor"
 				flash.message = message(code: "autores.message.save.ok", args: [nombreAutor])
@@ -130,10 +122,9 @@ class AutorController {
     def updateAutor() {
 		def autorInstance = Autor.get(params.id)
 		def validadorForm = autorService.validarForm(params)
-		def validadorFoto = null
 		//Comprobar que no ha cambiado la version == problemas de concurrencia
 		if (params.version != null) {
-			if (autorInstance.version > Integer.parseInt(params.version)) {
+			if (autorInstance.version > Integer.parseInt(params.version.toString())) {
 				flash.error = message(code: "autores.errores.update.updateExitente")
 				redirect(action: "edit", id:autorInstance.id)
 				return
@@ -178,9 +169,7 @@ class AutorController {
 		//Actualizar el nuevo Autor
 		try{
 			def nombreAutor = params.nombre + " " + params.apellido
-			def date = new Date()
-			def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
-			
+
 			autorInstance.ultimaModificacion = new Date()
 			autorInstance.properties = params //Guardamos los datos restantes
 			if(autorInstance.save(flush:true)){
