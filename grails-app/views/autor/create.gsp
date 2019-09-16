@@ -9,9 +9,9 @@
 	</head>
 	<body>
 		<div id="create-autor" class="col-sm-12" role="main">
-			<div class="container">
-				<g:form url="[resource:autorInstance, action:'save']" enctype='multipart/form-data' id="formCreateAutor">
-					<div class="menu navbar-collapse" role="navigation">
+			<g:form url="[resource:autorInstance, action:'save']" enctype='multipart/form-data' id="formCreateAutor" class="form-principal">
+				<div class="menu navbar-collapse" role="navigation">
+					<div class="container">
 						<ul class="navbar-nav">
 							<li><g:submitButton name="create" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" /></li>
 							<li><g:link class="btn btnLlist" action="index"><g:message code="autores.list.label" /></g:link></li>
@@ -20,10 +20,13 @@
 							<li><a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a></li>
 						</ul>
 					</div>
-					
-					<h1>
+				</div>
+
+				<div class="container">
+
+					<h2>
 						<g:message code="default.create.label" args="[entityName]" />
-					</h1>
+					</h2>
 					
 					<g:if test="${flash.message}">
 						<div class="flash mensajes iconoMensajes" role="status">${flash.message}</div>
@@ -47,11 +50,12 @@
 						</div>
 					</fieldset>
 					<fieldset class="buttons">
-						<g:submitButton name="create" class="save btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						<div class="col-sm-12 divButtonSave">
+							<g:submitButton name="create" class="save btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						</div>
 					</fieldset>
-				</g:form>
-				
-			</div>
+				</div>
+			</g:form>
 		</div>
 	</body>
 </html>

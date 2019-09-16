@@ -6,7 +6,7 @@
 #layout-container #grailsLogo #BannerLogo h1 {color: #fff;}
 #layout-container #grailsLogo #BannerI18n .borderI18n {border-color: #13658e;}
 /*************  Barra de menu *************/
-#layout-container #layout-menu .container {background-image: linear-gradient(#2990C4 0%, #68C8FF 50%, #2990C4 100%); border-color: #166088;}
+#layout-container #layout-menu {background-image: linear-gradient(#2990C4 0%, #68C8FF 50%, #2990C4 100%); border-color: #166088;}
 
 #layout-container #layout-menu #BotonesColeccion .btnExtra {border-color: #20354C; background-color: #2a343ee6; color:#fff;}
 #layout-container #layout-menu #BotonesColeccion .btnExtra:HOVER {background-color: transparent; border-color: #114D72;}
@@ -23,44 +23,50 @@
 
 /*** Colecciones ***/
 /* Barra de menu estandar*/
-#layout-container .menu {background-color: #0d2238; border-color:#114D72;}
+#layout-container .form-principal .menu {background: linear-gradient(to bottom, #68C8FF 0%, #29b4db 50%, #1b5c7d 100%); border-color:#166088;}
 #layout-container tr .menu {background-color: transparent; border-color: transparent;}
 
-#layout-container .menu ul .btnLlist,
-#layout-container .menu ul .btnSave {background-color: #006CB1; color: white; border-color: #009bff;}
-#layout-container .menu ul .btnExtra {background-color: #00568e; color: white; border-color: #12689f;}
-#layout-container .menu ul .btnDelete {background-color: #B30E18; color: white; border-color: #F50010;}
+#layout-container .form-principal .menu ul .btnLlist,
+#layout-container .form-principal .menu ul .btnSave {background-color: #2a343ec4; color: white; border-color: #0d344e;}
+#layout-container .form-principal .menu ul .btnExtra {background-color: #00568e; color: white; border-color: #12689f;}
+#layout-container .form-principal .menu ul .btnDelete {background-color: #B30E18; color: white; border-color: #F50010;}
 
-#layout-container .menu ul .btnSkip {background-color: #185b86; border-color: #185b86; color: white;}
-#layout-container .menu .dropdown .styleDropdown {background-color: transparent; border-color: transparent;}
-#layout-container .menu .dropdown .styleDropdown li .btnMenu {background-color: #00568e; color: white; border-color: #12689f;}
-#layout-container .menu .dropdown .styleDropdown li .btnMenu:hover {background-color: #101a26b8;}
+#layout-container .form-principal .menu ul .btnSkip {background-color: #141E28; border-color: #141E28; color: white;}
+#layout-container .form-principal .menu .dropdown .styleDropdown {background-color: transparent; border-color: transparent;}
+#layout-container .form-principal .menu .dropdown .styleDropdown li .btnMenu {background-color: #00568e; color: white; border-color: #12689f;}
+#layout-container .form-principal .menu .dropdown .styleDropdown li .btnMenu:hover {background-color: #101a26b8;}
 
-#layout-container .menu ul .btnExtra:HOVER,
-#layout-container .menu ul .btnLlist:HOVER, 
-#layout-container .menu ul .btnSave:HOVER, 
-#layout-container .menu ul .btnSkip:HOVER,
-#layout-container #formCreateAutor .buttons .btnSave:HOVER {background-color: transparent; border-color: #006CB1;}
+#layout-container .form-principal .menu ul .btnExtra:HOVER,
+#layout-container .form-principal .menu ul .btnLlist:HOVER,
+#layout-container .form-principal .menu ul .btnSave:HOVER,
+#layout-container .form-principal .menu ul .btnSkip:HOVER,
+#layout-container #formCreateAutor .buttons .btnSave:HOVER {background-color: #2a343e52; border-color: #013a73;}
 
 /*** Autores ***/
 /** Crear y Editar Autor **/
-#layout-container #edit-autor #formEditAutor .buttons .btnSave,
-#layout-container #create-autor #formCreateAutor .buttons .btnSave {background-color: #006CB1; color: white; border-color: #009bff;}
+#layout-container #edit-autor #formCreateAutor .container .divButtonSave,
+#layout-container #create-autor #formCreateAutor .container .divButtonSave {background: #166088; border-color: #114d72;}
 
-#layout-container #edit-autor #formEditAutor h1,
-#layout-container #create-autor #formCreateAutor h1 {color: #d8d8d8; border-bottom-color: #d8d8d8;}
+#layout-container #edit-autor #formEditAutor  .buttons .divButtonSave .btnSave,
+#layout-container #create-autor #formCreateAutor .buttons .divButtonSave .btnSave {background-color: #2276A1; color: white; border-color: #1d536f;}
 
-#layout-container #edit-autor #formEditAutor .panel-form,
-#layout-container #create-autor #formCreateAutor .panel-form {background-color: #08457e; border-color: #114D72;}
+#layout-container #edit-autor #formEditAutor  .buttons .divButtonSave .btnSave:hover,
+#layout-container #create-autor #formCreateAutor .buttons .divButtonSave .btnSave:hover {background: #1699dc; border-color: #2990C4;}
+
+#layout-container #edit-autor #formEditAutor h2,
+#layout-container #create-autor #formCreateAutor h2 {color: #a9a9a9;}
+
+#layout-container #edit-autor #formEditAutor .container .panel-form,
+#layout-container #create-autor #formCreateAutor .container .panel-form {background-color: #166088; border-color: #114D72;}
 
 #layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .checkboxImg,
 #layout-container #edit-autor #formEditAutor .panel-form label,
 #layout-container #create-autor #formCreateAutor .panel-form label {color: #d9dfe6;}
 
-#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain input,
-#layout-container #create-autor #formCreateAutor .panel-form .fieldcontain input,
-#layout-container #edit-autor #formEditAutor .panel-form .fieldcontain select,
-#layout-container #create-autor #formCreateAutor .panel-form .fieldcontain select {background-color: #10171E; border-color: #009bff; color: #fff;}
+#layout-container #edit-autor #formEditAutor .container .panel-form .fieldcontain input,
+#layout-container #create-autor #formCreateAutor .container .panel-form .fieldcontain input,
+#layout-container #edit-autor #formEditAutor .container .panel-form .fieldcontain select,
+#layout-container #create-autor #formCreateAutor .container .panel-form .fieldcontain select {background-color: #10171E; border-color: #272829; color: #f9f9f9;}
 
 #layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .imgAutorInfo,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .imgAutorInfo {color: #fff;}
