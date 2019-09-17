@@ -13,47 +13,54 @@
 </head>
 <body>
 	<div id="list-autor" class="col-sm-12" role="main">
+
+		<div class="menu navbar-collapse" role="navigation">
+			<div class="container">
+				<ul class="navbar-nav">
+					<li><g:link class="btn btnLlist" action="create">
+						<g:message code="autores.create.label" />
+					</g:link></li>
+				</ul>
+				<ul class="navbar-nav">
+					<li><g:link class="btn btnLlist" action="create">
+						<g:message code="default.list.generatePDF.label"
+								   args="[entityName]" />
+					</g:link></li>
+				</ul>
+				<ul class="navbar-nav">
+					<li class="dropdown"><a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="glyphicon glyphicon-chevron-down"></span>
+						<g:message code="autores.list.manage.label" /></a>
+						<ul class="dropdown-menu styleDropdown">
+							<li>
+								<g:link class="btn btnMenu ">
+									<g:message code="autores.list.export.label" />
+								</g:link>
+							</li>
+							<li>
+								<g:link class="btn btnMenu">
+									<g:message code="autores.list.import.label" />
+								</g:link>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="navbar-nav navbar-right">
+					<li>
+						<a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()">
+							<g:message code="default.link.skip.label" default="Skip to content&hellip;" />
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
 		<div class="container">
 			<div class="content scaffold-list" role="main">
 
-				<div class="menu navbar-collapse" role="navigation">
-					<ul class="navbar-nav">
-						<li><g:link class="btn btnLlist" action="create">
-								<g:message code="autores.create.label" />
-							</g:link></li>
-					</ul>
-					<ul class="navbar-nav">
-						<li><g:link class="btn btnLlist" action="create">
-								<g:message code="default.list.generatePDF.label"
-									args="[entityName]" />
-							</g:link></li>
-					</ul>
-					<ul class="navbar-nav">
-						<li class="dropdown"><a href="#" class="btn btnExtra"
-							onclick="modificarIconoMenu(this)" data-toggle="dropdown"
-							role="button" aria-haspopup="true" aria-expanded="false"> <span
-								class="glyphicon glyphicon-chevron-down"></span>
-							<g:message code="autores.list.manage.label" /></a>
-							<ul class="dropdown-menu styleDropdown">
-								<li><g:link class="btn btnMenu ">
-										<g:message code="autores.list.export.label" />
-									</g:link></li>
-								<li><g:link class="btn btnMenu">
-										<g:message code="autores.list.import.label" />
-									</g:link></li>
-							</ul></li>
-					</ul>
-					<ul class="navbar-nav navbar-right">
-						<li><a href="#" class="btn btnSkip" tabindex="-1"
-							onclick="history.back()"><g:message
-									code="default.link.skip.label"
-									default="Skip to content&hellip;" /></a></li>
-					</ul>
-				</div>
-
-				<h1>
+				<h2>
 					<g:message code="default.list.label" args="[entityName]" />
-				</h1>
+				</h2>
 
 				<g:if test="${flash.message}">
 					<div class="flash mensajes iconoMensajes" role="status">
