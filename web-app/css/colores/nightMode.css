@@ -45,7 +45,7 @@
 
 /*** Autores ***/
 /** Crear y Editar Autor **/
-#layout-container #edit-autor #formCreateAutor .container .divButtonSave,
+#layout-container #edit-autor #formEditAutor.container .divButtonSave,
 #layout-container #create-autor #formCreateAutor .container .divButtonSave {background: #166088; border-color: #114d72;}
 
 #layout-container #edit-autor #formEditAutor  .buttons .divButtonSave .btnSave,
@@ -55,18 +55,18 @@
 #layout-container #create-autor #formCreateAutor .buttons .divButtonSave .btnSave:hover {background: #1699dc; border-color: #2990C4;}
 
 #layout-container #edit-autor #formEditAutor h2,
-#layout-container #create-autor #formCreateAutor h2 {color: #a9a9a9;}
+#layout-container #create-autor #formCreateAutor h2 {color: #d8d8d8;}
 
-#layout-container #edit-autor #formEditAutor .container .panel-form,
+#layout-container #edit-autor #formEditAutor.container .panel-form,
 #layout-container #create-autor #formCreateAutor .container .panel-form {background-color: #166088; border-color: #114D72;}
 
 #layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .checkboxImg,
 #layout-container #edit-autor #formEditAutor .panel-form label,
 #layout-container #create-autor #formCreateAutor .panel-form label {color: #d9dfe6;}
 
-#layout-container #edit-autor #formEditAutor .container .panel-form .fieldcontain input,
+#layout-container #edit-autor #formEditAutor.container .panel-form .fieldcontain input,
 #layout-container #create-autor #formCreateAutor .container .panel-form .fieldcontain input,
-#layout-container #edit-autor #formEditAutor .container .panel-form .fieldcontain select,
+#layout-container #edit-autor #formEditAutor.container .panel-form .fieldcontain select,
 #layout-container #create-autor #formCreateAutor .container .panel-form .fieldcontain select {background-color: #10171E; border-color: #272829; color: #f9f9f9;}
 
 #layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .imgAutorInfo,

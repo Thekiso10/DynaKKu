@@ -2,13 +2,11 @@
 #layout-container #edit-autor #formEditAutor .buttons,
 #layout-container #create-autor #formCreateAutor .buttons {text-align: center;}
 
-#layout-container #edit-autor #formCreateAutor .divButtonSave,
+#layout-container #edit-autor #formEditAutor .divButtonSave,
 #layout-container #create-autor #formCreateAutor .divButtonSave {margin-top: 2em; margin-bottom: 2em; padding: 0.5em; border: 3px solid; border-radius: 10px;}
 
 #layout-container #edit-autor #formEditAutor .buttons .btnSave,
 #layout-container #create-autor #formCreateAutor .buttons .btnSave {padding: 0.5em 6em; font-size: 1.5em; border: 3px solid; font-weight: 600; transition: 1s;}
-
-#layout-container #create-autor .menu ul .btnSave {padding-bottom: 1.75mm;}
 
 #layout-container #edit-autor #formEditAutor h2,
 #layout-container #create-autor #formCreateAutor h2 {font-size: 2.75em; border-bottom: 2px solid; margin-top: 1em;}

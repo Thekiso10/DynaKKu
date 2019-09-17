@@ -6,7 +6,7 @@
 #layout-container .menu ul .btn {padding: 0.5em 1.25em; font-weight: 600; font-size: 1.1em}
 #layout-container .menu ul .btnLlist, 
 #layout-container .menu ul .btnSave {border: 3px solid; transition: 1s;}
-#layout-container .menu ul .btnSave {margin-right: 0.5em;}
+#layout-container .menu ul .btnSave {margin-right: 0.5em; padding-bottom: 1.75mm;}
 #layout-container .menu ul .btnExtra {border: 3px solid; transition: 1s;}
 #layout-container .menu ul .btnDelete {border: 3px solid; margin-right: 0.75em; transition: 1s;}
 
