@@ -11,10 +11,9 @@
 	</head>
 	<body>
 		<div id="ver-autor" class="col-sm-12" role="main">
-			<div class="container">
-				
-				<g:form url="[resource:autorInstance, action:'delete']" method="DELETE">
-					<div class="menu navbar-collapse" role="navigation">
+			<g:form url="[resource:autorInstance, action:'delete']" method="DELETE">
+				<div class="menu navbar-collapse" role="navigation">
+					<div class="container">
 						<ul class="navbar-nav">
 							<li><g:link class="btn btnSave" action="edit" resource="${autorInstance}"><g:message code="autores.edit.label" /></g:link></li>
 							<li><g:link class="btn btnLlist" action="index"><g:message code="autores.list.label" /></g:link></li>
@@ -24,8 +23,11 @@
 							<li><a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a></li>
 						</ul>
 					</div>
-				</g:form>
-				
+				</div>
+			</g:form>
+
+			<div class="container">
+
 				<g:if test="${flash.message}">
 					<div class="flash mensajes iconoMensajes" role="status">${flash.message}</div>
 				</g:if>
@@ -104,7 +106,6 @@
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	</body>

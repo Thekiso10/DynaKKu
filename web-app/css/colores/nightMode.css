@@ -23,34 +23,24 @@
 
 /*** Colecciones ***/
 /* Barra de menu estandar*/
-#layout-container div.menu,
-#layout-container .form-principal .menu {background: linear-gradient(to bottom, #68C8FF 0%, #29b4db 50%, #1b5c7d 100%); border-color:#166088;}
+#layout-container div.menu {background: linear-gradient(to bottom, #68C8FF 0%, #29b4db 50%, #1b5c7d 100%); border-color:#166088;}
 #layout-container tr .menu {background-color: transparent; border-color: transparent;}
 
-#layout-container div.menu ul .btnLlist,
-#layout-container .form-principal .menu ul .btnLlist,
-#layout-container .form-principal .menu ul .btnSave {background-color: #2a343ec4; color: white; border-color: #0d344e;}
+#layout-container div.menu ul .btnLlist {background-color: #2a343ec4; color: white; border-color: #0d344e;}
 
-#layout-container div.menu ul .btnExtra,
-#layout-container .form-principal .menu ul .btnExtra {background-color: #2276A1; color: white; border-color: #12689f;}
-#layout-container .form-principal .menu ul .btnDelete {background-color: #B30E18; color: white; border-color: #F50010;}
+#layout-container div.menu ul .btnSave {background-color: #236286c9; color: white; border-color: #0d344e;}
+#layout-container div.menu ul .btnExtra {background-color: #2276A1; color: white; border-color: #12689f;}
+#layout-container div.menu ul .btnDelete {background-color: #B30E18; color: white; border-color: #F50010;}
+#layout-container div.menu ul .btnSkip {background-color: #141E28; border-color: #141E28; color: white;}
 
-#layout-container div.menu ul .btnSkip,
-#layout-container .form-principal .menu ul .btnSkip {background-color: #141E28; border-color: #141E28; color: white;}
-#layout-container div.menu .dropdown .styleDropdown,
-#layout-container .form-principal .menu .dropdown .styleDropdown {background-color: transparent; border-color: transparent;}
-#layout-container div.menu .dropdown .styleDropdown li .btnMenu,
-#layout-container .form-principal .menu .dropdown .styleDropdown li .btnMenu {background-color: #2276a1a3; color: white; border-color: #12689f;}
-#layout-container div.menu .dropdown .styleDropdown li .btnMenu:hover,
-#layout-container .form-principal .menu .dropdown .styleDropdown li .btnMenu:hover {background-color: #101a26b8;}
+#layout-container div.menu .dropdown .styleDropdown {background-color: transparent; border-color: transparent;}
+#layout-container div.menu .dropdown .styleDropdown li .btnMenu {background-color: #2276a1a3; color: white; border-color: #12689f;}
+#layout-container div.menu .dropdown .styleDropdown li .btnMenu:hover {background-color: #101a26b8;}
 
 #layout-container div.menu ul .btnExtra:HOVER,
-#layout-container .form-principal .menu ul .btnExtra:HOVER,
 #layout-container div.menu ul .btnLlist:HOVER,
-#layout-container .form-principal .menu ul .btnLlist:HOVER,
-#layout-container .form-principal .menu ul .btnSave:HOVER,
+#layout-container div.menu ul .btnSave:HOVER,
 #layout-container div.menu ul .btnSkip:HOVER,
-#layout-container .form-principal .menu ul .btnSkip:HOVER,
 #layout-container #formCreateAutor .buttons .btnSave:HOVER {background-color: #2a343e52; border-color: #013a73;}
 
 /*** Autores ***/
@@ -120,9 +110,10 @@
 /** Mostrar un Autor **/
 #layout-container #ver-autor h2 {color: #d8d8d8; font-size: 2.75em; border-bottom: 1px solid #d8d8d8;}
 
-#layout-container #ver-autor #panel-ver-autor {color:#fff;} /*Que el color de los textos sea blanco*/
-#layout-container #ver-autor #panel-ver-autor.panel-show-autor {background-color: #08457e; border-color: #0652CE;}
-#layout-container #ver-autor #panel-ver-autor h3 {border-color: #fff;}
+#layout-container #ver-autor div#panel-ver-autor {color:#fff;} /*Que el color de los textos sea blanco*/
+#layout-container #ver-autor div#panel-ver-autor h3 {border-color: #fff;}
+#layout-container #ver-autor div#panel-ver-autor #infoAutor {background-color: #14587C; border-color: #114663; box-shadow: 0 1px 15px 9px #114663;}
+#layout-container #ver-autor div#panel-ver-autor.panel-show-autor {background-color: #166088; border-color: #114D72; box-shadow: 0 1px 7px 3px #114663;}
 
-#layout-container #ver-autor #panel-ver-autor #imgAutor img {border-color: #222;}
+#layout-container #ver-autor div#panel-ver-autor #imgAutor img {border-color: #1B2228; box-shadow: 0 1px 11px 3px #1B2228;}
 

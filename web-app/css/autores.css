@@ -8,6 +8,8 @@
 #layout-container #edit-autor #formEditAutor .buttons .btnSave,
 #layout-container #create-autor #formCreateAutor .buttons .btnSave {padding: 0.5em 6em; font-size: 1.5em; border: 3px solid; font-weight: 600; transition: 1s;}
 
+#layout-container #create-autor .menu ul .btnSave {padding-bottom: 1.75mm;}
+
 #layout-container #edit-autor #formEditAutor h2,
 #layout-container #create-autor #formCreateAutor h2 {font-size: 2.75em; border-bottom: 2px solid; margin-top: 1em;}
 
@@ -61,14 +63,14 @@
 #layout-container #list-autor .paginacion span {font-size: 1.25em; padding-left: 1em;}
 
 /** Mostrar un Autor **/
-#layout-container #ver-autor h2 {font-size: 2.75em;}
+#layout-container #ver-autor h2 {font-size: 2.75em; margin-top: 1em;}
 
 #layout-container #ver-autor #panel-ver-autor.panel-show-autor {margin-top: 1em; padding: 1em 4em 0em 4em; border: 5px solid; border-radius: 15px;}
 #layout-container #ver-autor #panel-ver-autor h3 {margin: 0; border-bottom: 1px solid; padding-bottom: 0.15em; font-family: 'Open Sans Semibold'; font-size: 2.10em;}
 
 #layout-container #ver-autor #panel-ver-autor #imgAutor img {width: 190px; height: 210px; margin: 2em 1.25em; border: 3px solid; border-radius: 5px;}
 
-#layout-container #ver-autor #panel-ver-autor #infoAutor {margin-top: 4.25em; border-right: 2px solid; border-left: 2px solid;}
+#layout-container #ver-autor #panel-ver-autor #infoAutor {margin-top: 4.25em; border: 2px solid; border-radius: 5px;}
 #layout-container #ver-autor #panel-ver-autor #infoAutor h4 {font-size: 1.75em;}
 #layout-container #ver-autor #panel-ver-autor #infoAutor span {margin-top: 9px; padding: 0; font-size: 1.5em; font-weight: bold;}
 #layout-container #ver-autor #panel-ver-autor #infoAutor span.nacionalidad-value {padding-left:0.75em}
