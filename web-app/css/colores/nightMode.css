@@ -23,22 +23,33 @@
 
 /*** Colecciones ***/
 /* Barra de menu estandar*/
+#layout-container div.menu,
 #layout-container .form-principal .menu {background: linear-gradient(to bottom, #68C8FF 0%, #29b4db 50%, #1b5c7d 100%); border-color:#166088;}
 #layout-container tr .menu {background-color: transparent; border-color: transparent;}
 
+#layout-container div.menu ul .btnLlist,
 #layout-container .form-principal .menu ul .btnLlist,
 #layout-container .form-principal .menu ul .btnSave {background-color: #2a343ec4; color: white; border-color: #0d344e;}
-#layout-container .form-principal .menu ul .btnExtra {background-color: #00568e; color: white; border-color: #12689f;}
+
+#layout-container div.menu ul .btnExtra,
+#layout-container .form-principal .menu ul .btnExtra {background-color: #2276A1; color: white; border-color: #12689f;}
 #layout-container .form-principal .menu ul .btnDelete {background-color: #B30E18; color: white; border-color: #F50010;}
 
+#layout-container div.menu ul .btnSkip,
 #layout-container .form-principal .menu ul .btnSkip {background-color: #141E28; border-color: #141E28; color: white;}
+#layout-container div.menu .dropdown .styleDropdown,
 #layout-container .form-principal .menu .dropdown .styleDropdown {background-color: transparent; border-color: transparent;}
-#layout-container .form-principal .menu .dropdown .styleDropdown li .btnMenu {background-color: #00568e; color: white; border-color: #12689f;}
+#layout-container div.menu .dropdown .styleDropdown li .btnMenu,
+#layout-container .form-principal .menu .dropdown .styleDropdown li .btnMenu {background-color: #2276a1a3; color: white; border-color: #12689f;}
+#layout-container div.menu .dropdown .styleDropdown li .btnMenu:hover,
 #layout-container .form-principal .menu .dropdown .styleDropdown li .btnMenu:hover {background-color: #101a26b8;}
 
+#layout-container div.menu ul .btnExtra:HOVER,
 #layout-container .form-principal .menu ul .btnExtra:HOVER,
+#layout-container div.menu ul .btnLlist:HOVER,
 #layout-container .form-principal .menu ul .btnLlist:HOVER,
 #layout-container .form-principal .menu ul .btnSave:HOVER,
+#layout-container div.menu ul .btnSkip:HOVER,
 #layout-container .form-principal .menu ul .btnSkip:HOVER,
 #layout-container #formCreateAutor .buttons .btnSave:HOVER {background-color: #2a343e52; border-color: #013a73;}
 
@@ -72,37 +83,36 @@
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .imgAutorInfo {color: #fff;}
 
 /** Lista de los Autor **/
-#layout-container #list-autor h1 {color:#d8d8d8; border-bottom-color: #d8d8d8;}
+#layout-container #list-autor h2 {color:#d8d8d8; border-bottom-color: #d8d8d8;}
 #layout-container #list-autor .borderTransparent {border-color: transparent !important;}
 
-#layout-container #list-autor #filtroAutor {background-color: #25384b; border-color: #48a3ff;}
-#layout-container #list-autor #filtroAutor .titleFilter {border-bottom-color: #7aa4d0; color:#48a3ff;}
-#layout-container #list-autor #filtroAutor .labelFilter {color:#7ebeff;}
-#layout-container #list-autor #filtroAutor .form-group input {background-color: #0e2033; color:#5aacff; bodiier-color: #7aa4d0; box-shadow: 0 1px 5px 1px #3272b2;}
-#layout-container #list-autor #filtroAutor .form-group input::placeholder {color: #c8e3ff; opacity: 0.5;}
-#layout-container #list-autor #filtroAutor .btn-reset {background-color: #ecf5ff; border: 2px solid #7ebeff; color: #24517f;}
-#layout-container #list-autor #filtroAutor .btn-filter {background-color: #15304c; border-color: #7ebeff; color: #ecf5ff;}
+#layout-container div#list-autor #filtroAutor {background-color: #13425A; border-color: #081B24;}
+#layout-container div#list-autor #filtroAutor .titleFilter {border-bottom-color: #4C92BA; color:#67bcec;}
+#layout-container div#list-autor #filtroAutor .labelFilter {color:#5FB6E8;}
+#layout-container div#list-autor #filtroAutor .form-group input {background-color: #0e2033; color:#5aacff; border-color: #4380A3; box-shadow: 0 1px 5px 1px #4380A3;}
+#layout-container div#list-autor #filtroAutor .form-group input::placeholder {color: #c8e3ff; opacity: 0.5;}
+#layout-container div#list-autor #filtroAutor .btn-reset {background-color: #83D2FF; border: 2px solid #396E8C; color: #24517f;}
+#layout-container div#list-autor #filtroAutor .btn-filter {background-color: #0F3548; border-color: #1E698F; color: #ecf5ff;}
 
 #layout-container #list-autor #filtroAutor .btn-filter:hover,
 #layout-container #list-autor #filtroAutor .btn-reset:hover {background-color: transparent; color:#fff; transition: 0.7s;} 
 
-#layout-container #list-autor #tableAutorList {border-color: #48a3ff;}
-#layout-container #list-autor #tableAutorList .table .btnMenu {background-color: #006CB1; border: 3px solid #009bff; color: white; transition: 1s;}
-#layout-container #list-autor #tableAutorList .table .btnMenu:hover {background-color: transparent; color: white;}
+#layout-container #list-autor div#tableAutorList {border-color: #2A343E;}
+#layout-container #list-autor div#tableAutorList .table .btnMenu {background-color: #68C8FF; border: 2px solid #4380A3; color: #4E5052; transition: 1s;}
+#layout-container #list-autor div#tableAutorList .table .btnMenu:hover {background-color: transparent; color: white;}
 
-#layout-container #list-autor #tableAutorList .table tr td a:hover {text-decoration: none; color:#4CB1F7;}
+#layout-container #list-autor #tableAutorList .table tr td a:hover {text-decoration: none; color:#96999a;}
 
-#layout-container #list-autor #tableAutorList .table .thead-dark {background-color: #0D0D0D;}
+#layout-container #list-autor #tableAutorList .table .thead-dark {background-color: #1B2228;}
 #layout-container #list-autor #tableAutorList .table .thead-dark a {color: #fff;}
-#layout-container #list-autor #tableAutorList .table .thead-dark a:hover {text-decoration: none; color:#4CB1F7;}
 
-#layout-container #list-autor #tableAutorList .table-dark {color: #fff; background-color: #253140;}
+#layout-container #list-autor #tableAutorList .table-dark {color: #fff; background-color: #13425A;}
 
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {background-color: #294054;}
-#layout-container #list-autor #tableAutorList .table-hover > tbody > tr:hover, 
-#layout-container #list-autor #tableAutorList .table-hover > tbody > tr.even:hover {color: #4CB1F7; background-color: #253140;}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {background-color: #1E698F;}
+#layout-container #list-autor #tableAutorList .table-hover > tbody > tr:hover,
+#layout-container #list-autor #tableAutorList .table-hover > tbody > tr.even:hover {background-color: #13425A;}
 
-#layout-container #list-autor .paginacion {background: #03090f; border-color: #102f4f;}
+#layout-container #list-autor .paginacion {background: #1B2228; border-color: #102f4f;}
 
 #layout-container #list-autor .paginacion span {color: #4CB1F7; font-weight: 600;}
 #layout-container #list-autor .paginacion a {color: #fff;}

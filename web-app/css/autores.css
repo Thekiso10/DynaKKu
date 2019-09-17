@@ -36,9 +36,9 @@
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .col-sm-8 .tamanoInput {width: 90%;}
 
 /** Lista de los Autor **/
-#layout-container #list-autor h1 {font-size: 2.75em; border-bottom: 1px solid;}
+#layout-container #list-autor h2 {font-size: 2.75em; border-bottom: 1px solid; margin-top: 1em;}
 
-#layout-container #list-autor #filtroAutor {padding: 0.25em 1.75em; margin: 2.5em 0 0.35em 0; border: 2px solid; border-radius: 10px 10px 7px 7px;}
+#layout-container #list-autor #filtroAutor {padding: 0.25em 1.75em; margin: 1.5em 0 0.35em 0; border: 3px solid; border-radius: 10px 10px 7px 7px;}
 #layout-container #list-autor #filtroAutor .bodyFilter {margin-bottom: 0.25em;}
 #layout-container #list-autor #filtroAutor .form-group {margin-right: 0.5em; margin-left: 1em;}
 #layout-container #list-autor #filtroAutor .titleFilter {margin-top: 0.25em; padding-bottom: 0.25em; border-bottom:6px dotted;font-size: 2.10em; font-weight: 600;}
