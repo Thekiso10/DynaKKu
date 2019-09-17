@@ -6,7 +6,7 @@ class Demografia {
 	String nombre
 	
     static constraints = {
-		
+		nombre 	nullable: true, blank: false
     }
 	
 	static mapping = {
