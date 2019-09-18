@@ -88,13 +88,6 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
-/* Nuevas variables de Configuracion */
-
-//Autores
-dynamicList.autores.edadMax = 110 	//Especificar la edad minima de un Autor
-dynamicList.autores.edadMin = 0 	//Especificar la edad maxima de un Autor
-dynamicList.autores.rutaImg = "web-app\\imgAutores" //Ruta para guardar las imagenes de cada autor
-
 environments {
     development {
         grails.logging.jul.usebridge = true
@@ -129,6 +122,18 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+/*==================================================================*/
+/* 		          Nuevas variables de Configuracion        			*/
+/*==================================================================*/
+
+/****** Autores ******/
+dynamicList.autores.edadMax = 110 	//Especificar la edad minima de un Autor
+dynamicList.autores.edadMin = 0 	//Especificar la edad maxima de un Autor
+dynamicList.autores.rutaImg = "web-app\\images\\imgAutores" //Ruta para guardar las imagenes de cada autor
+
+/****** Mangas ******/
+dynamicList.mangas.rutaImg = "web-app\\images\\imgMangas" //Ruta para guardar las imagenes de cada manga
 
 /*==================================================================*/
 /* 					   Cargar Config Externa       					*/
