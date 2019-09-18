@@ -55,7 +55,10 @@ class AutorController {
         respond autorInstanceList, model:[autorInstanceCount: autorPaginacion]
     }
 
+	@Transactional
     def show(Autor autorInstance) {
+		//Registrar la consulta del Autor
+		historialService.registrarAutor(autorInstance, 2)
         respond autorInstance
     }
 

@@ -6,7 +6,7 @@ import Colecciones.Mangas;
 class Historial {
 	//Tipo de accions para el historial
 	enum Status {
-		ACTUALIZACION, CREACION, ELIMINACION
+		ACTUALIZACION, CREACION, ELIMINACION, CONSULTA
 	}
 	
 	String id
