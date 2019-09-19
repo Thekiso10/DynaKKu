@@ -35,18 +35,24 @@ class BootStrap {
         listaCarpetas << new File(grailsApplication.config.dynamicList.autores.rutaImg)
         listaCarpetas << new File(grailsApplication.config.dynamicList.mangas.rutaImg)
         //Ejecutar las comparaciones
-        listaCarpetas.each { folder ->
-            if(!folder.exists()){
-                if(!FilenameUtils.getExtension(folder.getPath())){ //Comprobamos si la ruta tiene alguna extension
-                    if(folder.mkdirs()){
-                        log.info "Se ha creado el directorio de -> " + folder.getPath()
+        try{
+            listaCarpetas.each { folder ->
+                if(!folder.exists()){
+                    if(!FilenameUtils.getExtension(folder.getPath())){ //Comprobamos si la ruta tiene alguna extension
+                        if(folder.mkdirs()){
+                            log.info "Se ha creado el directorio de -> " + folder.getPath()
+                        }else{
+                            log.error "No se ha podido crear el directorio de -> " + folder.getPath()
+                        }
                     }else{
-                        log.error "No se ha podido crear el directorio de -> " + folder.getPath()
+                        log.error "No se puede generar un archivo como directorio | path -> " + folder.getPath()
                     }
-                }else{
-                    log.error "No se puede generar un archivo como directorio | path -> " + folder.getPath()
                 }
             }
+        }catch (Exception e){
+            log.error e
+        }catch (SecurityException se){
+            log.error se
         }
         //Ejecutar calculo de comparacion
         def timeStop = new Date()
