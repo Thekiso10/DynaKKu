@@ -205,6 +205,7 @@
 
 				</div>
 
+                %{-- Segundo Bloque --}%
                 <div id="consultaFuncionesStats" class="col-sm-12">
 
                     <h3>
@@ -374,6 +375,8 @@
 
                 </div>
 
+
+                %{-- Tercero Bloque --}%
                 <div id="consultaFuncionesPorStats" class="col-sm-12">
 
                     <h3>
@@ -388,7 +391,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage.full" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje.full" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -400,7 +403,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -412,7 +415,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -428,7 +431,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage.full" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje.full" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -440,7 +443,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -452,7 +455,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -468,7 +471,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage.full" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje.full" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -480,7 +483,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -492,7 +495,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -508,7 +511,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage.full" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje.full" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -520,7 +523,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
@@ -532,7 +535,7 @@
                                 <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                             </div>
                             <div class="col-sm-10 enumStat">
-                                <g:message code="stats.general.funciones.porcentage" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:
+                                <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:
                                 <span>
                                     %{-- Aqui va el resultado de la estadistica --}%
                                 </span>
