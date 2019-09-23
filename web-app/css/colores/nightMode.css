@@ -21,6 +21,30 @@
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #2A343E; color:#2990C4; border-color:#2990C4}
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#fff;}
 
+/*** Estadisticas ***/
+/* Barra de menu estandar*/
+#layout-container div.menu ul .btnSelect {background-color: #04a1fb9c; color: white; border-color: #014e7b;}
+#layout-container div.menu ul .btnAccion {background-color: #2990c4a6; color: white; border-color: #12689f;}
+
+#layout-container div.menu ul .btnSelect:hover {background-color: #2a343e52;}
+#layout-container div.menu ul .btnAccion:hover {background-color: #2a343e52; border-color: #013a73;}
+
+/* Title */
+#layout-container #stats-autor h2,
+#layout-container #stats-general h2,
+#layout-container #stats-mangas h2 {color: #2d97ce;}
+
+/* SubTitle */
+#layout-container #stats-autor h3,
+#layout-container #stats-mangas h3,
+#layout-container #stats-general h3 {color: #68C8FF;}
+
+/* Cuerpo de las estadisticas */
+#layout-container #bodyStats .enumStat {color: #fff;}
+#layout-container #bodyStats #consultaFuncionesStats .marginDiv,
+#layout-container #bodyStats #consultaFuncionesPorStats .marginDiv,
+#layout-container #bodyStats #consultaColeccionesStats .marginDiv {color: #68C8FF;}
+
 /*** Colecciones ***/
 /* Barra de menu estandar*/
 #layout-container div.menu {background: linear-gradient(to bottom, #68C8FF 0%, #29b4db 50%, #1b5c7d 100%); border-color:#166088;}

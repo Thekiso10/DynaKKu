@@ -1,0 +1,37 @@
+/* Barra de menu*/
+#layout-container .menu {margin-top: 1em; border: 3px solid; border-radius: 10px;}
+#layout-container tr .menu {margin: 0;}
+#layout-container .menu ul {padding: 0.5em; margin: 0; list-style: none}
+
+#layout-container .menu ul .btn {padding: 0.5em 1.25em; font-weight: 600; font-size: 1.1em}
+#layout-container .menu ul .btnSelect,
+#layout-container .menu ul .btnAccion {border: 3px solid; margin-right: 0.75em; font-size: 1.25em; transition: 1s;}
+#layout-container .menu ul .btnSkip {border: 3px solid; transition: 1s;}
+
+#layout-container .menu ul .btnAccion:HOVER,
+#layout-container .menu ul .btnSelect:HOVER {border: 3px solid;}
+
+/* Title */
+#layout-container #stats-autor h2,
+#layout-container #stats-mangas h2,
+#layout-container #stats-general h2 {font-size: 2.75em; text-align: center; border-bottom: 2px solid; margin-top: 1em; padding-bottom: 0.1em;}
+
+/* SubTitle */
+#layout-container #stats-autor h3,
+#layout-container #stats-mangas h3,
+#layout-container #stats-general h3 {font-family: 'Open Sans Semibold'; font-weight: 600; font-size: 2em; margin-bottom: 1em; margin-top: 0.75em; padding-bottom: 0.2em; border-bottom: 3px dashed;}
+
+#layout-container #stats-autor h3 span,
+#layout-container #stats-mangas h3 span,
+#layout-container #stats-general h3 span {top: 3px;}
+
+/* Cuerpo de las estadisticas */
+#layout-container #bodyStats .row {display: flex; align-items: center; margin-bottom: 1em;}
+#layout-container #bodyStats .row .col-sm-1 {text-align: end; padding-right: 0.5em;}
+
+#layout-container #bodyStats .row .iconStatsRombo {width: 40%;}
+#layout-container #bodyStats .row .enumStat {font-size: 1.5em; padding-left: 0;}
+
+#layout-container #bodyStats #consultaFuncionesStats .marginDiv,
+#layout-container #bodyStats #consultaFuncionesPorStats .marginDiv,
+#layout-container #bodyStats #consultaColeccionesStats .marginDiv {margin-bottom: 1em; border-bottom: 1px solid;}
