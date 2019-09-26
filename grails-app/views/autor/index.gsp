@@ -109,8 +109,7 @@
 							<button type="submit" class="btn btn-reset commit" name="showAll"
 								value="showAll">
 								<span class="glyphicon glyphicon-list"></span>
-								<g:message code="default.button.show.all.label"
-									default="Show All" />
+								<g:message code="default.button.show.all.label" default="Show All" />
 							</button>
 
 						</div>
@@ -170,7 +169,12 @@
 									</td>
 
 									<td>
-										${fieldValue(bean: autorInstance, field: "genero")}
+										<g:if test="${autorInstance.genero == "Masculino"}">
+											<g:message code="autores.estado.masculino"/>
+										</g:if>
+										<g:else>
+											<g:message code="autores.estado.femenido"/>
+										</g:else>
 									</td>
 
 									<td>

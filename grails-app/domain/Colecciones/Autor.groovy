@@ -9,11 +9,11 @@ class Autor {
 	String apellido
 	String nacionalidad
 	String rutaImagen
-	String genero //Masculino o Femenido
-	
+	String genero //Masculino o Femenino
+
 	int edad
 	boolean difunto //Hay dos estados: Si, no
-	
+
 	Date fechaInscripcion
 	Date ultimaModificacion
 		

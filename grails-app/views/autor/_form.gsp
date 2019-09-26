@@ -41,7 +41,7 @@
 		<div class="col-sm-9">
 			<select name="genero" id="genero">
 				<option value="Masculino" ${autorInstance?.genero == 'Masculino' ? 'selected="selected"':''}><g:message code="autores.estado.masculino" default="masculino" /></option>
-				<option value="Femenido" ${autorInstance?.genero == 'Femenido' ? 'selected="selected"':''}><g:message code="autores.estado.femenido" default="femenido" /></option>
+				<option value="Femenino" ${autorInstance?.genero == 'Femenino' ? 'selected="selected"':''}><g:message code="autores.estado.femenido" default="femenido" /></option>
 			</select>
 		</div>
 	</div>

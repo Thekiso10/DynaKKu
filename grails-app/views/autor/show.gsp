@@ -83,16 +83,21 @@
 									<h4 id="edad-label" class="property-label col-sm-3"><g:message code="autor.edad.label" default="edad" />:</h4>
 									<span class="property-value col-sm-9" aria-labelledby="edad-label">
 										<g:fieldValue bean="${autorInstance}" field="edad"/>
-										<g:message code="autor.edad.anyos.label" default="anyos" />
+										<g:message code="autor.edad.anos.label" default="anyos" />
 									</span>
 								</div>
 							</g:if>
 							
 							<g:if test="${autorInstance?.genero}">
 								<div class="row">
-									<h4 id="fechaInscripcion-label" class="property-label col-sm-4"><g:message code="autor.genero.label" default="genero" />:</h4>
+									<h4 id="genero-label" class="property-label col-sm-4"><g:message code="autor.genero.label" default="genero" />:</h4>
 									<span class="property-value col-sm-8" aria-labelledby="genero-label">
-										<g:fieldValue bean="${autorInstance}" field="genero"/>
+										<g:if test="${autorInstance.genero == "Masculino"}">
+											<g:message code="autores.estado.masculino"/>
+										</g:if>
+										<g:else>
+											<g:message code="autores.estado.femenido"/>
+										</g:else>
 									</span>
 								</div>
 							</g:if>

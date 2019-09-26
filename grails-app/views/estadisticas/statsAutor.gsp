@@ -29,10 +29,15 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.generales.mayorMangas"/>:
                             <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
+                                <g:if test="${numMaxAutorMangas}">
+
+                                </g:if>
+                                <g:else>
+                                    <span><g:message code="default.stats.noResultados.label"/></span>
+                                </g:else>
                             </span>
                         </div>
                     </div>
@@ -41,11 +46,17 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.generales.mas" args='${[message(code: 'stats.code.joven')]}'/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${edadMin}">
+                                <span>[${edadMin} <g:message code="autor.edad.anos.label"/>]</span>
+                                <g:each in="${listaValores[0]}" var="autor">
+                                    <span>${autor.nombre} ${autor.apellido} |</span>
+                                </g:each>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -53,11 +64,17 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.generales.mas" args='${[message(code: 'stats.code.mayor')]}'/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${edadMax}">
+                                <span>[${edadMax} <g:message code="autor.edad.anos.label"/>]</span>
+                                <g:each in="${listaValores[1]}" var="autor">
+                                    <span>${autor.nombre} ${autor.apellido} |</span>
+                                </g:each>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -65,11 +82,15 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.generales.registrado"/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${lastAutor}">
+                                <span>[<g:formatDate date="${lastAutor.fechaInscripcion}" format="yyyy-MM-dd HH:mm" />]</span>
+                                <span>${lastAutor.nombre} ${lastAutor.apellido}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -87,11 +108,14 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.porcentajes.generico" args='${[message(code: 'autor.genero.label'), message(code: 'autores.estado.masculino')]}'/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${listaPorcetajes[0]}">
+                                <span>${listaPorcetajes[0]}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -99,11 +123,14 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.porcentajes.generico" args='${[message(code: 'autor.genero.label'), message(code: 'autores.estado.femenido')]}'/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${listaPorcetajes[1]}">
+                                <span>${listaPorcetajes[1]}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -111,11 +138,14 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.porcentajes.vivos"/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${listaPorcetajes[2]}">
+                                <span>${listaPorcetajes[2]}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -123,11 +153,14 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.porcentajes.muertos"/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${listaPorcetajes[3]}">
+                                <span>${listaPorcetajes[3]}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -145,11 +178,14 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.masculino"/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${listaNumeros[0]}">
+                                <span>${listaNumeros[0]}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -157,11 +193,14 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.femenino"/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${listaNumeros[1]}">
+                                <span>${listaNumeros[1]}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -169,11 +208,14 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.generico" args='${[message(code: 'autores.estado.vivo')]}'/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${listaNumeros[2]}">
+                                <span>${listaNumeros[2]}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -181,11 +223,14 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.generico" args='${[message(code: 'autores.estado.muerto')]}'/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${listaNumeros[3]}">
+                                <span>${listaNumeros[3]}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -193,11 +238,14 @@
                         <div class="col-sm-1">
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
-                        <div class="col-sm-10 enumStat">
+                        <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.generico" args='${[message(code: 'autor.registro.label')]}'/>:
-                            <span>
-                                %{-- Aqui va el resultado de la estadistica --}%
-                            </span>
+                            <g:if test="${listaNumeros[4]}">
+                                <span>${listaNumeros[4]}</span>
+                            </g:if>
+                            <g:else>
+                                <span><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
