@@ -150,3 +150,9 @@
 
 #layout-container #ver-autor div#panel-ver-autor #imgAutor img {border-color: #1B2228; box-shadow: 0 1px 11px 3px #1B2228;}
 
+/*** Errores ***/
+#Error-404 .container .col-sm-6 .btnInicio {background-color: #2276A1; border: 3px solid #63AED4; color: #fff;}
+#Error-404 .container .col-sm-6 .btnBack {background-color: #273039; border: 3px solid #646B72; color: #fff;}
+
+#Error-404 .container .col-sm-6 .btnBack:hover,
+#Error-404 .container .col-sm-6 .btnInicio:hover {transition: 0.75s; background-color: transparent;}

@@ -8,9 +8,28 @@
 	<body>
 		<div id="Error-404" class="col-sm-12" role="main">
 			<div class="container">
-				<h2>Oops! parece que se ha perdido una pagina</h2>
-				<h3>Habra que llamar a Sasuke Uchiha para que se ponga a buscar.</h3>
-				<p>Parece que la pagina que quieres acceder no esta disponible. Comprueba la url o vuelve a intentarlo mas tarde.</p>
+				<h2><g:message code="errores.error404.titulo"/></h2>
+				<h3><g:message code="errores.error404.referencia"/></h3>
+				<p class="bodyError"><g:message code="errores.error404.cuerpo"/></p>
+
+				<div class="col-sm-12 areaBotones">
+					<div class="row">
+
+						<div class="col-sm-6">
+							<g:link controller="estadisticas" action="general" class="btn btnInicio">
+								<g:message code="default.link.start.label"/>
+							</g:link>
+						</div>
+
+						<div class="col-sm-6">
+							<a href="#" class="btn btnBack" tabindex="-1" onclick="history.back()">
+								<g:message code="default.link.skip.label" default="Skip to content&hellip;"/>
+							</a>
+						</div>
+
+					</div>
+				</div>
+
 			</div>
 		</div>	
 	</body>
