@@ -35,3 +35,13 @@
 #layout-container #bodyStats #consultaFuncionesStats .marginDiv,
 #layout-container #bodyStats #consultaFuncionesPorStats .marginDiv,
 #layout-container #bodyStats #consultaColeccionesStats .marginDiv {margin-bottom: 1em; border-bottom: 1px solid;}
+
+/* Estilo de los datos */
+#layout-container #bodyStats .row span {font-size: 0.85em;}
+#layout-container #bodyStats .row .dontStats {font-style: italic; text-decoration: underline; text-decoration-skip-ink: none;}
+#layout-container #bodyStats .row .mostrarNum {font-family: 'Open Sans Bold';}
+#layout-container #bodyStats .row .globoDatos {padding: 0em 0.5em; border: 2px solid; border-radius: 10px 0;}
+#layout-container #bodyStats .row .estiloNum,
+#layout-container #bodyStats .row .estiloPor {font-size: 1em; cursor: context-menu;}
+#layout-container #bodyStats .row .estiloNum:hover,
+#layout-container #bodyStats .row .estiloPor:hover {text-decoration: underline;}

@@ -31,14 +31,12 @@
                         </div>
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.generales.mayorMangas"/>:
-                            <span>
-                                <g:if test="${numMaxAutorMangas}">
+                            <g:if test="${numMaxAutorMangas}">
 
-                                </g:if>
-                                <g:else>
-                                    <span><g:message code="default.stats.noResultados.label"/></span>
-                                </g:else>
-                            </span>
+                            </g:if>
+                            <g:else>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
+                            </g:else>
                         </div>
                     </div>
 
@@ -49,13 +47,13 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.generales.mas" args='${[message(code: 'stats.code.joven')]}'/>:
                             <g:if test="${edadMin}">
-                                <span>[${edadMin} <g:message code="autor.edad.anos.label"/>]</span>
+                                <span class="mostrarNum">[${edadMin} <g:message code="autor.edad.anos.label"/>]</span>
                                 <g:each in="${listaValores[0]}" var="autor">
-                                    <span>${autor.nombre} ${autor.apellido} |</span>
+                                    <span class="globoDatos"><g:link controller="autor" action="show" params="[id: autor.id]">${autor.nombre} ${autor.apellido}</g:link></span>
                                 </g:each>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -67,13 +65,13 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.generales.mas" args='${[message(code: 'stats.code.mayor')]}'/>:
                             <g:if test="${edadMax}">
-                                <span>[${edadMax} <g:message code="autor.edad.anos.label"/>]</span>
+                                <span class="mostrarNum">[${edadMax} <g:message code="autor.edad.anos.label"/>]</span>
                                 <g:each in="${listaValores[1]}" var="autor">
-                                    <span>${autor.nombre} ${autor.apellido} |</span>
+                                    <span class="globoDatos"><g:link controller="autor" action="show" params="[id: autor.id]">${autor.nombre} ${autor.apellido}</g:link></span>
                                 </g:each>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -85,11 +83,11 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.generales.registrado"/>:
                             <g:if test="${lastAutor}">
-                                <span>[<g:formatDate date="${lastAutor.fechaInscripcion}" format="yyyy-MM-dd HH:mm" />]</span>
-                                <span>${lastAutor.nombre} ${lastAutor.apellido}</span>
+                                <span class="mostrarNum">[<g:formatDate date="${lastAutor.fechaInscripcion}" format="yyyy-MM-dd HH:mm" />]</span>
+                                <span class="globoDatos"><g:link controller="autor" action="show" params="[id: lastAutor.id]">${lastAutor.nombre} ${lastAutor.apellido}</g:link></span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -111,10 +109,10 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.porcentajes.generico" args='${[message(code: 'autor.genero.label'), message(code: 'autores.estado.masculino')]}'/>:
                             <g:if test="${listaPorcetajes[0]}">
-                                <span>${listaPorcetajes[0]}</span>
+                                <span class="estiloPor">${listaPorcetajes[0]}</span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -126,10 +124,10 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.porcentajes.generico" args='${[message(code: 'autor.genero.label'), message(code: 'autores.estado.femenido')]}'/>:
                             <g:if test="${listaPorcetajes[1]}">
-                                <span>${listaPorcetajes[1]}</span>
+                                <span class="estiloPor">${listaPorcetajes[1]}</span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -141,10 +139,10 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.porcentajes.vivos"/>:
                             <g:if test="${listaPorcetajes[2]}">
-                                <span>${listaPorcetajes[2]}</span>
+                                <span class="estiloPor">${listaPorcetajes[2]}</span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -156,10 +154,10 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.porcentajes.muertos"/>:
                             <g:if test="${listaPorcetajes[3]}">
-                                <span>${listaPorcetajes[3]}</span>
+                                <span class="estiloPor">${listaPorcetajes[3]}</span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -181,10 +179,10 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.masculino"/>:
                             <g:if test="${listaNumeros[0]}">
-                                <span>${listaNumeros[0]}</span>
+                                <span class="estiloNum">${listaNumeros[0]} <g:message code="stats.code.enTotal"/></span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -196,10 +194,10 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.femenino"/>:
                             <g:if test="${listaNumeros[1]}">
-                                <span>${listaNumeros[1]}</span>
+                                <span class="estiloNum">${listaNumeros[1]} <g:message code="stats.code.enTotal"/></span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -211,10 +209,10 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.generico" args='${[message(code: 'autores.estado.vivo')]}'/>:
                             <g:if test="${listaNumeros[2]}">
-                                <span>${listaNumeros[2]}</span>
+                                <span class="estiloNum">${listaNumeros[2]} <g:message code="stats.code.enTotal"/></span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -226,10 +224,10 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.generico" args='${[message(code: 'autores.estado.muerto')]}'/>:
                             <g:if test="${listaNumeros[3]}">
-                                <span>${listaNumeros[3]}</span>
+                                <span class="estiloNum">${listaNumeros[3]} <g:message code="stats.code.enTotal"/></span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>
@@ -241,10 +239,10 @@
                         <div class="col-sm-11 enumStat">
                             <g:message code="stats.autores.numeros.generico" args='${[message(code: 'autor.registro.label')]}'/>:
                             <g:if test="${listaNumeros[4]}">
-                                <span>${listaNumeros[4]}</span>
+                                <span class="estiloNum">${listaNumeros[4]} <g:message code="stats.code.enTotal"/></span>
                             </g:if>
                             <g:else>
-                                <span><g:message code="default.stats.noResultados.label"/></span>
+                                <span class="dontStats"><g:message code="default.stats.noResultados.label"/></span>
                             </g:else>
                         </div>
                     </div>

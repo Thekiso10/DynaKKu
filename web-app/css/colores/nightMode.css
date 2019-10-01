@@ -45,7 +45,16 @@
 #layout-container #bodyStats #consultaFuncionesPorStats .marginDiv,
 #layout-container #bodyStats #consultaColeccionesStats .marginDiv {color: #68C8FF;}
 
-/*** Colecciones ***/
+/* Estilo de los datos */
+#layout-container #bodyStats .row .dontStats {color: #68C8FF;}
+#layout-container #bodyStats .row .mostrarNum {color: #2990C4;}
+#layout-container #bodyStats .row .estiloNum,
+#layout-container #bodyStats .row .estiloPor {color: #2990C4;}
+#layout-container #bodyStats .row span.globoDatos {background-color: #174F6B; border-color: #3C9AC9;}
+#layout-container #bodyStats .row span.globoDatos:hover {background-color: transparent;}
+#layout-container #bodyStats .row span.globoDatos a {color: #cbecff;}
+
+    /*** Colecciones ***/
 /* Barra de menu estandar*/
 #layout-container div.menu {background: linear-gradient(to bottom, #68C8FF 0%, #29b4db 50%, #1b5c7d 100%); border-color:#166088;}
 #layout-container tr .menu {background-color: transparent; border-color: transparent;}
