@@ -4,6 +4,10 @@ class EstadisticasController {
 
 	def estadisticasService
 
+	def index() {
+		redirect(action: "general")
+	}
+
     def general() {
 		render (view:"general", model:[])
 	}
