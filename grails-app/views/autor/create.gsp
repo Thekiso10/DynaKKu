@@ -4,7 +4,7 @@
 		<meta name="layout" content="layoutMain"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'autores.css')}" type="text/css">
-		<g:set var="entityName" value="${message(code: 'layoutMenu.botonesColeccion.autores', default: 'Autor')}" />
+		<g:set var="entityName" value="${message(code: 'layoutMenu.botonesColeccion.autor', default: 'Autor')}" />
 		<title><g:message code="default.create.label" args="[entityName]"/></title>
 	</head>
 	<body>
