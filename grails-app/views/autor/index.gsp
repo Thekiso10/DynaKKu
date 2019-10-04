@@ -103,7 +103,7 @@
 							<button type="submit" class="btn btn-filter" name="search"
 								value="search">
 								<span class="glyphicon glyphicon-search"></span>
-								<g:message code="receiver.filter.label" default="Filter" />
+								<g:message code="default.button.filter" default="Filter" />
 							</button>
 
 							<button type="submit" class="btn btn-reset commit" name="showAll"
