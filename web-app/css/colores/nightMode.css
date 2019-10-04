@@ -156,3 +156,9 @@
 
 #Error-404 .container .col-sm-6 .btnBack:hover,
 #Error-404 .container .col-sm-6 .btnInicio:hover {transition: 0.75s; background-color: transparent;}
+
+.notfound .notfound-404 h1 {color:#fff;}
+.notfound .notfound-404 h2 {color:#fff; background-color: #15202B;}
+
+.notfound a {color:#fff; background:#2a343e; border: 4px solid #20354C; border-radius: 5px;}
+.notfound a:hover{border-color:#114D72;background:transparent;}

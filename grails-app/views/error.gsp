@@ -10,9 +10,21 @@
 			<g:renderException exception="${exception}" />
 		</g:if>
 		<g:else>
-			<ul class="errors">
-				<li>An error has occurred</li>
-			</ul>
+			<div id="notfound">
+				<div class="notfound">
+					<div class="notfound-404">
+						<h1>
+							<g:message code="errores.error500.oops"/>
+						</h1>
+						<h2>
+							<g:message code="errores.error500.cuerpo"/>
+						</h2>
+					</div>
+					<g:link controller="estadisticas" action="general" class="btn btnInicio">
+						<g:message code="default.link.start.label"/>
+					</g:link>
+				</div>
+			</div>
 		</g:else>
 	</body>
 </html>
