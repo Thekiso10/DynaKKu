@@ -18,7 +18,7 @@
 			<div id="header">
 				<div class="container">
 					<div id="grailsLogo" class="col-sm-12" role="banner">
-						<g:link action="index">
+						<g:link controller="estadisticas" action="index">
 							<div class="col-sm-6" id="BannerLogo">
 								<g:img id="LogoLayoutMain" class="col-sm-3" dir="images/imgWeb" file="LogoLayoutMain.png"/>
 								<h1 class="col-sm-9"><g:message code="grailsLogo.bannerLogo.nombrePrograma"/></h1>
