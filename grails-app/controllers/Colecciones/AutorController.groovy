@@ -160,10 +160,10 @@ class AutorController {
 			//Si hay foto guardarla en la carpeta configurada
 			def file = request.getFile('imagen')
 			if(!file.empty){
-				validadorFoto = autorService.saveImage(file, params.nombre, params.apellido)
+				def validadorFoto = autorService.saveImage(file, params.nombre, params.apellido)
 				if (validadorFoto.error) {
 					flash.error = message(code: validadorFoto.mensaje)
-					edirect(action: "edit", id:autorInstance.id)
+					redirect(action: "edit", id:autorInstance.id)
 					return
 				}
 				autorInstance.rutaImagen = validadorFoto.path
