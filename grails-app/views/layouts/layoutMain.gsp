@@ -109,7 +109,10 @@
 			
 			<g:layoutBody/>
 
-			<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+			<div id="spinner" class="spinner" style="display:none;">
+				<img id="img-spinner" src="${resource(dir: 'images/imgWeb', file: 'spinner.gif')}" alt="Loading"/>
+			</div>
+
 		</div>
 		<%-- Hacer la importacion de archivos --%>
 		<g:javascript src="layoutMain.js"/>

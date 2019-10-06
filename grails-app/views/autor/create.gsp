@@ -13,7 +13,7 @@
 				<div class="menu navbar-collapse" role="navigation">
 					<div class="container">
 						<ul class="navbar-nav">
-							<li><g:submitButton name="create" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" /></li>
+							<li><g:submitButton name="createSecundaro" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}"/></li>
 							<li><g:link class="btn btnLlist" action="index"><g:message code="autores.list.label" /></g:link></li>
 						</ul>
 						<ul class="navbar-nav navbar-right">
@@ -57,5 +57,7 @@
 				</div>
 			</g:form>
 		</div>
+	<%-- Hacer la importacion de archivos --%>
+	<g:javascript src="spinner.js"/>
 	</body>
 </html>

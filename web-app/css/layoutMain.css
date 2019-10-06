@@ -43,3 +43,20 @@ body a:hover, a:focus {color:white;}
 
 #layout-container #layout-menu #BotonesExtra .btnOpcions {padding: 0.25em 0.35em; margin: 1em 0.5em; border: 3px solid; border-radius: 10px; transition: 1s;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions span.glyphicon {top: 4px; font-size: 1.2em;}
+
+/*************  Spinner *************/
+.spinner {
+    background: url(../images/imgWeb/spinner.gif) 50% 50% no-repeat #B1B4B64d;
+    padding: 0em;
+    text-indent: -9999px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left:0px;
+    margin-top: 0px;
+    text-align:center;
+    z-index:1240;
+    overflow: visible;
+    width: 100%;;
+    height: 100%;;
+}
