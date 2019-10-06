@@ -116,5 +116,6 @@
 		</div>
 		<%-- Hacer la importacion de archivos --%>
 		<g:javascript src="layoutMain.js"/>
+		<g:javascript src="spinner.js"/>
 	</body>
 </html>

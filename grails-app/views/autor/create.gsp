@@ -57,7 +57,5 @@
 				</div>
 			</g:form>
 		</div>
-	<%-- Hacer la importacion de archivos --%>
-	<g:javascript src="spinner.js"/>
 	</body>
 </html>

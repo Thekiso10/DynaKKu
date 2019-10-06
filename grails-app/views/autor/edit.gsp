@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<div id="edit-autor" class="col-sm-12" role="main">
-			<g:uploadForm action="updateAutor" controller="Autor">
+			<g:form url="[action:'updateAutor']" enctype='multipart/form-data' id="formEditAutor">
 				<div class="menu navbar-collapse" role="navigation">
 					<div class="container">
 						<ul class="navbar-nav">
@@ -56,7 +56,7 @@
 						</div>
 					</fieldset>
 				</div>
-			</g:uploadForm>
+			</g:form>
 		</div>
 	</body>
 </html>
