@@ -11,11 +11,11 @@ class EstadisticasService {
     DecimalFormat formato = new DecimalFormat("#.##");
 
     def getMaxEdadAutor(){
-        return Autor.last('edad').edad
+        return Autor.last('edad')?.edad
     }
 
     def getMinEdadAutor(){
-        return Autor.first('edad').edad
+        return Autor.first('edad')?.edad
     }
 
     def getLastAutor(){
@@ -31,12 +31,12 @@ class EstadisticasService {
     }
 
     def getPorAutoresMasculinos(){
-        def numMasculinos = Autor.findAllByGenero('Masculino').size()
+        def numMasculinos = Autor.findAllByGenero('Masculino')?.size()
         return formato.format(calcularPorcentaje(numMasculinos, 0)) + "%"
     }
 
     def getNumAutoresMasculinos(){
-        return Autor.findAllByGenero('Masculino').size()
+        return Autor.findAllByGenero('Masculino')?.size()
     }
 
     def getPorAutoresFemenino(){
@@ -45,29 +45,29 @@ class EstadisticasService {
     }
 
     def getNumAutoresFemenino(){
-        return Autor.findAllByGenero('Femenino').size()
+        return Autor.findAllByGenero('Femenino')?.size()
     }
 
     def getPorAutoresVivos(){
-        def numVivos = Autor.findAllByDifunto(false).size()
+        def numVivos = Autor.findAllByDifunto(false)?.size()
         return formato.format(calcularPorcentaje(numVivos, 0)) + "%"
     }
 
     def getNumAutoresVivos(){
-        return Autor.findAllByDifunto(false).size()
+        return Autor.findAllByDifunto(false)?.size()
     }
 
     def getPorAutoresMuertos(){
-        def numMuertos = Autor.findAllByDifunto(true).size()
+        def numMuertos = Autor.findAllByDifunto(true)?.size()
         return formato.format(calcularPorcentaje(numMuertos, 0)) + "%"
     }
 
     def getNumAutoresMuertos(){
-        return Autor.findAllByDifunto(true).size()
+        return Autor.findAllByDifunto(true)?.size()
     }
 
     def getNumAutores(){
-        return Autor.findAll().size()
+        return Autor.findAll()?.size()
     }
 
     private def calcularPorcentaje(int valorCalc, int calc){
@@ -75,10 +75,10 @@ class EstadisticasService {
 
         switch (calc){
             case 0:
-                valorTotal = Autor.findAll().size()
+                valorTotal = (Autor.findAll()?.size()?: 0)
                 break
         }
 
-        return (valorCalc * 100) / valorTotal
+        return (valorTotal > 0) ? ((valorCalc * 100) / valorTotal): 0
     }
 }
