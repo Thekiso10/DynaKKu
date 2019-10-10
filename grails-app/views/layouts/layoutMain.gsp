@@ -75,7 +75,7 @@
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 									<span class="glyphicon glyphicon-chevron-down"></span><g:message code="layoutMenu.botonesColeccion.mangas"/></a>
 								<ul class="dropdown-menu styleDropdown">
-									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.mangas.crear"/></g:link></li>
+									<li><g:link class="btn btnMenu" controller="mangas" action="create"><g:message code="layoutMenu.botonesColeccion.mangas.crear"/></g:link></li>
 									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.mangas.lista"/></g:link></li>
 									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.mangas.listaDeseados"/></g:link></li>
 								</ul>	
