@@ -162,7 +162,9 @@
                 }
             },
             error: function (response) {
-                //alert('fallo');
+                var text = "${g.message(code: 'layoutMenu.configuracion.error')}"
+                $("#textError").html(text);
+                $("#userFlashError").removeClass("hidden")
             },
             beforeSend: function() {
                 callSpinner();
