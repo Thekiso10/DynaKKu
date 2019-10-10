@@ -20,6 +20,7 @@ class Mangas {
 	
 	Autor autor
 	Demografia demografia
+	Mangas mangaSpinOff
 	
 	static constraints = {
 		nombreManga	nullable: true, blank: true
@@ -37,8 +38,9 @@ class Mangas {
 		fechaInscripcion	nullable: true, blank: true
 		ultimaModificacion	nullable: true, blank: true
 
-		autor		nullable: true, blank: true
-		demografia	nullable: true, blank: true
+		autor			nullable: true, blank: true
+		demografia		nullable: true, blank: true
+		mangaSpinOff 	nullable: true, blank: true
 	}
 	
 	static mapping = {
@@ -49,7 +51,5 @@ class Mangas {
 		serieConsecutiva	defaultValue: '0'
 		deseado				defaultValue: '0'
 
-		fechaInscripcion	defaultValue: new Date()
-		ultimaModificacion	defaultValue: new Date()
 	}
 }
