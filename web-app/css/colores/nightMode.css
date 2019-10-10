@@ -21,6 +21,25 @@
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #2A343E; color:#2990C4; border-color:#2990C4}
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#fff;}
 
+/*************  Configuracion *************/
+
+#layout-container #modalConfiguracion .modal-header {background-color: #1B5C7D; color: #E9EAEB; border-bottom: 3px solid #10384c;}
+#layout-container #modalConfiguracion .modal-header .close {color: #E9EAEB;}
+
+#layout-container #modalConfiguracion .modal-body {background-color: #1f2e3e; color: #E9EAEB;}
+#layout-container #modalConfiguracion .modal-body .title-body {color: #E9EAEB; border-bottom: 2px solid #E9EAEB;}
+#layout-container #modalConfiguracion .modal-body .body-container {background-color: #1D2A39; border: 2px solid #1A2633;}
+#layout-container #modalConfiguracion .modal-body .body-container .row input {background-color: transparent; border-bottom: 2px solid #2990C4; color: #2990C4}
+#layout-container #modalConfiguracion .modal-body .body-container .row input[type="radio"] {width: 1em; height: 1em;}
+#layout-container #modalConfiguracion .modal-body .body-container .row .input-idioma {color: #E9EAEB;}
+
+#layout-container #modalConfiguracion .modal-footer {background-color: #505861;}
+#layout-container #modalConfiguracion .modal-footer .btnCommit {background-color: #236286c9; color: white; border-color: #205A7A;}
+#layout-container #modalConfiguracion .modal-footer .btnSkip {background-color: #141E28; border-color: #141E28; color: white;}
+
+#layout-container #modalConfiguracion .modal-footer .btnCommit:hover,
+#layout-container #modalConfiguracion .modal-footer .btnSkip:hover {background-color: #2a343e52; border-color: #013a73;}
+
 /*** Estadisticas ***/
 /* Barra de menu estandar*/
 #layout-container div.menu ul .btnSelect {background-color: #04a1fb9c; color: white; border-color: #014e7b;}

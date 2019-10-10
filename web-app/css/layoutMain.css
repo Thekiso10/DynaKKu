@@ -44,6 +44,29 @@ body a:hover, a:focus {color:white;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions {padding: 0.25em 0.35em; margin: 1em 0.5em; border: 3px solid; border-radius: 10px; transition: 1s;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions span.glyphicon {top: 4px; font-size: 1.2em;}
 
+/*************  Configuracion *************/
+
+#layout-container #modalConfiguracion .modal-header {}
+#layout-container #modalConfiguracion .modal-header .close {margin-top: 2px; font-size: 2em;}
+#layout-container #modalConfiguracion .modal-header .modal-title {font-family: "Open Sans Light"; font-size: 1.75em;}
+
+#layout-container #modalConfiguracion .modal-body .title-body {text-transform: uppercase; text-align: center; font-size: 1.5em; margin-top: 1em; margin-bottom: 1.25em;}
+#layout-container #modalConfiguracion .modal-body #tituloUser.title-body {margin-top: 0;}
+#layout-container #modalConfiguracion .modal-body .body-container {border-radius: 10px;}
+#layout-container #modalConfiguracion .modal-body .body-container .row {padding-top: 1em; padding-bottom: 0.25em;}
+#layout-container #modalConfiguracion .modal-body .body-container {float: none; margin-bottom: 2em;}
+#layout-container #modalConfiguracion .modal-body .body-container .row {margin-bottom: 0.5em;}
+#layout-container #modalConfiguracion .modal-body .body-container .row input {border: none; padding: 0 0.25em; font-size: 1.10em;}
+#layout-container #modalConfiguracion .modal-body .body-container .row input[type="radio"] { margin-top: -1px; vertical-align: middle;}
+#layout-container #modalConfiguracion .modal-body .body-container .row input:focus{outline: none;}
+#layout-container #modalConfiguracion .modal-body .body-container .row .input-idioma {font-size: 1.10em; font-family: "Open Sans Light";}
+#layout-container #modalConfiguracion .modal-body .body-container .label-body {font-size: 1.25em; text-align: end;}
+
+#layout-container #modalConfiguracion .modal-footer {border: none;}
+#layout-container #modalConfiguracion .modal-footer .btn {padding: 0.5em 1.25em; font-weight: 600; font-size: 1.1em}
+#layout-container #modalConfiguracion .modal-footer .btnCommit,
+#layout-container #modalConfiguracion .modal-footer .btnSkip {border: 2px solid; transition: 1s;}
+
 /*************  Spinner *************/
 .spinner {
     background: url(../images/imgWeb/spinner.gif) 50% 50% no-repeat #B1B4B64d;

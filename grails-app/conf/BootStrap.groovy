@@ -1,5 +1,6 @@
 import Colecciones.Demografia
 import Colecciones.Genero
+import Funcion.Usuario
 import groovy.time.TimeDuration
 import groovy.time.TimeCategory
 import org.apache.commons.io.FilenameUtils
@@ -7,18 +8,26 @@ import org.apache.commons.io.FilenameUtils
 class BootStrap {
     //Cargar las variables de Configuracion
     def grailsApplication
+    def localeResolver
 
     def init = { servletContext ->
         log.info "## Cargar BootStrap ##"
 
         if (grailsApplication.config.dataSource.dbCreate.equals("create")){
+
             cargarDemografias()
             cargarGeneros()
+
+            log.info "</> Creando usuario por defecto </>"
+            def user = new Usuario(nombre: 'Admin', apellido: 'Default', idiomaDefault: 'es', modoDark: true, ultimaModificacion: new Date())
+            if(!user.save(flush: true)) log.error "No se ha podido crear el usuario por defecto"
+
         }else if (grailsApplication.config.dataSource.dbCreate.equals("update")){
 
         }
 
         comprobarCarpetas() //Haremos la comprobacion de carpetas siempre
+        cargarIdioma() //Hacemos que cargue el idioma, en local, configurado por el usuario
 
         log.info "## Fin de cargar BootStrap ##"
     }
@@ -61,7 +70,7 @@ class BootStrap {
     }
     //Cargar la lista de demografias
     def cargarDemografias(){
-        log.info "Creando Demografias"
+        log.info "</> Creando Demografias </>"
         def listaDemografia = []
         //Llenar la lista con diferentes demografias
         listaDemografia << new Demografia(nombre: "Kodomo")
@@ -74,7 +83,7 @@ class BootStrap {
     }
     //Cargar la lista de generos
     def cargarGeneros() {
-        log.info "Creando Generos"
+        log.info " </> Creando Generos </>"
         def listaGenero = []
         //Llenar la lista con diferentes generos
         listaGenero << new Genero(nombre:"Nekketsu")
@@ -90,6 +99,36 @@ class BootStrap {
         listaGenero << new Genero(nombre:"Gore")
         //Llamar al metodo para guardar la lista
         guardarLista(listaGenero)
+    }
+
+    def cargarIdioma(){
+        log.info "</> Cargar idioma antes de arrancar la apliación </>"
+        //Buscamos, en la table Usuario, el idioma configurado por el usuario. Si es null, establecemos por defecto en 'Es'
+        def userInstance = (Usuario.first()) ?: null
+        def idioma = (userInstance) ? userInstance.idiomaDefault : 'null'
+        Locale defaultLocale
+        //Mostramos cual es el idioma en BBDD. Sale null si no se ha encontrada nada en la BBDD
+        log.info "</> Idioma detectado -> [" + idioma + "]"
+        //Configuramos la variable Locale a partir de la variable 'idioma'
+        switch (idioma){
+            case 'es':
+                defaultLocale = new Locale('es')
+                break
+            case 'ca':
+                defaultLocale = new Locale('ca','ES')
+                break
+            case 'en':
+                defaultLocale = new Locale('en','US')
+                break
+            default:
+                defaultLocale = new Locale('es')
+                break
+        }
+        //Cargamos el idioma en la sessión local del navegador del usuario
+        localeResolver.defaultLocale = defaultLocale
+        log.info "</> Cargar el Modo Visual </>"
+        grailsApplication.config.dynamicList.mode.oscuro = (userInstance) ? userInstance.modoDark : true
+        log.info "</> Modo Oscuro -> [" + grailsApplication.config.dynamicList.mode.oscuro + "]"
     }
 
     def guardarLista(def lista){

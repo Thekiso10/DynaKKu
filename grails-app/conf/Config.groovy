@@ -127,6 +127,9 @@ log4j.main = {
 /* 		          Nuevas variables de Configuracion        			*/
 /*==================================================================*/
 
+/****** Modo ******/
+dynamicList.mode.oscuro = true
+
 /****** Autores ******/
 dynamicList.autores.edadMax = 110 	//Especificar la edad minima de un Autor
 dynamicList.autores.edadMin = 0 	//Especificar la edad maxima de un Autor

@@ -8,7 +8,14 @@
 		<g:external dir="images/imgWeb/icons" file="favicon.ico"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'layoutMain.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'flashMessage.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'colores/nightMode.css')}" type="text/css">
+
+		<g:if test="${grailsApplication.config.dynamicList.mode.oscuro}">
+			<link rel="stylesheet" href="${resource(dir: 'css', file: 'colores/nightMode.css')}" type="text/css">
+		</g:if>
+		<g:else>
+			<link rel="stylesheet" href="${resource(dir: 'css', file: 'colores/lightMode.css')}" type="text/css">
+		</g:else>
+
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
 		<g:layoutHead/>
@@ -98,7 +105,7 @@
 								<g:link class="btn btnExtra"><g:message code="layoutMenu.BotonesExtra.graficas"/></g:link>
 							</li>
 							<li>
-								<button class="btn btnOpcions">
+								<button class="btn btnOpcions" data-toggle="modal" data-target="#modalConfiguracion">
 									<span class="glyphicon glyphicon-cog"></span>
 								</button>
 							</li>
@@ -108,6 +115,10 @@
 			</nav>
 			
 			<g:layoutBody/>
+
+			<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<g:render  template="/layouts/templates/configuracion"/>
+			</div>
 
 			<div id="spinner" class="spinner" style="display:none;">
 				<img id="img-spinner" src="${resource(dir: 'images/imgWeb', file: 'spinner.gif')}" alt="Loading"/>
