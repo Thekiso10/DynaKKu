@@ -77,6 +77,7 @@
 								<ul class="dropdown-menu styleDropdown">
 									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.mangas.crear"/></g:link></li>
 									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.mangas.lista"/></g:link></li>
+									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.mangas.listaDeseados"/></g:link></li>
 								</ul>	
 							</li>
 							<li class="dropdown">
