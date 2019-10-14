@@ -38,7 +38,7 @@
 			<g:message code="mangas.completado.label" default="Completado" />
 
 		</label>
-		<g:checkBox name="completado" value="${mangasInstance?.completado}" />
+		<g:checkBox name="completado" value="${mangasInstance?.completado}" class="checkboxPos"/>
 
 	</div>
 
@@ -47,7 +47,7 @@
 			<g:message code="mangas.serieAcabada.label" default="Serie Acabada" />
 
 		</label>
-		<g:checkBox name="serieAcabada" value="${mangasInstance?.serieAcabada}" />
+		<g:checkBox name="serieAcabada" value="${mangasInstance?.serieAcabada}" class="checkboxPos"/>
 
 	</div>
 
@@ -56,7 +56,7 @@
 			<g:message code="mangas.serieConsecutiva.label" default="Serie Consecutiva" />
 
 		</label>
-		<g:checkBox name="serieConsecutiva" value="${mangasInstance?.serieConsecutiva}" />
+		<g:checkBox name="serieConsecutiva" value="${mangasInstance?.serieConsecutiva}" class="checkboxPos"/>
 
 	</div>
 
@@ -65,7 +65,7 @@
 			<g:message code="mangas.deseado.label" default="Deseado" />
 
 		</label>
-		<g:checkBox name="deseado" value="${mangasInstance?.deseado}" />
+		<g:checkBox name="deseado" value="${mangasInstance?.deseado}" class="checkboxPos"/>
 
 	</div>
 

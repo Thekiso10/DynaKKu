@@ -73,5 +73,6 @@
                 </div>
             </g:form>
         </div>
+    <g:javascript src="Mangas.js"/>
 	</body>
 </html>
