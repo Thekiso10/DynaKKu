@@ -1,4 +1,5 @@
 <%@ page import="Colecciones.Mangas" %>
+<%@ page import="Colecciones.Demografia" %>
 
 
 <h3><g:message code="mangas.title.datosManga" /></h3>
@@ -32,7 +33,7 @@
 		<label id="autorLabel" for="autor" class="col-sm-2">
 			<g:message code="layoutMenu.botonesColeccion.autor" default="Autor" />:
 		</label>
-		<g:select id="autor" name="autor.id" from="${Colecciones.Autor.list()}" optionKey="id" value="${mangasInstance?.autor?.id}" class="many-to-one col-sm-10" noSelection="['null': '']"/>
+		<g:select id="autor" name="autor.id" from="${Colecciones.Autor.list()}" optionKey="id" optionValue="${{it.nombre + " " +it.apellido}}" value="${mangasInstance?.autor?.id}" class="many-to-one col-sm-10" noSelection="['null': '']"/>
 	</div>
 </div>
 
@@ -117,16 +118,16 @@
 			<g:message code="mangas.demografia.label" default="Demografia" />
 			<span class="required-indicator">*</span>
 		</label>
-		<g:select id="demografia" name="demografia.id" from="${Colecciones.Demografia.list()}" optionKey="id" value="${mangasInstance?.demografia?.id}" class="many-to-one" noSelection="['null': '']"/>
+		<g:select id="demografia" name="demografia.nombre" from="${Demografia.list()}" optionKey="id" optionValue="nombre" value="${mangasInstance?.demografia?.nombre}" class="many-to-one" noSelection="['null': '']" />
 
 	</div>
 
-	<div class="fieldcontain ${hasErrors(bean: mangasInstance, field: 'mangaSpinOff', 'error')} required col-sm-6 text-center">
-		<label for="mangaSpinOff">
-			<g:message code="mangas.mangaSpinOff.label" default="Manga Spin Off" />
+	<div class="fieldcontain ${hasErrors(bean: mangasInstance, field: 'Generos', 'error')} required col-sm-6 text-center">
+		<label for="Generos">
+			<g:message code="mangas.Generos.label" default="Generos" />
 			<span class="required-indicator">*</span>
 		</label>
-		<g:select id="mangaSpinOff" name="mangaSpinOff.id" from="${Colecciones.Mangas.list()}" optionKey="id" value="${mangasInstance?.mangaSpinOff?.id}" class="many-to-one" noSelection="['null': '']"/>
+		<g:select id="Generos" name="Generos.id" from="${Colecciones.Genero.list()}" optionKey="id" optionValue="nombre" class="many-to-one" noSelection="['null': '']"/>
 	</div>
 
 </div>
