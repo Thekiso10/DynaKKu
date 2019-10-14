@@ -13,7 +13,14 @@
                 <div class="menu navbar-collapse" role="navigation">
                     <div class="container">
                         <ul class="navbar-nav">
-                            <li><g:submitButton name="createSecundaro" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}"/></li>
+                            <li>
+                                <g:if test="${hayAutores}">
+                                    <g:submitButton name="createSecundaro" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+                                </g:if>
+                                <g:else>
+                                    <g:submitButton name="createSecundaro" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" disabled="disabled"/>
+                                </g:else>
+                            </li>
                         </ul>
                         <ul class="navbar-nav">
                             <li class="dropdown">
@@ -67,7 +74,12 @@
                     </fieldset>
                     <fieldset class="buttons">
                         <div class="col-sm-12 divButtonSave">
-                            <g:submitButton name="create" class="save btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                            <g:if test="${hayAutores}">
+                                <g:submitButton name="create" class="save btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                            </g:if>
+                            <g:else>
+                                <g:submitButton name="create" class="save btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" disabled="disabled"/>
+                            </g:else>
                         </div>
                     </fieldset>
                 </div>

@@ -17,10 +17,16 @@
 			<label for="urlImg" class="col-sm-4">
 				<g:message code="mangas.urlImg.label" default="Url Img" />:
 			</label>
-			<g:textField class="col-sm-8" name="urlImg" value="${mangasInstance?.urlImg}"/>
+			<g:field type="file" name="urlImg"  accept="image/*" class="tamanoInput col-sm-8"/>
+			<div class="imgAutorInfo small">
+				<span>
+					<g:message code="autores.imagen.formatos" default="Url Img" />
+				</span>
+			</div>
 		</div>
 
 	</div>
+
 
 	<div class="fieldcontain ${hasErrors(bean: mangasInstance, field: 'autor', 'error')} col-sm-12">
 		<label id="autorLabel" for="autor" class="col-sm-2">

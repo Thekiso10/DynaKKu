@@ -181,6 +181,8 @@
 #layout-container .form div.blockManga select,
 #layout-container .form div.blockManga input {background-color: #10171E; color: #f9f9f9; border-color: #272829;}
 
+#layout-container .form .blockManga .fieldcontain .imgAutorInfo {color: #d8d8d8;}
+
 #layout-container #edit-mangas div.menu .dropdown .styleDropdown li .btnMenu,
 #layout-container #create-mangas div.menu .dropdown .styleDropdown li .btnMenu {background-color: #2276a1f5;}
 

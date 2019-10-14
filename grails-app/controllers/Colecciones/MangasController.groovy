@@ -12,6 +12,7 @@ class MangasController {
     }
 
     def create() {
-        respond new Mangas(params)
+        def hayAutores = (Autor.list()?.size() > 0)? true : false //Buscamo si hay autores
+        respond new Mangas(params), model:[hayAutores:hayAutores]
     }
 }
