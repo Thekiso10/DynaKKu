@@ -169,7 +169,31 @@
 
 #layout-container #ver-autor div#panel-ver-autor #imgAutor img {border-color: #1B2228; box-shadow: 0 1px 11px 3px #1B2228;}
 
-/*** Errores ***/
+/*** Mangas ***/
+/** Crear y Editar Mangas **/
+#layout-container .form  h3,
+#layout-container #edit-mangas #formEditMangas h2,
+#layout-container #create-mangas #formCreateMagas h2 {color: #d8d8d8;}
+
+#layout-container .form .blockManga {background-color: #166088; color: #114d72;}
+#layout-container .form .blockManga label {color: #fff;}
+
+#layout-container .form div.blockManga select,
+#layout-container .form div.blockManga input {background-color: #10171E; color: #f9f9f9; border-color: #272829;}
+
+#layout-container #edit-mangas div.menu .dropdown .styleDropdown li .btnMenu,
+#layout-container #create-mangas div.menu .dropdown .styleDropdown li .btnMenu {background-color: #2276a1f5;}
+
+#layout-container #edit-mangas #formEditMangas.container .divButtonSave,
+#layout-container #create-mangas #formCreateMagas .container .divButtonSave {background: #166088; border-color: #114d72;}
+
+#layout-container #edit-mangas #formEditMangas  .buttons .divButtonSave .btnSave,
+#layout-container #create-mangas #formCreateMagas .buttons .divButtonSave .btnSave {background-color: #2276A1; color: white; border-color: #1d536f;}
+
+#layout-container #edit-mangas #formEditMangas  .buttons .divButtonSave .btnSave:hover,
+#layout-container #create-mangas #formCreateMagas .buttons .divButtonSave .btnSave:hover {background: #1699dc; border-color: #2990C4;}
+
+    /*** Errores ***/
 #Error-404 .container .col-sm-6 .btnInicio {background-color: #2276A1; border: 3px solid #63AED4; color: #fff;}
 #Error-404 .container .col-sm-6 .btnBack {background-color: #273039; border: 3px solid #646B72; color: #fff;}
 

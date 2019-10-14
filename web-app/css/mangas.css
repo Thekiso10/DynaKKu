@@ -1,0 +1,31 @@
+/** Crear y Editar Mangas **/
+#layout-container #edit-mangas #formEditMangas h2,
+#layout-container #create-mangas #formCreateMagas h2 {font-size: 2.75em; border-bottom: 2px solid; margin-top: 1em;}
+
+#layout-container .form  h3 {font-size: 1.75em; margin-bottom: 0.5em; border-bottom: 2px solid;}
+#layout-container .form .blockManga {padding: 1em 0.25em; margin-bottom: 2em; border: 2px solid; border-radius: 10px;}
+
+#layout-container .form .blockManga select,
+#layout-container .form .blockManga input {border: 3px solid; font-size: 1.15em;}
+#layout-container .form .blockManga label {font-size: 1.15em; text-align: end;}
+
+#layout-container .form .blockManga #autorLabel {padding-right: 1.5em; width: 16%;}
+
+#layout-container .form .blockManga .fieldcontain {padding: 0.75em;}
+#layout-container .form .blockManga .fieldcontain .col-sm-4 {padding-left: 0;}
+
+#layout-container .form .blockManga #precioTotal {width: 27.75%;}
+#layout-container .form .blockManga #autor {width: 31.75%;}
+#layout-container .form .blockManga #mangaSpinOff,
+#layout-container .form .blockManga #demografia {width: 50%;}
+#layout-container .form .blockManga #precioTotalLabel {width: 20%;}
+
+#layout-container #edit-mangas #formEditMangas .buttons,
+#layout-container #create-mangas #formCreateMagas .buttons {text-align: center;}
+
+#layout-container #edit-mangas #formEditMangas .divButtonSave,
+#layout-container #create-mangas #formCreateMagas .divButtonSave {margin-top: 2em; margin-bottom: 2em; padding: 0.5em; border: 3px solid; border-radius: 10px;}
+
+#layout-container #edit-mangas #formEditMangas .buttons .btnSave,
+#layout-container #create-mangas #formCreateMagas .buttons .btnSave {padding: 0.5em 6em; font-size: 1.5em; border: 3px solid; font-weight: 600; transition: 1s;}
+

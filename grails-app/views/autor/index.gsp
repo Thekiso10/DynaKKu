@@ -28,7 +28,8 @@
 					</g:link></li>
 				</ul>
 				<ul class="navbar-nav">
-					<li class="dropdown"><a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<li class="dropdown">
+						<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						<span class="glyphicon glyphicon-chevron-down"></span>
 						<g:message code="autores.list.manage.label" /></a>
 						<ul class="dropdown-menu styleDropdown">
