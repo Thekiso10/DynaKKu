@@ -93,7 +93,7 @@ class BootStrap {
         listaGenero << new Genero(nombre:"Yuri")
         listaGenero << new Genero(nombre:"Yaoi")
         listaGenero << new Genero(nombre:"Harem")
-        listaGenero << new Genero(nombre:"Mecha:")
+        listaGenero << new Genero(nombre:"Mecha")
         listaGenero << new Genero(nombre:"Ecchi")
         listaGenero << new Genero(nombre:"Jidaimono")
         listaGenero << new Genero(nombre:"Gore")

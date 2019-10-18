@@ -21,6 +21,12 @@
 #layout-container .form .blockManga #Generos,
 #layout-container .form .blockManga #demografia {width: 50%;}
 #layout-container .form .blockManga #precioTotalLabel {width: 20%;}
+#layout-container .form .blockManga .agreeGenero {border: 3px solid; padding-top: 3px;}
+
+#layout-container .form .blockManga .blockGenero h4 {font-size: 1.75em; text-align: center; border-bottom: 1px solid; margin-top: 3.25em;}
+#layout-container .form .blockManga .blockGenero #boxesGeneros {display: flex; padding: 0em 2em;}
+#layout-container .form .blockManga .blockGenero #boxesGeneros .boxGenero {padding: 0.25em 1em; border: 2px solid; border-radius: 5px; font-size: 17px; margin-right: 1em;}
+#layout-container .form .blockManga .blockGenero #boxesGeneros .close {margin-top: 1px; margin-left: 0.25em;}
 
 #layout-container #edit-mangas #formEditMangas .buttons,
 #layout-container #create-mangas #formCreateMagas .buttons {text-align: center;}

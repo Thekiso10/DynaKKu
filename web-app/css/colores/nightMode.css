@@ -180,8 +180,15 @@
 
 #layout-container .form div.blockManga select,
 #layout-container .form div.blockManga input {background-color: #10171E; color: #f9f9f9; border-color: #272829;}
+#layout-container .form div.blockManga .agreeGenero {background-color: #141E28; border-color: #141E28; color: white; transition: 1s;}
+#layout-container .form div.blockManga .agreeGenero:hover {background-color: transparent;}
+#layout-container .form div.blockManga .agreeGenero:focus {outline: none;}
 
+#layout-container .form .blockManga .blockGenero h4,
 #layout-container .form .blockManga .fieldcontain .imgAutorInfo {color: #d8d8d8;}
+
+#layout-container .form .blockManga .blockGenero #boxesGeneros .close {color: #fff;}
+#layout-container .form .blockManga .blockGenero #boxesGeneros div.boxGenero {background-color: #174F6B; border-color: #3C9AC9; color: #fff;}
 
 #layout-container #edit-mangas div.menu .dropdown .styleDropdown li .btnMenu,
 #layout-container #create-mangas div.menu .dropdown .styleDropdown li .btnMenu {background-color: #2276a1f5;}

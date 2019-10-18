@@ -124,10 +124,33 @@
 
 	<div class="fieldcontain ${hasErrors(bean: mangasInstance, field: 'Generos', 'error')} required col-sm-6 text-center">
 		<label for="Generos">
-			<g:message code="mangas.Generos.label" default="Generos" />
+			<g:message code="mangas.generos.label" default="Generos" />
 			<span class="required-indicator">*</span>
 		</label>
 		<g:select id="Generos" name="Generos.id" from="${Colecciones.Genero.list()}" optionKey="id" optionValue="nombre" class="many-to-one" noSelection="['null': '']"/>
+		<button id="agreeGenero" type="button" class="agreeGenero" data-dismiss="modal">
+			<g:message code="default.button.agree"/>
+		</button>
+	</div>
+
+	<div class="blockGenero">
+		<h4><g:message code="mangas.generosTotales.label"/></h4>
+		<div id="boxesGeneros">
+
+			<div id="clonBoxGenero" class="boxGenero hidden">
+				<span class="boxNombreGenero"></span>
+				<button type="button" class="close closeGenero" data-dismiss="modal">&times;</button>
+			</div>
+
+			<g:each in="${listaGeneros}" var="genero">
+				<div class="boxGenero">
+					<span class="boxNombreGenero">${Colecciones.Genero.find{id == genero}?.nombre}</span>
+					<button type="button" class="close closeGenero" data-dismiss="modal">&times;</button>
+				</div>
+			</g:each>
+		</div>
 	</div>
 
 </div>
+
+<g:hiddenField name="listOfGenders" value="${listaGeneros}"/>
