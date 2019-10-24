@@ -15,10 +15,10 @@
 
 
 		<div class="fieldcontain ${hasErrors(bean: mangasInstance, field: 'urlImg', 'error')} col-sm-6">
-			<label for="urlImg" class="col-sm-4">
+			<label for="imagen" class="col-sm-4">
 				<g:message code="mangas.urlImg.label" default="Url Img" />:
 			</label>
-			<g:field type="file" name="urlImg"  accept="image/*" class="tamanoInput col-sm-8"/>
+			<g:field type="file" name="imagen"  accept="image/*" class="tamanoInput col-sm-8"/>
 			<div class="imgAutorInfo small">
 				<span>
 					<g:message code="autores.imagen.formatos" default="Url Img" />

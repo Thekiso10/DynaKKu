@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<div id="create-mangas" class="col-sm-12" role="main">
-            <g:form url="[resource:mangasInstance, action:'save']" id="formCreateMagas">
+            <g:form url="[resource:mangasInstance, action:'save']" id="formCreateMagas" enctype='multipart/form-data'>
                 <div class="menu navbar-collapse" role="navigation">
                     <div class="container">
                         <ul class="navbar-nav">

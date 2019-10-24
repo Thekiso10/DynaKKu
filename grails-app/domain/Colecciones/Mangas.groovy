@@ -14,9 +14,9 @@ class Mangas {
 	int numTomosActuales
 	int numTomosMaximos
 	int precioTotal
-	
-	Calendar fechaInscripcion
-	Calendar ultimaModificacion
+
+	Date fechaInscripcion
+	Date ultimaModificacion
 	
 	Autor autor
 	Demografia demografia

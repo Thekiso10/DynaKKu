@@ -137,6 +137,7 @@ dynamicList.autores.rutaImg = "web-app\\images\\imgAutores" //Ruta para guardar 
 
 /****** Mangas ******/
 dynamicList.mangas.rutaImg = "web-app\\images\\imgMangas" //Ruta para guardar las imagenes de cada manga
+dynamicList.mangas.longitut.nombreMax = 255
 
 /*==================================================================*/
 /* 					   Cargar Config Externa       					*/
