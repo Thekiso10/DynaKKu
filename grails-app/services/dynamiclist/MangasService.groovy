@@ -24,7 +24,7 @@ class MangasService {
                 mensaje = "mangas.error.campoNullo02" //Codigo del error
             }else{
                 //Comprobamos bloque 03 - Datos Monetarios
-                if(params.numTomosMaximos < 0 || params.precioTotal < 0 || params.numTomosActuales < 0){
+                if(Integer.parseInt(params.numTomosMaximos) < 0 || Integer.parseInt(params.precioTotal) < 0 || Integer.parseInt(params.numTomosActuales) < 0){
                     log.error "El campo de los Datos Especificos son negativos"
                     error = true
                     mensaje = "mangas.error.monetarios.negativos" //Codigo del error
