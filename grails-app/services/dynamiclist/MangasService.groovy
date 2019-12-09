@@ -62,7 +62,7 @@ class MangasService {
         def error = false
         def mensaje = null
 
-        if(params.numTomosMaximos < params.numTomosActuales){
+        if(Integer.parseInt(params.numTomosMaximos) < Integer.parseInt(params.numTomosActuales)){
             log.error "Estan intentando crear un manga con mas tomos en propiedad que tomos totales"
             error = true
             mensaje = "mangas.error.monetarios.numTomosActuales.mayor" //Codigo del error
