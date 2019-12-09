@@ -37,3 +37,28 @@
 #layout-container #edit-mangas #formEditMangas .buttons .btnSave,
 #layout-container #create-mangas #formCreateMagas .buttons .btnSave {padding: 0.5em 6em; font-size: 1.5em; border: 3px solid; font-weight: 600; transition: 1s;}
 
+/** Lista Mangas **/
+#layout-container #list-mangas h2 {font-size: 2.75em; border-bottom: 1px solid; margin-top: 1em;}
+
+#layout-container #list-mangas #filtroMangas {padding: 0.25em 1.75em; margin: 1.5em 0 0.35em 0; border: 3px solid; border-radius: 10px 10px 7px 7px;}
+#layout-container #list-mangas #filtroMangas .bodyFilter {margin-bottom: 0.25em; display: flex; align-items: center;}
+#layout-container #list-mangas #filtroMangas .form-group {margin-right: 0.5em; float: left;}
+#layout-container #list-mangas #filtroMangas .titleFilter {margin-top: 0.25em; padding-bottom: 0.25em; border-bottom:6px dotted;font-size: 2.10em; font-weight: 600;}
+#layout-container #list-mangas #filtroMangas .labelFilter {font-size: 1.15em;}
+#layout-container #list-mangas #filtroMangas .form-group input {border: 2px solid;}
+
+#layout-container #list-mangas #filtroMangas .btn {font-size: 1.10em; font-weight: 600;}
+#layout-container #list-mangas #filtroMangas .btn-filter {margin-left: 0.75em; margin-right: 0.25em; border: 2px solid;}
+
+#layout-container #list-mangas #tableMangasList {border:2px solid; border-radius: 7px; margin-top: 2em; margin-bottom: 1em;}
+#layout-container #list-mangas #tableMangasList .table {font-family: 'Open Sans'; text-align: center; font-size: 1.10em; margin: 0;}
+
+#layout-container #list-mangas #tableMangasList .table tr th {text-align: center;}
+#layout-container #list-mangas #tableMangasList .table tr td a {font-family: 'Open Sans Light', sans-serif; font-weight: bold; color:#fff;}
+
+#layout-container #list-mangas #tableMangasList .table td {vertical-align: middle;}
+
+#layout-container #list-mangas .paginacion {text-align: center; margin-bottom: 3em; line-height: 0.25em;}
+#layout-container #list-mangas .paginacion a,
+#layout-container #list-mangas .paginacion span {font-size: 1.25em; padding-left: 1em;}
+

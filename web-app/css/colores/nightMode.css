@@ -137,21 +137,28 @@
 #layout-container div#list-autor #filtroAutor .btn-filter {background-color: #0F3548; border-color: #1E698F; color: #ecf5ff;}
 
 #layout-container #list-autor #filtroAutor .btn-filter:hover,
-#layout-container #list-autor #filtroAutor .btn-reset:hover {background-color: transparent; color:#fff; transition: 0.7s;} 
+#layout-container #list-autor #filtroAutor .btn-reset:hover {background-color: transparent; color:#fff; transition: 0.7s;}
 
+#layout-container #list-mangas div#tableMangasList,
 #layout-container #list-autor div#tableAutorList {border-color: #2A343E;}
 #layout-container #list-autor div#tableAutorList .table .btnMenu {background-color: #68C8FF; border: 2px solid #4380A3; color: #4E5052; transition: 1s;}
 #layout-container #list-autor div#tableAutorList .table .btnMenu:hover {background-color: transparent; color: white;}
 
+#layout-container #list-mangas #tableMangasList .table tr td a:hover,
 #layout-container #list-autor #tableAutorList .table tr td a:hover {text-decoration: none; color:#96999a;}
 
+#layout-container #list-mangas #tableMangasList .table .thead-dark,
 #layout-container #list-autor #tableAutorList .table .thead-dark {background-color: #1B2228;}
+#layout-container #list-mangas #tableMangasList .table .thead-dark a,
 #layout-container #list-autor #tableAutorList .table .thead-dark a {color: #fff;}
 
+#layout-container #list-mangas #tableMangasList .table-dark,
 #layout-container #list-autor #tableAutorList .table-dark {color: #fff; background-color: #13425A;}
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {background-color: #1E698F;}
+#layout-container #list-mangas #tableMangasList .table-hover > tbody > tr:hover,
 #layout-container #list-autor #tableAutorList .table-hover > tbody > tr:hover,
+#layout-container #list-mangas div#tableMangasList .table-hover > tbody > tr.even:hover,
 #layout-container #list-autor #tableAutorList .table-hover > tbody > tr.even:hover {background-color: #13425A;}
 
 #layout-container #list-autor .paginacion {background: #1B2228; border-color: #102f4f;}
@@ -202,7 +209,18 @@
 #layout-container #edit-mangas #formEditMangas  .buttons .divButtonSave .btnSave:hover,
 #layout-container #create-mangas #formCreateMagas .buttons .divButtonSave .btnSave:hover {background: #1699dc; border-color: #2990C4;}
 
-    /*** Errores ***/
+/** Lista Mangas **/
+#layout-container #list-mangas h2 {color:#d8d8d8; border-bottom-color: #d8d8d8;}
+
+#layout-container div#list-mangas #filtroMangas {background-color: #13425A; border-color: #081B24;}
+#layout-container div#list-mangas #filtroMangas .titleFilter {border-bottom-color: #4C92BA; color:#67bcec;}
+#layout-container div#list-mangas #filtroMangas .labelFilter {color:#5FB6E8;}
+#layout-container div#list-mangas #filtroMangas .form-group input {background-color: #0e2033; color:#5aacff; border-color: #4380A3; box-shadow: 0 1px 5px 1px #4380A3;}
+#layout-container div#list-mangas #filtroMangas .form-group input::placeholder {color: #c8e3ff; opacity: 0.5;}
+#layout-container div#list-mangas #filtroMangas .btn-reset {background-color: #83D2FF; border: 2px solid #396E8C; color: #24517f;}
+#layout-container div#list-mangas #filtroMangas .btn-filter {background-color: #0F3548; border-color: #1E698F; color: #ecf5ff;}
+
+/*** Errores ***/
 #Error-404 .container .col-sm-6 .btnInicio {background-color: #2276A1; border: 3px solid #63AED4; color: #fff;}
 #Error-404 .container .col-sm-6 .btnBack {background-color: #273039; border: 3px solid #646B72; color: #fff;}
 

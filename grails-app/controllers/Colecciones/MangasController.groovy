@@ -3,14 +3,25 @@ package Colecciones
 import Colecciones.Mangas
 import Colecciones.GenerosMangas
 import grails.transaction.Transactional
+import org.fusesource.jansi.AnsiRenderer
 
 class MangasController {
 
     def mangasService
     def autorService
 
-    def index() {
+    def index(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        def registrados = params.registrado.equals("true") ? true: false
+        def mangasInstanceList = Mangas.findAllByDeseado(!registrados)
+        def mangasInstanceCount = mangasInstanceList.size()
+        def offset = (params.offset? params.offset:0)
 
+        if(mangasInstanceCount == 0){
+            flash.warn = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.mangas")])
+        }
+
+        respond mangasInstanceList, model: [mangasInstanceCount: mangasInstanceCount, mangasRegistrados: registrados]
     }
 
     def create() {

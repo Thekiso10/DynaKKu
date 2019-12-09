@@ -52,7 +52,7 @@
 #layout-container #list-autor #tableAutorList .table {font-family: 'Open Sans'; text-align: center; font-size: 1.10em; margin: 0;}
 
 #layout-container #list-autor #tableAutorList .table tr th {text-align: center;}
-#layout-container #list-autor #tableAutorList .table tr td a {font-family: 'Open Sans Semibold', sans-serif; color:#fff;}
+#layout-container #list-autor #tableAutorList .table tr td a {font-family: 'Open Sans Light', sans-serif; font-weight: bold; color:#fff;}
 
 #layout-container #list-autor #tableAutorList .table td {vertical-align: middle;}
 

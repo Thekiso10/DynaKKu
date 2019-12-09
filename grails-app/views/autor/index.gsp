@@ -2,14 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="layout" content="layoutMain" />
-<link rel="stylesheet"
-	href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
-<link rel="stylesheet"
-	href="${resource(dir: 'css', file: 'autores.css')}" type="text/css">
-<g:set var="entityName"
-	value="${message(code: 'layoutMenu.botonesColeccion.autores', default: 'Autor')}" />
-<title><g:message code="default.list.label" args="[entityName]" /></title>
+	<meta name="layout" content="layoutMain" />
+	<link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
+	<link rel="stylesheet" href="${resource(dir: 'css', file: 'autores.css')}" type="text/css">
+	<g:set var="entityName" value="${message(code: 'layoutMenu.botonesColeccion.autores', default: 'Autor')}" />
+	<title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
 	<div id="list-autor" class="col-sm-12" role="main">
@@ -78,7 +75,7 @@
 						<div class="bodyFilter">
 							<div class="form-group">
 								<label for="nombre" class="labelFilter"> <g:message
-										code="autor.nombre.label" default="Nombre" />:
+										code="autor.nombre.label" default="Nombre" />
 								</label>
 								<g:textField name="nombre" class="tamanoInput"
 									value="${params?.nombre}"
@@ -117,10 +114,8 @@
 					</div>
 				</g:form>
 
-				<div id="tableAutorList"
-					class="table-responsive ${!autorInstanceList? 'borderTransparent':''}">
-					<table
-						class="table table-dark table-striped table-hover ${!autorInstanceList? 'hidden':''}">
+				<div id="tableAutorList" class="table-responsive ${!autorInstanceList? 'borderTransparent':''}">
+					<table class="table table-dark table-striped table-hover ${!autorInstanceList? 'hidden':''}">
 						<thead class="thead-dark">
 							<tr>
 

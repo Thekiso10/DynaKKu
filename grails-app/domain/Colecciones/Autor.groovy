@@ -33,4 +33,9 @@ class Autor {
 	static mapping = {
 		id generator: 'uuid', Length: 32 //Para generar un id auto-incrementable
 	}
+
+	@Override
+	String toString(){
+		return nombre + " " + apellido
+	}
 }

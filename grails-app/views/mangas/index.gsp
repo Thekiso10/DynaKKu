@@ -3,63 +3,122 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'mangas.label', default: 'Mangas')}" />
+		<meta name="layout" content="layoutMain">
+		<g:set var="entityName" value="${message(code: 'layoutMenu.botonesColeccion.mangas', default: 'Mangas')}" />
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mangas.css')}" type="text/css">
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-mangas" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-mangas" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-			<thead>
-					<tr>
-					
-						<g:sortableColumn property="nombreManga" title="${message(code: 'mangas.nombreManga.label', default: 'Nombre Manga')}" />
-					
-						<g:sortableColumn property="urlImg" title="${message(code: 'mangas.urlImg.label', default: 'Url Img')}" />
-					
-						<g:sortableColumn property="completado" title="${message(code: 'mangas.completado.label', default: 'Completado')}" />
-					
-						<g:sortableColumn property="serieAcabada" title="${message(code: 'mangas.serieAcabada.label', default: 'Serie Acabada')}" />
-					
-						<g:sortableColumn property="serieConsecutiva" title="${message(code: 'mangas.serieConsecutiva.label', default: 'Serie Consecutiva')}" />
-					
-						<g:sortableColumn property="deseado" title="${message(code: 'mangas.deseado.label', default: 'Deseado')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${mangasInstanceList}" status="i" var="mangasInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${mangasInstance.id}">${fieldValue(bean: mangasInstance, field: "nombreManga")}</g:link></td>
-					
-						<td>${fieldValue(bean: mangasInstance, field: "urlImg")}</td>
-					
-						<td><g:formatBoolean boolean="${mangasInstance.completado}" /></td>
-					
-						<td><g:formatBoolean boolean="${mangasInstance.serieAcabada}" /></td>
-					
-						<td><g:formatBoolean boolean="${mangasInstance.serieConsecutiva}" /></td>
-					
-						<td><g:formatBoolean boolean="${mangasInstance.deseado}" /></td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${mangasInstanceCount ?: 0}" />
+		<div id="list-mangas" class="col-sm-12" role="main">
+
+			<div class="menu navbar-collapse" role="navigation">
+				<div class="container">
+
+					<ul class="navbar-nav">
+						<li><g:link class="btn btnLlist" action="create">
+							<g:message code="layoutMenu.botonesColeccion.mangas.crear" />
+						</g:link></li>
+					</ul>
+
+					<ul class="navbar-nav navbar-right">
+						<li>
+							<a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()">
+								<g:message code="default.link.skip.label" default="Skip to content&hellip;" />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="content scaffold-list" role="main">
+
+					<h2>
+						<g:message code="default.list.label" args="[entityName]" />
+					</h2>
+
+					<g:if test="${flash.message}">
+						<div class="message" role="status">${flash.message}</div>
+					</g:if>
+
+					<%-- Filtro --%>
+					<g:form action="index" name="filterMangas" class="form-inline">
+						<div id="filtroMangas" class="col-sm-12">
+							<h3 class="text-center titleFilter">
+								<g:message code="default.filter.label" args="[entityName]" />
+							</h3>
+							<div class="bodyFilter">
+
+								<div class="form-group">
+									<label for="nombreManga" class="labelFilter"> <g:message
+											code="mangas.nombreManga.label" default="Nombre" />
+									</label>
+									<g:textField name="nombreManga" class="tamanoInput"
+												 value="${params?.nombreManga}"
+												 placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.nombre.label')])}" />
+								</div>
+
+								<div class="form-group">
+									<label for="autor" class="labelFilter"> <g:message
+											code="layoutMenu.botonesColeccion.autor" default="apellido" />:
+									</label>
+									<g:textField class="tamanoInput" name="autor"
+												 value="${params?.autor}"
+												 placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'layoutMenu.botonesColeccion.autor')])}" />
+								</div>
+
+								<g:if test="${mangasRegistrados}">
+									<div class="form-group">
+										<label for="numTomos" class="labelFilter"> <g:message
+												code="mangas.numTomosActuales.label" default="edad" />:
+										</label>
+										<g:field name="numTomos" class="tamanoInput" type="number"
+												 value="${params?.numTomos}"
+												 placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'mangas.numTomosActuales.label')])}" />
+									</div>
+								</g:if>
+
+								<div>
+									<button type="submit" class="btn btn-filter" name="search"
+											value="search">
+										<span class="glyphicon glyphicon-search"></span>
+										<g:message code="default.button.filter" default="Filter" />
+									</button>
+
+									<button type="submit" class="btn btn-reset commit" name="showAll"
+											value="showAll">
+										<span class="glyphicon glyphicon-list"></span>
+										<g:message code="default.button.show.all.label" default="Show All" />
+									</button>
+								</div>
+
+							</div>
+						</div>
+					</g:form>
+
+					<%-- Tablas --%>
+					<div id="tableMangasList" class="table-responsive ${!mangasInstanceCount? 'hidden':''}">
+						<g:if test="${mangasRegistrados}">
+							<g:render template="templatesLists/listaRegistrados"/>
+						</g:if>
+						<g:else>
+							<g:render template="templatesLists/listaDeseados"/>
+						</g:else>
+					</div>
+
+					<g:if test="${flash.warn}">
+						<div class="flash warn iconoWarning" role="status">
+							${flash.warn}
+						</div>
+					</g:if>
+
+					<div class="pagination">
+						<g:paginate total="${mangasInstanceCount ?: 0}" />
+					</div>
+
+					<g:hiddenField name="registrado" value="${mangasRegistrados}"/>
+				</div>
 			</div>
 		</div>
 	</body>
