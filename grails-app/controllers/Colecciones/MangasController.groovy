@@ -12,10 +12,53 @@ class MangasController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def registrados = params.registrado.equals("true") ? true: false
-        def mangasInstanceList = Mangas.findAllByDeseado(!registrados)
-        def mangasInstanceCount = mangasInstanceList.size()
-        def offset = (params.offset? params.offset:0)
+
+        def mangasInstanceList = []
+        def registrados = params.registrado.equals("true") ? true : false
+        def mangasListaTotal = Mangas.list(params)
+        def offset = (params.offset? params.offset : 0)
+        //Vamos a desgranar la lista en funcion de la variable registrados
+        mangasListaTotal.each {manga ->
+            if(manga.deseado == !registrados){
+                mangasInstanceList << manga
+            }
+        }
+        //Buscamos el numero de mangas despues de desgranar
+        def mangasInstanceCount = Mangas.findAllByDeseado(!registrados).size()
+        //Miramos si hace falta usar el filtro
+        if(params.search){
+
+            if(params.nombreManga || params.autor) { //Para que no se de al filtro con los tres campos vacios
+                def numTomos = 0
+                if(registrados && params.numTomos){ //Validamos el parametro de numero de tomos por separado por si es un manga deseado o registrado
+                    numTomos = params.numTomos
+                }
+
+                def magasFiltro = Mangas.createCriteria()
+                def mangasList = magasFiltro.list (max: params.max, offset:offset){ //Para la paginacion
+                    ilike ("nombreManga", ("%" + params.nombreManga.toString() + "%"))
+                    eq("deseado", !registrados)
+                    if(params.numTomos){ //Por si el campo viene vacio
+                        eq ("numTomosActuales", Integer.parseInt(params.numTomos.toString()))
+                    }
+                }
+
+                mangasInstanceList = mangasList
+                mangasInstanceCount = mangasInstanceList.totalCount
+
+                if(listaFiltro.size() != 0) {
+                    flash.message = message(code: "default.filter.resultados.label", args:[mangasInstanceCount, message(code: "layoutMenu.botonesColeccion.mangas")])
+                }else{
+                    flash.message = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.mangas")])
+                }
+            }
+        }else{
+            log.info "Se ha ejecutado la limpieza del filtro de Mangas"
+            //Ejecutar la limpieza de los parametros del filtro
+            params.nombreManga 	= ""
+            params.autor        = ""
+            params.numTomos 	= ""
+        }
 
         if(mangasInstanceCount == 0){
             flash.warn = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.mangas")])
@@ -55,7 +98,8 @@ class MangasController {
         }
         //Validar la logica de los datos monetarios
         if(params.deseado){
-            /*  No puede haber tomos en propieda
+            /*
+                No puede haber tomos en propieda
                 Puede ser 0 en el precio por tomo
             */
             if(Integer.parseInt(params.numTomosActuales) >= 1){
@@ -63,10 +107,17 @@ class MangasController {
                 params.numTomosActuales = '0'
             }
         }else if(params.completado){
-            /* Los tomos en propiedad y tomos totales tienen que ser iguales.
+            /*
+               Los tomos en propiedad y tomos totales tienen que ser iguales.
                Si no lo son, se le coloca el mismo valor a los tomos en propiedad.
                No puede ser 0 en el precio por tomo
             */
+            //Validar que el numero de tomos maximos no sea 0
+            if(Integer.parseInt(params.numTomosMaximos) == 0){
+                flash.error = message(code: 'mangas.error.especificos.tomosTotales.menos')
+                redirect(action: "create")
+                return
+            }
 
             if(Integer.parseInt(params.numTomosMaximos) != Integer.parseInt(params.numTomosActuales)){
                 log.warn "Estan intentando crear un manga completado con diferentes numTomosMaximos y numTomosActuales"

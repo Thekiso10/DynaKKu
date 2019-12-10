@@ -114,7 +114,7 @@
 					</g:if>
 
 					<div class="pagination">
-						<g:paginate total="${mangasInstanceCount ?: 0}" />
+						<g:paginate total="${mangasInstanceCount ?: 0}" params="[registrado: mangasRegistrados]"/>
 					</div>
 
 					<g:hiddenField name="registrado" value="${mangasRegistrados}"/>
