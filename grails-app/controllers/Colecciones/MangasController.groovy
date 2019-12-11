@@ -13,21 +13,14 @@ class MangasController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 
-        def mangasInstanceList = []
         def registrados = params.registrado.equals("true") ? true : false
-        def mangasListaTotal = Mangas.list(params)
-        def offset = (params.offset? params.offset : 0)
-        //Vamos a desgranar la lista en funcion de la variable registrados
-        mangasListaTotal.each {manga ->
-            if(manga.deseado == !registrados){
-                mangasInstanceList << manga
-            }
-        }
+        def mangasInstanceList = Mangas.findAllByDeseado(!registrados, params)
         //Buscamos el numero de mangas despues de desgranar
         def mangasInstanceCount = Mangas.findAllByDeseado(!registrados).size()
+        def offset = (params.offset? params.offset : 0)
         //Miramos si hace falta usar el filtro
         if(params.search){
-
+            log.info "Aplicando el filtro de Mangas"
             if(params.nombreManga || params.autor) { //Para que no se de al filtro con los tres campos vacios
                 def numTomos = 0
                 if(registrados && params.numTomos){ //Validamos el parametro de numero de tomos por separado por si es un manga deseado o registrado
@@ -38,6 +31,11 @@ class MangasController {
                 def mangasList = magasFiltro.list (max: params.max, offset:offset){ //Para la paginacion
                     ilike ("nombreManga", ("%" + params.nombreManga.toString() + "%"))
                     eq("deseado", !registrados)
+
+                    if(params.autor != 'null'){
+                        eq("autor.id", params.autor)
+                    }
+
                     if(params.numTomos){ //Por si el campo viene vacio
                         eq ("numTomosActuales", Integer.parseInt(params.numTomos.toString()))
                     }
@@ -46,13 +44,13 @@ class MangasController {
                 mangasInstanceList = mangasList
                 mangasInstanceCount = mangasInstanceList.totalCount
 
-                if(listaFiltro.size() != 0) {
+                if(mangasInstanceCount != 0) {
                     flash.message = message(code: "default.filter.resultados.label", args:[mangasInstanceCount, message(code: "layoutMenu.botonesColeccion.mangas")])
                 }else{
                     flash.message = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.mangas")])
                 }
             }
-        }else{
+        }else if (params.showAll){
             log.info "Se ha ejecutado la limpieza del filtro de Mangas"
             //Ejecutar la limpieza de los parametros del filtro
             params.nombreManga 	= ""
@@ -65,6 +63,36 @@ class MangasController {
         }
 
         respond mangasInstanceList, model: [mangasInstanceCount: mangasInstanceCount, mangasRegistrados: registrados]
+    }
+
+    def updateStateMangas() {
+        def mangaInstance = Mangas.get(params.id)
+        if(mangaInstance){
+            def numTomosActuales = Integer.parseInt(params.numTomosActuales)
+            def numTomosMaximos  = Integer.parseInt(params.numTomosMaximos)
+
+            if(numTomosActuales > 0){
+                if(numTomosMaximos > 0){
+
+                    mangaInstance.deseado = false
+                    mangaInstance.numTomosMaximos  = numTomosMaximos
+                    mangaInstance.numTomosActuales = numTomosActuales
+
+                    if(!mangaInstance.save(flush: true)){
+                        flash.error = message(code: "mangas.error.update")
+                    }
+
+                }else{
+                    flash.error = message(code: "mangas.error.especificos.tomosTotales.menos")
+                }
+            }else{
+                flash.error = message(code: "mangas.error.especificos.tomosActu.menos")
+            }
+        }else{
+            flash.error = message(code: "mangas.error.update")
+        }
+
+        redirect(action: "index", params: [registrado: params.registrado])
     }
 
     def create() {

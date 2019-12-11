@@ -1,5 +1,5 @@
 
-<%@ page import="Colecciones.Mangas" %>
+<%@ page import="Colecciones.Autor; Colecciones.Mangas" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,7 +39,15 @@
 					</h2>
 
 					<g:if test="${flash.message}">
-						<div class="message" role="status">${flash.message}</div>
+						<div class="flash mensajes iconoMensajes" role="status">
+							${flash.message}
+						</div>
+					</g:if>
+
+					<g:if test="${flash.error}">
+						<div class="flash errors iconoError" role="status">
+							${flash.error}
+						</div>
 					</g:if>
 
 					<%-- Filtro --%>
@@ -51,43 +59,37 @@
 							<div class="bodyFilter">
 
 								<div class="form-group">
-									<label for="nombreManga" class="labelFilter"> <g:message
-											code="mangas.nombreManga.label" default="Nombre" />
+									<label for="nombreManga" class="labelFilter">
+										<g:message code="mangas.nombreManga.label" default="Nombre" />
 									</label>
-									<g:textField name="nombreManga" class="tamanoInput"
-												 value="${params?.nombreManga}"
-												 placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.nombre.label')])}" />
+									<g:textField name="nombreManga" class="tamanoInput" value="${params?.nombreManga}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.nombre.label')])}" />
 								</div>
 
 								<div class="form-group">
-									<label for="autor" class="labelFilter"> <g:message
-											code="layoutMenu.botonesColeccion.autor" default="apellido" />:
+									<label for="autor" class="labelFilter">
+										<g:message code="layoutMenu.botonesColeccion.autor" default="apellido" />:
 									</label>
-									<g:textField class="tamanoInput" name="autor"
-												 value="${params?.autor}"
-												 placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'layoutMenu.botonesColeccion.autor')])}" />
+									<g:select name="autor" from="${Colecciones.Autor.list()}" value="${params.autor}" optionKey="id" noSelection="[null:'']"/>
 								</div>
 
 								<g:if test="${mangasRegistrados}">
 									<div class="form-group">
-										<label for="numTomos" class="labelFilter"> <g:message
-												code="mangas.numTomosActuales.label" default="edad" />:
+										<label for="numTomos" class="labelFilter">
+											<g:message code="mangas.numTomosActuales.label" default="edad" />:
 										</label>
-										<g:field name="numTomos" class="tamanoInput" type="number"
-												 value="${params?.numTomos}"
-												 placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'mangas.numTomosActuales.label')])}" />
+										<g:field name="numTomos" class="tamanoInput" type="number" value="${params?.numTomos}" placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'mangas.numTomosActuales.label')])}" />
 									</div>
 								</g:if>
 
+								<g:hiddenField name="registrado" value="${mangasRegistrados}"/>
+
 								<div>
-									<button type="submit" class="btn btn-filter" name="search"
-											value="search">
+									<button type="submit" class="btn btn-filter" name="search" value="search" >
 										<span class="glyphicon glyphicon-search"></span>
 										<g:message code="default.button.filter" default="Filter" />
 									</button>
 
-									<button type="submit" class="btn btn-reset commit" name="showAll"
-											value="showAll">
+									<button type="submit" class="btn btn-reset commit" name="showAll" value="showAll">
 										<span class="glyphicon glyphicon-list"></span>
 										<g:message code="default.button.show.all.label" default="Show All" />
 									</button>
@@ -113,11 +115,12 @@
 						</div>
 					</g:if>
 
-					<div class="pagination">
-						<g:paginate total="${mangasInstanceCount ?: 0}" params="[registrado: mangasRegistrados]"/>
-					</div>
-
-					<g:hiddenField name="registrado" value="${mangasRegistrados}"/>
+                    <div class="col-sm-12 paginacion menu ${mangasInstanceCount <= 10 ? 'hidden':''}">
+                        <div class="pagination row">
+                            <g:paginate total="${mangasInstanceCount ?: 0}" params="${params}" />
+                        </div>
+                    </div>
+					<g:hiddenField name="registrado" value="${mangasInstanceCount}"/>
 				</div>
 			</div>
 		</div>
