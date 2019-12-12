@@ -11,6 +11,7 @@ class BootStrap {
     def localeResolver
 
     def init = { servletContext ->
+        cargarLogo()
         log.info "## Cargar BootStrap ##"
 
         if (grailsApplication.config.dataSource.dbCreate.equals("create")){
@@ -137,5 +138,18 @@ class BootStrap {
                 log.error "[Alerta] No se ha podido guardar la demografia -> " + it.nombre
             }
         }
+    }
+
+    def cargarLogo(){
+        println "\n\n"
+        println " _|_|_|                                                  _|            _|        _|              _|     "
+        println " _|    _|  _|    _|  _|_|_|      _|_|_|  _|_|_|  _|_|          _|_|_|  _|              _|_|_|  _|_|_|_| "
+        println " _|    _|  _|    _|  _|    _|  _|    _|  _|    _|    _|  _|  _|        _|        _|  _|          _|     "
+        println " _|    _|  _|    _|  _|    _|  _|    _|  _|    _|    _|  _|  _|        _|        _|     _|       _|     "
+        println " _|    _|  _|    _|  _|    _|  _|    _|  _|    _|    _|  _|  _|        _|        _|        _|    _|     "
+        println " _|_|_|    _|_|_|_|  _|    _|    _|_|_|  _|    _|    _|  _|    _|_|_|  _|_|_|_|  _|  _|_|_|_|      _|_| "
+        println "                 _| "
+        println "             _|_|   "
+        println "\n\n"
     }
 }
