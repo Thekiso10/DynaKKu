@@ -137,7 +137,8 @@ dynamicList.autores.rutaImg = "web-app\\images\\imgAutores" //Ruta para guardar 
 
 /****** Mangas ******/
 dynamicList.mangas.rutaImg = "web-app\\images\\imgMangas" //Ruta para guardar las imagenes de cada manga
-dynamicList.mangas.longitut.nombreMax = 255
+dynamicList.mangas.longitut.nombreMax  = 255
+dynamicList.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos permitidos para un mismo Manga
 
 /*==================================================================*/
 /* 					   Cargar Config Externa       					*/
@@ -157,7 +158,7 @@ try {
 
 	// determina si la ruta depèn del context de deployment o és absoluta
 	if(rutaConfig.contains('/') || rutaConfig.contains('\\')){
-		arxiuConfig		= rutaConfig + File.separator + "Config.groovy"
+		arxiuConfig	= rutaConfig + File.separator + "Config.groovy"
 	}
 
 	File f = new File(arxiuConfig);
@@ -174,4 +175,4 @@ grails.config.locations = ["file:${arxiuConfig}"]
 dir.config  = rutaConfig
 pressoffice.dir.config  = rutaConfig
 
-log.info "Config Loaded...OK"
+log.info "Config Loaded...OK\n"

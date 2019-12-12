@@ -1,9 +1,7 @@
 package Colecciones
 
-import Colecciones.Mangas
-import Colecciones.GenerosMangas
+
 import grails.transaction.Transactional
-import org.fusesource.jansi.AnsiRenderer
 
 class MangasController {
 
@@ -166,6 +164,14 @@ class MangasController {
             redirect(action: "create")
             return
         }
+        //Validar si hay el numero permitido de Generos
+        def listGeneros = params.listOfGenders.split(',')
+        println listGeneros.size()
+        if(listGeneros.size() > grailsApplication.config.dynamicList.mangas.longitut.generosMax){
+            flash.error = message(code: "mangas.error.genero.numMax", args: [grailsApplication.config.dynamicList.mangas.longitut.generosMax])
+            redirect(action: "create")
+            return
+        }
         //Si hay foto guardarla en la carpeta configurada
         def file = request.getFile('imagen')
         def validarFoto
@@ -178,7 +184,6 @@ class MangasController {
             }
             mangasInstance.urlImg = validarFoto.path
         }
-
         //Inicializaremos los valores de la instancia
         mangasInstance.nombreManga = params.nombreManga
         mangasInstance.autor = Autor.findWhere(id: params.autor.id)
@@ -197,7 +202,7 @@ class MangasController {
             if(mangasInstance.save(flush:true)){
                 log.info "Se ha podido crear un nuevo manga"
 
-                params.listOfGenders.split(',').each{
+                listGeneros.each{
                     GenerosMangas nuevoGenero = new GenerosMangas(mangas: mangasInstance, genero: Genero.findWhere(id: it))
                     if(nuevoGenero.save(flush: true)){
                         log.info "Se ha podido guardar un genero ["+ it + "] al manga ["+mangasInstance.nombreManga+"]"
@@ -210,13 +215,13 @@ class MangasController {
             }else{
                 if(validarFoto?.path)autorService.deleteImage(validarFoto.path)
                 log.info "No se ha podido crear un nuevo manga"
-                flash.error = message(code: "mangas.errores.save.bbdd")
+                flash.error = message(code: "mangas.error.save.bbdd")
                 redirect(action: "create")
                 return
             }
         }catch(Exception e){
             log.error "No se ha podido guardar en base de datos: " + e
-            flash.error = message(code: "mangas.errores.save.bbdd")
+            flash.error = message(code: "mangas.error.save.bbdd")
             redirect(action: "create")
             return
         }
