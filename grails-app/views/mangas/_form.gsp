@@ -29,7 +29,7 @@
 	</div>
 
 
-	<div class="fieldcontain ${hasErrors(bean: mangasInstance, field: 'autor', 'error')} col-sm-12">
+	<div class="inputPadding ${hasErrors(bean: mangasInstance, field: 'autor', 'error')} col-sm-12">
 		<label id="autorLabel" for="autor" class="col-sm-2">
 			<g:message code="layoutMenu.botonesColeccion.autor" default="Autor" />:
 		</label>

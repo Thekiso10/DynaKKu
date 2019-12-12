@@ -12,8 +12,10 @@
 #layout-container .form .blockManga #autorLabel {padding-right: 1.5em; width: 16%;}
 
 #layout-container .form .blockManga .checkboxPos {position: relative; top: 2px;}
+#layout-container .form .blockManga .inputPadding {padding: 0 0.75em;}
 #layout-container .form .blockManga .fieldcontain {padding: 0.75em;}
 #layout-container .form .blockManga .fieldcontain .col-sm-4 {padding-left: 0;}
+#layout-container .form .blockManga .fieldcontain .imgAutorInfo {margin-left: 3.75em;}
 #layout-container .form .blockManga .fieldcontain #urlImg {font-size: 12px;}
 
 #layout-container .form .blockManga #precioTotal {width: 27.75%;}
