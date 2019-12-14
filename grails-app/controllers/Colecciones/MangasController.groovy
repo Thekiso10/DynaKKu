@@ -237,7 +237,15 @@ class MangasController {
 
     @Transactional
     def show(Mangas mangasInstance) {
-        respond mangasInstance
+        if(!mangasInstance){
+            flash.error = message(code: "mangas.error.show")
+            redirect(action: "index")
+            return
+        }
+        //Obtenemos la lista de generos del Manga
+        def listaGeneros = GenerosMangas.findAllByMangas(mangasInstance)
+
+        respond mangasInstance, model:[listaGeneros:listaGeneros]
     }
 
     /*--------------------- poster_image -----------------------*/

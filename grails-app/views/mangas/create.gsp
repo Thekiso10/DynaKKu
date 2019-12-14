@@ -15,10 +15,10 @@
                         <ul class="navbar-nav">
                             <li>
                                 <g:if test="${hayAutores}">
-                                    <g:submitButton name="createSecundaro" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+                                    <g:submitButton name="createSecundaro" class="btn btnSaveV2" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
                                 </g:if>
                                 <g:else>
-                                    <g:submitButton name="createSecundaro" class="btn btnSave" value="${message(code: 'default.button.create.label', default: 'Create')}" disabled="disabled"/>
+                                    <g:submitButton name="createSecundaro" class="btn btnSaveV2" value="${message(code: 'default.button.create.label', default: 'Create')}" disabled="disabled"/>
                                 </g:else>
                             </li>
                         </ul>

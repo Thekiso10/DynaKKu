@@ -6,10 +6,9 @@ class GenerosMangas {
 	Mangas mangas
 	
     static constraints = {
-    
 	}
 	
 	static mapping = {
-
+		id generator: 'uuid', Length: 32 //Para generar un id auto-incrementable
 	} 
 }

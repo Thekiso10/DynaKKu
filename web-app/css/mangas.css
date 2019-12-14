@@ -72,3 +72,26 @@
 #layout-container #list-mangas .paginacion a,
 #layout-container #list-mangas .paginacion span {font-size: 1.25em; padding-left: 1em;}
 
+/** Ver Mangas **/
+#layout-container #ver-manga h2 {font-size: 2.75em; border-bottom: 2px solid; margin-top: 1em;}
+
+#layout-container #ver-manga #panel-ver-mangas.panel-show-mangas {margin-top: 1.75em; margin-bottom: 1.75em; padding: 1em 4em 0em 4em; border: 5px solid; border-radius: 15px;}
+#layout-container #ver-manga #panel-ver-mangas h3 {margin: 0; border-bottom: 1px solid; padding-bottom: 0.15em; font-family: 'Open Sans Semibold'; font-size: 2.10em;}
+
+#layout-container #ver-manga #panel-ver-mangas #imgMangas img {width: 230px; height: 330px; margin: 2em 0em; border: 3px solid; border-radius: 5px;}
+
+#layout-container #ver-manga #panel-ver-mangas .infoMangas {margin-top: 2em; padding: 1em; border: 2px solid; border-radius: 5px;}
+#layout-container #ver-manga #panel-ver-mangas .infoMangas h4 {font-size: 1.65em;}
+#layout-container #ver-manga #panel-ver-mangas .infoMangas span {margin-top: 8px; padding: 0; font-size: 1.5em; font-weight: bold;}
+#layout-container #ver-manga #panel-ver-mangas .infoMangas span.glyphicon {margin-top: 12px;}
+#layout-container #ver-manga #panel-ver-mangas .infoMangas span.number {margin-top: 7px;}
+#layout-container #ver-manga #panel-ver-mangas .infoMangas .marginGenero {margin-top: 8px; padding: 0;}
+
+#layout-container #ver-manga #panel-ver-mangas .infoMangas #numTomosActuales-label,
+#layout-container #ver-manga #panel-ver-mangas .infoMangas #numTomosMaximos-label,
+#layout-container #ver-manga #panel-ver-mangas .infoMangas #deseado-label    {padding-right: 0;}
+#layout-container #ver-manga #panel-ver-mangas .infoMangas #autorSpan-label  {padding-left: 0.25em;}
+#layout-container #ver-manga #panel-ver-mangas .infoMangas #demografia-label {width: 22%}
+#layout-container #ver-manga #panel-ver-mangas .infoMangas #generos-label    {padding-right: 0; width: 28%;}
+
+#layout-container #ver-manga #panel-ver-mangas .last-box {margin-bottom: 2em;}
