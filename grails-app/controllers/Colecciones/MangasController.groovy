@@ -122,6 +122,11 @@ class MangasController {
             redirect(action: "create")
             return
         }
+        //Validar coerencia de los datos Especificso
+        if(params.completado){
+            params.serieAcabada = true
+            params.serieConsecutiva = true
+        }
         //Validar la logica de los datos monetarios
         if(params.deseado){
             /*
@@ -233,5 +238,26 @@ class MangasController {
     @Transactional
     def show(Mangas mangasInstance) {
         respond mangasInstance
+    }
+
+    /*--------------------- poster_image -----------------------*/
+    /*															*/
+    /* 				Renderizar la imagen del Autor				*/
+    /*----------------------------------------------------------*/
+    def poster_image() {
+
+        def mangasInstance = Mangas.get(params.id)
+
+        def rutaImg = mangasInstance.urlImg
+        File file = new File(rutaImg)
+
+        if (!file) {
+            response.sendError(404)
+            return "no photo"
+        }
+
+        OutputStream out = response.outputStream
+        out.write(file.bytes)
+        out.close()
     }
 }
