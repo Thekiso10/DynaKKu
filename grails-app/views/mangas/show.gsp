@@ -41,7 +41,7 @@
                                 <g:else>
                                     <li><button class="btn btnMenu" data-toggle="modal" data-target="#modalSumTomosManga"><g:message code="mangas.show.sumTomos.label"/></button></li>
                                 </g:else>
-                                <li></li>
+                                <li><button class="btn btnMenu" data-toggle="modal" data-target="#modalUpdateSpinOff"><g:message code="mangas.show.spinOff.updateState"/></button></li>
                             </ul>
                         </li>
                     </ul>
@@ -166,38 +166,40 @@
 
 						</div>
 
-						<div class="infoMangas col-sm-12">
-							<h3>
-								<g:message code="mangas.title.datosMonetarios"/>
-							</h3>
+						<g:if test="${!mangasInstance?.deseado}">
+							<div class="infoMangas col-sm-12">
+								<h3>
+									<g:message code="mangas.title.datosMonetarios"/>
+								</h3>
 
-							<g:if test="${mangasInstance?.numTomosActuales}">
-								<div class="col-sm-6">
-									<div class="row">
-										<h4 id="numTomosActuales-label" class="property-label col-sm-8"><g:message code="mangas.numTomosActuales.label" default="nombre" />:</h4>
-										<span class="property-value col-sm-4 number" aria-labelledby="numTomosActuales-label"><g:fieldValue bean="${mangasInstance}" field="numTomosActuales"/></span>
+								<g:if test="${mangasInstance?.numTomosActuales}">
+									<div class="col-sm-6">
+										<div class="row">
+											<h4 id="numTomosActuales-label" class="property-label col-sm-8"><g:message code="mangas.numTomosActuales.label" default="nombre" />:</h4>
+											<span class="property-value col-sm-4 number" aria-labelledby="numTomosActuales-label"><g:fieldValue bean="${mangasInstance}" field="numTomosActuales"/></span>
+										</div>
 									</div>
-								</div>
-							</g:if>
+								</g:if>
 
-							<g:if test="${mangasInstance?.numTomosMaximos}">
-								<div class="col-sm-6">
-									<div class="row">
-										<h4 id="numTomosMaximos-label" class="property-label col-sm-10"><g:message code="mangas.numTomosMaximos.label" default="nombre" />:</h4>
-										<span class="property-value col-sm-2 number" aria-labelledby="numTomosMaximos-label"><g:fieldValue bean="${mangasInstance}" field="numTomosMaximos"/></span>
+								<g:if test="${mangasInstance?.numTomosMaximos}">
+									<div class="col-sm-6">
+										<div class="row">
+											<h4 id="numTomosMaximos-label" class="property-label col-sm-10"><g:message code="mangas.numTomosMaximos.label" default="nombre" />:</h4>
+											<span class="property-value col-sm-2 number" aria-labelledby="numTomosMaximos-label"><g:fieldValue bean="${mangasInstance}" field="numTomosMaximos"/></span>
+										</div>
 									</div>
-								</div>
-							</g:if>
+								</g:if>
 
-							<g:if test="${mangasInstance?.precioTotal}">
-								<div class="col-sm-6">
-									<div class="row">
-										<h4 id="precioTotal-label" class="property-label col-sm-8"><g:message code="mangas.precioTotal.label" default="nombre" />:</h4>
-										<span class="property-value col-sm-4 number" aria-labelledby="precioTotal-label"><g:fieldValue bean="${mangasInstance}" field="precioTotal"/>€</span>
+								<g:if test="${mangasInstance?.precioTotal}">
+									<div class="col-sm-6">
+										<div class="row">
+											<h4 id="precioTotal-label" class="property-label col-sm-8"><g:message code="mangas.precioTotal.label" default="nombre" />:</h4>
+											<span class="property-value col-sm-4 number" aria-labelledby="precioTotal-label"><g:fieldValue bean="${mangasInstance}" field="precioTotal"/>€</span>
+										</div>
 									</div>
-								</div>
-							</g:if>
-						</div>
+								</g:if>
+							</div>
+						</g:if>
 
 						<div class="infoMangas last-box col-sm-12">
 							<h3>
@@ -241,6 +243,10 @@
             <div id="modalSumTomosManga" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <g:render template="templates/modalSumTomosManga"/>
             </div>
+
+			<div id="modalUpdateSpinOff" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<g:render template="templates/modalUpdateSpinOff"/>
+			</div>
 
 		</div>
 	</body>

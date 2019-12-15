@@ -182,28 +182,19 @@
 
 /** Modals **/
 
-#layout-container #modalPassDeseadoToRegister .modal-header {background-color: #1B5C7D; color: #E9EAEB; border-bottom: 3px solid #10384c;}
-#layout-container #modalPassDeseadoToRegister .modal-header .close {color: #E9EAEB;}
-#layout-container #modalPassDeseadoToRegister .modal-body {background-color: #1f2e3e; color: #E9EAEB;}
-#layout-container #modalPassDeseadoToRegister .modal-body .separator {border-color: #fff;}
-#layout-container #modalPassDeseadoToRegister .modal-body input {color: #5aacff; background-color: #0e2033; border: 2px solid #4380A3; box-shadow: 0 1px 5px 1px #4380A3;}
-#layout-container #modalPassDeseadoToRegister .modal-footer {background-color: #505861;}
-#layout-container #modalPassDeseadoToRegister .modal-footer .btnCommit {background-color: #236286c9; color: white; border-color: #205A7A;}
-#layout-container #modalPassDeseadoToRegister .modal-footer .btnSkip {background-color: #141E28; border-color: #141E28; color: white;}
+#layout-container .modal-header {background-color: #1B5C7D; color: #E9EAEB; border-bottom: 3px solid #10384c;}
+#layout-container .modal-header .close {color: #E9EAEB;}
+#layout-container .modal-body {background-color: #1f2e3e; color: #E9EAEB;}
+#layout-container .modal-body .separator {border-color: #fff;}
+#layout-container .modal-body select,
+#layout-container .modal-body input {color: #5aacff; background-color: #0e2033; border: 2px solid #4380A3; box-shadow: 0 1px 5px 1px #4380A3;}
+#layout-container .modal-footer {background-color: #505861;}
+#layout-container .modal-footer .btnCommit {background-color: #236286c9; color: white; border-color: #205A7A;}
+#layout-container .modal-footer .btnDelete {background-color: #B30E18; color: white; border-color: #F50010;}
+#layout-container .modal-footer .btnSkip {background-color: #141E28; border-color: #141E28; color: white;}
 
-#layout-container #modalSumTomosManga .modal-header {background-color: #1B5C7D; color: #E9EAEB; border-bottom: 3px solid #10384c;}
-#layout-container #modalSumTomosManga .modal-header .close {color: #E9EAEB;}
-#layout-container #modalSumTomosManga .modal-body {background-color: #1f2e3e; color: #E9EAEB;}
-#layout-container #modalSumTomosManga .modal-body .separator {border-color: #fff;}
-#layout-container #modalSumTomosManga .modal-body input {color: #5aacff; background-color: #0e2033; border: 2px solid #4380A3; box-shadow: 0 1px 5px 1px #4380A3;}
-#layout-container #modalSumTomosManga .modal-footer {background-color: #505861;}
-#layout-container #modalSumTomosManga .modal-footer .btnCommit {background-color: #236286c9; color: white; border-color: #205A7A;}
-#layout-container #modalSumTomosManga .modal-footer .btnSkip {background-color: #141E28; border-color: #141E28; color: white;}
-
-#layout-container #modalSumTomosManga .modal-footer .btnCommit:hover,
-#layout-container #modalSumTomosManga .modal-footer .btnSkip:hover,
-#layout-container #modalPassDeseadoToRegister .modal-footer .btnCommit:hover,
-#layout-container #modalPassDeseadoToRegister .modal-footer .btnSkip:hover {background-color: #2a343e52; border-color: #013a73; transition: 1s;}
+#layout-container .modal-footer .btnCommit:hover,
+#layout-container .modal-footer .btnSkip:hover {background-color: #2a343e52; border-color: #013a73; transition: 1s;}
 
 /** Crear y Editar Mangas **/
 #layout-container .form  h3,

@@ -286,6 +286,46 @@ class MangasController {
         redirect(action:"show", id:mangaInstance.id)
     }
 
+    def updateStateSpinOff(){
+        def mangaInstance = Mangas.get(params.id)
+        if(!mangaInstance){
+            flash.error = message(code: "mangas.error.show")
+            redirect(action: "index", params: [registrado: true])
+            return
+        }
+
+        if(!mangaInstance.mangaSpinOff){
+            if(params.spinOff){
+                def mangaSpinOff = Mangas.get(params.spinOff)
+                if(mangaSpinOff){
+                    if(mangaInstance.id != mangaSpinOff.id){
+                        mangaInstance.mangaSpinOff = mangaSpinOff
+                        if(!mangaInstance.save(flush: true)){
+                            flash.error = message(code: "mangas.error.update")
+                        }else{
+                            flash.message = message(code: "mangas.message.update.ok", args: [mangaInstance.nombreManga])
+                        }
+                    }else{
+                        flash.error = message(code: "mangas.show.spinOff.error.identico")
+                    }
+                }else{
+                    flash.error = message(code: "mangas.error.update")
+                }
+            }else{
+                flash.error = message(code: "mangas.error.show")
+            }
+        }else{
+            mangaInstance.mangaSpinOff = null
+            if(!mangaInstance.save(flush: true)){
+                flash.error = message(code: "mangas.error.update")
+            }else{
+                flash.message = message(code: "mangas.message.update.ok", args: [mangaInstance.nombreManga])
+            }
+        }
+
+        redirect(action:"show", id:mangaInstance.id)
+    }
+
     /*--------------------- poster_image -----------------------*/
     /*															*/
     /* 				Renderizar la imagen del Autor				*/
