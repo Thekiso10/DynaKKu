@@ -11,39 +11,48 @@
 	</head>
 	<body>
 		<div id="ver-manga" class="col-sm-12" role="main">
-			<g:form url="[resource:mangasInstance, action:'delete']" method="DELETE">
-				<div class="menu navbar-collapse" role="navigation">
-					<div class="container">
-						<ul class="navbar-nav">
-							<li><g:link class="btn btnSaveV2" action="edit" resource="${mangasInstance}"><g:message code="default.button.update.label" args="[entityName]"/></g:link></li>
-						</ul>
-						<ul class="navbar-nav">
-							<li class="dropdown">
-								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-									<span class="glyphicon glyphicon-chevron-down"></span>
-									<g:message code="mangas.list.label" />
-								</a>
-								<ul class="dropdown-menu styleDropdown">
-									<li>
-										<g:link class="btn btnMenu ">
-											<g:message code="mangas.list.registrados.label" />
-										</g:link>
-									</li>
-									<li>
-										<g:link class="btn btnMenu">
-											<g:message code="mangas.list.deseados.label" />
-										</g:link>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<ul class="navbar-nav navbar-right">
+            <div class="menu navbar-collapse" role="navigation">
+                <div class="container">
+                    <ul class="navbar-nav">
+                        <li><g:link class="btn btnSaveV2" action="edit" resource="${mangasInstance}"><g:message code="default.button.update.label" args="[entityName]"/></g:link></li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                <g:message code="mangas.list.label" />
+                            </a>
+                            <ul class="dropdown-menu styleDropdown">
+                                <li><g:link class="btn btnMenu" controller="mangas" action="index" params="[registrado: true]"><g:message code="mangas.list.registrados.label" /></g:link></li>
+                                <li><g:link class="btn btnMenu" controller="mangas" action="index" params="[registrado: false]"><g:message code="mangas.list.deseados.label" /></g:link></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                <g:message code="layoutMenu.botonesColeccion.funciones" />
+                            </a>
+                            <ul class="dropdown-menu styleDropdown">
+                                <g:if test="${mangasInstance?.deseado}">
+                                    <li><button class="btn btnMenu" data-toggle="modal" data-target="#modalPassDeseadoToRegister"><g:message code="mangas.list.pass.deseadoToRegister"/></button></li>
+                                </g:if>
+                                <g:else>
+                                    <li><button class="btn btnMenu" data-toggle="modal" data-target="#modalSumTomosManga"><g:message code="mangas.show.sumTomos.label"/></button></li>
+                                </g:else>
+                                <li></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <g:form url="[resource:mangasInstance, action:'delete']" method="DELETE">
+                        <ul class="navbar-nav navbar-right">
 							<li><g:actionSubmit class="btn btnDelete" action="delete" value="${message(code: 'mangas.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message')}');" /></li>
-							<li><a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a></li>
-						</ul>
-					</div>
-				</div>
-			</g:form>
+                            <li><a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a></li>
+                        </ul>
+                    </g:form>
+                </div>
+            </div>
 
 			<div class="container">
 				<g:if test="${flash.message}">
@@ -224,6 +233,15 @@
 					</div>
 				</div>
 			</div>
+
+            <div id="modalPassDeseadoToRegister" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <g:render template="templates/modalDeseadoToRegister"/>
+            </div>
+
+            <div id="modalSumTomosManga" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <g:render template="templates/modalSumTomosManga"/>
+            </div>
+
 		</div>
 	</body>
 </html>

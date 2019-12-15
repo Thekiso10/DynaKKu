@@ -75,6 +75,16 @@
 /** Ver Mangas **/
 #layout-container #ver-manga h2 {font-size: 2.75em; border-bottom: 2px solid; margin-top: 1em;}
 
+#layout-container #ver-manga #modalPassDeseadoToRegister .modal-dialog {width: 750px;}
+#layout-container #ver-manga #modalPassDeseadoToRegister .modal-body {text-align: justify; font-size: 1.15em;}
+#layout-container #ver-manga #modalPassDeseadoToRegister .modal-body .separator {border: 2px solid; margin: 1em 0;}
+#layout-container #ver-manga #modalPassDeseadoToRegister .modal-body .verticalAlign {display: flex; align-items: baseline;}
+
+#layout-container #ver-manga #modalSumTomosManga .modal-body {text-align: justify; font-size: 1.15em;}
+#layout-container #ver-manga #modalSumTomosManga .modal-body .separator {border: 2px solid; margin: 1em 0;}
+#layout-container #ver-manga #modalSumTomosManga .modal-body .verticalAlign {display: flex; align-items: baseline;}
+#layout-container #ver-manga #modalSumTomosManga .modal-body .verticalAlign label {text-align: end; padding-right: 0.25em;}
+
 #layout-container #ver-manga #panel-ver-mangas.panel-show-mangas {margin-top: 1.75em; margin-bottom: 1.75em; padding: 1em 4em 0em 4em; border: 5px solid; border-radius: 15px;}
 #layout-container #ver-manga #panel-ver-mangas h3 {margin: 0; border-bottom: 1px solid; padding-bottom: 0.15em; font-family: 'Open Sans Semibold'; font-size: 2.10em;}
 

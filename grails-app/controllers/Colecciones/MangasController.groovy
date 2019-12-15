@@ -90,7 +90,11 @@ class MangasController {
             flash.error = message(code: "mangas.error.update")
         }
 
-        redirect(action: "index", params: [registrado: params.registrado])
+        if(params.show && mangaInstance){
+            redirect(action:"show", id:mangaInstance.id)
+        }else{
+            redirect(action: "index", params: [registrado: params.registrado])
+        }
     }
 
     def create() {
@@ -246,6 +250,40 @@ class MangasController {
         def listaGeneros = GenerosMangas.findAllByMangas(mangasInstance)
 
         respond mangasInstance, model:[listaGeneros:listaGeneros]
+    }
+
+    def updateSumTomosManga() {
+        def mangaInstance = Mangas.get(params.id)
+        if(!mangaInstance){
+            flash.error = message(code: "mangas.error.update")
+            redirect(action: "index", params: [registrado: true])
+            return
+        }
+
+        if(!params.numTomosActuales){
+            flash.error = message(code: "mangas.error.especificos.tomosActu.menos")
+            redirect(action:"show", id:mangaInstance.id)
+            return
+        }
+        def numTomosActuales = Integer.parseInt(params.numTomosActuales)
+
+        if(numTomosActuales > 0){
+            if(mangaInstance.numTomosMaximos >= numTomosActuales){
+                mangaInstance.numTomosActuales = numTomosActuales
+
+                if(!mangaInstance.save(flush: true)){
+                    flash.error = message(code: "mangas.error.update")
+                }else{
+                    flash.message = message(code: "mangas.show.sumTomos.correcto")
+                }
+            }else{
+                flash.error = message(code: "mangas.show.sumTomos.error.tomosMax")
+            }
+        }else{
+            flash.error = message(code: "mangas.error.especificos.tomosActu.menos")
+        }
+
+        redirect(action:"show", id:mangaInstance.id)
     }
 
     /*--------------------- poster_image -----------------------*/
