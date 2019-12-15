@@ -138,6 +138,23 @@
 									</div>
 								</div>
 							</g:if>
+
+                            <div class="col-sm-12 Box-SpinOff">
+                                <div class="row">
+                                    <h4 id="spinOff-label" class="property-label col-sm-2"><g:message code="mangas.spinOff.label" default="autor" />:</h4>
+                                    <g:if test="${mangasInstance?.mangaSpinOff}">
+                                        <span class="property-value col-sm-10" aria-labelledby="spinOff-label">
+                                            <g:link controller="mangas" action="show" id="${mangasInstance?.mangaSpinOff?.id}">${mangasInstance?.mangaSpinOff?.nombreManga}</g:link>
+                                        </span>
+                                    </g:if>
+                                    <g:else>
+                                        <span class="property-value col-sm-10 italic" aria-labelledby="spinOff-label">
+                                            <g:message code="mangas.show.spinOff.noRegister"/>
+                                        </span>
+                                    </g:else>
+                                </div>
+                            </div>
+
 						</div>
 
 						<div class="infoMangas col-sm-12">
@@ -194,7 +211,7 @@
 										<div class="col-sm-8 marginGenero">
 											<g:each in="${listaGeneros}" var="genero">
 												<span class="box-genero">
-													${genero?.genero?.nombre} | 
+													${genero?.genero?.nombre} |
 												</span>
 											</g:each>
 										</div>
