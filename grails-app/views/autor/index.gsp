@@ -206,7 +206,7 @@
 				</div>
 
 				<g:if test="${flash.warn}">
-					<div class="flash warn iconoWarning" role="status">
+					<div class="flash warn iconoWarning media" role="status">
 						${flash.warn}
 					</div>
 				</g:if>
