@@ -1,7 +1,8 @@
 package Colecciones
 
 class GenerosMangas {
-	
+
+	String id
 	Genero genero
 	Mangas mangas
 	
@@ -11,7 +12,6 @@ class GenerosMangas {
 	}
 	
 	static mapping = {
-		//Cuando se ejecute un Create hay que colocar esta linea
-		//id generator: 'uuid', Length: 32 //Para generar un id auto-incrementable
+		id generator: 'uuid', Length: 32 //Para generar un id auto-incrementable
 	} 
 }

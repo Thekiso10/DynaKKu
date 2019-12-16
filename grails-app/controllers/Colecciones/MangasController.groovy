@@ -240,7 +240,7 @@ class MangasController {
     @Transactional
     def show(Mangas mangasInstance) {
         if(!mangasInstance){
-            flash.error = message(code: "mangas.error.show")
+            flash.message = message(code: "mangas.error.show")
             redirect(action: "index")
             return
         }

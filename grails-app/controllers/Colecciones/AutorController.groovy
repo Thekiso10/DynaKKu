@@ -57,6 +57,11 @@ class AutorController {
 
 	@Transactional
     def show(Autor autorInstance) {
+		if(!autorInstance){
+			flash.message = message(code: "autores.errores.show")
+			redirect(action: "index")
+			return
+		}
 		//Registrar la consulta del Autor
 		historialService.registrarAutor(autorInstance, 2)
         respond autorInstance
