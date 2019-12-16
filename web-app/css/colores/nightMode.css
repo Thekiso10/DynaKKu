@@ -202,6 +202,7 @@
 #layout-container #create-mangas #formCreateMagas h2 {color: #d8d8d8;}
 
 #layout-container .form .blockManga {background-color: #166088; color: #114d72;}
+#layout-container .form .blockManga .checkImgLabel {color: #fff; font-size: 1.15em;}
 #layout-container .form .blockManga label {color: #fff;}
 
 #layout-container .form div.blockManga select,
@@ -216,6 +217,7 @@
 #layout-container .form .blockManga .blockGenero #boxesGeneros .close {color: #fff;}
 #layout-container .form .blockManga .blockGenero #boxesGeneros div.boxGenero {background-color: #174F6B; border-color: #3C9AC9; color: #fff;}
 
+#layout-container #edit-mangas div.menu .dropdown .styleDropdown li .btnMenu,
 #layout-container #create-mangas div.menu .dropdown .styleDropdown li .btnMenu {background-color: #2276a1f5;}
 
 #layout-container #edit-mangas #formEditMangas.container .divButtonSave,

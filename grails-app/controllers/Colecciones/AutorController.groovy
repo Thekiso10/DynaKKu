@@ -214,7 +214,7 @@ class AutorController {
 			
         }catch(Exception e){
 			log.error "No se ha podido borrar en base de datos " + e
-			flash.error = message(code: "autores.errores.update.bbdd")
+			flash.error = message(code: "default.error.delete.bbdd")
 			redirect(action: "show", id:autorInstance.id)
 			return
 		}

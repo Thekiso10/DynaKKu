@@ -18,12 +18,24 @@
 			<label for="imagen" class="col-sm-4">
 				<g:message code="mangas.urlImg.label" default="Url Img" />:
 			</label>
-			<g:field type="file" name="imagen"  accept="image/*" class="tamanoInput col-sm-8"/>
-			<div class="imgAutorInfo small">
-				<span>
-					<g:message code="autores.imagen.formatos" default="Url Img" />
-				</span>
-			</div>
+			<g:if test="${!mangasInstance?.urlImg}">
+				<g:field type="file" name="imagen"  accept="image/*" class="tamanoInput col-sm-8"/>
+				<div class="imgAutorInfo small">
+					<span>
+						<g:message code="autores.imagen.formatos" default="Url Img" />
+					</span>
+				</div>
+			</g:if>
+			<g:else>
+				<div class="col-sm-8 checkboxImg">
+					<g:hiddenField name="checkImg" value="${true}"/>
+					<g:checkBox name="CheckboxImg"/>
+					<span class="checkImgLabel">
+						<g:message code="mangas.message.checBoxDelete"/>
+					</span>
+				</div>
+			</g:else>
+
 		</div>
 
 	</div>
@@ -118,8 +130,7 @@
 			<g:message code="mangas.demografia.label" default="Demografia" />
 			<span class="required-indicator">*</span>
 		</label>
-		<g:select id="demografia" name="demografia.nombre" from="${Demografia.list()}" optionKey="id" optionValue="nombre" value="${mangasInstance?.demografia?.nombre}" class="many-to-one" noSelection="['null': '']" />
-
+		<g:select id="demografia" name="demografia.nombre" from="${Demografia.list()}" optionKey="id" optionValue="nombre" value="${mangasInstance?.demografia?.id}" class="many-to-one" noSelection="['null': '']" />
 	</div>
 
 	<div class="fieldcontain ${hasErrors(bean: mangasInstance, field: 'Generos', 'error')} required col-sm-6 text-center">
@@ -142,9 +153,9 @@
 				<button type="button" class="close closeGenero" data-dismiss="modal">&times;</button>
 			</div>
 
-			<g:each in="${listaGeneros}" var="genero">
-				<div class="boxGenero">
-					<span class="boxNombreGenero">${Colecciones.Genero.find{id == genero}?.nombre}</span>
+			<g:each in="${listaGeneros}" var="generoManga">
+				<div id="${generoManga?.genero?.id}"  class="boxGenero">
+					<span class="boxNombreGenero">${generoManga?.genero?.nombre}</span>
 					<button type="button" class="close closeGenero" data-dismiss="modal">&times;</button>
 				</div>
 			</g:each>
@@ -153,4 +164,4 @@
 
 </div>
 
-<g:hiddenField name="listOfGenders" value="${listaGeneros}"/>
+<g:hiddenField name="listOfGenders" value=""/>
