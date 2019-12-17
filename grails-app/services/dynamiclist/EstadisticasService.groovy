@@ -11,15 +11,15 @@ class EstadisticasService {
     DecimalFormat formato = new DecimalFormat("#.##");
 
     def getMaxEdadAutor(){
-        return Autor.last('edad')?.edad
+        return Autor.findByBorrado(false, [sort: 'edad', order: "desc"])?.edad
     }
 
     def getMinEdadAutor(){
-        return Autor.first('edad')?.edad
+        Autor.findByBorrado(false, [sort: 'edad', order: "asc"])?.edad
     }
 
     def getLastAutor(){
-        return Autor.last('fechaInscripcion')
+        Autor.findByBorrado(false, [sort: 'fechaInscripcion', order: "desc"])
     }
 
     def getListAutorJoven(){
@@ -31,43 +31,43 @@ class EstadisticasService {
     }
 
     def getPorAutoresMasculinos(){
-        def numMasculinos = Autor.findAllByGenero('Masculino')?.size()
+        def numMasculinos = Autor.findAllByGeneroAndBorrado('Masculino', false)?.size()
         return formato.format(calcularPorcentaje(numMasculinos, 0)) + "%"
     }
 
     def getNumAutoresMasculinos(){
-        return Autor.findAllByGenero('Masculino')?.size()
+        return Autor.findAllByGeneroAndBorrado('Masculino', false)?.size()
     }
 
     def getPorAutoresFemenino(){
-        def numFemenino = Autor.findAllByGenero('Femenino').size()
+        def numFemenino = Autor.findAllByGeneroAndBorrado('Femenino', false).size()
         return formato.format(calcularPorcentaje(numFemenino, 0)) + "%"
     }
 
     def getNumAutoresFemenino(){
-        return Autor.findAllByGenero('Femenino')?.size()
+        return Autor.findAllByGeneroAndBorrado('Femenino', false)?.size()
     }
 
     def getPorAutoresVivos(){
-        def numVivos = Autor.findAllByDifunto(false)?.size()
+        def numVivos = Autor.findAllByDifuntoAndBorrado(false, false)?.size()
         return formato.format(calcularPorcentaje(numVivos, 0)) + "%"
     }
 
     def getNumAutoresVivos(){
-        return Autor.findAllByDifunto(false)?.size()
+        return Autor.findAllByDifuntoAndBorrado(false, false)?.size()
     }
 
     def getPorAutoresMuertos(){
-        def numMuertos = Autor.findAllByDifunto(true)?.size()
+        def numMuertos = Autor.findAllByDifuntoAndBorrado(true, false)?.size()
         return formato.format(calcularPorcentaje(numMuertos, 0)) + "%"
     }
 
     def getNumAutoresMuertos(){
-        return Autor.findAllByDifunto(true)?.size()
+        return Autor.findAllByDifuntoAndBorrado(true, false)?.size()
     }
 
     def getNumAutores(){
-        return Autor.findAll()?.size()
+        return Autor.findAllByBorrado(false)?.size()
     }
 
     private def calcularPorcentaje(int valorCalc, int calc){
@@ -75,7 +75,7 @@ class EstadisticasService {
 
         switch (calc){
             case 0:
-                valorTotal = (Autor.findAll()?.size()?: 0)
+                valorTotal = (Autor.findAllByBorrado(false)?.size()?: 0)
                 break
         }
 

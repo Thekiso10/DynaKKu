@@ -13,9 +13,11 @@ class Autor {
 
 	int edad
 	boolean difunto //Hay dos estados: Si, no
+	boolean borrado //Marca si esta borrado o no
 
 	Date fechaInscripcion
 	Date ultimaModificacion
+	Date fechaBorrado
 		
     static constraints = {
     	nombre 			nullable: true, blank: true
@@ -25,13 +27,17 @@ class Autor {
 		difunto 		nullable: true, blank: true
 		nacionalidad	nullable: true, blank: true
 		genero			nullable: true, blank: true
+		borrado			nullable: true, blank: true
 		
 		fechaInscripcion	nullable: true, blank: true
 		ultimaModificacion	nullable: true, blank: true
+		fechaBorrado		nullable: true, blank: true
 	}
 	
 	static mapping = {
 		id generator: 'uuid', Length: 32 //Para generar un id auto-incrementable
+		//valores por defecto
+		borrado  defaultValue: '0'
 	}
 
 	@Override

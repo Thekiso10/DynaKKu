@@ -38,7 +38,7 @@ class AutorService {
 	def isEqualsAuthor(def nombre, def apellido){
 		boolean igual = false
 		
-		def Autor = Autor.findWhere(nombre:nombre, apellido:apellido)
+		def Autor = Autor.findWhere(nombre:nombre, apellido:apellido, borrado: false)
 		
 		if(Autor){
 			igual = true

@@ -14,8 +14,8 @@ class AutorController {
 	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-		def autorInstanceList = Autor.list(params)
-		def autorPaginacion = Autor.count()
+		def autorInstanceList = Autor.findAllByBorrado(false, params)
+		def autorPaginacion = Autor.findAllByBorrado(false, params).size()
 		def offset = (params.offset? params.offset:0)
 
 		if(params.search){
@@ -57,7 +57,7 @@ class AutorController {
 
 	@Transactional
     def show(Autor autorInstance) {
-		if(!autorInstance){
+		if(!autorInstance || autorInstance?.borrado){
 			flash.message = message(code: "autores.errores.show")
 			redirect(action: "index")
 			return
@@ -123,12 +123,25 @@ class AutorController {
     }
 
     def edit(Autor autorInstance) {
+		//Validar si existe Autor o no esta borrado
+		if(!autorInstance || autorInstance?.borrado){
+			flash.message = message(code: "autores.errores.show")
+			redirect(action: "index")
+			return
+		}
+
         respond autorInstance
     }
 
     @Transactional
     def updateAutor() {
 		def autorInstance = Autor.get(params.id)
+		//Validar si existe Autor o no esta borrado
+		if(!autorInstance || autorInstance?.borrado){
+			flash.message = message(code: "autores.errores.show")
+			redirect(action: "index")
+			return
+		}
 		def validadorForm = autorService.validarForm(params)
 		//Comprobar que no ha cambiado la version == problemas de concurrencia
 		if (params.version != null) {
@@ -211,7 +224,10 @@ class AutorController {
 		}
         try{
 			def nombreAutor = autorInstance.nombre + " " + autorInstance.apellido
-			autorInstance.delete(flush:true)
+
+			autorInstance.borrado = true
+			autorInstance.fechaBorrado = new Date()
+			autorInstance.save(flush:true)
 			
 			log.info "Creando entrada en el historial de una actualizacion de un autor"
 			flash.message = message(code: "autores.message.delete.ok", args: [nombreAutor])

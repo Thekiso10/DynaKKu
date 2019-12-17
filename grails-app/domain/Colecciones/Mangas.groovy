@@ -10,6 +10,7 @@ class Mangas {
 	boolean serieAcabada
 	boolean serieConsecutiva
 	boolean deseado
+	boolean borrado //Marca si esta borrado o no
 	
 	int numTomosActuales
 	int numTomosMaximos
@@ -17,6 +18,7 @@ class Mangas {
 
 	Date fechaInscripcion
 	Date ultimaModificacion
+	Date fechaBorrado
 	
 	Autor autor
 	Demografia demografia
@@ -30,6 +32,7 @@ class Mangas {
 		serieAcabada		nullable: true, blank: true
 		serieConsecutiva	nullable: true, blank: true
 		deseado				nullable: true, blank: true
+		borrado				nullable: true, blank: true
 
 		numTomosActuales	nullable: true, blank: true
 		numTomosMaximos		nullable: true, blank: true
@@ -37,6 +40,7 @@ class Mangas {
 
 		fechaInscripcion	nullable: true, blank: true
 		ultimaModificacion	nullable: true, blank: true
+		fechaBorrado		nullable: true, blank: true
 
 		autor			nullable: true, blank: true
 		demografia		nullable: true, blank: true
@@ -50,6 +54,6 @@ class Mangas {
 		serieAcabada		defaultValue: '0'
 		serieConsecutiva	defaultValue: '0'
 		deseado				defaultValue: '0'
-
+		borrado  			defaultValue: '0'
 	}
 }
