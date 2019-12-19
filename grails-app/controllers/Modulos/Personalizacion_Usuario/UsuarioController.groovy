@@ -1,8 +1,8 @@
-package Funciones
+package Modulos.Personalizacion_Usuario
 
 import grails.transaction.Transactional
 import grails.converters.JSON
-import Funcion.Usuario
+import Modulos.Personalizacion_Usuario.Usuario
 
 
 class UsuarioController {

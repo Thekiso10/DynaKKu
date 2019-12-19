@@ -1,6 +1,6 @@
 import Colecciones.Demografia
 import Colecciones.Genero
-import Funcion.Usuario
+import Modulos.Personalizacion_Usuario.Usuario
 import groovy.time.TimeDuration
 import groovy.time.TimeCategory
 import org.apache.commons.io.FilenameUtils

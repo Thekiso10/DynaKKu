@@ -1,7 +1,7 @@
-package dynamiclist
+package dynamiclist.Historial_Actividad
 
 import Colecciones.Autor
-import Funcion.Historial
+import Modulos.Historial_Actividad.Historial
 import grails.transaction.Transactional
 
 @Transactional

@@ -1,6 +1,6 @@
-<%@ page import="Funcion.Usuario" %>
+<%@ page import="Modulos.Personalizacion_Usuario.Usuario" %>
 
-<% def usuarioInstance = Funcion.Usuario.first() %>
+<% def usuarioInstance = Usuario.first() %>
 
 <div class="modal-dialog">
     <!-- Modal content-->

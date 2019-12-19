@@ -1,4 +1,4 @@
-package Funciones
+package Modulos.Estadisticas
 
 class EstadisticasController {
 

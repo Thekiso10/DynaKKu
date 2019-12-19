@@ -1,4 +1,4 @@
-package Funcion
+package Modulos.Historial_Actividad
 
 import Colecciones.Autor;
 import Colecciones.Mangas;
