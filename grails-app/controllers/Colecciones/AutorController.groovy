@@ -174,7 +174,11 @@ class AutorController {
 				}
 				//Quitamos la ruta en BBDD
 				autorInstance.rutaImagen = null
-			}
+			}else if(autorInstance.toString() != (params.nombre + " " + params.apellido)){
+                def nombreNuevo = params.nombre + " " + params.apellido
+                def changeFoto = autorService.changeNameImg(autorInstance.rutaImagen, nombreNuevo)
+                autorInstance.rutaImagen = changeFoto.path
+            }
 		}else{ //No tiene foto
 			//Si hay foto guardarla en la carpeta configurada
 			def file = request.getFile('imagen')

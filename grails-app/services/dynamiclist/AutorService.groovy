@@ -1,7 +1,7 @@
 package dynamiclist
 
 import grails.transaction.Transactional
-
+import grails.util.Holders
 import org.apache.commons.io.FilenameUtils
 
 import java.io.File
@@ -93,6 +93,31 @@ class AutorService {
 	
 		return [error:error, mensaje:mensaje, path:path]
 	}
+
+    def changeNameImg(def urlImg, def nombre){
+        def error = false
+        def path = urlImg
+
+        File foto = new File(urlImg)
+        File carpeta = new File(Holders.config.dynamicList.autores.rutaImg)
+
+        if(foto.exists() && foto.isFile()){
+            try{
+                def extensiones = FilenameUtils.getExtension(foto.absolutePath)
+                def nombreAuthor = nombre
+                path = carpeta.getAbsolutePath() + File.separator + nombreAuthor + "." + extensiones
+                foto.renameTo(new File(path))
+            }catch (Exception e){
+                error = true
+                log.error e
+            }
+        }else{
+            error = true
+            log.error "[Mangas] Validar rutas de la foto a fallado."
+        }
+
+        return [error:error, path:path]
+    }
 	//Eliminar la foto del Autor
 	def deleteImage(def path){
 		def error = false
