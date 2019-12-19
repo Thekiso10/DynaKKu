@@ -234,15 +234,13 @@ class AutorController {
 			}
 		}
         try{
-			def nombreAutor = autorInstance.nombre + " " + autorInstance.apellido
-
 			autorInstance.borrado = true
 			autorInstance.fechaBorrado = new Date()
 			autorInstance.save(flush:true)
 			
 			log.info "Creando entrada en el historial de una actualizacion de un autor"
-			flash.message = message(code: "autores.message.delete.ok", args: [nombreAutor])
-			historialService.registrarEliminacionAutor(nombreAutor)
+			flash.message = message(code: "autores.message.delete.ok", args: [autorInstance.toString()])
+			historialService.registrarAutor(autorInstance, 3)
 			
         }catch(Exception e){
 			log.error "No se ha podido borrar en base de datos " + e

@@ -1,9 +1,8 @@
 package Modulos.Historial_Actividad
 
 import Colecciones.Autor;
-import Colecciones.Mangas;
 
-class Historial {
+class HistorialAutor {
 	//Tipo de accions para el historial
 	enum Status {
 		ACTUALIZACION, CREACION, ELIMINACION, CONSULTA
@@ -13,14 +12,12 @@ class Historial {
 	Status tipoAccion
 	Date fecha
 	
-	String mangas
-	String autor
-	
+	Autor autor
+
     static constraints = {
 		tipoAccion 	nullable: true, blank: true
 		fecha  		nullable: true, blank: true
 		
-		mangas	nullable: true, blank: true
 		autor	nullable: true, blank: true
     }
 	

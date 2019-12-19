@@ -1,43 +1,40 @@
 package dynamiclist.Historial_Actividad
 
 import Colecciones.Autor
-import Modulos.Historial_Actividad.Historial
+import Modulos.Historial_Actividad.HistorialAutor
 import grails.transaction.Transactional
 
 @Transactional
 class HistorialService {
 
     def registrarAutor(Autor autor, int accion) {
-		
+		//Definimos las diferentes opciones
 		def tipoAccion
-		def nombre = autor.nombre + " " + autor.apellido
-		
+
 		switch(accion){
 			case 0: 
-				tipoAccion = Historial.Status.CREACION;
-				break;
+				tipoAccion = HistorialAutor.Status.CREACION;
+				break
 			case 1:
-				tipoAccion = Historial.Status.ACTUALIZACION;
-				break;
+				tipoAccion = HistorialAutor.Status.ACTUALIZACION;
+				break
 			case 2:
-				tipoAccion = Historial.Status.CONSULTA;
-				break;
+				tipoAccion = HistorialAutor.Status.CONSULTA;
+				break
+			case 3:
+				tipoAccion = HistorialAutor.Status.ELIMINACION;
+				break
 		}
-		guardarRegistroAutor(tipoAccion, nombre)
+		guardarRegistroAutor(tipoAccion, autor)
     }
-	
-	def registrarEliminacionAutor(def nombre){
-		def tipoAccion = Historial.Status.ELIMINACION;
-		guardarRegistroAutor(tipoAccion, nombre)
-	}
 
-	def guardarRegistroAutor(def tipoAccion, def nombre){
-		def h = new Historial(tipoAccion: tipoAccion, fecha:new Date(),mangas:null, autor:nombre)
+	def guardarRegistroAutor(def tipoAccion, def autor){
+		def h = new HistorialAutor(tipoAccion: tipoAccion, fecha:new Date(),mangas:null, autor:autor)
 
 		if(h.save(flush:true)){
-			log.info "Se ha creado la entrada de [" + tipoAccion + "] de " + nombre + " correctamente"
+			log.info "Se ha creado la entrada de [" + tipoAccion + "] de " + autor.toString() + " correctamente"
 		}else{
-			log.error "No se ha podido crear la entrada de [" + tipoAccion + "] de " + nombre + " correctamente"
+			log.error "No se ha podido crear la entrada de [" + tipoAccion + "] de " + autor.toString() + " correctamente"
 		}
 	}
 }
