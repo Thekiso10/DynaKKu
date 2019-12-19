@@ -12,9 +12,9 @@ class MangasController {
         params.max = Math.min(max ?: 10, 100)
 
         def registrados = params.registrado.equals("true") ? true : false
-        def mangasInstanceList = Mangas.findAllByDeseado(!registrados, params)
+        def mangasInstanceList = Mangas.findAllByDeseadoAndBorrado(!registrados, false, params)
         //Buscamos el numero de mangas despues de desgranar
-        def mangasInstanceCount = Mangas.findAllByDeseado(!registrados).size()
+        def mangasInstanceCount = Mangas.findAllByDeseadoAndBorrado(!registrados, false).size()
         def offset = (params.offset? params.offset : 0)
         //Miramos si hace falta usar el filtro
         if(params.search){
@@ -29,6 +29,7 @@ class MangasController {
                 def mangasList = magasFiltro.list (max: params.max, offset:offset){ //Para la paginacion
                     ilike ("nombreManga", ("%" + params.nombreManga.toString() + "%"))
                     eq("deseado", !registrados)
+                    eq("borrado", false)
 
                     if(params.autor != 'null'){
                         eq("autor.id", params.autor)
@@ -98,14 +99,14 @@ class MangasController {
     }
 
     def create() {
-        def hayAutores = (Autor.list()?.size() > 0)? true : false //Buscamo si hay autores
+        def hayAutores = (Autor.findAllByBorrado(false, params)?.size() > 0)? true : false //Buscamo si hay autores
         respond new Mangas(params), model:[hayAutores:hayAutores]
     }
 
     @Transactional
     def save(Mangas mangasInstance){
         //Comprobar que existe un Autor con el ID de la vista
-        if(!(Autor.findWhere(id: params.autor.id))){
+        if(!(Autor.findWhere(id: params.autor.id, borrado: false))){
             log.error "Estan intentando crear un manga sin un id de Autor valido"
             flash.error = message(code: "mangas.error.autor.dontId")
             redirect(action: "create")
@@ -239,7 +240,7 @@ class MangasController {
 
     @Transactional
     def show(Mangas mangasInstance) {
-        if(!mangasInstance){
+        if(!mangasInstance || mangasInstance.borrado == true){
             flash.message = message(code: "mangas.error.show")
             redirect(action: "index")
             return
@@ -266,7 +267,7 @@ class MangasController {
     def update() {
         def mangasInstance = Mangas.get(params.id)
         //Validar la instancia de los Mangas
-        if(!mangasInstance){
+        if(!mangasInstance || mangasInstance.borrado == true){
             flash.error = message(code: "mangas.error.show")
             redirect(action: "index")
             return
@@ -426,7 +427,7 @@ class MangasController {
 
     def updateSumTomosManga() {
         def mangaInstance = Mangas.get(params.id)
-        if(!mangaInstance){
+        if(!mangasInstance || mangasInstance.borrado == true){
             flash.error = message(code: "mangas.error.update")
             redirect(action: "index", params: [registrado: true])
             return
@@ -460,7 +461,7 @@ class MangasController {
 
     def updateStateSpinOff(){
         def mangaInstance = Mangas.get(params.id)
-        if(!mangaInstance){
+        if(!mangasInstance || mangasInstance.borrado == true){
             flash.error = message(code: "mangas.error.show")
             redirect(action: "index", params: [registrado: true])
             return
@@ -469,7 +470,7 @@ class MangasController {
         if(!mangaInstance.mangaSpinOff){
             if(params.spinOff){
                 def mangaSpinOff = Mangas.get(params.spinOff)
-                if(mangaSpinOff){
+                if(mangaSpinOff || !mangaSpinOff.borrado == true){
                     if(mangaInstance.id != mangaSpinOff.id){
                         mangaInstance.mangaSpinOff = mangaSpinOff
                         if(!mangaInstance.save(flush: true)){
@@ -519,7 +520,9 @@ class MangasController {
         GenerosMangas.findAllByMangas(mangasInstance).each { it.delete(flush:true) }
         //Borrar el Manga
         try{
-            mangasInstance.delete(flush:true)
+            mangasInstance.borrado = true
+            mangasInstance.fechaBorrado = new Date()
+            mangasInstance.save(flush:true)
 
             //Comprobamos que si tiene foto hay que borrarla
             if(path){

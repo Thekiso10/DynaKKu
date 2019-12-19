@@ -23,7 +23,7 @@
                             <label for="spinOff" class="col-sm-3">
                                 <g:message code="layoutMenu.botonesColeccion.mangas.lista" default="Num Tomos Actuales" />:
                             </label>
-                            <g:select class="col-sm-8" name="spinOff" from="${Colecciones.Mangas.list()}" optionValue="nombreManga" value="${params.mangaSpinOff?.nombreManga}" optionKey="id" noSelection="[null:'']"/>
+                            <g:select class="col-sm-8" name="spinOff" from="${Colecciones.Mangas.findAllByBorradoAndIdNotEqual(false, mangasInstance.id)}" optionValue="nombreManga" value="${params.mangaSpinOff?.nombreManga}" optionKey="id" noSelection="[null:'']"/>
                         </g:if>
                         <g:else>
                             <label for="spinOff" class="col-sm-2">

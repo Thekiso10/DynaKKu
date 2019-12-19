@@ -26,6 +26,7 @@ class AutorController {
 				def listaFiltro = autorFiltro.list (max: params.max, offset:offset){ //Para la paginacion
 					ilike ("nombre", ("%" + params.nombre.toString() + "%"))
 					ilike ("apellido", ("%" + params.apellido.toString() + "%"))
+					eq("borrado", false)
 					if(params.edad){ //Por si el campo viene vacio
 						eq ("edad", Integer.parseInt(params.edad.toString()))
 					}
@@ -212,6 +213,12 @@ class AutorController {
     def delete(Autor autorInstance) {
         if (autorInstance == null) {
             notFound()
+            return
+        }
+        //Buscar si tiene algun Manga asociado
+        if(Mangas.findAllByAutor(autorInstance)){
+            flash.error = message(code: "default.error.delete.bbdd")
+            redirect(action: "show", id:autorInstance.id)
             return
         }
 		//Si tiene foto, la borramos de la carpeta.

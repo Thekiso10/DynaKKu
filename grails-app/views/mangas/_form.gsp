@@ -45,7 +45,7 @@
 		<label id="autorLabel" for="autor" class="col-sm-2">
 			<g:message code="layoutMenu.botonesColeccion.autor" default="Autor" />:
 		</label>
-		<g:select id="autor" name="autor.id" from="${Colecciones.Autor.list()}" optionKey="id" optionValue="${{it.nombre + " " +it.apellido}}" value="${mangasInstance?.autor?.id}" class="many-to-one col-sm-10" noSelection="['null': '']"/>
+		<g:select id="autor" name="autor.id" from="${Colecciones.Autor.findAllByBorrado(false)}" optionKey="id" optionValue="${{it.nombre + " " +it.apellido}}" value="${mangasInstance?.autor?.id}" class="many-to-one col-sm-10" noSelection="['null': '']"/>
 	</div>
 </div>
 
