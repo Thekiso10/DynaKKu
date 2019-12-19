@@ -363,7 +363,6 @@ class MangasController {
                 //Quitamos la ruta en BBDD
                 mangasInstance.urlImg = null
             }else if(params.nombreManga != mangasInstance.nombreManga){
-                println "dfdsfdsf"
                 def changeFoto = mangasService.changeNameImg(mangasInstance.urlImg, params.nombreManga)
                 mangasInstance.urlImg = changeFoto.path
             }
