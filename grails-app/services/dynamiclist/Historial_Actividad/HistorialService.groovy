@@ -28,7 +28,7 @@ class HistorialService {
 		guardarRegistroAutor(tipoAccion, autor)
     }
 
-	def guardarRegistroAutor(def tipoAccion, def autor){
+	private def guardarRegistroAutor(def tipoAccion, def autor){
 		def h = new HistorialAutor(tipoAccion: tipoAccion, fecha:new Date(),mangas:null, autor:autor)
 
 		if(h.save(flush:true)){
