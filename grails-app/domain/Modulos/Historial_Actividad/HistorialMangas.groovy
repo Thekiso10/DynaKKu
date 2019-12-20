@@ -5,7 +5,7 @@ import Colecciones.Mangas
 class HistorialMangas {
     //Tipo de accions para el historial
     enum Status {
-        ACTUALIZACION, CREACION, ELIMINACION, CONSULTA, PASS_REGISTRADO, ADD_TOMOS, ADD_SPIN_OFF
+        ACTUALIZACION, CREACION, ELIMINACION, CONSULTA, PASS_REGISTRADO, ADD_TOMOS, ADD_SPIN_OFF, DELETE_SPIN_OFF
     }
     //ID Tabla
     String id
