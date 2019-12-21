@@ -48,7 +48,12 @@ class HistorialService {
 				tipoAccion = HistorialMangas.Status.PASS_REGISTRADO
 				break
 		}
-		guardarRegistroMangas(tipoAccion, manga)
+		//Registrar en el registro
+		def historial = guardarRegistroMangas(tipoAccion, manga)
+		//Buscar si hay que registrar algun valor
+		if(accion == 0){
+			guardarRegistroMangasActividad(4, HistorialMangasActividad.Index.NOMBRE, null, manga, historial)
+		}
 	}
 
 	def registrarMangas(Mangas manga, def params, int accion){
@@ -72,9 +77,9 @@ class HistorialService {
 				tipoActividad = HistorialMangasActividad.Index.DELETE_VALUE
 				break
 		}
-
+		//Registrar en el registro
 		def historial = guardarRegistroMangas(tipoAccion, manga)
-
+		//Buscar si hay que registrar algun valor
 		if(accion == 0){
 			def listaCanvios = getListValuesDiferents(manga, params)
 			if(listaCanvios.size() != 0){
@@ -83,7 +88,7 @@ class HistorialService {
 				}
 			}
 		}else{
-			guardarRegistroMangasActividad(accion, tipoActividad, params, historial)
+			guardarRegistroMangasActividad(accion, tipoActividad, params, manga, historial)
 		}
 
 	}
@@ -107,7 +112,10 @@ class HistorialService {
 				historialAccion.valorNuevo = manga.mangaSpinOff.nombreManga
 				break
 			case 3:
-				historialAccion.valorAnterior = params
+				historialAccion.valorEliminado = params
+				break
+			case 4:
+				historialAccion.valorNuevo = manga.nombreManga
 				break
 		}
 
@@ -119,8 +127,9 @@ class HistorialService {
 	}
 
 	private def guardarRegistroMangas(def tipoAccion, Mangas manga){
-		def h = new HistorialMangas(tipoAccion: tipoAccion, fecha: new Date(), manga: manga)
-
+		//Creamos la instancia del historial
+		def h = new HistorialMangas(tipoAccion: tipoAccion, fecha: new Date(), mangas: manga)
+		//Guardamos y mostramos un menjage
 		if(h.save(flush:true)){
 			log.info "Se ha creado la entrada de [" + tipoAccion + "] de " + manga.nombreManga + " correctamente"
 		}else{
