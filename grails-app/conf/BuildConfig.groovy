@@ -53,7 +53,8 @@ grails.project.dependency.resolution = {
         runtime 'mysql:mysql-connector-java:5.1.29'
         test "org.grails:grails-datastore-test-support:1.0-grails-2.4"
 		//Plugins
-		compile "commons-io:commons-io:2.4"
+		compile "commons-io:commons-io:2.4",
+                'com.itextpdf:itextpdf:5.5.13.1'
     }
 
     plugins {
