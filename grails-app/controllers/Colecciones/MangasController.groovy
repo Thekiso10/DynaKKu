@@ -7,7 +7,7 @@ class MangasController {
 
     def mangasService
     def autorService
-    def historialService
+    def registerHistorialService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -82,7 +82,7 @@ class MangasController {
                         flash.error = message(code: "mangas.error.update")
                     }else{
                         //Registrar su el paso a Manga Registrado
-                        historialService.registrarMangas(mangaInstance, 3)
+                        registerHistorialService.registrarMangas(mangaInstance, 3)
                     }
 
                 }else{
@@ -224,7 +224,7 @@ class MangasController {
                     }
                 }
                 //Guardar historial
-                historialService.registrarMangas(mangasInstance, 0)
+                registerHistorialService.registrarMangas(mangasInstance, 0)
                 flash.message = message(code: "mangas.message.save.ok", args: [mangasInstance.nombreManga])
             }else{
                 if(validarFoto?.path)autorService.deleteImage(validarFoto.path)
@@ -253,7 +253,7 @@ class MangasController {
         //Obtenemos la lista de generos del Manga
         def listaGeneros = GenerosMangas.findAllByMangas(mangasInstance)
         //Guardar el registro
-        historialService.registrarMangas(mangasInstance, 1)
+        registerHistorialService.registrarMangas(mangasInstance, 1)
         respond mangasInstance, model:[listaGeneros:listaGeneros]
     }
 
@@ -414,7 +414,7 @@ class MangasController {
                     }
                 }
                 //Registra los cambios en el historial
-                historialService.registrarMangas(mangasInstance, mangasInstanceBackUp, 0)
+                registerHistorialService.registrarMangas(mangasInstance, mangasInstanceBackUp, 0)
                 flash.message = message(code: "mangas.message.save.ok", args: [mangasInstance.nombreManga])
             }else{
                 if(validarFoto?.path)autorService.deleteImage(validarFoto.path)
@@ -457,7 +457,7 @@ class MangasController {
                 }else{
                     flash.message = message(code: "mangas.show.sumTomos.correcto")
                     //Guardar registro de aumento de tomos
-                    historialService.registrarMangas(mangaInstance, params.numTomosActuales, 1)
+                    registerHistorialService.registrarMangas(mangaInstance, params.numTomosActuales, 1)
                 }
             }else{
                 flash.error = message(code: "mangas.show.sumTomos.error.tomosMax")
@@ -488,7 +488,7 @@ class MangasController {
                         }else{
                             flash.message = message(code: "mangas.message.update.ok", args: [mangaInstance.nombreManga])
                             //Registrar nuevo Spin-Off
-                            historialService.registrarMangas(mangaInstance, null, 2)
+                            registerHistorialService.registrarMangas(mangaInstance, null, 2)
                         }
                     }else{
                         flash.error = message(code: "mangas.show.spinOff.error.identico")
@@ -509,7 +509,7 @@ class MangasController {
             }else{
                 flash.message = message(code: "mangas.message.update.ok", args: [mangaInstance.nombreManga])
                 //Registrar nuevo Spin-Off
-                historialService.registrarMangas(mangaInstance, nombreSpinOff, 3)
+                registerHistorialService.registrarMangas(mangaInstance, nombreSpinOff, 3)
             }
         }
 
@@ -550,7 +550,7 @@ class MangasController {
                 }
             }
             //Registrar su eliminacion
-            historialService.registrarMangas(mangasInstance, 2)
+            registerHistorialService.registrarMangas(mangasInstance, 2)
             flash.message = message(code: "mangas.message.delete.ok", args: [nombreManga])
         }catch(Exception e){
             log.error "No se ha podido borrar en base de datos " + e

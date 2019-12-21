@@ -1,7 +1,6 @@
 package Colecciones
 
 import grails.transaction.Transactional
-import java.text.SimpleDateFormat
 
 @Transactional(readOnly = true)
 class AutorController {
@@ -10,7 +9,7 @@ class AutorController {
 	
 	//Definir el servicio del Autor
 	def autorService
-	def historialService
+	def registerHistorialService
 	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -64,7 +63,7 @@ class AutorController {
 			return
 		}
 		//Registrar la consulta del Autor
-		historialService.registrarAutor(autorInstance, 2)
+		registerHistorialService.registrarAutor(autorInstance, 2)
         respond autorInstance
     }
 
@@ -109,7 +108,7 @@ class AutorController {
 			if(autorInstance.save(flush:true)){
 				log.info "Creando entrada en el historial de un nuevo autor"
 				flash.message = message(code: "autores.message.save.ok", args: [nombreAutor])
-				historialService.registrarAutor(autorInstance, 0)
+				registerHistorialService.registrarAutor(autorInstance, 0)
 			}else{
 				autorService.deleteImage(validadorFoto.path)
 			}
@@ -201,7 +200,7 @@ class AutorController {
 			if(autorInstance.save(flush:true)){
 				log.info "Creando entrada en el historial de una actualizacion de un autor"
 				flash.message = message(code: "autores.message.update.ok", args: [nombreAutor])
-				historialService.registrarAutor(autorInstance, 1)
+				registerHistorialService.registrarAutor(autorInstance, 1)
 			}
 		}catch(Exception e){
 			log.error "No se ha podido guardar en base de datos " + e
@@ -240,7 +239,7 @@ class AutorController {
 			
 			log.info "Creando entrada en el historial de una actualizacion de un autor"
 			flash.message = message(code: "autores.message.delete.ok", args: [autorInstance.toString()])
-			historialService.registrarAutor(autorInstance, 3)
+			registerHistorialService.registrarAutor(autorInstance, 3)
 			
         }catch(Exception e){
 			log.error "No se ha podido borrar en base de datos " + e

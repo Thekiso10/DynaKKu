@@ -1,4 +1,4 @@
-package dynamiclist.Estadisticas
+package dynamiclist.Modulos.Estadisticas
 
 import grails.transaction.Transactional
 import Colecciones.Autor

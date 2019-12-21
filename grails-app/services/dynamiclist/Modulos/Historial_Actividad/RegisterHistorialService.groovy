@@ -1,14 +1,15 @@
-package dynamiclist.Historial_Actividad
+package dynamiclist.Modulos.Historial_Actividad
 
 import Colecciones.Autor
 import Colecciones.Mangas
+import Modulos.Historial_Actividad.HistorialModulos
 import Modulos.Historial_Actividad.HistorialAutor
 import Modulos.Historial_Actividad.HistorialMangas
 import Modulos.Historial_Actividad.HistorialMangasActividad
 import grails.transaction.Transactional
 
 @Transactional
-class HistorialService {
+class RegisterHistorialService {
 
 	def registrarAutor(Autor autor, int accion) {
 		//Definimos las diferentes opciones
