@@ -93,7 +93,7 @@
 									<span class="glyphicon glyphicon-chevron-down"></span><g:message code="layoutMenu.botonesColeccion.funciones"/></a>
 								<ul class="dropdown-menu styleDropdown">
 									<li><g:link class="btn btnMenu" action="general" controller="Estadisticas"><g:message code="layoutMenu.botonesColeccion.funciones.stats"/></g:link></li>
-									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.funciones.historial"/></g:link></li>
+									<li><g:link class="btn btnMenu" action="index" controller="historial"><g:message code="layoutMenu.botonesColeccion.funciones.historial"/></g:link></li>
 									<li><g:link class="btn btnMenu"><g:message code="layoutMenu.botonesColeccion.funciones.GenerateReport"/></g:link></li>
 								</ul>
 							</li>
