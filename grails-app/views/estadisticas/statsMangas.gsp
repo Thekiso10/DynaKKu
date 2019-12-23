@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="layoutMain"/>
-        <link rel="stylesheet" href="${resource(dir: 'css', file: 'stats.css')}" type="text/css">
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'Modulos/Estadisticas/stats.css')}" type="text/css">
         <title><g:message code="stats.header.title.general.label"/></title>
     </head>
     <body>
