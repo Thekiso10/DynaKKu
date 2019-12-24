@@ -1,0 +1,12 @@
+#layout-container #list-historia h2,
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF h2 { font-size: 2.75em; border-bottom: 2px solid; margin-top: 1em; text-align: center;}
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF h3 {text-align: center; margin-top: 0; font-size: 2.25em;}
+
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .divButtonSave {margin-top: 2em; margin-bottom: 2em; padding: 0.5em; border: 3px solid; border-radius: 10px;}
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form {margin-top: 1em; padding: 1em; border: 5px solid; border-radius: 15px;}
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox {padding: 1em; border: 2px solid}
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox .blockInpunts {font-size: 1.15em;}
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox .blockInpunts label {display: contents;}
+
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .buttons {text-align: center;}
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .buttons .btnSave {padding: 0.5em 6em; font-size: 1.5em; border: 3px solid; font-weight: 600; transition: 1s;}
