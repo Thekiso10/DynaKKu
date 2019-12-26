@@ -3,7 +3,7 @@ package Modulos.Historial_Actividad
 class HistorialModulos {
 //Tipo de accions para el historial
     enum Modulos {
-        ESTADISTICAS, EXPORTACION_LISTADO, LISTADO_PDF, REPOSRTE_PDF, PERSONALIZACION_USUARIO, HISTORIAL_ACTIVIDAD
+        ESTADISTICAS, EXPORTACION_LISTADO, LISTADO_PDF, REPOSRTE_PDF, HISTORIAL_ACTIVIDAD
     }
     //ID Tabla
     String id
