@@ -258,6 +258,18 @@
 
 #layout-container #ver-manga div#panel-ver-mangas #imgMangas img {border-color: #1B2228; box-shadow: 0 1px 11px 3px #1B2228;}
 
+/*** Modulo - Historial ***/
+#layout-container #list-historia h2,
+#layout-container #Generate-Historial-PDF h2 {color:#d8d8d8; border-bottom-color: #d8d8d8;}
+
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .container .panel-form,
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .container .divButtonSave {background: #166088; border-color: #114d72;}
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .buttons .divButtonSave .btnSave {background-color: #2276A1; color: white; border-color: #1d536f;}
+
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox {border-color: #67bcec !important;}
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox .blockInpunts label {color: #d9dfe6;}
+
+
 /*** Errores ***/
 #Error-404 .container .col-sm-6 .btnInicio {background-color: #2276A1; border: 3px solid #63AED4; color: #fff;}
 #Error-404 .container .col-sm-6 .btnBack {background-color: #273039; border: 3px solid #646B72; color: #fff;}
