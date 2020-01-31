@@ -19,7 +19,7 @@
 					</g:link></li>
 				</ul>
 				<ul class="navbar-nav">
-					<li><g:link class="btn btnLlist" action="create">
+					<li><g:link class="btn btnLlist" action="">
 						<g:message code="default.list.generatePDF.label"
 								   args="[entityName]" />
 					</g:link></li>
