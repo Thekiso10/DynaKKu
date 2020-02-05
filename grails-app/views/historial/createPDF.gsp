@@ -17,7 +17,7 @@
                 <div class="container">
                     <ul class="navbar-nav">
                         <li>
-                            <g:submitButton name="generatePDF" class="btn btnSave" value="${message(code: 'default.generate.pdf.label')}"/>
+                            <g:submitButton name="generatePDF_Menu" class="btn btnSave" value="${message(code: 'default.generate.pdf.label')}"/>
                         </li>
                         <li>
                             <g:link class="btn btnLlist" controller="historial" action="index">
@@ -56,7 +56,7 @@
                         </h3>
 
                         <div class="col-sm-12 borderBox">
-                            <div class="col-sm-6 text-center blockInpunts">
+                            <div class="col-sm-4 text-center blockInpunts">
                                 <label for="tipoHistorial">
                                     <g:message code="modulos.historial.createPDF.tipoHistorial.label" default="tipo de historial"/>:
                                 </label>
@@ -67,34 +67,62 @@
                                 </select>
                             </div>
 
-                            <div class="col-sm-6 text-center blockInpunts">
-                                <g:select name="function" from="${listaFuncionesMangas}" optionKey="key" optionValue="value"/>
-                                <g:select name="function" from="${listaFuncionesAutores}" optionKey="key" optionValue="value" class="hide"/>
-                                <g:select name="function" from="${listaFuncionesModulos}" optionKey="key" optionValue="value" class="hide"/>
+                            <div class="col-sm-4 text-center blockInpunts">
+                                <label for="tipoHistorial">
+                                    <g:message code="layoutMenu.botonesColeccion.funciones" default="tipo de historial"/>:
+                                </label>
+                                <g:select name="functionMangas" from="${listaFuncionesMangas}" optionKey="key" optionValue="value"/>
+                                <g:select name="functionAutores" from="${listaFuncionesAutores}" optionKey="key" optionValue="value" class="hide"/>
+                                <g:select name="functionModulos" from="${listaFuncionesModulos}" optionKey="key" optionValue="value" class="hide"/>
+                            </div>
+
+                            <div class="col-sm-4 text-center blockInpunts">
+                                <label for="allFunction">
+                                    <g:message code="modulos.historial.createPDF.allFunction.label" default="tipo de historial"/>:
+                                </label>
+                                <g:checkBox name="allFunction" />
                             </div>
 
                         </div>
 
                         <div class="col-sm-12 borderBox">
-                            <div class="col-sm-6 text-center blockInpunts">
-%{--                                <table>--}%
-%{--                                    <tr>--}%
-%{--                                        <td>--}%
-%{--                                            <input type="text" id="startDate" name="startDate" class="datepicker form-control" size="10" data-date-format="dd/MM/yy" placeholder="${message(code:'search.start.label')}" value="${params?.startDate}" />--}%
-%{--                                        </td>--}%
-%{--                                        <td>--}%
-%{--                                            <input type="text" id="endDate" name="endDate" class="datepicker form-control" size="10" data-date-format="dd/MM/yy" placeholder="${message(code:'search.end.label')}" value="${params?.endDate}" />--}%
-%{--                                        </td>--}%
-%{--                                    </tr>--}%
-%{--                                </table>--}%
+                            <div class="col-sm-4 text-center blockInpunts">
+                                <div class="col-sm-6">
+                                    <label for="startDate">
+                                        <g:message code="modulos.historial.createPDF.fecha.inicio.label" default="tipo de historial"/>:
+                                    </label>
+                                    <input type="text" id="startDate" name="startDate" class="datepicker form-control" size="10" data-date-format="dd/MM/yy" placeholder="${message(code:'modulos.historial.createPDF.fecha.inicio.label')}"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="endDate">
+                                        <g:message code="modulos.historial.createPDF.fecha.final.label" default="tipo de historial"/>:
+                                    </label>
+                                    <input type="text" id="endDate" name="endDate" class="datepicker form-control" size="10" data-date-format="dd/MM/yy" placeholder="${message(code:'modulos.historial.createPDF.fecha.final.label')}"/>
+                                </div>
                             </div>
 
-                            <div class="col-sm-6 text-center blockInpunts">
-
+                            <div class="col-sm-4 text-center blockInpunts">
+                                <label for="selectIdiomas">
+                                    <g:message code="layoutMenu.configuracion.titulo.idioma" default="tipo de historial"/>:
+                                </label>
+                                <select name="selectIdiomas" id="selectIdiomas">
+                                    <option value="es">
+                                        <g:message code="grailsLogo.bannerLogo.idiomaLink.espanol"/>
+                                    </option>
+                                    <option value="cat">
+                                        <g:message code="grailsLogo.bannerLogo.idiomaLink.catalan"/>
+                                    </option>
+                                    <option value="en">
+                                        <g:message code="grailsLogo.bannerLogo.idiomaLink.ingles"/>
+                                    </option>
+                                </select>
                             </div>
 
-                            <div class="col-sm-6 text-center blockInpunts">
-
+                            <div class="col-sm-4 text-center blockInpunts">
+                                <label for="allHistorial">
+                                    <g:message code="modulos.historial.createPDF.allHistorial.label" default="tipo de historial"/>:
+                                </label>
+                                <g:checkBox name="allHistorial" />
                             </div>
 
                         </div>
@@ -104,7 +132,7 @@
 
                 <fieldset class="buttons">
                     <div class="col-sm-12 divButtonSave">
-                        <g:submitButton name="generatePDF" class="btn btnSave" value="${message(code: 'default.generate.pdf.label')}"/>
+                        <g:submitButton name="generatePDF" class="btn btnSave" value="${message(code: 'default.generate.pdf.label')}" />
                     </div>
                 </fieldset>
 
@@ -112,6 +140,36 @@
 
         </g:form>
     </div>
+
+    <script>
+        $( document ).ready(function() {
+            $('#tipoHistorial').change( function() {
+                $(this).find(":selected").each(function () {
+                    //Ocultamos todas las lista
+                    $('#functionMangas').addClass('hide');
+                    $('#functionAutores').addClass('hide');
+                    $('#functionModulos').addClass('hide');
+                    //Mostramos el indicado
+                    switch ($(this).val()) {
+                        case '0':
+                            console.log("a");
+                            $('#functionMangas').removeClass('hide');
+                            break;
+                         case '1':
+                             console.log("b");
+                             $('#functionAutores').removeClass('hide');
+                             break;
+                         case '2':
+                             console.log("c");
+                             $('#functionModulos').removeClass('hide');
+                             break;
+                        default:
+                    }
+
+                });
+            });
+        });
+    </script>
 
     <g:javascript src="datePicker/datepickerInterval-yy.js" />
 

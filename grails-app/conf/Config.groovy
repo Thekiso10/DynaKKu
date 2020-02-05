@@ -140,6 +140,9 @@ dynamicList.mangas.rutaImg = "web-app\\images\\imgMangas" //Ruta para guardar la
 dynamicList.mangas.longitut.nombreMax  = 255
 dynamicList.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos permitidos para un mismo Manga
 
+/****** PDF ******/
+dynamicList.pdfConf.pathBanner = "images/imgWeb/bannerPDF.png"
+
 /*==================================================================*/
 /* 					   Cargar Config Externa       					*/
 /*==================================================================*/

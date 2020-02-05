@@ -6,6 +6,8 @@ import Modulos.Historial_Actividad.HistorialModulos
 import Modulos.Historial_Actividad.HistorialAutor
 import Modulos.Historial_Actividad.HistorialMangas
 import Modulos.Historial_Actividad.HistorialMangasActividad
+import com.itextpdf.text.Document
+import dynamiclist.Funciones.PdfService
 import grails.transaction.Transactional
 
 import org.springframework.context.MessageSource
@@ -14,6 +16,39 @@ import org.springframework.context.MessageSource
 class HistorialService {
 
     static MessageSource messageSource
+    //Definir Servicios externos
+    def pdfService
+
+    def generateHistorialPDF(params, def imgBanner, def pathDoc){
+        //Defimnimos el documento
+        def doc
+        //Definir la idioma
+        Locale defaultLocale
+        //Definior las listas
+        def historialMangas = null
+        def historialAutores = null
+        def historialModulos = null
+        //Comprovamos los parametros para generar las lista
+        if(params.allHistorial){
+            historialMangas = getHistorialMangas()
+            historialAutores = getHistorialAutores()
+            historialModulos = getHistorialModulos()
+        }else{
+
+        }
+        //Setear el idioma
+        if(params.selectIdiomas == "es") {
+            defaultLocale = new Locale('es')
+        }else if (params.selectIdiomas == "cat") {
+            defaultLocale = new Locale('ca', 'es')
+        }else if (params.selectIdiomas == "en"){
+            defaultLocale = new Locale('en', 'us')
+        }
+        //Llamamos a la funcion de creación del PDF que nos devolvera el PDF
+        doc = pdfService.generateHistorialActividadPDF(historialMangas, historialAutores, historialModulos, defaultLocale, imgBanner, pathDoc)
+        //Devolvemos el PDF
+        return doc
+    }
 
     def getListFunctionsMangas(Locale defaultLocale) {
         def list = []
@@ -48,7 +83,19 @@ class HistorialService {
         return list
     }
 
-    private def getBasicListFunctions(Locale defaultLocale){
+    private def getHistorialMangas(def funcion, def dataInicio, def dataFinal){
+
+    }
+
+    private def getHistorialAutores(def funcion, def dataInicio, def dataFinal){
+
+    }
+
+    private def getHistorialModulos(def funcion, def dataInicio, def dataFinal){
+
+    }
+
+    private static def getBasicListFunctions(Locale defaultLocale){
         def list = []
 
         list << [value: messageSource.getMessage("modulos.historial.create.label", null, defaultLocale), key: HistorialAutor.Status.CREACION]
@@ -58,4 +105,17 @@ class HistorialService {
 
         return list
     }
+
+    private static def getHistorialMangas(){
+        return HistorialMangas.findAll()
+    }
+
+    private static def getHistorialAutores(){
+        return HistorialAutor.findAll()
+    }
+
+    private static def getHistorialModulos(){
+        return HistorialModulos.findAll()
+    }
+
 }
