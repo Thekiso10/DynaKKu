@@ -44,26 +44,32 @@ class PdfService {
         //Definir el nombre del doc
         def docName = 'historialActividadPDF_'.concat(formatDate).concat('.pdf')
         //Definir variables iniciales
-        Document document = new com.itextpdf.text.Document()
+        Document document = new com.itextpdf.text.Document(PageSize.A4, 36, 36, 90, 36)
         //Crear documento
         try {
             //------------------ Definir propiedades del documento ------------
 
             //------------------ Se crea el documento -------------------------
-            PdfWriter.getInstance(document,new FileOutputStream(new File(pathDoc + File.separator + docName)))
+            PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(new File(pathDoc + File.separator + docName)))
+            //------------------ Setear tanto el Headre como Footer -------------------------
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent();
+            writer.setPageEvent(event);
             // Se abre el documento.
             document.open()
             //------------------ Imagen de cabecera del pdf -------------------
 			Image imageHeader = Image.getInstance(imgBanner)
-			float scaler = ((document.getPageSize().getWidth() - document.leftMargin()- document.rightMargin()) / imageHeader.getWidth()) * 100;
+			float scaler = ((document.getPageSize().getWidth() - document.leftMargin()- document.rightMargin()) / imageHeader.getWidth()) * 100
             imageHeader.scalePercent(scaler)
             document.add(imageHeader)
+
+
             //------------------ Cerrar el nuevo documento --------------------
             document.close()
 
         }catch(Exception e){
             log.error e.getCause()
             log.error e.getMessage()
+            e.printStackTrace()
             return null
         }
 

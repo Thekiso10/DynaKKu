@@ -141,7 +141,7 @@ dynamicList.mangas.longitut.nombreMax  = 255
 dynamicList.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos permitidos para un mismo Manga
 
 /****** PDF ******/
-dynamicList.pdfConf.pathBanner = "images/imgWeb/bannerPDF.png"
+dynamicList.pdfConf.pathBanner = "images/imgWeb/pdf/bannerPDF.png"
 
 /*==================================================================*/
 /* 					   Cargar Config Externa       					*/
