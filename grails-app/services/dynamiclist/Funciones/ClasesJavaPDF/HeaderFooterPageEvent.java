@@ -1,4 +1,4 @@
-package dynamiclist.Funciones;
+package dynamiclist.Funciones.ClasesJavaPDF;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
@@ -6,7 +6,6 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.*;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;

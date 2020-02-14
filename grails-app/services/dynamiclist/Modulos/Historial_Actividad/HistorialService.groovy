@@ -30,11 +30,22 @@ class HistorialService {
         def historialModulos = null
         //Comprovamos los parametros para generar las lista
         if(params.allHistorial){
+            //Setear la varibles de todas las funciones a 'true'
+            params.allFunction = true
+            //Coger todas el historial
             historialMangas = getHistorialMangas()
             historialAutores = getHistorialAutores()
             historialModulos = getHistorialModulos()
         }else{
-
+            if(!params.allFunction){
+                if (params.tipoHistorial == '0') {
+                    params.function = params.functionMangas
+                }else if (params.tipoHistorial == '1') {
+                    params.function = params.functionAutores
+                }else if (params.tipoHistorial == '2') {
+                    params.function = params.functionModulos
+                }
+            }
         }
         //Setear el idioma
         if(params.selectIdiomas == "es") {
@@ -45,7 +56,7 @@ class HistorialService {
             defaultLocale = new Locale('en', 'us')
         }
         //Llamamos a la funcion de creación del PDF que nos devolvera el PDF
-        doc = pdfService.generateHistorialActividadPDF(historialMangas, historialAutores, historialModulos, defaultLocale, imgBanner, pathDoc)
+        doc = pdfService.generateHistorialActividadPDF(historialMangas, historialAutores, historialModulos, defaultLocale, imgBanner, pathDoc, params)
         //Devolvemos el PDF
         return doc
     }
