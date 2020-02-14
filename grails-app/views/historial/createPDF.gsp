@@ -21,7 +21,7 @@
                         </li>
                         <li>
                             <g:link class="btn btnLlist" controller="historial" action="index">
-                                <g:message code="modulos.historial.actividad.lable"/>
+                                <g:message code="modulos.historial.lable.HISTORIAL_ACTIVIDAD"/>
                             </g:link>
                         </li>
                     </ul>

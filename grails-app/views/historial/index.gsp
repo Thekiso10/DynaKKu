@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'Modulos/Historial/historial.css')}" type="text/css">
     <g:set var="entityName" value="${message(code: 'modulos.historial.lable', default: 'historial')}" />
-    <title><g:message code="modulos.historial.actividad.lable"/></title>
+    <title><g:message code="modulos.historial.lable.HISTORIAL_ACTIVIDAD"/></title>
 </head>
 <body>
     <div id="list-historia" class="col-sm-12" role="main">

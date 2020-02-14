@@ -195,7 +195,7 @@ class PdfService {
         /* Generar bucle de actividad*/
         if(historialAutores){
             historialAutores.each{ actividad ->
-
+                
             }
         }else{
             getTextDontRegister()
@@ -244,25 +244,25 @@ class PdfService {
         if(params.allHistorial || params.allFunction){
             text = messageSource.getMessage("modulos.historial.createPDF.pdfText.allFunction", null, defaultLocale)
         }else if (params.function == 'CREACION') {
-            text = messageSource.getMessage("modulos.historial.create.label", null, defaultLocale)
+            text = messageSource.getMessage("modulos.historial.label.CREACION", null, defaultLocale)
         }else if (params.function == 'CONSULTA') {
-            text = messageSource.getMessage("modulos.historial.show.label", null, defaultLocale)
+            text = messageSource.getMessage("modulos.historial.label.CONSULTA", null, defaultLocale)
         }else if (params.function == 'ACTUALIZACION') {
-            text = messageSource.getMessage("modulos.historial.update.label", null, defaultLocale)
+            text = messageSource.getMessage("modulos.historial.label.ACTUALIZACION", null, defaultLocale)
         }else if (params.function == 'ELIMINACION') {
-            text = messageSource.getMessage("modulos.historial.delete.label", null, defaultLocale)
+            text = messageSource.getMessage("modulos.historial.label.ELIMINACION", null, defaultLocale)
         }else if(params.function == 'ADD_TOMOS') {
-            text = messageSource.getMessage("modulos.historial.addTomos.label", null, defaultLocale)
+            text = messageSource.getMessage("modulos.historial.label.ADD_TOMOS", null, defaultLocale)
         }else if(params.function == 'ADD_SPIN_OFF') {
-            text = messageSource.getMessage("modulos.historial.addSpinOff.label", null, defaultLocale)
+            text = messageSource.getMessage("modulos.historial.label.ADD_SPIN_OFF", null, defaultLocale)
         }else if(params.function == 'PASS_REGISTRADO') {
-            text = messageSource.getMessage("modulos.historial.passRegister.label", null, defaultLocale)
+            text = messageSource.getMessage("modulos.historial.label.PASS_REGISTRADO", null, defaultLocale)
         }else if(params.function == 'DELETE_SPIN_OFF') {
-            text = messageSource.getMessage("modulos.historial.deleteSpinOff.label", null, defaultLocale)
+            text = messageSource.getMessage("modulos.historial.label.DELETE_SPIN_OFF", null, defaultLocale)
         }else if(params.function == 'ESTADISTICAS') {
             text = messageSource.getMessage("stats.header.title.general.label", null, defaultLocale)
         }else if(params.function == 'HISTORIAL_ACTIVIDAD') {
-            text = messageSource.getMessage("modulos.historial.actividad.lable", null, defaultLocale)
+            text = messageSource.getMessage("modulos.historial.lable.HISTORIAL_ACTIVIDAD", null, defaultLocale)
         }else if(params.function == 'EXPORTACION_LISTADO') {
             text = messageSource.getMessage("modulos.exportacionListado.title", null, defaultLocale)
         }else if(params.function == 'LISTADO_PDF') {
