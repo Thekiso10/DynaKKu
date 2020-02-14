@@ -26,15 +26,19 @@ import com.itextpdf.text.pdf.PdfWriter
 class PdfService {
 
     static MessageSource messageSource
+    static Locale defaultLocale
+    static Document document
 
-    def generateHistorialActividadPDF(def historialMangas, def historialAutores, def historialModulos, Locale defaultLocale, def imgBanner, def pathDoc, params){
+
+    def generateHistorialActividadPDF(def historialMangas, def historialAutores, def historialModulos, Locale locale, def imgBanner, def pathDoc, params){
         log.info "Generando PDF del Historial de Actividad"
         //Crear formato fecha actual
         def formatDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date())
         //Definir el nombre del doc
         def docName = 'historialActividadPDF_'.concat(formatDate).concat('.pdf')
         //Definir variables iniciales
-        Document document = new com.itextpdf.text.Document(PageSize.A4, 36, 36, 90, 36)
+        document = new com.itextpdf.text.Document(PageSize.A4, 36, 36, 90, 36)
+        defaultLocale = locale
         //Crear documento
         try {
             //------------------ Se crea el documento -------------------------
@@ -54,22 +58,18 @@ class PdfService {
             document.add(imageHeader)
             //------------------ Ejecutar logica ------------------------------
             //Colocar la cabezera informativa
-            getCabezeraHistorialActividadPDF(document, defaultLocale, params)
+            generateCabezeraHistorialActividadPDF(params)
 
-            if(historialAutores){
-
+            if(params.allHistorial || params.tipoHistorial == '0'){
+                generateHistorialMangas(params, historialMangas)
             }
 
-            if(historialMangas){
-
+            if(params.allHistorial || params.tipoHistorial == '1'){
+                generateHistorialAutores(params, historialAutores)
             }
 
-            if(historialModulos){
-
-            }
-
-            if(!historialMangas && !historialAutores && !historialModulos){
-                //TODO: Hay que imprimir un titulo que indique no hay registros
+            if(params.allHistorial || params.tipoHistorial == '2'){
+                generateHistorialFunciones(params, historialMangas)
             }
 
             //------------------ Cerrar el nuevo documento --------------------
@@ -78,14 +78,13 @@ class PdfService {
         }catch(Exception e){
             log.error e.getCause()
             log.error e.getMessage()
-            e.printStackTrace()
             return null
         }
 
         return [document: document, docName:docName]
     }
 
-    private def getCabezeraHistorialActividadPDF(Document document, Locale defaultLocale, params){
+    private def generateCabezeraHistorialActividadPDF(params){
         //Colores
         BaseColor azulOscuro    = new BaseColor (21, 32, 43)
         BaseColor blanco        = new BaseColor (255, 255, 255)
@@ -93,14 +92,14 @@ class PdfService {
         BaseColor azulClaro2    = new BaseColor (19, 101, 142)
         BaseColor negro         = new BaseColor (68, 68, 68)
         // Variables
-        Paragraph paragraph = new Paragraph()
-        Font fontTitle = FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLDITALIC, negro)
+        Font fontTitle = FontFactory.getFont(FontFactory.HELVETICA, 22, Font.BOLDITALIC, negro)
         Font fontSubTitle = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.ITALIC | Font.UNDERLINE, negro)
         Font smallBoldWhite = FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD, azulClaro)
         Font smallBaseWhite = FontFactory.getFont(FontFactory.HELVETICA, 10, Font.UNDERLINE, blanco)
 
         def formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm a, z").format(new Date())
         //------------------- Titulo de la sesion en texto grande -----------------
+        Paragraph paragraph = new Paragraph()
         paragraph.setFont(fontTitle)
         paragraph.add('Historial de Actividad - '.concat(formatDate))
         paragraph.setAlignment(Element.ALIGN_CENTER)
@@ -113,7 +112,6 @@ class PdfService {
         subtitle.add("Parametros de generacion - Historial de Actividad")
         subtitle.setSpacingAfter(12.5f)
         document.add(subtitle)
-        //document.add(Chunk.NEWLINE)
 
         //Definir la propiedades de la tabla
         PdfPTable table = new PdfPTable(3)
@@ -132,32 +130,32 @@ class PdfService {
         def listText = []
 
         text = new Paragraph((messageSource.getMessage("modulos.historial.createPDF.tipoHistorial.label", null, defaultLocale) + ": "), smallBoldWhite)
-        info = new Chunk(getTypeHistorial(params, defaultLocale), smallBaseWhite)
+        info = new Chunk(getTypeHistorial(params), smallBaseWhite)
         text.add(info)
         listText << text
 
         text = new Paragraph((messageSource.getMessage("layoutMenu.botonesColeccion.funciones", null, defaultLocale) + ": "), smallBoldWhite)
-        info = new Chunk(getFunction(params, defaultLocale), smallBaseWhite)
+        info = new Chunk(getFunction(params), smallBaseWhite)
         text.add(info)
         listText << text
 
         text = new Paragraph((messageSource.getMessage("modulos.historial.createPDF.allFunction.label", null, defaultLocale) + ": "), smallBoldWhite)
-        info = new Chunk(getAllCheck(params.allFunction, defaultLocale), smallBaseWhite)
+        info = new Chunk(getAllCheck(params.allFunction), smallBaseWhite)
         text.add(info)
         listText << text
 
         text = new Paragraph((messageSource.getMessage("modulos.historial.createPDF.pdfText.todosTipos", null, defaultLocale) + ": "), smallBoldWhite)
-        info = new Chunk(getAllCheck(params.allHistorial, defaultLocale), smallBaseWhite)
+        info = new Chunk(getAllCheck(params.allHistorial), smallBaseWhite)
         text.add(info)
         listText << text
 
         text = new Paragraph((messageSource.getMessage("modulos.historial.createPDF.fecha.inicio.label", null, defaultLocale) + ": "), smallBoldWhite)
-        info = new Chunk(getDate(params.startDate, defaultLocale), smallBaseWhite)
+        info = new Chunk(getDate(params.startDate), smallBaseWhite)
         text.add(info)
         listText << text
 
         text = new Paragraph((messageSource.getMessage("modulos.historial.createPDF.fecha.final.label", null, defaultLocale) + ": "), smallBoldWhite)
-        info = new Chunk(getDate(params.endDate, defaultLocale), smallBaseWhite)
+        info = new Chunk(getDate(params.endDate), smallBaseWhite)
         text.add(info)
         listText << text
 
@@ -167,9 +165,64 @@ class PdfService {
         }
 
         document.add(table)
+        document.add(Chunk.NEWLINE)
     }
 
-    private def getTypeHistorial(params, Locale defaultLocale){
+    private def generateHistorialMangas(def params, def historialMangas){
+        //Colores
+        BaseColor negro = new BaseColor (68, 68, 68)
+        //Fuentes
+
+        /* Colocar titulo */
+        getTitleForActivity('mangas')
+        /* Generar bucle de actividad*/
+        if(historialMangas){
+            historialMangas.each{ actividad ->
+
+            }
+        }else{
+            getTextDontRegister()
+        }
+    }
+
+    private def generateHistorialAutores(def params, def historialAutores){
+        //Colores
+        BaseColor negro = new BaseColor (68, 68, 68)
+        //Fuentes
+
+        /* Colocar titulo */
+        getTitleForActivity('autores')
+        /* Generar bucle de actividad*/
+        if(historialAutores){
+            historialAutores.each{ actividad ->
+
+            }
+        }else{
+            getTextDontRegister()
+        }
+
+    }
+
+    private def generateHistorialFunciones(def params, def historialModulos){
+        //Colores
+
+        // Variables
+
+        /* Colocar titulo */
+        getTitleForActivity('modulos')
+        /* Generar bucle de actividad*/
+        if(historialModulos){
+            historialModulos.each{ actividad ->
+
+            }
+        }else{
+            getTextDontRegister()
+        }
+    }
+
+    /* Funciones pequenas para los 'generate' */
+
+    private def getTypeHistorial(params){
         def text
 
         if(params.allHistorial){
@@ -185,7 +238,7 @@ class PdfService {
         return text
     }
 
-    private def getFunction(params, Locale defaultLocale){
+    private def getFunction(params){
         def text
 
         if(params.allHistorial || params.allFunction){
@@ -221,7 +274,7 @@ class PdfService {
         return text
     }
 
-    private def getAllCheck(def check, Locale defaultLocale) {
+    private def getAllCheck(def check) {
         if(check){
             return (messageSource.getMessage("default.si.label", null, defaultLocale))
         }else{
@@ -229,11 +282,38 @@ class PdfService {
         }
     }
 
-    private def getDate(def date, Locale defaultLocale) {
+    private def getDate(def date) {
         if(date){
             return date
         }else {
             return (messageSource.getMessage("modulos.historial.createPDF.fecha.noIndicado.label", null, defaultLocale))
         }
+    }
+
+    private def getTitleForActivity(def typeTitle){
+        //Colores
+        BaseColor negro = new BaseColor (68, 68, 68)
+        // Variables
+        Font fontTitle = FontFactory.getFont(FontFactory.HELVETICA, 22, Font.NORMAL, negro)
+        /* Colocar titulo */
+        Paragraph title = new Paragraph()
+        title.setFont(fontTitle)
+        title.add(messageSource.getMessage(("modulos.historial.pdf.title." + typeTitle), null, defaultLocale))
+        title.setSpacingBefore(50f)
+        document.add(title)
+    }
+
+    private def getTextDontRegister() {
+        //Colores
+        BaseColor negro = new BaseColor (68, 68, 68)
+        //Fuentes
+        Font fontSubTitle = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.ITALIC | Font.UNDERLINE, negro)
+        //texto
+        Paragraph subTitle = new Paragraph()
+        subTitle.setFont(fontSubTitle)
+        subTitle.add(messageSource.getMessage("modulos.historial.createPDF.pdfText.noRegistro", null, defaultLocale))
+        subTitle.setAlignment(Element.ALIGN_CENTER)
+        subTitle.setSpacingBefore(20f)
+        document.add(subTitle)
     }
 }

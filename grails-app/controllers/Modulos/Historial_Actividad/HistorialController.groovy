@@ -69,7 +69,8 @@ class HistorialController {
 
         } catch (Exception e){
             log.warn "Error descargando pdf generado"
-            e.printStackTrace();
+            log.error e.getMessage()
+            log.error e.getCause()
         }finally{
             fileInputStream.close()
             responseOutputStream.close()
