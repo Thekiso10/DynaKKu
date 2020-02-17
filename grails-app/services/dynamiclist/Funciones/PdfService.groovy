@@ -243,32 +243,8 @@ class PdfService {
 
         if(params.allHistorial || params.allFunction){
             text = messageSource.getMessage("modulos.historial.createPDF.pdfText.allFunction", null, defaultLocale)
-        }else if (params.function == 'CREACION') {
-            text = messageSource.getMessage("modulos.historial.label.CREACION", null, defaultLocale)
-        }else if (params.function == 'CONSULTA') {
-            text = messageSource.getMessage("modulos.historial.label.CONSULTA", null, defaultLocale)
-        }else if (params.function == 'ACTUALIZACION') {
-            text = messageSource.getMessage("modulos.historial.label.ACTUALIZACION", null, defaultLocale)
-        }else if (params.function == 'ELIMINACION') {
-            text = messageSource.getMessage("modulos.historial.label.ELIMINACION", null, defaultLocale)
-        }else if(params.function == 'ADD_TOMOS') {
-            text = messageSource.getMessage("modulos.historial.label.ADD_TOMOS", null, defaultLocale)
-        }else if(params.function == 'ADD_SPIN_OFF') {
-            text = messageSource.getMessage("modulos.historial.label.ADD_SPIN_OFF", null, defaultLocale)
-        }else if(params.function == 'PASS_REGISTRADO') {
-            text = messageSource.getMessage("modulos.historial.label.PASS_REGISTRADO", null, defaultLocale)
-        }else if(params.function == 'DELETE_SPIN_OFF') {
-            text = messageSource.getMessage("modulos.historial.label.DELETE_SPIN_OFF", null, defaultLocale)
-        }else if(params.function == 'ESTADISTICAS') {
-            text = messageSource.getMessage("stats.header.title.general.label", null, defaultLocale)
-        }else if(params.function == 'HISTORIAL_ACTIVIDAD') {
-            text = messageSource.getMessage("modulos.historial.lable.HISTORIAL_ACTIVIDAD", null, defaultLocale)
-        }else if(params.function == 'EXPORTACION_LISTADO') {
-            text = messageSource.getMessage("modulos.exportacionListado.title", null, defaultLocale)
-        }else if(params.function == 'LISTADO_PDF') {
-            text = messageSource.getMessage("modulos.listadoPDF.title", null, defaultLocale)
-        }else if(params.function == 'REPOSRTE_PDF') {
-            text = messageSource.getMessage("modulos.reportes.title", null, defaultLocale)
+        }else{
+            text = messageSource.getMessage("modulos.historial.label.${params.function}", null, defaultLocale)
         }
 
         return text
