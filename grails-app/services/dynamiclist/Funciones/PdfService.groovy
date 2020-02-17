@@ -187,11 +187,9 @@ class PdfService {
 
     private def generateHistorialAutores(def params, def historialAutores){
         //Colores
-        BaseColor negro = new BaseColor (68, 68, 68)
-        BaseColor azul  = new BaseColor (41, 144, 196)
+        BaseColor azulOscuro01  = new BaseColor (41, 144, 196)
         //Fuentes
-        Font fontChuck = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, azul)
-        Font fontText01 = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLD, azul)
+        Font fontMessage = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.NORMAL, azulOscuro01)
         /* Colocar titulo */
         getTitleForActivity('autores')
         /* Setear el tipo de historial */
@@ -199,24 +197,11 @@ class PdfService {
         /* Generar bucle de actividad*/
         if(historialAutores){
             historialAutores.each{ actividad ->
-                Chunk chunk = new Chunk("", fontChuck)
-                chunk.setUnderline(2f, -4f)
-                Paragraph text = new Paragraph("", fontText01)
-                text.setSpacingAfter(10)
-                //Formatar bloque del tiempo
-                def formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm a, z").format(actividad.fecha)
-                def textoData = "[" + formatDate +"]"
-                chunk.append(textoData)
-                //Formatar bloque de clases
-                def textoClase = "[" + getTypeHistorial(params, true) +"]"
-                chunk.append(textoClase)
-                //El tipo de funcion
-                def textoFuncion = "[" + messageSource.getMessage("modulos.historial.label.${actividad.tipoAccion}", null, defaultLocale) +"]"
-                chunk.append(textoFuncion)
-                //Colocar mensaje
-                
-                //Colocar textos en el PDF
-                text.add(chunk)
+                Paragraph text = generateStructureMessageBasic(params, actividad)
+                def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
+                // Generar el mensaje de los Autores
+                text.add(" - " + messageSource.getMessage("modulos.historial.pdf.texto.autor.${actividad.tipoAccion}", [actividad?.autor?.toString(), formatDate] as Object[], defaultLocale))
+
                 document.add(text)
             }
         }else{
@@ -240,6 +225,34 @@ class PdfService {
         }else{
             getTextDontRegister()
         }
+    }
+
+    private def generateStructureMessageBasic(def params, def actividad){
+        //Colores
+        BaseColor negro = new BaseColor (68, 68, 68)
+        BaseColor azul  = new BaseColor (41, 144, 196)
+        //Fuentes
+        Font fontChuck = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, azul)
+        Font fontText01 = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLD, azul)
+        //Logica de la estructura basica
+        Chunk chunk = new Chunk("", fontChuck)
+        chunk.setUnderline(2f, -4f)
+        Paragraph text = new Paragraph("", fontText01)
+        text.setSpacingAfter(10)
+        //Formatar bloque del tiempo
+        def formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm a, z").format(actividad.fecha)
+        def textoData = "[" + formatDate +"]"
+        chunk.append(textoData)
+        //Formatar bloque de clases
+        def textoClase = "[" + getTypeHistorial(params, true) +"]"
+        chunk.append(textoClase)
+        //El tipo de funcion
+        def textoFuncion = "[" + messageSource.getMessage("modulos.historial.label.${actividad.tipoAccion}", null, defaultLocale) +"]"
+        chunk.append(textoFuncion)
+        //Colocar textos en el PDF
+        text.add(chunk)
+
+        return text
     }
 
     /* Funciones pequenas para los 'generate' */
@@ -314,4 +327,5 @@ class PdfService {
         subTitle.setSpacingBefore(20f)
         document.add(subTitle)
     }
+
 }
