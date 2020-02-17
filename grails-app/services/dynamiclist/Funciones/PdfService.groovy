@@ -130,7 +130,7 @@ class PdfService {
         def listText = []
 
         text = new Paragraph((messageSource.getMessage("modulos.historial.createPDF.tipoHistorial.label", null, defaultLocale) + ": "), smallBoldWhite)
-        info = new Chunk(getTypeHistorial(params), smallBaseWhite)
+        info = new Chunk(getTypeHistorial(params, false), smallBaseWhite)
         text.add(info)
         listText << text
 
@@ -188,14 +188,36 @@ class PdfService {
     private def generateHistorialAutores(def params, def historialAutores){
         //Colores
         BaseColor negro = new BaseColor (68, 68, 68)
+        BaseColor azul  = new BaseColor (41, 144, 196)
         //Fuentes
-
+        Font fontChuck = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, azul)
+        Font fontText01 = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLD, azul)
         /* Colocar titulo */
         getTitleForActivity('autores')
+        /* Setear el tipo de historial */
+        params.tipoHistorial = '1'
         /* Generar bucle de actividad*/
         if(historialAutores){
             historialAutores.each{ actividad ->
+                Chunk chunk = new Chunk("", fontChuck)
+                chunk.setUnderline(2f, -4f)
+                Paragraph text = new Paragraph("", fontText01)
+                text.setSpacingAfter(10)
+                //Formatar bloque del tiempo
+                def formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm a, z").format(actividad.fecha)
+                def textoData = "[" + formatDate +"]"
+                chunk.append(textoData)
+                //Formatar bloque de clases
+                def textoClase = "[" + getTypeHistorial(params, true) +"]"
+                chunk.append(textoClase)
+                //El tipo de funcion
+                def textoFuncion = "[" + messageSource.getMessage("modulos.historial.label.${actividad.tipoAccion}", null, defaultLocale) +"]"
+                chunk.append(textoFuncion)
+                //Colocar mensaje
                 
+                //Colocar textos en el PDF
+                text.add(chunk)
+                document.add(text)
             }
         }else{
             getTextDontRegister()
@@ -222,10 +244,10 @@ class PdfService {
 
     /* Funciones pequenas para los 'generate' */
 
-    private def getTypeHistorial(params){
+    private def getTypeHistorial(params, def getType){
         def text
 
-        if(params.allHistorial){
+        if(params.allHistorial && !getType){
             text = messageSource.getMessage("modulos.historial.createPDF.pdfText.todosTipos", null, defaultLocale)
         }else if (params.tipoHistorial == '0') {
             text = messageSource.getMessage("layoutMenu.botonesColeccion.mangas", null, defaultLocale)
