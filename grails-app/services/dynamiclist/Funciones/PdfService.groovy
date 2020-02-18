@@ -37,7 +37,7 @@ class PdfService {
         //Definir el nombre del doc
         def docName = 'historialActividadPDF_'.concat(formatDate).concat('.pdf')
         //Definir variables iniciales
-        document = new com.itextpdf.text.Document(PageSize.A4, 36, 36, 90, 36)
+        document = new com.itextpdf.text.Document(PageSize.A4, 36, 36, 95, 55)
         defaultLocale = locale
         //Crear documento
         try {
@@ -69,7 +69,7 @@ class PdfService {
             }
 
             if(params.allHistorial || params.tipoHistorial == '2'){
-                generateHistorialFunciones(params, historialMangas)
+                generateHistorialFunciones(params, historialModulos)
             }
 
             //------------------ Cerrar el nuevo documento --------------------
@@ -169,16 +169,19 @@ class PdfService {
     }
 
     private def generateHistorialMangas(def params, def historialMangas){
-        //Colores
-        BaseColor negro = new BaseColor (68, 68, 68)
-        //Fuentes
-
         /* Colocar titulo */
         getTitleForActivity('mangas')
+        /* Setear el tipo de historial */
+        params.tipoHistorial = '0'
         /* Generar bucle de actividad*/
         if(historialMangas){
             historialMangas.each{ actividad ->
-
+                Paragraph text = generateStructureMessageBasic(params, actividad)
+                def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
+                // Generar el mensaje de los Autores
+                
+                // Colocarlo en el documento
+                document.add(text)
             }
         }else{
             getTextDontRegister()
@@ -186,10 +189,6 @@ class PdfService {
     }
 
     private def generateHistorialAutores(def params, def historialAutores){
-        //Colores
-        BaseColor azulOscuro01  = new BaseColor (41, 144, 196)
-        //Fuentes
-        Font fontMessage = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.NORMAL, azulOscuro01)
         /* Colocar titulo */
         getTitleForActivity('autores')
         /* Setear el tipo de historial */
@@ -200,8 +199,8 @@ class PdfService {
                 Paragraph text = generateStructureMessageBasic(params, actividad)
                 def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
                 // Generar el mensaje de los Autores
-                text.add(" - " + messageSource.getMessage("modulos.historial.pdf.texto.autor.${actividad.tipoAccion}", [actividad?.autor?.toString(), formatDate] as Object[], defaultLocale))
-
+                text.add(" " + messageSource.getMessage("modulos.historial.pdf.texto.autor.${actividad.tipoAccion}", [actividad?.autor?.toString(), formatDate] as Object[], defaultLocale))
+                // Colocarlo en el documento
                 document.add(text)
             }
         }else{
@@ -211,16 +210,21 @@ class PdfService {
     }
 
     private def generateHistorialFunciones(def params, def historialModulos){
-        //Colores
-
-        // Variables
-
         /* Colocar titulo */
         getTitleForActivity('modulos')
+        /* Setear el tipo de historial */
+        params.tipoHistorial = '2'
         /* Generar bucle de actividad*/
         if(historialModulos){
             historialModulos.each{ actividad ->
+                Paragraph text = generateStructureMessageBasic(params, actividad)
+                def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
+                // Generar el mensaje de los Autores
 
+                //TODO: Pendiente de integrar
+
+                // Colocarlo en el documento
+                document.add(text)
             }
         }else{
             getTextDontRegister()
@@ -229,16 +233,18 @@ class PdfService {
 
     private def generateStructureMessageBasic(def params, def actividad){
         //Colores
-        BaseColor negro = new BaseColor (68, 68, 68)
-        BaseColor azul  = new BaseColor (41, 144, 196)
+        BaseColor azul01  = new BaseColor (13, 52, 78)
+        BaseColor azul02  = new BaseColor (42, 52, 62)
         //Fuentes
-        Font fontChuck = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, azul)
-        Font fontText01 = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLD, azul)
+        Font fontChuck = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, azul02)
+        Font fontText01 = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, azul01)
         //Logica de la estructura basica
         Chunk chunk = new Chunk("", fontChuck)
         chunk.setUnderline(2f, -4f)
         Paragraph text = new Paragraph("", fontText01)
         text.setSpacingAfter(10)
+        //Formatear tabulación
+        text.add(Chunk.TABBING)
         //Formatar bloque del tiempo
         def formatDate = new SimpleDateFormat("dd-MM-yyyy HH:mm a, z").format(actividad.fecha)
         def textoData = "[" + formatDate +"]"
@@ -305,12 +311,13 @@ class PdfService {
         //Colores
         BaseColor negro = new BaseColor (68, 68, 68)
         // Variables
-        Font fontTitle = FontFactory.getFont(FontFactory.HELVETICA, 22, Font.NORMAL, negro)
+        Font fontTitle = FontFactory.getFont(FontFactory.HELVETICA, 20, Font.NORMAL, negro)
         /* Colocar titulo */
         Paragraph title = new Paragraph()
         title.setFont(fontTitle)
         title.add(messageSource.getMessage(("modulos.historial.pdf.title." + typeTitle), null, defaultLocale))
-        title.setSpacingBefore(50f)
+        title.setSpacingBefore(40f)
+        title.setSpacingAfter(15f)
         document.add(title)
     }
 
