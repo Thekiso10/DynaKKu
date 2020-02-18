@@ -132,7 +132,7 @@
 
                 <fieldset class="buttons">
                     <div class="col-sm-12 divButtonSave">
-                        <g:submitButton name="generatePDF" class="btn btnSave" value="${message(code: 'default.generate.pdf.label')}" />
+                        <g:submitButton name="generatePDF" class="btn btnSave" value="${message(code: 'default.generate.pdf.label')}" formtarget="_blank"/>
                     </div>
                 </fieldset>
 
