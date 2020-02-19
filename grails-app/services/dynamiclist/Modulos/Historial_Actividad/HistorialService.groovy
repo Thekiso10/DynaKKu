@@ -114,15 +114,15 @@ class HistorialService {
     }
 
     private static def getHistorialMangas(){
-        return HistorialMangas.findAll()
+        return HistorialMangas.findAll().sort{it.fecha}.reverse()
     }
 
     private static def getHistorialAutores(){
-        return HistorialAutor.findAll()
+        return HistorialAutor.findAll().sort{it.fecha}.reverse()
     }
 
     private static def getHistorialModulos(){
-        return HistorialModulos.findAll()
+        return HistorialModulos.findAll().sort{it.fecha}.reverse()
     }
 
 }
