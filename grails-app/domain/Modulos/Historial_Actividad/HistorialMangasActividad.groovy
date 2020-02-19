@@ -3,7 +3,7 @@ package Modulos.Historial_Actividad
 class HistorialMangasActividad {
     //Tipo de accions para el historial
     enum Index {
-        DELETE_VALUE, ADD_VALUE, NOMBRE, AUTOR, COMPLETADO, ACABADA, CONSECUTIVA, DESEADA, TOMOS_ACTU, TOMOS_MAX, PRECIO_TOMO, GENERO, DEMOGRAFIA
+        DELETE_VALUE, ADD_VALUE, NOMBRE, AUTOR, COMPLETADO, ACABADA, CONSECUTIVA, DESEADA, TOMOS_ACTU, TOMOS_MAX, PRECIO_TOMO, DEMOGRAFIA
     }
     //ID Tabla
     String id

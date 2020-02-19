@@ -1,14 +1,10 @@
 package dynamiclist.Funciones
 
-import com.itextpdf.text.Document
-import com.itextpdf.text.pdf.PdfPCell
-import com.itextpdf.text.pdf.PdfPTable
-import dynamiclist.Funciones.ClasesJavaPDF.HeaderFooterPageEvent
+import Modulos.Historial_Actividad.HistorialMangas
+import Modulos.Historial_Actividad.HistorialMangasActividad
 
 import grails.transaction.Transactional
-
 import java.text.SimpleDateFormat
-
 import org.springframework.context.MessageSource
 
 //Libreria iText
@@ -21,6 +17,10 @@ import com.itextpdf.text.Image
 import com.itextpdf.text.PageSize
 import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfWriter
+import com.itextpdf.text.Document
+import com.itextpdf.text.pdf.PdfPCell
+import com.itextpdf.text.pdf.PdfPTable
+import dynamiclist.Funciones.ClasesJavaPDF.HeaderFooterPageEvent
 
 @Transactional
 class PdfService {
@@ -37,7 +37,7 @@ class PdfService {
         //Definir el nombre del doc
         def docName = 'historialActividadPDF_'.concat(formatDate).concat('.pdf')
         //Definir variables iniciales
-        document = new com.itextpdf.text.Document(PageSize.A4, 36, 36, 95, 55)
+        document = new com.itextpdf.text.Document(PageSize.A4, 36, 36, 95, 65)
         defaultLocale = locale
         //Crear documento
         try {
@@ -178,8 +178,57 @@ class PdfService {
             historialMangas.each{ actividad ->
                 Paragraph text = generateStructureMessageBasic(params, actividad)
                 def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
+                def titulo = null
+                def valor01 = null
+                def valor02 = null
+                def valor03 = null
                 // Generar el mensaje de los Autores
-                
+                if(actividad.tipoAccion?.toString().equals('CREACION') || actividad.tipoAccion?.toString().equals('CONSULTA') || actividad.tipoAccion?.toString().equals('ELIMINACION') || actividad.tipoAccion?.toString().equals('PASS_REGISTRADO') ){
+                    // Obtenemos el nombre del Manga
+                    if(actividad.tipoAccion?.toString().equals('CREACION')){
+                        titulo = HistorialMangasActividad.findByHistorialManga(actividad)?.valorNuevo
+                    }else{
+                        titulo = actividad?.mangas?.nombreManga
+                    }
+
+                    text.add(" " + messageSource.getMessage("modulos.historial.pdf.texto.manga.${actividad.tipoAccion}", [titulo, formatDate] as Object[], defaultLocale))
+                }else{
+                    if(actividad.tipoAccion?.toString().equals('ACTUALIZACION')){
+                        def historialActividad = HistorialMangasActividad.findAllByHistorialManga(actividad)
+                        titulo = actividad?.mangas?.nombreManga
+
+                        if(historialActividad.size() == 0){
+                            text.add(" " + messageSource.getMessage("modulos.historial.pdf.texto.manga.ACTUALIZACION.basic", [titulo, formatDate] as Object[], defaultLocale))
+                        }else{
+                            historialActividad.each { historial ->
+                                valor03 = messageSource.getMessage("modulos.historial.lable.${historial?.puntero}", null, defaultLocale)
+
+                                if(historial?.puntero.toString().equals('COMPLETADO') || historial?.puntero.toString().equals('CONSECUTIVA') || historial?.puntero.toString().equals('ACABADA') || historial?.puntero.toString().equals('DESEADA')){
+                                    valor01 = messageSource.getMessage("default.${(historial?.valorAnterior.equals('true') ? 'verdadero' : 'falso')}.label", null, defaultLocale)
+                                    valor02 = messageSource.getMessage("default.${(historial?.valorNuevo.equals('true') ? 'verdadero' : 'falso')}.label", null, defaultLocale)
+                                }else{
+                                    valor01 = historial?.valorAnterior
+                                    valor02 = historial?.valorNuevo
+                                }
+
+                                text.add(" " + messageSource.getMessage("modulos.historial.pdf.texto.manga.${actividad.tipoAccion}", [titulo, formatDate, valor01, valor02, valor03] as Object[], defaultLocale))
+                                text.add(Chunk.NEWLINE)
+                            }
+                        }
+
+                    }else{
+                        titulo = actividad?.mangas?.nombreManga
+                        if(!actividad.tipoAccion?.toString().equals('DELETE_SPIN_OFF')){
+                            valor01 = HistorialMangasActividad.findByHistorialManga(actividad)?.valorAnterior
+                            valor02 = HistorialMangasActividad.findByHistorialManga(actividad)?.valorNuevo
+                        }else {
+                            valor01 = HistorialMangasActividad.findByHistorialManga(actividad)?.valorEliminado
+                        }
+
+                        text.add(" " + messageSource.getMessage("modulos.historial.pdf.texto.manga.${actividad.tipoAccion}", [titulo, formatDate, valor01, valor02] as Object[], defaultLocale))
+                    }
+                }
+
                 // Colocarlo en el documento
                 document.add(text)
             }
