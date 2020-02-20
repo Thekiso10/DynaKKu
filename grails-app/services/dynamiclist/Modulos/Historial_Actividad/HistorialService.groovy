@@ -4,9 +4,13 @@ package dynamiclist.Modulos.Historial_Actividad
 import Modulos.Historial_Actividad.HistorialModulos
 import Modulos.Historial_Actividad.HistorialAutor
 import Modulos.Historial_Actividad.HistorialMangas
+import grails.orm.HibernateCriteriaBuilder
 import grails.transaction.Transactional
 
 import org.springframework.context.MessageSource
+
+import javax.management.Query
+import java.text.SimpleDateFormat
 
 @Transactional
 class HistorialService {
@@ -36,10 +40,22 @@ class HistorialService {
             if(!params.allFunction){
                 if (params.tipoHistorial == '0') {
                     params.function = params.functionMangas
+                    historialMangas = getHistorialMangas(params.function, params.startDate, params.endDate)
                 }else if (params.tipoHistorial == '1') {
                     params.function = params.functionAutores
+                    historialAutores = getHistorialAutores(params.function, params.startDate, params.endDate)
                 }else if (params.tipoHistorial == '2') {
                     params.function = params.functionModulos
+                    historialModulos = getHistorialModulos(params.function, params.startDate, params.endDate)
+                }
+            }else{
+                //Hay que generar la lista del historial con todas las funciones
+                if (params.tipoHistorial == '0') {
+                    historialMangas = getHistorialMangas(null, params.startDate, params.endDate)
+                }else if (params.tipoHistorial == '1') {
+                    historialAutores = getHistorialAutores(null, params.startDate, params.endDate)
+                }else if (params.tipoHistorial == '2') {
+                    historialModulos = getHistorialModulos(null, params.startDate, params.endDate)
                 }
             }
         }
@@ -90,27 +106,78 @@ class HistorialService {
         return list
     }
 
-    private def getHistorialMangas(def funcion, def dataInicio, def dataFinal){
+    private def getParseDate(def date){
+        Date fecha = null
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy")
+        if(date){
+            try {
+                fecha = f.parse(date)
+                fecha = fecha.clearTime()
 
+                int startYear = fecha[Calendar.YEAR]
+                if(startYear<100){
+                    startYear = 2000 + startYear
+                }
+                fecha[Calendar.YEAR] = startYear
+
+            } catch(Exception e) {
+                log.error e.message
+                log.error e.cause
+            }
+        }
+
+        return fecha
+    }
+
+    private def executeCreateCriteriaHistorial(def funcion, def startDate, def endDate, HibernateCriteriaBuilder historial){
+        def lista = historial.list {
+            // Filtrar por funciones
+            if(funcion){
+                eq("tipoAccion", funcion)
+            }
+            // Filtrar por fecha
+            if(startDate && endDate){
+                between('fecha', startDate, endDate)
+            }else if (startDate){
+                ge('fecha', startDate)
+            }else if (endDate){
+                le('fecha', endDate)
+            }
+            //Ordenar
+            order('fecha', 'desc')
+        }
+
+        return lista
+    }
+
+    private def getHistorialMangas(def funcion, def dataInicio, def dataFinal){
+        def startDate = getParseDate(dataInicio)
+        def endDate   = getParseDate(dataFinal)
+        //Crear el create criteria
+        def c = HistorialMangas.createCriteria()
+        def lista = executeCreateCriteriaHistorial(HistorialMangas.Status.valueOf(funcion), startDate, endDate, c)
+
+        return lista
     }
 
     private def getHistorialAutores(def funcion, def dataInicio, def dataFinal){
+        def startDate = getParseDate(dataInicio)
+        def endDate   = getParseDate(dataFinal)
+        //Crear el create criteria
+        def c = HistorialAutor.createCriteria()
+        def lista = executeCreateCriteriaHistorial(HistorialAutor.Status.valueOf(funcion), startDate, endDate, c)
 
+        return lista
     }
 
     private def getHistorialModulos(def funcion, def dataInicio, def dataFinal){
+        def startDate = getParseDate(dataInicio)
+        def endDate   = getParseDate(dataFinal)
+        //Crear el create criteria
+        def c = HistorialModulos.createCriteria()
+        def lista = executeCreateCriteriaHistorial(HistorialModulos.Status.valueOf(funcion), startDate, endDate, c)
 
-    }
-
-    private static def getBasicListFunctions(Locale defaultLocale){
-        def list = []
-
-        list << [value: messageSource.getMessage("modulos.historial.label.CREACION", null, defaultLocale), key: HistorialAutor.Status.CREACION]
-        list << [value: messageSource.getMessage("modulos.historial.label.CONSULTA", null, defaultLocale), key: HistorialAutor.Status.CONSULTA]
-        list << [value: messageSource.getMessage("modulos.historial.label.ACTUALIZACION", null, defaultLocale), key: HistorialAutor.Status.ACTUALIZACION]
-        list << [value: messageSource.getMessage("modulos.historial.label.ELIMINACION", null, defaultLocale), key: HistorialAutor.Status.ELIMINACION]
-
-        return list
+        return lista
     }
 
     private static def getHistorialMangas(){
@@ -123,6 +190,17 @@ class HistorialService {
 
     private static def getHistorialModulos(){
         return HistorialModulos.findAll().sort{it.fecha}.reverse()
+    }
+
+    private static def getBasicListFunctions(Locale defaultLocale){
+        def list = []
+
+        list << [value: messageSource.getMessage("modulos.historial.label.CREACION", null, defaultLocale), key: HistorialAutor.Status.CREACION]
+        list << [value: messageSource.getMessage("modulos.historial.label.CONSULTA", null, defaultLocale), key: HistorialAutor.Status.CONSULTA]
+        list << [value: messageSource.getMessage("modulos.historial.label.ACTUALIZACION", null, defaultLocale), key: HistorialAutor.Status.ACTUALIZACION]
+        list << [value: messageSource.getMessage("modulos.historial.label.ELIMINACION", null, defaultLocale), key: HistorialAutor.Status.ELIMINACION]
+
+        return list
     }
 
 }
