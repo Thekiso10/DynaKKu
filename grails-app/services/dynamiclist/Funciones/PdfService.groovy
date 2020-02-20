@@ -49,7 +49,7 @@ class PdfService {
             // Se abre el documento
             document.open()
             //Document metadata
-            document.addTitle('Historial de Actividad - '.concat(formatDate));
+            document.addTitle(messageSource.getMessage("stats.code.historial", null, defaultLocale) + ' - '.concat(formatDate));
             document.addSubject(docName);
             //------------------ Imagen de cabecera del pdf -------------------
 			Image imageHeader = Image.getInstance(imgBanner)
@@ -101,7 +101,7 @@ class PdfService {
         //------------------- Titulo de la sesion en texto grande -----------------
         Paragraph paragraph = new Paragraph()
         paragraph.setFont(fontTitle)
-        paragraph.add('Historial de Actividad - '.concat(formatDate))
+        paragraph.add(messageSource.getMessage("stats.code.historial", null, defaultLocale) + ' - '.concat(formatDate))
         paragraph.setAlignment(Element.ALIGN_CENTER)
         paragraph.setSpacingAfter(25f)
         document.add(paragraph)
@@ -109,7 +109,7 @@ class PdfService {
         Paragraph subtitle = new Paragraph()
         subtitle.setFont(fontSubTitle)
         subtitle.setAlignment(Element.ALIGN_CENTER)
-        subtitle.add("Parametros de generacion - Historial de Actividad")
+        subtitle.add(messageSource.getMessage("modulos.historial.generate.pdf.params", null, defaultLocale) + ' - ' + messageSource.getMessage("stats.code.historial", null, defaultLocale))
         subtitle.setSpacingAfter(12.5f)
         document.add(subtitle)
 
