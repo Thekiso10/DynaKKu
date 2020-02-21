@@ -30,12 +30,12 @@
                                 </a>
                                 <ul class="dropdown-menu styleDropdown">
                                     <li>
-                                        <g:link class="btn btnMenu ">
+                                        <g:link action="index" params="[registrado: true]" class="btn btnMenu ">
                                             <g:message code="mangas.list.registrados.label" />
                                         </g:link>
                                     </li>
                                     <li>
-                                        <g:link class="btn btnMenu">
+                                        <g:link action="index" params="[registrado: false]" class="btn btnMenu">
                                             <g:message code="mangas.list.deseados.label" />
                                         </g:link>
                                     </li>
