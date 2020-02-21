@@ -11,14 +11,20 @@ class HistorialController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 20, 100)
-        def offset = (params.offset? params.offset : 0)
+        def offset = (params.offset? Integer.parseInt(params.offset) : 0)
         Locale defaultLocale = RequestContextUtils.getLocale(request)
         //Coger una lista con toda la actividad del historial
         def listaHistorial = historialService.getAllListHistorial(defaultLocale).sort{it.date}.reverse()
+        def listaHistorialCount = listaHistorial.size()
         /* Aplicar la paginación */
         listaHistorial = listaHistorial.subList(offset, Math.min (offset + params.max, listaHistorial.size()))
+        /* Comprobar que la lista no este vacia */
+        if(listaHistorialCount == 0){
+            flash.warn = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.autores")])
+        }
+
         //Hacer render de la vista
-        render (view: 'index', model:[listaHistorial: listaHistorial])
+        render (view: 'index', model:[listaHistorial: listaHistorial, listaHistorialCount: listaHistorialCount])
     }
 
     def createPDF(){

@@ -269,6 +269,28 @@
 #layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox {border-color: #114d72 !important;}
 #layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox .blockInpunts label {color: #d9dfe6;}
 
+#layout-container #List-Historial-PDF h2 {color:#d8d8d8; border-bottom-color: #d8d8d8;}
+
+#layout-container #List-Historial-PDF div#tableHistorialList {border-color: #2A343E;}
+#layout-container #List-Historial-PDF div#tableHistorialList .table .btnMenu {background-color: #68C8FF; border: 2px solid #4380A3; color: #4E5052; transition: 1s;}
+#layout-container #List-Historial-PDF div#tableHistorialList .table .btnMenu:hover {background-color: transparent; color: white;}
+
+#layout-container #List-Historial-PDF #tableHistorialList .table tr td a:hover {text-decoration: none; color:#96999a;}
+
+#layout-container #List-Historial-PDF #tableHistorialList .table .thead-dark {background-color: #1B2228;}
+#layout-container #List-Historial-PDF #tableHistorialList .table .thead-dark a {color: #fff;}
+
+#layout-container #List-Historial-PDF #tableHistorialList .table-dark {color: #fff; background-color: #13425A;}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {background-color: #1E698F;}
+#layout-container #List-Historial-PDF #tableHistorialList .table-hover > tbody > tr:hover,
+#layout-container #List-Historial-PDF #tableHistorialList .table-hover > tbody > tr.even:hover {background-color: #13425A;}
+
+#layout-container #List-Historial-PDF .paginacion {background: #1B2228; border-color: #102f4f;}
+
+#layout-container #List-Historial-PDF .paginacion span {color: #4CB1F7; font-weight: 600;}
+#layout-container #List-Historial-PDF .paginacion a {color: #fff;}
+
 /*** Errores ***/
 #Error-404 .container .col-sm-6 .btnInicio {background-color: #2276A1; border: 3px solid #63AED4; color: #fff;}
 #Error-404 .container .col-sm-6 .btnBack {background-color: #273039; border: 3px solid #646B72; color: #fff;}

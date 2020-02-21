@@ -81,9 +81,8 @@ class HistorialService {
         /* Bucle del historial de Mangas */
         tipo = messageSource.getMessage("layoutMenu.botonesColeccion.mangas", null, defaultLocale)
         getHistorialMangas().each { actividad ->
-            def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
             def accion = messageSource.getMessage("modulos.historial.label.${actividad.tipoAccion}", null, defaultLocale)
-            def mensaje = messageSource.getMessage("modulos.historial.pdf.texto.manga.ACCION", [actividad?.mangas?.nombreManga, formatDate] as Object[], defaultLocale)
+            def mensaje = messageSource.getMessage("modulos.historial.pdf.texto.manga.ACCION", [actividad?.mangas?.nombreManga, actividad.fecha] as Object[], defaultLocale)
             // Guardar el Bean
             HistorialActividadBean historialBean = new HistorialActividadBean(type: tipo, accion: accion, message: mensaje, date: actividad.fecha)
             listAllHistorial << historialBean
@@ -91,9 +90,8 @@ class HistorialService {
         /* Bucle del historial de Autores */
         tipo = messageSource.getMessage("layoutMenu.botonesColeccion.autores", null, defaultLocale)
         getHistorialAutores().each { actividad ->
-            def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
             def accion = messageSource.getMessage("modulos.historial.label.${actividad.tipoAccion}", null, defaultLocale)
-            def mensaje = messageSource.getMessage("modulos.historial.pdf.texto.autor.ACCION", [actividad?.autor?.toString(), formatDate] as Object[], defaultLocale)
+            def mensaje = messageSource.getMessage("modulos.historial.pdf.texto.autor.ACCION", [actividad?.autor?.toString(), actividad.fecha] as Object[], defaultLocale)
             // Guardar el Bean
             HistorialActividadBean historialBean = new HistorialActividadBean(type: tipo, accion: accion, message: mensaje, date: actividad.fecha)
             listAllHistorial << historialBean
