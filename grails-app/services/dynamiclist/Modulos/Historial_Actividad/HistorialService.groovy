@@ -4,6 +4,8 @@ package dynamiclist.Modulos.Historial_Actividad
 import Modulos.Historial_Actividad.HistorialModulos
 import Modulos.Historial_Actividad.HistorialAutor
 import Modulos.Historial_Actividad.HistorialMangas
+import beans.HistorialActividadBean
+import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList
 import grails.orm.HibernateCriteriaBuilder
 import grails.transaction.Transactional
 
@@ -71,6 +73,35 @@ class HistorialService {
         doc = pdfService.generateHistorialActividadPDF(historialMangas, historialAutores, historialModulos, defaultLocale, imgBanner, pathDoc, params)
         //Devolvemos el PDF
         return doc
+    }
+
+    def getAllListHistorial(Locale defaultLocale){
+        def listAllHistorial = []
+        def tipo = null
+        /* Bucle del historial de Mangas */
+        tipo = messageSource.getMessage("layoutMenu.botonesColeccion.mangas", null, defaultLocale)
+        getHistorialMangas().each { actividad ->
+            def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
+            def accion = messageSource.getMessage("modulos.historial.label.${actividad.tipoAccion}", null, defaultLocale)
+            def mensaje = messageSource.getMessage("modulos.historial.pdf.texto.manga.ACCION", [actividad?.mangas?.nombreManga, formatDate] as Object[], defaultLocale)
+            // Guardar el Bean
+            HistorialActividadBean historialBean = new HistorialActividadBean(type: tipo, accion: accion, message: mensaje, date: actividad.fecha)
+            listAllHistorial << historialBean
+        }
+        /* Bucle del historial de Autores */
+        tipo = messageSource.getMessage("layoutMenu.botonesColeccion.autores", null, defaultLocale)
+        getHistorialAutores().each { actividad ->
+            def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
+            def accion = messageSource.getMessage("modulos.historial.label.${actividad.tipoAccion}", null, defaultLocale)
+            def mensaje = messageSource.getMessage("modulos.historial.pdf.texto.autor.ACCION", [actividad?.autor?.toString(), formatDate] as Object[], defaultLocale)
+            // Guardar el Bean
+            HistorialActividadBean historialBean = new HistorialActividadBean(type: tipo, accion: accion, message: mensaje, date: actividad.fecha)
+            listAllHistorial << historialBean
+        }
+        /* Bucle del historial de Autores */
+        //TODO: Pendiente de integrar
+
+        return listAllHistorial
     }
 
     def getListFunctionsMangas(Locale defaultLocale) {

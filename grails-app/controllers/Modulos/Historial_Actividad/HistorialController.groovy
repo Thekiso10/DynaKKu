@@ -10,10 +10,15 @@ class HistorialController {
     def historialService
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        def offset = (params.offset? params.offset:0)
-
-        render (view: 'index', model:[])
+        params.max = Math.min(max ?: 20, 100)
+        def offset = (params.offset? params.offset : 0)
+        Locale defaultLocale = RequestContextUtils.getLocale(request)
+        //Coger una lista con toda la actividad del historial
+        def listaHistorial = historialService.getAllListHistorial(defaultLocale).sort{it.date}.reverse()
+        /* Aplicar la paginación */
+        listaHistorial = listaHistorial.subList(offset, Math.min (offset + params.max, listaHistorial.size()))
+        //Hacer render de la vista
+        render (view: 'index', model:[listaHistorial: listaHistorial])
     }
 
     def createPDF(){
