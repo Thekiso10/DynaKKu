@@ -13,9 +13,12 @@ class AutorController {
 	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-		def autorInstanceList = Autor.findAllByBorrado(false, params)
-		def autorPaginacion = Autor.findAllByBorrado(false, params).size()
 		def offset = (params.offset? params.offset:0)
+		def autorInstanceList = Autor.findAllByBorrado(false, params)
+		def autorPaginacion = Autor.findAllByBorrado(false).size()
+
+		println autorInstanceList
+		println autorPaginacion
 
 		if(params.search){
 			log.info "Se ha ejecutado el filtro de Autores"
