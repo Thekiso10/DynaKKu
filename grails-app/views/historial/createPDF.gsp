@@ -55,7 +55,7 @@
                             <g:message code="modulos.historial.generate.pdf.params" args=""/>
                         </h3>
 
-                        <div class="col-sm-12 borderBox">
+                        <div class="col-sm-12 borderBox modal-body">
                             <div class="col-sm-4 text-center blockInpunts">
                                 <label for="tipoHistorial">
                                     <g:message code="modulos.historial.createPDF.tipoHistorial.label" default="tipo de historial"/>:
@@ -77,31 +77,6 @@
                             </div>
 
                             <div class="col-sm-4 text-center blockInpunts">
-                                <label for="allFunction">
-                                    <g:message code="modulos.historial.createPDF.allFunction.label" default="tipo de historial"/>:
-                                </label>
-                                <g:checkBox name="allFunction" />
-                            </div>
-
-                        </div>
-
-                        <div class="col-sm-12 borderBox">
-                            <div class="col-sm-4 text-center blockInpunts">
-                                <div class="col-sm-6">
-                                    <label for="startDate">
-                                        <g:message code="modulos.historial.createPDF.fecha.inicio.label" default="tipo de historial"/>:
-                                    </label>
-                                    <input type="text" id="startDate" name="startDate" class="datepicker form-control" size="10" data-date-format="dd/MM/yy" placeholder="${message(code:'modulos.historial.createPDF.fecha.inicio.label')}"/>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="endDate">
-                                        <g:message code="modulos.historial.createPDF.fecha.final.label" default="tipo de historial"/>:
-                                    </label>
-                                    <input type="text" id="endDate" name="endDate" class="datepicker form-control" size="10" data-date-format="dd/MM/yy" placeholder="${message(code:'modulos.historial.createPDF.fecha.final.label')}"/>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 text-center blockInpunts">
                                 <label for="selectIdiomas">
                                     <g:message code="layoutMenu.configuracion.titulo.idioma" default="tipo de historial"/>:
                                 </label>
@@ -118,11 +93,39 @@
                                 </select>
                             </div>
 
-                            <div class="col-sm-4 text-center blockInpunts">
-                                <label for="allHistorial">
-                                    <g:message code="modulos.historial.createPDF.allHistorial.label" default="tipo de historial"/>:
-                                </label>
-                                <g:checkBox name="allHistorial" />
+                        </div>
+
+                        <div class="col-sm-12 borderBox modal-body">
+                            <div class="col-sm-6 text-center borderBox marginRight">
+                                <div class="col-sm-6 blockInpunts">
+                                    <label for="startDate">
+                                        <g:message code="modulos.historial.createPDF.fecha.inicio.label" default="tipo de historial"/>:
+                                    </label>
+                                    <input type="text" id="startDate" name="startDate" class="datepicker" size="10" data-date-format="dd/MM/yyyy" placeholder="${message(code:'modulos.historial.createPDF.fecha.inicio.label')}"/>
+                                </div>
+                                <div class="col-sm-6 blockInpunts">
+                                    <label for="endDate">
+                                        <g:message code="modulos.historial.createPDF.fecha.final.label" default="tipo de historial"/>:
+                                    </label>
+                                    <input type="text" id="endDate" name="endDate" class="datepicker" size="10" data-date-format="dd/MM/yyyy" placeholder="${message(code:'modulos.historial.createPDF.fecha.final.label')}"/>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 text-center borderBox">
+
+                                <div class="col-sm-6 blockInpunts padding">
+                                    <label for="allFunction">
+                                        <g:message code="modulos.historial.createPDF.allFunction.label" default="tipo de historial"/>:
+                                    </label>
+                                    <g:checkBox name="allFunction" />
+                                </div>
+
+                                <div class="col-sm-6 blockInpunts padding">
+                                    <label for="allHistorial">
+                                        <g:message code="modulos.historial.createPDF.allHistorial.label" default="tipo de historial"/>:
+                                    </label>
+                                    <g:checkBox name="allHistorial" />
+                                </div>
                             </div>
 
                         </div>

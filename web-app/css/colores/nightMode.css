@@ -266,9 +266,8 @@
 #layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .container .divButtonSave {background: #166088; border-color: #114d72;}
 #layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .buttons .divButtonSave .btnSave {background-color: #2276A1; color: white; border-color: #1d536f;}
 
-#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox {border-color: #67bcec !important;}
+#layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox {border-color: #114d72 !important;}
 #layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .panel-form .borderBox .blockInpunts label {color: #d9dfe6;}
-
 
 /*** Errores ***/
 #Error-404 .container .col-sm-6 .btnInicio {background-color: #2276A1; border: 3px solid #63AED4; color: #fff;}
