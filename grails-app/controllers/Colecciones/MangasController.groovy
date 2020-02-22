@@ -1,12 +1,11 @@
 package Colecciones
 
-
 import grails.transaction.Transactional
 
 class MangasController {
 
     def mangasService
-    def autorService
+    def coleccionesService
     def registerHistorialService
 
     def index(Integer max) {
@@ -189,7 +188,7 @@ class MangasController {
         def file = request.getFile('imagen')
         def validarFoto
         if(!file.empty){
-            validarFoto = mangasService.saveImg(file, params.nombreManga)
+            validarFoto = coleccionesService.saveImg(file, params.nombreManga, null, true)
             if (validarFoto.error) {
                 flash.error = message(code: validarFoto.mensaje)
                 redirect(action: "create")
@@ -227,7 +226,7 @@ class MangasController {
                 registerHistorialService.registrarMangas(mangasInstance, 0)
                 flash.message = message(code: "mangas.message.save.ok", args: [mangasInstance.nombreManga])
             }else{
-                if(validarFoto?.path)autorService.deleteImage(validarFoto.path)
+                if(validarFoto?.path) coleccionesService.deleteImage(validarFoto.path)
                 log.info "No se ha podido crear un nuevo manga"
                 flash.error = message(code: "mangas.error.save.bbdd")
                 redirect(action: "create")
@@ -361,7 +360,7 @@ class MangasController {
         def validarFoto
         if(params.checkImg){
             if(params.CheckboxImg){ //Tiene foto y la quiere borrar
-                if(autorService.deleteImage(mangasInstance.urlImg)){
+                if(coleccionesService.deleteImage(mangasInstance.urlImg)){
                     flash.error = message(code: "mangas.errores.update.noDeleteFoto")
                     redirect(action: "edit", id:mangasInstance.id)
                     return
@@ -369,13 +368,13 @@ class MangasController {
                 //Quitamos la ruta en BBDD
                 mangasInstance.urlImg = null
             }else if(params.nombreManga != mangasInstance.nombreManga){
-                def changeFoto = mangasService.changeNameImg(mangasInstance.urlImg, params.nombreManga)
+                def changeFoto = coleccionesService.changeNameImg(mangasInstance.urlImg, params.nombreManga, true)
                 mangasInstance.urlImg = changeFoto.path
             }
         }else{
             def file = request.getFile('imagen')
             if (!file.empty) {
-                validarFoto = mangasService.saveImg(file, params.nombreManga)
+                validarFoto = coleccionesService.saveImg(file, params.nombreManga, null, true)
                 if (validarFoto.error) {
                     flash.error = message(code: validarFoto.mensaje)
                     redirect(action: "create")
@@ -417,7 +416,7 @@ class MangasController {
                 registerHistorialService.registrarMangas(mangasInstance, mangasInstanceBackUp, 0)
                 flash.message = message(code: "mangas.message.save.ok", args: [mangasInstance.nombreManga])
             }else{
-                if(validarFoto?.path)autorService.deleteImage(validarFoto.path)
+                if(validarFoto?.path)coleccionesService.deleteImage(validarFoto.path)
                 log.info "No se ha podido actualizar un nuevo manga"
                 flash.error = message(code: "mangas.error.update.bbdd")
                 redirect(action: "edit", id:mangasInstance.id)
@@ -543,7 +542,7 @@ class MangasController {
 
             //Comprobamos que si tiene foto hay que borrarla
             if(path){
-                if(autorService.deleteImage(path)){
+                if(coleccionesService.deleteImage(path)){
                     flash.error = message(code: "mangas.errores.update.noDeleteFoto")
                     redirect(action: "show", id:mangasInstance.id)
                     return

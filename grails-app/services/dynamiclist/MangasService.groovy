@@ -91,64 +91,6 @@ class MangasService {
         return [error: error, mensaje: mensaje]
     }
 
-    def saveImg(def foto, def nombre){
-        def error = false
-        def path = null
-        def mensaje = null
-
-        File carpeta = new File(Holders.config.dynamicList.mangas.rutaImg)
-
-        if(!foto.empty && carpeta.exists()){
-            def extensiones = FilenameUtils.getExtension(foto.originalFilename)
-
-            if(!extensiones.toLowerCase().equals("jpg") && !extensiones.toLowerCase().equals("jpeg") && !extensiones.toLowerCase().equals("png")){
-                error = true
-                mensaje = "autores.errores.img.formato"
-                log.error "Han intentado introducir un formato invalido de imagen [" + extensiones + "]"
-            }else{
-                try{
-                    def nombreAuthor = nombre
-                    path = carpeta.getAbsolutePath() + File.separator + nombreAuthor + "." + extensiones
-                    foto.transferTo(new File(path))
-                }catch (Exception e){
-                    error = true
-                    mensaje = "autores.errores.img.saveFolder"
-                    log.error e
-                }
-            }
-        }else{
-            error = true
-            log.error "[Mangas] Validar rutas de la foto a fallado."
-        }
-
-        return [error:error, mensaje:mensaje, path:path]
-    }
-
-    def changeNameImg(def urlImg, def nombre){
-        def error = false
-        def path = urlImg
-
-        File foto = new File(urlImg)
-        File carpeta = new File(Holders.config.dynamicList.mangas.rutaImg)
-
-        if(foto.exists() && foto.isFile()){
-            try{
-                def extensiones = FilenameUtils.getExtension(foto.absolutePath)
-                def nombreAuthor = nombre
-                path = carpeta.getAbsolutePath() + File.separator + nombreAuthor + "." + extensiones
-                foto.renameTo(new File(path))
-            }catch (Exception e){
-                error = true
-                log.error e
-            }
-        }else{
-            error = true
-            log.error "[Mangas] Validar rutas de la foto a fallado."
-        }
-
-        return [error:error, path:path]
-    }
-
     /* Funciones internas */
 
     private comprobarNombreDiferente(def nombre){

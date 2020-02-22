@@ -9,6 +9,7 @@ class AutorController {
 	
 	//Definir el servicio del Autor
 	def autorService
+	def coleccionesService
 	def registerHistorialService
 	
     def index(Integer max) {
@@ -16,9 +17,6 @@ class AutorController {
 		def offset = (params.offset? params.offset:0)
 		def autorInstanceList = Autor.findAllByBorrado(false, params)
 		def autorPaginacion = Autor.findAllByBorrado(false).size()
-
-		println autorInstanceList
-		println autorPaginacion
 
 		if(params.search){
 			log.info "Se ha ejecutado el filtro de Autores"
@@ -93,7 +91,7 @@ class AutorController {
 		//Si hay foto guardarla en la carpeta configurada 
 		def file = request.getFile('imagen')
 		if(!file.empty){
-			validadorFoto = autorService.saveImage(file, params.nombre, params.apellido)
+			validadorFoto = coleccionesService.saveImg(file, params.nombre, params.apellido, false)
 			if (validadorFoto.error) {
 				flash.error = message(code: validadorFoto.mensaje)
 				redirect(action: "create")
@@ -113,7 +111,7 @@ class AutorController {
 				flash.message = message(code: "autores.message.save.ok", args: [nombreAutor])
 				registerHistorialService.registrarAutor(autorInstance, 0)
 			}else{
-				autorService.deleteImage(validadorFoto.path)
+				coleccionesService.deleteImage(validadorFoto.path)
 			}
 		}catch(Exception e){
 			log.error "No se ha podido guardar en base de datos " + e
@@ -169,7 +167,7 @@ class AutorController {
 		//Condicional para saber como trabajar con las imagenes
 		if(params.checkImg){
 			if(params.CheckboxImg){ //Tiene foto y la quiere borrar
-				if(autorService.deleteImage(autorInstance.rutaImagen)){
+				if(coleccionesService.deleteImage(autorInstance.rutaImagen)){
 					flash.error = message(code: "autores.errores.update.noDeleteFoto")
 					redirect(action: "edit", id:autorInstance.id)
 					return
@@ -178,14 +176,14 @@ class AutorController {
 				autorInstance.rutaImagen = null
 			}else if(autorInstance.toString() != (params.nombre + " " + params.apellido)){
                 def nombreNuevo = params.nombre + " " + params.apellido
-                def changeFoto = autorService.changeNameImg(autorInstance.rutaImagen, nombreNuevo)
+                def changeFoto = coleccionesService.changeNameImg(autorInstance.rutaImagen, nombreNuevo, false)
                 autorInstance.rutaImagen = changeFoto.path
             }
 		}else{ //No tiene foto
 			//Si hay foto guardarla en la carpeta configurada
 			def file = request.getFile('imagen')
 			if(!file.empty){
-				def validadorFoto = autorService.saveImage(file, params.nombre, params.apellido)
+				def validadorFoto = coleccionesService.saveImg(file, params.nombre, params.apellido, false)
 				if (validadorFoto.error) {
 					flash.error = message(code: validadorFoto.mensaje)
 					redirect(action: "edit", id:autorInstance.id)
@@ -229,7 +227,7 @@ class AutorController {
         }
 		//Si tiene foto, la borramos de la carpeta.
 		if(autorInstance.rutaImagen){
-			if(autorService.deleteImage(autorInstance.rutaImagen)){
+			if(coleccionesService.deleteImage(autorInstance.rutaImagen)){
 				flash.error = message(code: "autores.errores.update.noDeleteFoto")
 				redirect(action: "show", id:autorInstance.id)
 				return
