@@ -38,7 +38,7 @@
             <div class="container">
 
                 <h2>
-                    <g:message code="modulos.historial.generate.pdf.title" args="[entityName]" />
+                    <g:message code="default.list.generatePDF.label" args="[entityName]" />
                 </h2>
 
                 <g:if test="${flash.message}">
