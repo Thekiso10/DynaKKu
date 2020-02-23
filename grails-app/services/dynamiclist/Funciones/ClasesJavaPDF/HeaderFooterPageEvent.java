@@ -14,6 +14,7 @@ import java.util.Date;
 class HeaderFooterPageEvent extends PdfPageEventHelper{
     private PdfTemplate t;
     private Image total;
+    private String text;
 
     public void onOpenDocument(PdfWriter writer, Document document) {
         t = writer.getDirectContent().createTemplate(30, 16);
