@@ -10,7 +10,7 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div id="list-mangas" class="col-sm-12" role="main">
+		<div id="list-mangas" class="tablaGenericoa col-sm-12" role="main">
 
 			<div class="menu navbar-collapse" role="navigation">
 				<div class="container">
