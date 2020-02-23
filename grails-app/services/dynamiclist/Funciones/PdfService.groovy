@@ -44,7 +44,7 @@ class PdfService {
             //------------------ Se crea el documento -------------------------
             PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(new File(pathDoc + File.separator + docName)))
             //------------------ Setear tanto el Headre como Footer -----------
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent()
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
             writer.setPageEvent(event)
             // Se abre el documento
             document.open()
