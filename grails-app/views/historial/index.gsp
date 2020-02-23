@@ -35,7 +35,7 @@
                     <g:message code="default.list.del.label" args="[entityName]" />
                 </h2>
 
-                <div id="tableHistorialList" class="table-responsive ${!listaHistorial? 'borderTransparent':''}">
+                <div id="tableHistorialList" class="tableDynamic table-responsive ${!listaHistorial? 'borderTransparent':''}">
                     <table class="table table-dark table-striped table-hover ${!listaHistorial? 'hidden':''}">
                         <thead class="thead-dark">
                             <tr>

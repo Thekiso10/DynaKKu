@@ -53,25 +53,6 @@
 #layout-container #list-mangas #filtroMangas .btn {font-size: 1.10em; font-weight: 600;}
 #layout-container #list-mangas #filtroMangas .btn-filter {margin-left: 0.75em; margin-right: 0.25em; border: 2px solid;}
 
-#layout-container #list-mangas #tableMangasList {border:2px solid; border-radius: 7px; margin-top: 2em; margin-bottom: 1em;}
-#layout-container #list-mangas #tableMangasList .table {font-family: 'Open Sans'; text-align: center; font-size: 1.10em; margin: 0;}
-#layout-container #list-mangas #tableMangasList .table .limitedColumn {width: 20%;}
-#layout-container #list-mangas #tableMangasList .table .btnConvert {font-family: 'Open Sans Light', sans-serif; font-weight: bold; font-size: 0.85em;}
-
-#layout-container #list-mangas #tableMangasList .table tr th {text-align: center;}
-#layout-container #list-mangas #tableMangasList .table tr td a {font-family: 'Open Sans Light', sans-serif; font-weight: bold; color:#fff;}
-
-#layout-container #list-mangas #tableMangasList .table td {vertical-align: middle;}
-
-#layout-container #list-mangas #tableMangasList #modalPassDeseadoToRegister .modal-dialog {width: 750px;}
-#layout-container #list-mangas #tableMangasList #modalPassDeseadoToRegister .modal-body {text-align: justify; font-size: 1.15em;}
-#layout-container #list-mangas #tableMangasList #modalPassDeseadoToRegister .modal-body .separator {border: 2px solid; margin: 1em 0;}
-#layout-container #list-mangas #tableMangasList #modalPassDeseadoToRegister .modal-body .verticalAlign {display: flex; align-items: baseline;}
-
-#layout-container #list-mangas .paginacion {text-align: center; margin-bottom: 3em; line-height: 0.25em;}
-#layout-container #list-mangas .paginacion a,
-#layout-container #list-mangas .paginacion span {font-size: 1.25em; padding-left: 1em;}
-
 /** Ver Mangas **/
 #layout-container #ver-manga h2 {font-size: 2.75em; border-bottom: 2px solid; margin-top: 1em;}
 

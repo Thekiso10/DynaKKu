@@ -114,7 +114,7 @@
 					</div>
 				</g:form>
 
-				<div id="tableAutorList" class="table-responsive ${!autorInstanceList? 'borderTransparent':''}">
+				<div id="tableAutorList" class="tableDynamic table-responsive ${!autorInstanceList? 'borderTransparent':''}">
 					<table class="table table-dark table-striped table-hover ${!autorInstanceList? 'hidden':''}">
 						<thead class="thead-dark">
 							<tr>

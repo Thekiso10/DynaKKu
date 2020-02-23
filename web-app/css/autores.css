@@ -48,7 +48,7 @@
 #layout-container #list-autor #filtroAutor .btn {padding: 0.35em 1.5em; font-size: 1.10em; font-weight: 600;}
 #layout-container #list-autor #filtroAutor .btn-filter {margin-left: 2em; margin-right: 0.25em; border: 2px solid;}
 
-#layout-container #list-autor #tableAutorList {border:2px solid; border-radius: 7px; margin-top: 2em; margin-bottom: 1em;}
+/*#layout-container #list-autor #tableAutorList {border:2px solid; border-radius: 7px; margin-top: 2em; margin-bottom: 1em;}
 #layout-container #list-autor #tableAutorList .table {font-family: 'Open Sans'; text-align: center; font-size: 1.10em; margin: 0;}
 
 #layout-container #list-autor #tableAutorList .table tr th {text-align: center;}
@@ -58,7 +58,7 @@
 
 #layout-container #list-autor .paginacion {text-align: center; margin-bottom: 3em; line-height: 0.25em;}
 #layout-container #list-autor .paginacion a,
-#layout-container #list-autor .paginacion span {font-size: 1.25em; padding-left: 1em;}
+#layout-container #list-autor .paginacion span {font-size: 1.25em; padding-left: 1em;}*/
 
 /** Mostrar un Autor **/
 #layout-container #ver-autor h2 {font-size: 2.75em; margin-top: 1em;}

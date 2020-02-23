@@ -19,3 +19,23 @@
 #layout-container .menu ul .btnSave:HOVER, 
 #layout-container .menu ul .btnSkip:HOVER,
 #layout-container #formCreateAutor .buttons .btnSave:HOVER {border: 3px solid;}
+
+/* Tablas */
+#layout-container .tableDynamic {border:2px solid; border-radius: 7px; margin-top: 2em; margin-bottom: 1em;}
+#layout-container .tableDynamic .table {font-family: 'Open Sans'; text-align: center; font-size: 1.10em; margin: 0;}
+#layout-container .tableDynamic .table .limitedColumn {width: 20%;}
+#layout-container .tableDynamic .table .btnConvert {font-family: 'Open Sans Light', sans-serif; font-weight: bold; font-size: 0.85em;}
+
+#layout-container .tableDynamic .table tr th {text-align: center;}
+#layout-container .tableDynamic .table tr td a {font-family: 'Open Sans Light', sans-serif; font-weight: bold; color:#fff;}
+
+#layout-container .tableDynamic .table td {vertical-align: middle;}
+
+#layout-container .tableDynamic #modalPassDeseadoToRegister .modal-dialog {width: 750px;}
+#layout-container .tableDynamic #modalPassDeseadoToRegister .modal-body {text-align: justify; font-size: 1.15em;}
+#layout-container .tableDynamic #modalPassDeseadoToRegister .modal-body .separator {border: 2px solid; margin: 1em 0;}
+#layout-container .tableDynamic #modalPassDeseadoToRegister .modal-body .verticalAlign {display: flex; align-items: baseline;}
+
+#layout-container .paginacion {text-align: center; margin-bottom: 3em; line-height: 0.25em;}
+#layout-container .paginacion a,
+#layout-container .paginacion span {font-size: 1.25em; padding-left: 1em;}

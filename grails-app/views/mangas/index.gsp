@@ -100,7 +100,7 @@
 					</g:form>
 
 					<%-- Tablas --%>
-					<div id="tableMangasList" class="table-responsive ${!mangasInstanceCount? 'hidden':''}">
+					<div id="tableMangasList" class="tableDynamic table-responsive ${!mangasInstanceCount? 'hidden':''}">
 						<g:if test="${mangasRegistrados}">
 							<g:render template="templatesLists/listaRegistrados"/>
 						</g:if>
