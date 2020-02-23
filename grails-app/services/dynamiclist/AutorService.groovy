@@ -50,14 +50,32 @@ class AutorService {
 	//Comprobar si ha habido un cambio de nombre y si es correcto
 	def validateUpdateNames(Autor autorInstance, def nombre, def apellido){
 		boolean correcto = true
+		String mensaje = null
 		
 		if(!autorInstance.nombre.equals(nombre) || !autorInstance.apellido.equals(apellido)){
+			// Validar si ya existe esta combinacion
 			if(isEqualsAuthor(nombre, apellido)){
 				log.error "[Autor] Se ha detectado que se queria actualizar los campos nombres con datos ya registrados"
 				correcto = false
+				mensaje = "autores.errores.update.nombresExistentes"
 			}
 		}
+		//Comprobar la longitut
+		if(!comprobarLongitutNombre(nombre, apellido)){
+			log.error "[Autor] Se ha detectado que se queria actualizar los campos nombres con longitut incorrecta"
+			correcto = false
+			mensaje = "autores.errores.nombres.largo"
+		}
 		
-		return correcto
+		return [correcto: correcto, mensaje: mensaje]
+	}
+
+	/* Funciones internas */
+
+	private comprobarLongitutNombre(def nombre, def apellido) {
+		def validoNombre = (nombre.length() <= Holders.config.dynamicList.autores.longitut.nombreMax ? true : false)
+		def validoApellido = (apellido.length() <= Holders.config.dynamicList.autores.longitut.nombreMax ? true : false)
+
+		return (validoNombre && validoApellido ? true : false)
 	}
 }

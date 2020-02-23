@@ -88,6 +88,13 @@ class AutorController {
 			redirect(action: "create")
 			return
 		}
+		//Validar el campo del nombre y apellido
+		def validarNombre = autorService.validateUpdateNames(autorInstance, params.nombre, params.apellido)
+		if(!validarNombre.correcto){
+			flash.error = message(code: validarNombre.mensaje)
+			redirect(action: "create")
+			return
+		}
 		//Si hay foto guardarla en la carpeta configurada 
 		def file = request.getFile('imagen')
 		if(!file.empty){
@@ -159,8 +166,9 @@ class AutorController {
 			return
 		}
 		//Validar el campo del nombre y apellido
-		if(!autorService.validateUpdateNames(autorInstance, params.nombre, params.apellido)){
-			flash.error = message(code: "autores.errores.update.nombresExistentes")
+		def validarNombre = autorService.validateUpdateNames(autorInstance, params.nombre, params.apellido)
+		if(!validarNombre.correcto){
+			flash.error = message(code: validarNombre.mensaje)
 			redirect(action: "edit", id:autorInstance.id)
 			return
 		}

@@ -124,23 +124,29 @@ log4j.main = {
 }
 
 /*==================================================================*/
-/* 		          Nuevas variables de Configuracion        			*/
+/* 		                        Modo                       			*/
 /*==================================================================*/
-
-/****** Modo ******/
 dynamicList.mode.oscuro = true
 
-/****** Autores ******/
+/*==================================================================*/
+/* 		                       Autores                     			*/
+/*==================================================================*/
+dynamicList.autores.rutaImg = "web-app\\images\\imgAutores" //Ruta para guardar las imagenes de cada autor
 dynamicList.autores.edadMax = 110 	//Especificar la edad minima de un Autor
 dynamicList.autores.edadMin = 0 	//Especificar la edad maxima de un Autor
-dynamicList.autores.rutaImg = "web-app\\images\\imgAutores" //Ruta para guardar las imagenes de cada autor
+/* Logitut del nombre */
+dynamicList.autores.longitut.nombreMax = 25 //Especificar la logitut maxima del nombre
 
-/****** Mangas ******/
+/*==================================================================*/
+/* 		                      Mangas                      			*/
+/*==================================================================*/
 dynamicList.mangas.rutaImg = "web-app\\images\\imgMangas" //Ruta para guardar las imagenes de cada manga
-dynamicList.mangas.longitut.nombreMax  = 255
+dynamicList.mangas.longitut.nombreMax  = 50 //Especificar la logitut maxima del nombre
 dynamicList.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos permitidos para un mismo Manga
 
-/****** PDF ******/
+/*==================================================================*/
+/* 		                        PDF                        			*/
+/*==================================================================*/
 dynamicList.pdfConf.pathBanner = "images/imgWeb/pdf/bannerPDF.png"
 
 /*==================================================================*/
