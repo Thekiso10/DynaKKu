@@ -145,16 +145,18 @@
             type: "post",
             data: {nombre: nombre, apellido: apellido, idioma: idioma, mode: mode},
             success: function(data) {
-                if(data.valido == true){
-                    cargarCambios()
-                    var text = "${g.message(code: 'layoutMenu.configuracion.save.correcto')}"
+                var text = null;
+                if(data.valido === true){
+                    cargarCambios();
+                    text = "${g.message(code: 'layoutMenu.configuracion.save.correcto')}";
                     $("#textCorrecto").html(text);
-                    $("#userFlashCorrecto").removeClass("hidden")
+                    $("#userFlashCorrecto").removeClass("hidden");
+                    window.location.reload();
                 }else{
-                    if(data.error == 'code01'){
-                        var text = "${g.message(code: 'layoutMenu.configuracion.save.error.code01')}"
-                    }else if (data.error == 'code02'){
-                        var text = "${g.message(code: 'layoutMenu.configuracion.save.error.code02')}"
+                    if(data.error === 'code01'){
+                        text = "${g.message(code: 'layoutMenu.configuracion.save.error.code01')}";
+                    }else if (data.error === 'code02'){
+                        text = "${g.message(code: 'layoutMenu.configuracion.save.error.code02')}";
                     }
 
                     $("#textError").html(text);
