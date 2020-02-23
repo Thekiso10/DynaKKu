@@ -13,15 +13,3 @@
 
 #layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .buttons {text-align: center;}
 #layout-container #Generate-Historial-PDF #formGenerateHistorialPDF .buttons .btnSave {padding: 0.5em 6em; font-size: 1.5em; border: 3px solid; font-weight: 600; transition: 1s;}
-
-#layout-container #List-Historial-PDF #tableHistorialList {border:2px solid; border-radius: 7px; margin-top: 2em; margin-bottom: 1em;}
-#layout-container #List-Historial-PDF #tableHistorialList .table {font-family: 'Open Sans'; text-align: center; font-size: 1.10em; margin: 0;}
-
-#layout-container #List-Historial-PDF #tableHistorialList .table tr th {text-align: center;}
-#layout-container #List-Historial-PDF #tableHistorialList .table tr td a {font-family: 'Open Sans Light', sans-serif; font-weight: bold; color:#fff;}
-
-#layout-container #List-Historial-PDF #tableHistorialList .table td {vertical-align: middle;}
-
-#layout-container #List-Historial-PDF .paginacion {text-align: center; margin-bottom: 3em; line-height: 0.25em;}
-#layout-container #List-Historial-PDF .paginacion a,
-#layout-container #List-Historial-PDF .paginacion span {font-size: 1.25em; padding-left: 1em;}

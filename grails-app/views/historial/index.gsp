@@ -8,7 +8,7 @@
     <title><g:message code="modulos.historial.lable.HISTORIAL_ACTIVIDAD"/></title>
 </head>
 <body>
-    <div id="List-Historial-PDF" class="col-sm-12" role="main">
+    <div id="List-Historial-PDF" class="tablaGenericoa col-sm-12" role="main">
 
         <div class="menu navbar-collapse" role="navigation">
             <div class="container">
@@ -35,7 +35,7 @@
                     <g:message code="default.list.del.label" args="[entityName]" />
                 </h2>
 
-                <div id="tableHistorialList" class="table-responsive ${!listaHistorial? 'borderTransparent':''}">
+                <div id="tableHistorialList" class="tableDynamic table-responsive ${!listaHistorial? 'borderTransparent':''}">
                     <table class="table table-dark table-striped table-hover ${!listaHistorial? 'hidden':''}">
                         <thead class="thead-dark">
                             <tr>

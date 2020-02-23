@@ -9,7 +9,7 @@
 	<title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
-	<div id="list-autor" class="col-sm-12" role="main">
+	<div id="list-autor" class="tablaGenericoa col-sm-12" role="main">
 
 		<div class="menu navbar-collapse" role="navigation">
 			<div class="container">
@@ -114,7 +114,7 @@
 					</div>
 				</g:form>
 
-				<div id="tableAutorList" class="table-responsive ${!autorInstanceList? 'borderTransparent':''}">
+				<div id="tableAutorList" class="tableDynamic table-responsive ${!autorInstanceList? 'borderTransparent':''}">
 					<table class="table table-dark table-striped table-hover ${!autorInstanceList? 'hidden':''}">
 						<thead class="thead-dark">
 							<tr>
