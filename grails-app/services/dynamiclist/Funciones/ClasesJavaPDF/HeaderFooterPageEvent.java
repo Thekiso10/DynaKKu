@@ -14,6 +14,11 @@ import java.util.Date;
 class HeaderFooterPageEvent extends PdfPageEventHelper{
     private PdfTemplate t;
     private Image total;
+    private String nombreAplicacion;
+
+    public HeaderFooterPageEvent(String nombreAplicacion) {
+        this.nombreAplicacion = nombreAplicacion;
+    }
 
     public void onOpenDocument(PdfWriter writer, Document document) {
         t = writer.getDirectContent().createTemplate(30, 16);
@@ -56,7 +61,7 @@ class HeaderFooterPageEvent extends PdfPageEventHelper{
             text.setPaddingLeft(5);
             text.setBorder(Rectangle.BOTTOM);
             text.setBorderColor(new BaseColor(19, 101, 142));
-            text.addElement(new Phrase("Informe generado por DynamicList", new Font(Font.FontFamily.HELVETICA, 12)));
+            text.addElement(new Phrase("Informe generado por ".concat(this.nombreAplicacion), new Font(Font.FontFamily.HELVETICA, 12)));
             text.addElement(new Phrase("PDF generado el dia " + formatDate, new Font(Font.FontFamily.HELVETICA, 8)));
             header.addCell(text);
 
