@@ -134,8 +134,8 @@ dynamicList.mode.oscuro = true
 dynamicList.autores.rutaImg = "web-app\\images\\imgAutores" //Ruta para guardar las imagenes de cada autor
 dynamicList.autores.edadMax = 110 	//Especificar la edad minima de un Autor
 dynamicList.autores.edadMin = 0 	//Especificar la edad maxima de un Autor
-// Logitut del nombre
-dynamicList.autores.longitut.nombreMax = 50 //Especificar la logitut maxima del nombre
+/* Logitut del nombre */
+dynamicList.autores.longitut.nombreMax = 25 //Especificar la logitut maxima del nombre
 
 /*==================================================================*/
 /* 		                      Mangas                      			*/
