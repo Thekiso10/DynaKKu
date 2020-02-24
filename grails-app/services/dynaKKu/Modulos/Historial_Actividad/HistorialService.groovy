@@ -120,7 +120,6 @@ class HistorialService {
         list << [value: messageSource.getMessage("modulos.historial.lable.HISTORIAL_ACTIVIDAD", null, defaultLocale), key: HistorialModulos.Modulos.HISTORIAL_ACTIVIDAD]
         list << [value: messageSource.getMessage("modulos.exportacionListado.title", null, defaultLocale), key: HistorialModulos.Modulos.EXPORTACION_LISTADO]
         list << [value: messageSource.getMessage("modulos.listadoPDF.title", null, defaultLocale), key: HistorialModulos.Modulos.LISTADO_PDF]
-        list << [value: messageSource.getMessage("modulos.reportes.title", null, defaultLocale), key: HistorialModulos.Modulos.REPOSRTE_PDF]
         //Devolvemos la lista
         return list
     }
