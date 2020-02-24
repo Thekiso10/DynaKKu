@@ -1,12 +1,7 @@
-package dynamiclist
+package dynaKKu
 
 import grails.transaction.Transactional
 import grails.util.Holders
-import org.apache.commons.io.FilenameUtils
-
-import java.io.File
-import java.util.logging.Logger;
-
 import Colecciones.Autor
 
 

@@ -1,4 +1,4 @@
-package dynamiclist.Funciones
+package dynaKKu.Funciones
 
 import grails.transaction.Transactional
 import grails.util.Holders

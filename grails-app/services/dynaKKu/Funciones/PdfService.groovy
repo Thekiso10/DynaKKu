@@ -1,6 +1,6 @@
-package dynamiclist.Funciones
+package dynaKKu.Funciones
 
-import Modulos.Historial_Actividad.HistorialMangas
+
 import Modulos.Historial_Actividad.HistorialMangasActividad
 
 import grails.transaction.Transactional

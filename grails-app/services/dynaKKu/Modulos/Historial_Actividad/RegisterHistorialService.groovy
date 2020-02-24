@@ -1,8 +1,7 @@
-package dynamiclist.Modulos.Historial_Actividad
+package dynaKKu.Modulos.Historial_Actividad
 
 import Colecciones.Autor
 import Colecciones.Mangas
-import Modulos.Historial_Actividad.HistorialModulos
 import Modulos.Historial_Actividad.HistorialAutor
 import Modulos.Historial_Actividad.HistorialMangas
 import Modulos.Historial_Actividad.HistorialMangasActividad

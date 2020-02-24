@@ -1,17 +1,15 @@
-package dynamiclist.Modulos.Historial_Actividad
+package dynaKKu.Modulos.Historial_Actividad
 
 
 import Modulos.Historial_Actividad.HistorialModulos
 import Modulos.Historial_Actividad.HistorialAutor
 import Modulos.Historial_Actividad.HistorialMangas
 import beans.HistorialActividadBean
-import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList
 import grails.orm.HibernateCriteriaBuilder
 import grails.transaction.Transactional
 
 import org.springframework.context.MessageSource
 
-import javax.management.Query
 import java.text.SimpleDateFormat
 
 @Transactional

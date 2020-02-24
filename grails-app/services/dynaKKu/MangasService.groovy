@@ -1,9 +1,8 @@
-package dynamiclist
+package dynaKKu
 
 import Colecciones.Mangas
 import grails.transaction.Transactional
 import grails.util.Holders
-import org.apache.commons.io.FilenameUtils
 
 @Transactional
 class MangasService {
