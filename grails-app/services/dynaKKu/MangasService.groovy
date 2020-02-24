@@ -98,6 +98,6 @@ class MangasService {
     }
 
     private comprobarLongitutNombre(def nombre) {
-        return (nombre.length() <= Holders.config.dynamicList.mangas.longitut.nombreMax ? true : false)
+        return (nombre.length() <= Holders.config.dynaKKu.mangas.longitut.nombreMax ? true : false)
     }
 }

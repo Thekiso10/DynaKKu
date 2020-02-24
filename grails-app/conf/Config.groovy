@@ -126,28 +126,28 @@ log4j.main = {
 /*==================================================================*/
 /* 		                        Modo                       			*/
 /*==================================================================*/
-dynamicList.mode.oscuro = true
+dynaKKu.mode.oscuro = true
 
 /*==================================================================*/
 /* 		                       Autores                     			*/
 /*==================================================================*/
-dynamicList.autores.rutaImg = "web-app\\images\\imgAutores" //Ruta para guardar las imagenes de cada autor
-dynamicList.autores.edadMax = 110 	//Especificar la edad minima de un Autor
-dynamicList.autores.edadMin = 0 	//Especificar la edad maxima de un Autor
+dynaKKu.autores.rutaImg = "web-app\\images\\imgAutores" //Ruta para guardar las imagenes de cada autor
+dynaKKu.autores.edadMax = 110 	//Especificar la edad minima de un Autor
+dynaKKu.autores.edadMin = 0 	//Especificar la edad maxima de un Autor
 /* Logitut del nombre */
-dynamicList.autores.longitut.nombreMax = 25 //Especificar la logitut maxima del nombre
+dynaKKu.autores.longitut.nombreMax = 25 //Especificar la logitut maxima del nombre
 
 /*==================================================================*/
 /* 		                      Mangas                      			*/
 /*==================================================================*/
-dynamicList.mangas.rutaImg = "web-app\\images\\imgMangas" //Ruta para guardar las imagenes de cada manga
-dynamicList.mangas.longitut.nombreMax  = 50 //Especificar la logitut maxima del nombre
-dynamicList.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos permitidos para un mismo Manga
+dynaKKu.mangas.rutaImg = "web-app\\images\\imgMangas" //Ruta para guardar las imagenes de cada manga
+dynaKKu.mangas.longitut.nombreMax  = 50 //Especificar la logitut maxima del nombre
+dynaKKu.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos permitidos para un mismo Manga
 
 /*==================================================================*/
 /* 		                        PDF                        			*/
 /*==================================================================*/
-dynamicList.pdfConf.pathBanner = "images/imgWeb/pdf/bannerPDF.png"
+dynaKKu.pdfConf.pathBanner = "images/imgWeb/pdf/bannerPDF.png"
 
 /*==================================================================*/
 /* 					   Cargar Config Externa       					*/

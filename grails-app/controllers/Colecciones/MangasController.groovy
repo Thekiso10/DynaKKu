@@ -179,8 +179,8 @@ class MangasController {
         }
         //Validar si hay el numero permitido de Generos
         def listGeneros = params.listOfGenders.split(',')
-        if(listGeneros.size() > grailsApplication.config.dynamicList.mangas.longitut.generosMax){
-            flash.error = message(code: "mangas.error.genero.numMax", args: [grailsApplication.config.dynamicList.mangas.longitut.generosMax])
+        if(listGeneros.size() > grailsApplication.config.dynaKKu.mangas.longitut.generosMax){
+            flash.error = message(code: "mangas.error.genero.numMax", args: [grailsApplication.config.dynaKKu.mangas.longitut.generosMax])
             redirect(action: "create")
             return
         }
@@ -351,8 +351,8 @@ class MangasController {
         }
         //Validar si hay el numero permitido de Generos
         def listGeneros = params.listOfGenders.split(',')
-        if(listGeneros.size() > grailsApplication.config.dynamicList.mangas.longitut.generosMax){
-            flash.error = message(code: "mangas.error.genero.numMax", args: [grailsApplication.config.dynamicList.mangas.longitut.generosMax])
+        if(listGeneros.size() > grailsApplication.config.dynaKKu.mangas.longitut.generosMax){
+            flash.error = message(code: "mangas.error.genero.numMax", args: [grailsApplication.config.dynaKKu.mangas.longitut.generosMax])
             redirect(action: "edit", id:mangasInstance.id)
             return
         }

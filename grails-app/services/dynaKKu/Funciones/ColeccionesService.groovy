@@ -28,7 +28,7 @@ class ColeccionesService {
         def path = null
         def mensaje = null
 
-        File carpeta = new File((!mangas ? Holders.config.dynamicList.autores.rutaImg : Holders.config.dynamicList.mangas.rutaImg))
+        File carpeta = new File((!mangas ? Holders.config.dynaKKu.autores.rutaImg : Holders.config.dynaKKu.mangas.rutaImg))
 
         if(!foto.empty && carpeta.exists()){
             def extensiones = FilenameUtils.getExtension(foto.originalFilename)
@@ -61,7 +61,7 @@ class ColeccionesService {
         def path = urlImg
 
         File foto = new File(urlImg)
-        File carpeta = new File((!mangas ? Holders.config.dynamicList.autores.rutaImg : Holders.config.dynamicList.mangas.rutaImg))
+        File carpeta = new File((!mangas ? Holders.config.dynaKKu.autores.rutaImg : Holders.config.dynaKKu.mangas.rutaImg))
 
         if (foto.exists() && foto.isFile()) {
             try {

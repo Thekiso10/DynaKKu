@@ -42,8 +42,8 @@ class BootStrap {
         //Definir la lista de files
         ArrayList<File> listaCarpetas = []
         //Definir la ruta de las carpetas que hay que comprobar y Colocar los files en la lista
-        listaCarpetas << new File(grailsApplication.config.dynamicList.autores.rutaImg)
-        listaCarpetas << new File(grailsApplication.config.dynamicList.mangas.rutaImg)
+        listaCarpetas << new File(grailsApplication.config.dynaKKu.autores.rutaImg)
+        listaCarpetas << new File(grailsApplication.config.dynaKKu.mangas.rutaImg)
         //Ejecutar las comparaciones
         try{
             listaCarpetas.each { folder ->
@@ -128,8 +128,8 @@ class BootStrap {
         //Cargamos el idioma en la sessión local del navegador del usuario
         localeResolver.defaultLocale = defaultLocale
         log.info "</> Cargar el Modo Visual </>"
-        grailsApplication.config.dynamicList.mode.oscuro = (userInstance) ? userInstance.modoDark : true
-        log.info "</> Modo Oscuro -> [" + grailsApplication.config.dynamicList.mode.oscuro + "]"
+        grailsApplication.config.dynaKKu.mode.oscuro = (userInstance) ? userInstance.modoDark : true
+        log.info "</> Modo Oscuro -> [" + grailsApplication.config.dynaKKu.mode.oscuro + "]"
     }
 
     def guardarLista(def lista){

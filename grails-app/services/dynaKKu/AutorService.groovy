@@ -15,7 +15,7 @@ class AutorService {
 		boolean error = false
 		def mensaje = null
 
-		if(Integer.parseInt(params.edad) <= grailsApplication.config.dynamicList.autores.edadMin || Integer.parseInt(params.edad) >= grailsApplication.config.dynamicList.autores.edadMax){
+		if(Integer.parseInt(params.edad) <= grailsApplication.config.dynaKKu.autores.edadMin || Integer.parseInt(params.edad) >= grailsApplication.config.dynaKKu.autores.edadMax){
 			error = true
 			mensaje = "autores.errores.edad"
 			log.error "Han intentado introducir una edad no correcta ["+ params.edad + "]"
@@ -68,8 +68,8 @@ class AutorService {
 	/* Funciones internas */
 
 	private comprobarLongitutNombre(def nombre, def apellido) {
-		def validoNombre = (nombre.length() <= Holders.config.dynamicList.autores.longitut.nombreMax ? true : false)
-		def validoApellido = (apellido.length() <= Holders.config.dynamicList.autores.longitut.nombreMax ? true : false)
+		def validoNombre = (nombre.length() <= Holders.config.dynaKKu.autores.longitut.nombreMax ? true : false)
+		def validoApellido = (apellido.length() <= Holders.config.dynaKKu.autores.longitut.nombreMax ? true : false)
 
 		return (validoNombre && validoApellido ? true : false)
 	}

@@ -20,7 +20,7 @@ import com.itextpdf.text.pdf.PdfWriter
 import com.itextpdf.text.Document
 import com.itextpdf.text.pdf.PdfPCell
 import com.itextpdf.text.pdf.PdfPTable
-import dynamiclist.Funciones.ClasesJavaPDF.HeaderFooterPageEvent
+import dynaKKu.Funciones.ClasesJavaPDF.HeaderFooterPageEvent
 
 @Transactional
 class PdfService {

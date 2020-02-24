@@ -1,7 +1,7 @@
 package Modulos.Historial_Actividad
 
 import com.itextpdf.text.Document
-import dynamiclist.Modulos.Historial_Actividad.HistorialService
+import dynaKKu.Modulos.Historial_Actividad.HistorialService
 import grails.util.Holders
 import org.springframework.web.servlet.support.RequestContextUtils
 
@@ -47,7 +47,7 @@ class HistorialController {
         File pdfFile
         def docName
         //Definir la ruta del banner
-        def imgBanner = request.getSession().getServletContext().getRealPath((grailsApplication.config.dynamicList.pdfConf.pathBanner))
+        def imgBanner = request.getSession().getServletContext().getRealPath((grailsApplication.config.dynaKKu.pdfConf.pathBanner))
         def pathDoc = request.getSession().getServletContext().getRealPath(('/'))
         //Obtenemos el PDF del servicio
         def doc = historialService.generateHistorialPDF(params, imgBanner, pathDoc)
