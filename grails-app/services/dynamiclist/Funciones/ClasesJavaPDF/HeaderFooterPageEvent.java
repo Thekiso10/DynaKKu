@@ -88,7 +88,7 @@ class HeaderFooterPageEvent extends PdfPageEventHelper{
             footer.getDefaultCell().setBorderColor(new BaseColor(19, 101, 142));
 
             // add copyright
-            footer.addCell(new Phrase("\u00A9DynamicList - Generación de información", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+            footer.addCell(new Phrase("\u00A9".concat(this.nombreAplicacion)+" - Generación de información", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
 
             // add current page count
             footer.getDefaultCell().setHorizontalAlignment(Element.ALIGN_RIGHT);
