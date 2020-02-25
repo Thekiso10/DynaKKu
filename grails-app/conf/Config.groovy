@@ -125,10 +125,20 @@ log4j.main = {
 /*======================================================*/
 /*				SPRING SECURITY PLUGIN					*/
 /*======================================================*/
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'Modulos.Personalizacion_Usuario.Usuario'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'Security.UserRole'
-grails.plugin.springsecurity.authority.className = 'Security.Role'
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = "/estadisticas/index"
+grails.plugin.springsecurity.userLookup.userDomainClassName     = 'Modulos.Personalizacion_Usuario.Usuario'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName  = 'Security.UserRole'
+grails.plugin.springsecurity.authority.className                = 'Security.Role'
+grails.plugin.springsecurity.logout.postOnly                    = false //Para permitir el acceso GET
+grails.plugin.springsecurity.securityConfigType                 = "Annotation"
+
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+        '/assets/**':      ['permitAll'],
+        '/web-app/**':     ['permitAll'],
+        '/**/js/**':       ['permitAll'],
+        '/**/css/**':      ['permitAll'],
+        '/**/images/**':   ['permitAll'],
+        '/**/favicon.ico': ['permitAll']
+]
 
 /*==================================================================*/
 /* 		                        Modo                       			*/
