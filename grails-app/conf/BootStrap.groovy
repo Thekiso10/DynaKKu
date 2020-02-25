@@ -41,7 +41,7 @@ class BootStrap {
         //Creamos a los usuario por defecto
         def admin = new Usuario(nombre: 'Admin', apellido: 'Default',
                                 idiomaDefault: 'es', modoDark: true, ultimaModificacion: new Date(),
-                                fechaCreacion: new Date(), username: 'admin', password: '1234', enabled: true).save()
+                                fechaCreacion: new Date(), username: 'admin', password: '1234').save()
         //Creamos los roles por defecto
         def adminRole   = new Role(authority: 'ROLE_ADMIN').save()
         def userRole    = new Role(authority: 'ROLE_USER').save()
