@@ -1,0 +1,5 @@
+#layout-container #login .flash {margin-bottom: 1em;}
+#layout-container #login .form-group .titleLogin {font-size: 3em; padding-bottom: 0.25em; margin-bottom: 0.75em; border-bottom: 2px solid;}
+
+#layout-container #login .loginBox {padding: 1em; margin-top: 0.5em; border: 3px solid #83D2FF; border-radius: 10px 10px 7px 7px;}
+#layout-container #login .loginBox .buttons .btnLogin {padding: 0.5em 6em; font-size: 1.5em; border: 3px solid; font-weight: 600; transition: 1s;}
