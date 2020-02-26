@@ -1,5 +1,6 @@
 package Modulos.Personalizacion_Usuario
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 import grails.converters.JSON
 import Modulos.Personalizacion_Usuario.Usuario
@@ -7,6 +8,7 @@ import Modulos.Personalizacion_Usuario.Usuario
 
 class UsuarioController {
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def updateMe() {
         def resultado = [valido: true]
