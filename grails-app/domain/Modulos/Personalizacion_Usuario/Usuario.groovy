@@ -23,7 +23,7 @@ class Usuario implements Serializable {
     /* Seguredad */
     String username
     String password
-    boolean enabled
+    boolean enabled = true
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
@@ -45,7 +45,6 @@ class Usuario implements Serializable {
     static mapping = {
         id          generator: 'uuid', Length: 32 //Para generar un id auto-incrementable
         password 	column: '`password`'
-        enabled     defaultValue: '1'
     }
 
     Usuario(String username, String password) {

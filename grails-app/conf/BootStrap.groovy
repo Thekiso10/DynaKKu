@@ -5,6 +5,7 @@ import Modulos.Personalizacion_Usuario.Usuario
 import groovy.time.TimeDuration
 import groovy.time.TimeCategory
 import org.apache.commons.io.FilenameUtils
+import org.apache.commons.lang.RandomStringUtils
 
 class BootStrap {
     //Cargar las variables de Configuracion
@@ -21,10 +22,6 @@ class BootStrap {
             cargarGeneros()
             /* Creamos los usuarios */
             creacionUsuariosDefecto()
-
-            log.info "</> Creando usuario por defecto </>"
-
-
         }else if (grailsApplication.config.dataSource.dbCreate.equals("update")){
             //Por si algun dia lo necesitamos
         }
@@ -38,10 +35,25 @@ class BootStrap {
     }
     def creacionUsuariosDefecto() {
         log.info "</> Creando usuario por defecto </>"
+        String charset = (('A'..'Z') + ('0'..'9') + ('a'..'z') + ('@'+'#'+'.'+'-')).join()
+        Integer length = 15
+        //Generar las contraseñas
+        String passAdmin = RandomStringUtils.random(length, charset.toCharArray())
+        String passUser  = RandomStringUtils.random(length, charset.toCharArray())
+        String passWS    = RandomStringUtils.random(length, charset.toCharArray())
         //Creamos a los usuario por defecto
         def admin = new Usuario(nombre: 'Admin', apellido: 'Default',
                                 idiomaDefault: 'es', modoDark: true, ultimaModificacion: new Date(),
-                                fechaCreacion: new Date(), username: 'admin', password: '1234').save()
+                                fechaCreacion: new Date(), username: 'admin', password: passAdmin).save()
+
+        def user  = new Usuario(nombre: 'Usuario', apellido: 'Default',
+                                idiomaDefault: 'es', modoDark: true, ultimaModificacion: new Date(),
+                                fechaCreacion: new Date(), username: 'user', password: passUser).save()
+
+        def ws    = new Usuario(nombre: 'Usuario', apellido: 'WebService',
+                                idiomaDefault: 'es', modoDark: true, ultimaModificacion: new Date(),
+                                fechaCreacion: new Date(), username: 'user_ws', password: passWS).save()
+
         //Creamos los roles por defecto
         def adminRole   = new Role(authority: 'ROLE_ADMIN').save()
         def userRole    = new Role(authority: 'ROLE_USER').save()
@@ -49,6 +61,18 @@ class BootStrap {
         //Configuramos los Roles a los usuarios
         def adminToRole = new UserRole(user: admin, role: adminRole)
         log.debug "adminToRole = " + adminToRole.save(flush:true)
+
+        def userToRole = new UserRole(user: user, role: userRole)
+        log.debug "userToRole = " + adminToRole.save(flush:true)
+
+        def wsToRole = new UserRole(user: ws, role: wsRole)
+        log.debug "wsToRole = " + adminToRole.save(flush:true)
+        //Mostrar las contraseñas por los logs
+        log.info "Contraseña Admin -> " + passAdmin
+        log.info "Contraseña User -> " + passUser
+        log.info "Contraseña User WebService -> " + passWS
+
+        log.info "</> Fin usuario por defecto </>"
     }
     //Comprobar si las carpetas externas existen
     def comprobarCarpetas(){
