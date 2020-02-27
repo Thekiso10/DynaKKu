@@ -63,6 +63,11 @@
 								<g:link class="btn btnExtra"><g:message code="layoutMenu.BotonesExtra.graficas"/></g:link>
 							</li>
 							<li>
+								<g:link class="btn btnOpcions" controller="logout">
+									<span class="glyphicon glyphicon-log-out"></span>
+								</g:link>
+							</li>
+							<li>
 								<button class="btn btnOpcions" data-toggle="modal" data-target="#modalConfiguracion">
 									<span class="glyphicon glyphicon-cog"></span>
 								</button>
@@ -75,7 +80,7 @@
 			<g:layoutBody/>
 
 			<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<g:render  template="/layouts/templates/configuracion"/>
+				<g:render  template="/Usuario/configuracion"/>
 			</div>
 
 			<div id="spinner" class="spinner" style="display:none;">

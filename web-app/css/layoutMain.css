@@ -26,13 +26,13 @@ body a:hover, a:focus {color:white;}
 
 /*************  Barra de menu *************/
 
-#layout-container #layout-menu a {font-family: 'Open Sans Semibold', sans-serif;}
+#layout-container #layout-menu a {font-family: 'Open Sans Semibold', sans-serif; line-height: 1.42857143;}
 
 #layout-container #layout-menu #BotonesColeccion .btn,
 #layout-container #layout-menu #BotonesExtra .btn {font-size: 18px;}
  
 #layout-container #layout-menu {border:3px solid; margin-top: 0.5em; padding-left: 0;}
-#layout-container #layout-menu #BotonesExtra {text-align: left; padding: 0;}
+#layout-container #layout-menu #BotonesExtra {text-align: left; padding: 0; display: flex; align-items: center;}
 #layout-container #layout-menu #BotonesExtra .btnExtra {padding: 0.5em 2.5em; border:3px solid; margin:1em 0.5em; border-radius: 10px; transition: 1s;}
 
 #layout-container #layout-menu #BotonesColeccion .btnExtra {padding: 0.5em 2.5em; margin:1em 0.15em; border: 3px solid; border-radius: 10px; transition: 1s;}
