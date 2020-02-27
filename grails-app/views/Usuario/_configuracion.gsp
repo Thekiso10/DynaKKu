@@ -6,7 +6,7 @@
 
     <div id="modalDatosUsuario" class="modal-dialog">
         <g:formRemote name="updateMe" url="[controller: 'usuario', action: 'updateMe']" update="[success: 'textCorrecto', failure: 'textError']"
-                        onLoading="callSpinner();" onComplete="stopSpinner();" onSuccess="showFlashMessage(); stopSpinner();" onFailure="showFlashError(); stopSpinner();">
+                        onLoading="resetFlashMessage(); callSpinner();" onComplete="stopSpinner();" onSuccess="showFlashMessage(); stopSpinner();" onFailure="showFlashError(); stopSpinner();">
             <!-- Modal content-->
             <div class="modal-content">
                 %{-- Cabecera --}%

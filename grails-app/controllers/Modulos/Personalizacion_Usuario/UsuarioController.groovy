@@ -39,6 +39,11 @@ class UsuarioController {
             }
         }
 
+        if(params.username.contains(" ")){
+            render (status:403, text: message(code: 'layoutMenu.configuracion.save.error.code04'))
+            return
+        }
+
         //Actualizar los campos del Usuario
         userInstance.nombre = params.nombre
         userInstance.apellido = params.apellido
