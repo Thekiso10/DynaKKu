@@ -1,4 +1,9 @@
 /**** Layout ****/
+/************* Por defecto ***************/
+#layout-container input {background-color: #0e2033; color:#5aacff; border-color: #4380A3;}
+#layout-container h2 {color: #d8d8d8;}
+#layout-container label {color: #d9dfe6;}
+
 /************* HEADER ***************/
 #layout-container, html {background-color: #15202B;}
 #layout-container #grailsLogo {border-color: #13658e;}
@@ -59,6 +64,11 @@
 #layout-container .tablaGenericoa div.paginacion {background: #1B2228; border-color: #102f4f;}
 #layout-container .tablaGenericoa div.paginacion span {color: #4CB1F7; font-weight: 600;}
 #layout-container .tablaGenericoa div.paginacion a {color: #fff;}
+
+/*************  Login *************/
+#layout-container #login .loginBox {background-color: #13425A; border-color: #83D2FF;}
+#layout-container #login .loginBox .buttons .btnLogin {background-color: #2276A1; color: white; border-color: #1d536f !important;}
+#layout-container #login .loginBox .buttons .btnLogin:hover {background: #1699dc; border-color: #2990C4;}
 
 /*** Estadisticas ***/
 /* Barra de menu estandar*/
@@ -179,7 +189,9 @@
 #layout-container .modal-body {background-color: #1f2e3e; color: #E9EAEB;}
 #layout-container .modal-body .separator {border-color: #fff;}
 #layout-container .modal-body select,
-#layout-container .modal-body input {color: #5aacff; background-color: #0e2033; border: 2px solid #4380A3; box-shadow: 0 1px 5px 1px #4380A3;}
+#layout-container .modal-body input[type="email"],
+#layout-container .modal-body input[type="password"],
+#layout-container .modal-body input[type="text"] {color: #5aacff; background-color: #0e2033; border: 2px solid #4380A3; box-shadow: 0 1px 5px 1px #4380A3;}
 #layout-container .modal-footer {background-color: #505861;}
 #layout-container .modal-footer .btnCommit {background-color: #236286c9; color: white; border-color: #205A7A;}
 #layout-container .modal-footer .btnDelete {background-color: #B30E18; color: white; border-color: #F50010;}

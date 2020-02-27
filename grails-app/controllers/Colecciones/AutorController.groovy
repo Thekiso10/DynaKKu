@@ -1,5 +1,6 @@
 package Colecciones
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -11,7 +12,8 @@ class AutorController {
 	def autorService
 	def coleccionesService
 	def registerHistorialService
-	
+
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 		def offset = (params.offset? params.offset:0)
@@ -56,6 +58,7 @@ class AutorController {
         respond autorInstanceList, model:[autorInstanceCount: autorPaginacion]
     }
 
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
 	@Transactional
     def show(Autor autorInstance) {
 		if(!autorInstance || autorInstance?.borrado){
@@ -68,10 +71,12 @@ class AutorController {
         respond autorInstance
     }
 
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def create() {
         respond new Autor(params)
     }
 
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def save(Autor autorInstance, params) {
 		def validadorForm = autorService.validarForm(params)
@@ -130,6 +135,7 @@ class AutorController {
 		redirect(action:"show", id:autorInstance.id)
     }
 
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def edit(Autor autorInstance) {
 		//Validar si existe Autor o no esta borrado
 		if(!autorInstance || autorInstance?.borrado){
@@ -141,6 +147,7 @@ class AutorController {
         respond autorInstance
     }
 
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def updateAutor() {
 		def autorInstance = Autor.get(params.id)
@@ -220,7 +227,8 @@ class AutorController {
 		
 		redirect(action:"show", id:autorInstance.id)
     }
-	
+
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def delete(Autor autorInstance) {
         if (autorInstance == null) {
@@ -264,6 +272,7 @@ class AutorController {
 	/*															*/
 	/* 				Renderizar la imagen del Autor				*/
 	/*----------------------------------------------------------*/
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
 	def autor_image() {
 		
 		def autorInstance = Autor.get(params.id)

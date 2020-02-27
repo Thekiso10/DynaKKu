@@ -1,5 +1,6 @@
 package Modulos.Personalizacion_Usuario
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 import grails.converters.JSON
 import Modulos.Personalizacion_Usuario.Usuario
@@ -7,29 +8,47 @@ import Modulos.Personalizacion_Usuario.Usuario
 
 class UsuarioController {
 
+    def springSecurityService
+
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def updateMe() {
-        def resultado = [valido: true]
-        def userInstance = Usuario.first()
-
-        if(!params.nombre || !params.apellido || !params.idioma || !params.mode){
-            log.error "Error al actualizar los datos del usuario. Alguno de los campos es nullo"
-
-            resultado = [valido: false, error: 'code01']
-            render resultado as JSON
-            return
-        }
+        def userInstance = Usuario.findById(params.id)
 
         if(!userInstance){
             log.error "Error al actualizar los datos del usuario. La instancia del Usuario es nulla"
 
-            resultado = [valido: false, error: 'code02']
-            render resultado as JSON
+            render (status:403, text: message(code: 'layoutMenu.configuracion.save.error.code02'))
             return
         }
+
+        if(!params.nombre || !params.apellido || !params.idioma || !params.mode || !params.username || !params.email){
+            log.error "Error al actualizar los datos del usuario. Alguno de los campos es nullo"
+
+            render (status:403, text: message(code: 'layoutMenu.configuracion.save.error.code01'))
+            return
+        }
+
+        if(params.changePasswordParam.equals('true')){
+            if(!params.password || !params.repitPassword){
+                render (status:403, text: message(code: 'layoutMenu.configuracion.save.error.code01'))
+                return
+            }else if (!params.password.equals(params.repitPassword)){
+                render (status:403, text: message(code: 'layoutMenu.configuracion.save.error.code03'))
+                return
+            }
+        }
+
+        if(params.username.contains(" ")){
+            render (status:403, text: message(code: 'layoutMenu.configuracion.save.error.code04'))
+            return
+        }
+
         //Actualizar los campos del Usuario
         userInstance.nombre = params.nombre
         userInstance.apellido = params.apellido
+        userInstance.password = params.password
+        userInstance.mail = params.email
         userInstance.idiomaDefault = params.idioma
         userInstance.modoDark = (params.mode == 'true') ? true : false;
         userInstance.ultimaModificacion = new Date()
@@ -38,6 +57,6 @@ class UsuarioController {
 
         log.info "Se ha podido actualizar los datos del usuario correctamente"
 
-        render resultado as JSON
+        render (status:200, text: message(code: 'layoutMenu.configuracion.save.correcto'))
     }
 }

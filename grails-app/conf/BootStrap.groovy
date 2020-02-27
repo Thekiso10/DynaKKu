@@ -1,9 +1,11 @@
 import Colecciones.Demografia
 import Colecciones.Genero
+import Security.*
 import Modulos.Personalizacion_Usuario.Usuario
 import groovy.time.TimeDuration
 import groovy.time.TimeCategory
 import org.apache.commons.io.FilenameUtils
+import org.apache.commons.lang.RandomStringUtils
 
 class BootStrap {
     //Cargar las variables de Configuracion
@@ -11,20 +13,17 @@ class BootStrap {
     def localeResolver
 
     def init = { servletContext ->
-        cargarLogo()
         log.info "## Cargar BootStrap ##"
 
-        if (grailsApplication.config.dataSource.dbCreate.equals("create")){
-
+        if (grailsApplication.config.dataSource.dbCreate.equals("create") || grailsApplication.config.dataSource.dbCreate.equals("create-drop")){
+            /* Creamos las demografia */
             cargarDemografias()
+            /* Creamos los generos */
             cargarGeneros()
-
-            log.info "</> Creando usuario por defecto </>"
-            def user = new Usuario(nombre: 'Admin', apellido: 'Default', idiomaDefault: 'es', modoDark: true, ultimaModificacion: new Date())
-            if(!user.save(flush: true)) log.error "No se ha podido crear el usuario por defecto"
-
+            /* Creamos los usuarios */
+            creacionUsuariosDefecto()
         }else if (grailsApplication.config.dataSource.dbCreate.equals("update")){
-
+            //Por si algun dia lo necesitamos
         }
 
         comprobarCarpetas() //Haremos la comprobacion de carpetas siempre
@@ -33,6 +32,47 @@ class BootStrap {
         log.info "## Fin de cargar BootStrap ##"
     }
     def destroy = {
+    }
+    def creacionUsuariosDefecto() {
+        log.info "</> Creando usuario por defecto </>"
+        String charset = (('A'..'Z') + ('0'..'9') + ('a'..'z') + ('@'+'#'+'.'+'-')).join()
+        Integer length = 15
+        //Generar las contraseñas
+        String passAdmin = RandomStringUtils.random(length, charset.toCharArray())
+        String passUser  = RandomStringUtils.random(length, charset.toCharArray())
+        String passWS    = RandomStringUtils.random(length, charset.toCharArray())
+        //Creamos a los usuario por defecto
+        def admin = new Usuario(nombre: 'Admin', apellido: 'Default',
+                                idiomaDefault: 'es', modoDark: true, ultimaModificacion: new Date(),
+                                fechaCreacion: new Date(), username: 'admin', password: passAdmin).save()
+
+        def user  = new Usuario(nombre: 'Usuario', apellido: 'Default',
+                                idiomaDefault: 'es', modoDark: true, ultimaModificacion: new Date(),
+                                fechaCreacion: new Date(), username: 'user', password: passUser).save()
+
+        def ws    = new Usuario(nombre: 'Usuario', apellido: 'WebService',
+                                idiomaDefault: 'es', modoDark: true, ultimaModificacion: new Date(),
+                                fechaCreacion: new Date(), username: 'user_ws', password: passWS).save()
+
+        //Creamos los roles por defecto
+        def adminRole   = new Role(authority: 'ROLE_ADMIN').save()
+        def userRole    = new Role(authority: 'ROLE_USER').save()
+        def wsRole      = new Role(authority: 'ROLE_WS').save()
+        //Configuramos los Roles a los usuarios
+        def adminToRole = new UserRole(user: admin, role: adminRole)
+        log.debug "adminToRole = " + adminToRole.save(flush:true)
+
+        def userToRole = new UserRole(user: user, role: userRole)
+        log.debug "userToRole = " + userToRole.save(flush:true)
+
+        def wsToRole = new UserRole(user: ws, role: wsRole)
+        log.debug "wsToRole = " + wsToRole.save(flush:true)
+        //Mostrar las contraseñas por los logs
+        log.info "Contraseña Admin -> " + passAdmin
+        log.info "Contraseña User -> " + passUser
+        log.info "Contraseña User WebService -> " + passWS
+
+        log.info "</> Fin usuario por defecto </>"
     }
     //Comprobar si las carpetas externas existen
     def comprobarCarpetas(){
@@ -138,18 +178,5 @@ class BootStrap {
                 log.error "[Alerta] No se ha podido guardar la demografia -> " + it.nombre
             }
         }
-    }
-
-    def cargarLogo(){
-        println "\n\n"
-        println " _|_|_|                                                  _|            _|        _|              _|     "
-        println " _|    _|  _|    _|  _|_|_|      _|_|_|  _|_|_|  _|_|          _|_|_|  _|              _|_|_|  _|_|_|_| "
-        println " _|    _|  _|    _|  _|    _|  _|    _|  _|    _|    _|  _|  _|        _|        _|  _|          _|     "
-        println " _|    _|  _|    _|  _|    _|  _|    _|  _|    _|    _|  _|  _|        _|        _|     _|       _|     "
-        println " _|    _|  _|    _|  _|    _|  _|    _|  _|    _|    _|  _|  _|        _|        _|        _|    _|     "
-        println " _|_|_|    _|_|_|_|  _|    _|    _|_|_|  _|    _|    _|  _|    _|_|_|  _|_|_|_|  _|  _|_|_|_|      _|_| "
-        println "                 _| "
-        println "             _|_|   "
-        println "\n\n"
     }
 }

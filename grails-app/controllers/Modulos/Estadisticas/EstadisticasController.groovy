@@ -1,17 +1,22 @@
 package Modulos.Estadisticas
 
+import grails.plugin.springsecurity.annotation.Secured
+
 class EstadisticasController {
 
 	def estadisticasService
 
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
 	def index() {
 		redirect(action: "general")
 	}
 
-    def general() {
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
+	def general() {
 		render (view:"general", model:[])
 	}
 
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
 	def statsAutor() {
 		def listaValores = []
 		//Coger valor maximo de la edad de los Autores
@@ -48,6 +53,7 @@ class EstadisticasController {
 		])
 	}
 
+	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
 	def statsMangas() {
 		render (view:"statsMangas", model:[])
 	}

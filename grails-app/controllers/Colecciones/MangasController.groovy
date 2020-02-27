@@ -1,5 +1,6 @@
 package Colecciones
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 class MangasController {
@@ -8,6 +9,7 @@ class MangasController {
     def coleccionesService
     def registerHistorialService
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 
@@ -64,6 +66,7 @@ class MangasController {
         respond mangasInstanceList, model: [mangasInstanceCount: mangasInstanceCount, mangasRegistrados: registrados]
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def updateStateMangas() {
         def mangaInstance = Mangas.get(params.id)
         if(mangaInstance){
@@ -101,11 +104,13 @@ class MangasController {
         }
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def create() {
         def hayAutores = (Autor.findAllByBorrado(false, params)?.size() > 0)? true : false //Buscamo si hay autores
         respond new Mangas(params), model:[hayAutores:hayAutores]
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def save(Mangas mangasInstance){
         //Comprobar que existe un Autor con el ID de la vista
@@ -242,6 +247,7 @@ class MangasController {
         redirect(action:"show", id:mangasInstance.id)
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def show(Mangas mangasInstance) {
         if(!mangasInstance || mangasInstance.borrado == true){
@@ -256,6 +262,7 @@ class MangasController {
         respond mangasInstance, model:[listaGeneros:listaGeneros]
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def edit(Mangas mangasInstance) {
         if(!mangasInstance){
             flash.error = message(code: "mangas.error.show")
@@ -268,6 +275,7 @@ class MangasController {
         respond mangasInstance, model:[listaGeneros:listaGeneros]
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def update() {
         def mangasInstance = Mangas.get(params.id)
@@ -432,6 +440,7 @@ class MangasController {
         redirect(action:"show", id:mangasInstance.id)
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def updateSumTomosManga() {
         def mangaInstance = Mangas.get(params.id)
         if(!mangaInstance || mangaInstance.borrado == true){
@@ -468,6 +477,7 @@ class MangasController {
         redirect(action:"show", id:mangaInstance.id)
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def updateStateSpinOff(){
         def mangaInstance = Mangas.get(params.id)
         if(!mangaInstance || mangaInstance.borrado == true){
@@ -515,6 +525,7 @@ class MangasController {
         redirect(action:"show", id:mangaInstance.id)
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def delete(Mangas mangasInstance) {
         if (mangasInstance == null) {
@@ -565,6 +576,7 @@ class MangasController {
     /*															*/
     /* 				Renderizar la imagen del Autor				*/
     /*----------------------------------------------------------*/
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def poster_image() {
 
         def mangasInstance = Mangas.get(params.id)

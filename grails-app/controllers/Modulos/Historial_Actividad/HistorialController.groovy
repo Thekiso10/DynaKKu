@@ -2,6 +2,7 @@ package Modulos.Historial_Actividad
 
 import com.itextpdf.text.Document
 import dynaKKu.Modulos.Historial_Actividad.HistorialService
+import grails.plugin.springsecurity.annotation.Secured
 import grails.util.Holders
 import org.springframework.web.servlet.support.RequestContextUtils
 
@@ -9,6 +10,7 @@ class HistorialController {
 
     def historialService
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def index(Integer max) {
         params.max = Math.min(max ?: 20, 100)
         def offset = (params.offset? Integer.parseInt(params.offset) : 0)
@@ -27,6 +29,7 @@ class HistorialController {
         render (view: 'index', model:[listaHistorial: listaHistorial, listaHistorialCount: listaHistorialCount])
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def createPDF(){
         Locale defaultLocale = RequestContextUtils.getLocale(request)
         //Obtener la lista de las funciones
@@ -39,6 +42,7 @@ class HistorialController {
                                           listaFuncionesModulos: listaFuncionesModulos])
     }
 
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def generateHistorialPDF() {
         //Definir variables
         Document documento

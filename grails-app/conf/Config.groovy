@@ -94,7 +94,6 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }
 
@@ -106,10 +105,10 @@ log4j = {
 log4j.main = {
     // Example of changing the log pattern for the default console appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
-	
+    appenders {
+        console name:'stdout', layout:pattern(conversionPattern: '%d [%-5p] %c{1} ::: %m%n')
+    }
+    info 'grails.app','org.codehaus.groovy.grails.plugins.springsecurity','com.semic.enotumclient'
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -122,6 +121,25 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+/*======================================================*/
+/*				SPRING SECURITY PLUGIN					*/
+/*======================================================*/
+grails.plugin.springsecurity.userLookup.userDomainClassName     = 'Modulos.Personalizacion_Usuario.Usuario'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName  = 'Security.UserRole'
+grails.plugin.springsecurity.authority.className                = 'Security.Role'
+grails.plugin.springsecurity.logout.postOnly                    = false //Para permitir el acceso GET
+grails.plugin.springsecurity.securityConfigType                 = "Annotation"
+
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+        '/assets/**':      ['permitAll'],
+        '/web-app/**':     ['permitAll'],
+        '/**/js/**':       ['permitAll'],
+        '/**/fonts/**':    ['permitAll'],
+        '/**/css/**':      ['permitAll'],
+        '/**/images/**':   ['permitAll'],
+        '/**/favicon.ico': ['permitAll']
+]
 
 /*==================================================================*/
 /* 		                        Modo                       			*/

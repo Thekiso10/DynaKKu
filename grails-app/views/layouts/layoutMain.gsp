@@ -22,50 +22,8 @@
 	</head>
 	<body>
 		<div id="layout-container" class="container-fluid">
-			<div id="header">
-				<div class="container">
-					<div id="grailsLogo" class="col-sm-12" role="banner">
-						<g:link controller="estadisticas" action="index">
-							<div class="col-sm-6" id="BannerLogo">
-								<g:img id="LogoLayoutMain" class="col-sm-3" dir="images/imgWeb" file="LogoLayoutMain.png"/>
-								<h1 class="col-sm-9"><g:message code="grailsLogo.bannerLogo.nombrePrograma"/></h1>
-							</div>
-
-							<%
-								// Links idiomes
-								def linkCat = request.getForwardURI()
-								def linkEs = request.getForwardURI()
-								def linkEn = request.getForwardURI()
-
-								StringBuffer parametres = new StringBuffer()
-								Map map = request.getParameterMap()
-
-								for (String key: map.keySet()) {
-									if (key != "lang") {
-										if (map.get(key) instanceof String){
-											parametres.append("&" + key + "=" + map.get(key))
-										}else{
-											map.get(key).each { it ->
-												parametres.append("&" + key + "=" + it)
-											}
-										}
-									}
-								}
-
-								linkCat += "?lang=ca_ES" + parametres.toString()
-								linkEs  += "?lang=es" + parametres.toString()
-								linkEn 	+= "?lang=en_US" + parametres.toString()
-							%>
-
-							<div class="col-sm-6" id="BannerI18n">
-								<g:link url="${linkEs}"><span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.es"/></span></g:link>
-								<g:link url="${linkCat}"><span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.cat"/></span></g:link>
-								<g:link url="${linkEn}"><span><g:message code="grailsLogo.bannerLogo.idiomaLink.eng"/></span></g:link>
-							</div>
-						</g:link>
-					</div>
-				</div>
-			</div>
+			%{--	Header Template	--}%
+			<g:render  template="/layouts/templates/header"/>
 			
 			<nav id="layout-menu" class="col-sm-12">
 				<div class="container">
@@ -105,7 +63,12 @@
 								<g:link class="btn btnExtra"><g:message code="layoutMenu.BotonesExtra.graficas"/></g:link>
 							</li>
 							<li>
-								<button class="btn btnOpcions" data-toggle="modal" data-target="#modalConfiguracion">
+								<g:link class="btn btnOpcions" controller="logout">
+									<span class="glyphicon glyphicon-log-out"></span>
+								</g:link>
+							</li>
+							<li>
+								<button class="btn btnOpcions" id="showMe" data-toggle="modal" data-target="#modalConfiguracion">
 									<span class="glyphicon glyphicon-cog"></span>
 								</button>
 							</li>
@@ -117,7 +80,7 @@
 			<g:layoutBody/>
 
 			<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<g:render  template="/layouts/templates/configuracion"/>
+				<g:render  template="/Usuario/configuracion"/>
 			</div>
 
 			<div id="spinner" class="spinner" style="display:none;">
