@@ -63,10 +63,10 @@ class BootStrap {
         log.debug "adminToRole = " + adminToRole.save(flush:true)
 
         def userToRole = new UserRole(user: user, role: userRole)
-        log.debug "userToRole = " + adminToRole.save(flush:true)
+        log.debug "userToRole = " + userToRole.save(flush:true)
 
         def wsToRole = new UserRole(user: ws, role: wsRole)
-        log.debug "wsToRole = " + adminToRole.save(flush:true)
+        log.debug "wsToRole = " + wsToRole.save(flush:true)
         //Mostrar las contraseñas por los logs
         log.info "Contraseña Admin -> " + passAdmin
         log.info "Contraseña User -> " + passUser
