@@ -68,7 +68,7 @@
 								</g:link>
 							</li>
 							<li>
-								<button class="btn btnOpcions" data-toggle="modal" data-target="#modalConfiguracion">
+								<button class="btn btnOpcions" id="showMe" data-toggle="modal" data-target="#modalConfiguracion">
 									<span class="glyphicon glyphicon-cog"></span>
 								</button>
 							</li>
