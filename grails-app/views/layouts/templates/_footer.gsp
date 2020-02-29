@@ -6,15 +6,17 @@
             </div>
 
             <div class="col-sm-4 text-center">
-                <h4 class="text-center subTitle">Informción</h4>
-                <span>Este es un gestor de Mangas de codigo abierto y gratuito.</span>
-                <span>Correo de contacto:</span>
-                <a href="mailto:soporte@dynakkun.com">soporte@dynakkun.com</a>
+                <h4 class="text-center subTitle"><g:message code="footer.texto.titulo"/></h4>
+                <span><g:message code="footer.texto.titulo.subText01"/></span>
+                <span><g:message code="footer.texto.titulo.subText02"/>:</span>
+                <a href="mailto:${message(code: "footer.texto.mailContacto")}"><g:message code="footer.texto.mailContacto"/></a>
             </div>
 
             <div class="col-sm-4 text-right">
-                <h4>Versión de la aplicación: <span class="boldText">${grailsApplication.config.dynaKKu.version.app}</span></h4>
-                <h5><a href="#">Notas de la versión</a></h5>
+                <h4><g:message code="footer.texto.version"/>: <span class="boldText">${grailsApplication.config.dynaKKu.version.app}</span></h4>
+                <h5>
+                    <a href="#"><g:message code="footer.texto.version.notas"/></a>
+                </h5>
             </div>
         </div>
     </div>
