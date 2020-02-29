@@ -8,14 +8,7 @@
         <g:external dir="images/imgWeb/icons" file="favicon.ico"/>
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'layoutMain.css')}" type="text/css">
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'flashMessage.css')}" type="text/css">
-
-        <g:if test="${grailsApplication.config.dynaKKu.mode.oscuro}">
-            <link rel="stylesheet" href="${resource(dir: 'css', file: 'colores/nightMode.css')}" type="text/css">
-        </g:if>
-        <g:else>
-            <link rel="stylesheet" href="${resource(dir: 'css', file: 'colores/lightMode.css')}" type="text/css">
-        </g:else>
-
+        <link rel="stylesheet" href="${resource(dir: 'css', file: 'colores/nightMode.css')}" type="text/css">
         <asset:stylesheet src="application.css"/>
         <asset:javascript src="application.js"/>
         <g:layoutHead/>

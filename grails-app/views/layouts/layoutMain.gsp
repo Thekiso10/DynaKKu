@@ -1,3 +1,5 @@
+<%@ page import="Modulos.Personalizacion_Usuario.Usuario"%>
+
 <!DOCTYPE html>
 <html lang="es" class="no-js">
 	<head>
@@ -9,7 +11,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'layoutMain.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'flashMessage.css')}" type="text/css">
 
-		<g:if test="${grailsApplication.config.dynaKKu.mode.oscuro}">
+		<g:if test="${Usuario.get(sec.loggedInUserInfo(['field':'id']))?.modoDark}">
 			<link rel="stylesheet" href="${resource(dir: 'css', file: 'colores/nightMode.css')}" type="text/css">
 		</g:if>
 		<g:else>
@@ -79,9 +81,11 @@
 			
 			<g:layoutBody/>
 
-			<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<g:render  template="/Usuario/configuracion"/>
-			</div>
+			<sec:ifLoggedIn>
+				<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<g:render  template="/Usuario/configuracion"/>
+				</div>
+			</sec:ifLoggedIn>
 
 			<div id="spinner" class="spinner" style="display:none;">
 				<img id="img-spinner" src="${resource(dir: 'images/imgWeb', file: 'spinner.gif')}" alt="Loading"/>
