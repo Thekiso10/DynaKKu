@@ -145,6 +145,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 /* 		                        Modo                       			*/
 /*==================================================================*/
 dynaKKu.mode.oscuro = true
+dynaKKu.version.app = null
 
 /*==================================================================*/
 /* 		                       Autores                     			*/
@@ -182,6 +183,12 @@ try {
 		throw new Exception("No se ha encontrado la entrada app.rutaConfig en el archivo application.properties")
 		System.exit(1)
 	}
+
+    dynaKKu.version.app = props.get("app.version")
+    if (!dynaKKu.version.app){
+        throw new Exception("No se ha encontrado la entrada app.version en el archivo application.properties")
+        System.exit(1)
+    }
 
 	// determina si la ruta depèn del context de deployment o és absoluta
 	if(rutaConfig.contains('/') || rutaConfig.contains('\\')){
