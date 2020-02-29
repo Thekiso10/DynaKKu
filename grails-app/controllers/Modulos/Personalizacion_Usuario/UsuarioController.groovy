@@ -52,8 +52,6 @@ class UsuarioController {
         userInstance.idiomaDefault = params.idioma
         userInstance.modoDark = (params.mode == 'true') ? true : false;
         userInstance.ultimaModificacion = new Date()
-        //Modificamos la variable de Modo Visual
-        grailsApplication.config.dynaKKu.mode.oscuro = userInstance.modoDark
 
         log.info "Se ha podido actualizar los datos del usuario correctamente"
 
