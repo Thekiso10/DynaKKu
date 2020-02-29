@@ -92,6 +92,9 @@
 			</div>
 
 		</div>
+
+		<g:render template="/layouts/templates/footer"/>
+
 		<%-- Hacer la importacion de archivos --%>
 		<g:javascript src="layoutMain.js"/>
 		<g:javascript src="spinner.js"/>

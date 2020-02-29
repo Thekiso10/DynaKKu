@@ -24,5 +24,7 @@
                 <img id="img-spinner" src="${resource(dir: 'images/imgWeb', file: 'spinner.gif')}" alt="Loading"/>
             </div>
         </div>
+        %{--    Footer    --}%
+        <g:render template="/layouts/templates/footer"/>
     </body>
 </html>
