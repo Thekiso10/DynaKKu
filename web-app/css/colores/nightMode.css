@@ -26,6 +26,10 @@
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #2A343E; color:#2990C4; border-color:#2990C4}
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#fff;}
 
+/*************  Footer *************/
+
+#Footer {background-color: #040709; color: #d9dfe6;}
+
 /*************  Configuracion *************/
 
 #layout-container #modalConfiguracion .modal-header {background-color: #1B5C7D; color: #E9EAEB; border-bottom: 3px solid #10384c;}
