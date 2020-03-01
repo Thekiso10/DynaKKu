@@ -168,8 +168,6 @@ class BootStrap {
         //Cargamos el idioma en la sessión local del navegador del usuario
         localeResolver.defaultLocale = defaultLocale
         log.info "</> Cargar el Modo Visual </>"
-        grailsApplication.config.dynaKKu.mode.oscuro = (userInstance) ? userInstance.modoDark : true
-        log.info "</> Modo Oscuro -> [" + grailsApplication.config.dynaKKu.mode.oscuro + "]"
     }
 
     def guardarLista(def lista){

@@ -11,7 +11,7 @@ body a:hover, a:focus {color:white;}
 
 /************* HEADER ***************/
 
-#layout-container, html {padding: 0 1em;}
+#layout-container {padding: 0 1em;}
 
 /*Banner de los logos*/
 #layout-container #grailsLogo {border-bottom: 12px solid;}
@@ -66,6 +66,15 @@ body a:hover, a:focus {color:white;}
 #layout-container #modalConfiguracion .modal-footer .btn {padding: 0.5em 1.25em; font-weight: 600; font-size: 1.1em}
 #layout-container #modalConfiguracion .modal-footer .btnCommit,
 #layout-container #modalConfiguracion .modal-footer .btnSkip {border: 2px solid; transition: 1s;}
+
+/*************  Footer *************/
+
+#Footer {margin-top: 2em; padding: 1em;}
+#Footer .row {display: flex; align-items: center;}
+#Footer .row .col-sm-4 .subTitle {margin-bottom: 0.25em;}
+#Footer .row .col-sm-4 .boldText {font-family: 'Open Sans Semibold', sans-serif;}
+#Footer .row .col-sm-4 h4,
+#Footer .row .col-sm-4 h5 {margin: 0;}
 
 /*************  Spinner *************/
 .spinner {
