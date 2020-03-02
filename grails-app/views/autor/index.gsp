@@ -31,7 +31,7 @@
 						<g:message code="autores.list.manage.label" /></a>
 						<ul class="dropdown-menu styleDropdown">
 							<li>
-								<g:link class="btn btnMenu ">
+								<g:link controller="transferenciaListado" action="ExportAutores" class="btn btnMenu ">
 									<g:message code="autores.list.export.label" />
 								</g:link>
 							</li>
