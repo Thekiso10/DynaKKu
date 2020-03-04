@@ -20,8 +20,8 @@ class EstadisticasController {
 	def statsAutor() {
 		def listaValores = []
 		//Coger valor maximo de la edad de los Autores
-		def edadMax = estadisticasService.getMaxEdadAutor()
-		def edadMin	= estadisticasService.getMinEdadAutor()
+		def edadMax = estadisticasService.getMaxEdadAutor()?.getEdadAutor()
+		def edadMin	= estadisticasService.getMinEdadAutor()?.getEdadAutor()
 		listaValores << estadisticasService.getListAutorJoven() //listaValores[0]
 		listaValores << estadisticasService.getListAutorMayor() //listaValores[1]
 		//Coger Autor con mayor numero de Mangas

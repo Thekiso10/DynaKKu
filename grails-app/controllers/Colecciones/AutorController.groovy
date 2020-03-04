@@ -24,16 +24,13 @@ class AutorController {
 
 		if(params.search){
 			log.info "Se ha ejecutado el filtro de Autores"
-			if(params.nombre || params.apellido || params.edad){ //Para que no se de al filtro con los tres campos vacios 
+			if(params.nombre || params.apellido){ //Para que no se de al filtro con los tres campos vacios
 				//Ejecutar el createCriteria con los parametros nombre, apellido y edad
 				def autorFiltro = Autor.createCriteria() 
 				def listaFiltro = autorFiltro.list (max: params.max, offset:offset){ //Para la paginacion
 					ilike ("nombre", ("%" + params.nombre.toString() + "%"))
 					ilike ("apellido", ("%" + params.apellido.toString() + "%"))
 					eq("borrado", false)
-					if(params.edad){ //Por si el campo viene vacio
-						eq ("edad", Integer.parseInt(params.edad.toString()))
-					}
 				}
 				autorInstanceList = listaFiltro
 				autorPaginacion = autorInstanceList.totalCount // .totalCount
@@ -50,7 +47,6 @@ class AutorController {
 			//Ejecutar la limpieza de los parametros del filtro
 			params.nombre 	= ""
 			params.apellido = ""
-			params.edad 	= ""
 		}
 		
 		if(autorInstanceList.size() == 0){
