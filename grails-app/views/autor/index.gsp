@@ -89,14 +89,6 @@
 									value="${params?.apellido}"
 									placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.apellido.label')])}" />
 							</div>
-							<div class="form-group">
-								<label for="edad" class="labelFilter"> <g:message
-										code="autor.edad.label" default="edad" />:
-								</label>
-								<g:field name="edad" class="tamanoInput" type="number"
-									value="${params?.edad}"
-									placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.edad.label')])}" />
-							</div>
 
 							<button type="submit" class="btn btn-filter" name="search"
 								value="search">
@@ -125,8 +117,8 @@
 								<g:sortableColumn scope="col" property="apellido"
 									title="${message(code: 'autor.apellido.label', default: 'Apellido')}" />
 
-								<g:sortableColumn scope="col" property="edad"
-									title="${message(code: 'autor.edad.label', default: 'Edad')}" />
+								<g:sortableColumn scope="col" property="fechaNacimiento"
+									title="${message(code: 'autor.fechaNacimento.label', default: 'Edad')}" />
 
 								<g:sortableColumn scope="col" property="nacionalidad"
 									title="${message(code: 'autor.nacionalidad.label', default: 'nacionalidad')}" />
@@ -157,7 +149,7 @@
 										</g:link></td>
 
 									<td>
-										${fieldValue(bean: autorInstance, field: "edad")}
+										<g:formatDate format="dd/MM/yyyy" date="${autorInstance.fechaNacimento}"/>
 									</td>
 
 									<td>

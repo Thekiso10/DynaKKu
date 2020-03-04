@@ -1,11 +1,13 @@
 <%@ page import="Colecciones.Autor" %>
+<%@ page import="org.springframework.web.servlet.support.RequestContextUtils" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="layoutMain"/>
-		<g:set var="entityName" value="${message(code: 'autor.label', default: 'Autor')}" />
+		<g:set var="entityName" value="${message(code: 'layoutMenu.botonesColeccion.autor', default: 'Autor')}" />
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'autores.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'datePicker/datepicker.css')}" type="text/css">
 		<title><g:message code="default.edit.label" args="${[message(code: 'layoutMenu.botonesColeccion.autor'), "${autorInstance?.nombre + ' ' + autorInstance?.apellido}"]}" /></title>
 	</head>
 	<body>
@@ -58,5 +60,18 @@
 				</div>
 			</g:form>
 		</div>
+
+		<g:javascript src="datePicker/datepickerInterval-yy.js" />
+
+		<g:if test="${RequestContextUtils.getLocale(request) == new Locale('es')}">
+			<g:javascript src="datePicker/locales/bootstrap-datepicker.es.js" />
+		</g:if>
+		<g:elseif test="${RequestContextUtils.getLocale(request) == new Locale('ca','es')}">
+			<g:javascript src="datePicker/locales/bootstrap-datepicker.cat.js" />
+		</g:elseif>
+		<g:else>
+			<g:javascript src="datePicker/locales/bootstrap-datepicker.js" />
+		</g:else>
+
 	</body>
 </html>

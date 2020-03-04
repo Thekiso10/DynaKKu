@@ -1,9 +1,11 @@
+<%@ page import="org.springframework.web.servlet.support.RequestContextUtils" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="layoutMain"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'autores.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'datePicker/datepicker.css')}" type="text/css">
 		<g:set var="entityName" value="${message(code: 'layoutMenu.botonesColeccion.autor', default: 'Autor')}" />
 		<title><g:message code="default.create.label" args="[entityName]"/></title>
 	</head>
@@ -57,5 +59,18 @@
 				</div>
 			</g:form>
 		</div>
+
+		<g:javascript src="datePicker/datepickerInterval-yy.js" />
+
+		<g:if test="${RequestContextUtils.getLocale(request) == new Locale('es')}">
+			<g:javascript src="datePicker/locales/bootstrap-datepicker.es.js" />
+		</g:if>
+		<g:elseif test="${RequestContextUtils.getLocale(request) == new Locale('ca','es')}">
+			<g:javascript src="datePicker/locales/bootstrap-datepicker.cat.js" />
+		</g:elseif>
+		<g:else>
+			<g:javascript src="datePicker/locales/bootstrap-datepicker.js" />
+		</g:else>
+
 	</body>
 </html>

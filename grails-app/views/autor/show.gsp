@@ -78,12 +78,13 @@
 						</div>
 						
 						<div class="col-sm-6">
-							<g:if test="${autorInstance?.edad}">
+							<g:if test="${autorInstance?.fechaNacimento}">
 								<div class="row">
-									<h4 id="edad-label" class="property-label col-sm-3"><g:message code="autor.edad.label" default="edad" />:</h4>
-									<span class="property-value col-sm-9" aria-labelledby="edad-label">
-										<g:fieldValue bean="${autorInstance}" field="edad"/>
-										<g:message code="autor.edad.anos.label" default="anyos" />
+									<h4 id="edad-label" class="property-label col-sm-5"><g:message code="autor.nacimento.label" default="edad" />:</h4>
+									<span class="property-value col-sm-7" aria-labelledby="edad-label">
+										<g:formatDate format="dd/MM/yyyy" date="${autorInstance.fechaNacimento}"/>
+										(${autorInstance.getEdadAutor()}
+										<g:message code="autor.edad.anos.label" default="anyos" />)
 									</span>
 								</div>
 							</g:if>

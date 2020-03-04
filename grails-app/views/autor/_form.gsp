@@ -4,41 +4,42 @@
 <div class="col-sm-6">
 	
 	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'nombre', 'error')} required row">
-		<label for="nombre" class="col-sm-3 text-right">
+		<label for="nombre" class="col-sm-4 text-right">
 			<g:message code="autor.nombre.label" default="Nombre" />
 			<span class="required-indicator">*</span>
 		</label>
-		<div class="col-sm-9">
+		<div class="col-sm-8">
 			<g:textField name="nombre" required="" value="${autorInstance?.nombre}" class="tamanoInput"/>
 		</div>
 	</div>
 	
 	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'apellido', 'error')} required row">
-		<label for="apellido" class="col-sm-3 text-right">
+		<label for="apellido" class="col-sm-4 text-right">
 			<g:message code="autor.apellido.label" default="Apellido" />
 			<span class="required-indicator">*</span>
 		</label>
-		<div class="col-sm-9">
+		<div class="col-sm-8">
 			<g:textField name="apellido" required="" value="${autorInstance?.apellido}" class="tamanoInput"/>
 		</div>
 	</div>
-	
-	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'edad', 'error')} required row">
-		<label for="edad" class="col-sm-3 text-right">
-			<g:message code="autor.edad.label" default="Edad" />
-			<span class="required-indicator">*</span>
+
+	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'fechaNacimento', 'error')} required row">
+		<label for="fechaDeNacimento" class="col-sm-4 text-right">
+				<g:message code="autor.fechaNacimento.label" default="Edad" />
+				<span class="required-indicator">*</span>
 		</label>
-		<div class="col-sm-9">
-			<g:field name="edad" type="number" value="${autorInstance.edad}" required="" class="tamanoInput"/>
+		<div class="col-sm-8">
+			<g:set var="fecha" value="${autorInstance?.fechaNacimento ? g.formatDate(['format': 'dd/MM/yy', 'date': autorInstance?.fechaNacimento]) : ''}"/>
+			<input type="text" id="fechaDeNacimento" name="fechaDeNacimento" value="${fecha}" required="" class="datepicker tamanoInput" size="10" data-date-format="dd/MM/yyyy" placeholder="${message(code:'autor.fechaNacimento.label')}"/>
 		</div>
 	</div>
-	
+
 	<div class="fieldcontain ${hasErrors(bean: autorInstance, field: 'genero', 'error')} required row">
-		<label for="genero" class="col-sm-3 text-right">
+		<label for="genero" class="col-sm-4 text-right">
 			<g:message code="autor.genero.label" default="Genero"/>
 			<span class="required-indicator">*</span>
 		</label>
-		<div class="col-sm-9">
+		<div class="col-sm-8">
 			<select name="genero" id="genero">
 				<option value="Masculino" ${autorInstance?.genero == 'Masculino' ? 'selected="selected"':''}><g:message code="autores.estado.masculino" default="masculino" /></option>
 				<option value="Femenino" ${autorInstance?.genero == 'Femenino' ? 'selected="selected"':''}><g:message code="autores.estado.femenido" default="femenido" /></option>
