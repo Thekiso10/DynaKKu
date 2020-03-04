@@ -168,11 +168,6 @@ dynaKKu.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos
 dynaKKu.pdfConf.pathBanner = "images/imgWeb/pdf/bannerPDF.png"
 
 /*==================================================================*/
-/* 		               Transferencia Listado               			*/
-/*==================================================================*/
-dynaKKu.transferenciaListado.autores.atributos = ['Nombre', 'Apellido']
-
-/*==================================================================*/
 /* 					   Cargar Config Externa       					*/
 /*==================================================================*/
 Properties props = new Properties()
