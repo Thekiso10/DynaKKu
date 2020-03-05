@@ -10,7 +10,6 @@ class TransferenciaListadoService {
     def getExportListAutoresXML(def listaAutores, def pathDoc){
         def formatDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date())
         def nameDoc = "ExportAutores-".concat(formatDate).concat('.xml')
-        def prueba = "kjh"
         //Creamos el documento XML
         def fileWriter = new FileWriter(pathDoc + File.separator + nameDoc)
         def peopleBuilder = new MarkupBuilder(fileWriter)

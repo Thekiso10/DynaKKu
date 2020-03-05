@@ -17,7 +17,7 @@ class TransferenciaListadoController {
 
         if(!listaAutores && listaAutores?.size() <= 0){
             log.error "Han intentado generar la exportación de Autores sin ningun Autor"
-            flash.message = "No se puede generar archivo XML de los Autores por que no hemos obtenido la lista correctamente"
+            flash.message = message(code: 'modulos.exportacionListado.export.error.code01', args: [message(code: 'layoutMenu.botonesColeccion.autores')])
             redirect(controller: "autor", action: "index")
             return
         }
@@ -26,7 +26,7 @@ class TransferenciaListadoController {
 
         if(!datosXML){
             log.error "No se ha podido generar el archivo"
-            flash.message = "No se ha podido generar el archivo"
+            flash.message = message(code: 'modulos.exportacionListado.export.error.code02')
             redirect(controller: "autor", action: "index")
             return
         }
