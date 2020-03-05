@@ -48,7 +48,7 @@
 				
 					<fieldset class="form">
 						<div class="panel-form row">
-							<g:render template="form"/>
+							<g:render template="templates/form"/>
 						</div>
 					</fieldset>
 					<fieldset class="buttons">
