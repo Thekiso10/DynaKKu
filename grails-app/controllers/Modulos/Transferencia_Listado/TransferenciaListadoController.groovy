@@ -53,4 +53,33 @@ class TransferenciaListadoController {
             xmlFile?.delete()
         }
     }
+
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
+    def ImportAutor(){
+        //Validar el archivo
+        def file = request.getFile('archivoAutor')
+        if(file){
+            if(!(transferenciaListadoService.validarFormatoArchivo(file))){
+                log.error "El formato del archivo no es valido"
+                flash.message = message(code: 'modulos.exportacionListado.export.error.code04')
+                redirect(controller: "autor", action: "index")
+                return
+            }
+        }else{
+            log.error "No se ha podido recuperar el archivo xml de la importación de los Autores"
+            flash.message = message(code: 'modulos.exportacionListado.export.error.code03')
+            redirect(controller: "autor", action: "index")
+            return
+        }
+
+        def estadoImportacion = transferenciaListadoService.importListAutoresFormFileXMl(file)
+        if(estadoImportacion.codigoError){
+            flash.message = message(code: estadoImportacion.codigoError)
+        }else{
+            def numAutores = estadoImportacion.numeroAutoresImportados
+            flash.message = message(code: 'modulos.exportacionListado.panelImport.import.resultado', args: [numAutores, message(code: (numAutores > 1 ? 'layoutMenu.botonesColeccion.autores' : 'layoutMenu.botonesColeccion.autor'))])
+        }
+
+        redirect(controller: 'autor', action: 'index')
+    }
 }

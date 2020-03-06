@@ -77,7 +77,7 @@ class AutorController {
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def save(Autor autorInstance, params) {
-		def validadorForm = autorService.validarForm(params)
+		def validadorForm = autorService.validarForm(params, true)
 		//Validar los datos del formulario
         if (validadorForm.error) {
 			flash.error = message(code: validadorForm.mensaje)
@@ -162,7 +162,7 @@ class AutorController {
 			redirect(action: "index")
 			return
 		}
-		def validadorForm = autorService.validarForm(params)
+		def validadorForm = autorService.validarForm(params, true)
 		//Comprobar que no ha cambiado la version == problemas de concurrencia
 		if (params.version != null) {
 			if (autorInstance.version > Integer.parseInt(params.version.toString())) {

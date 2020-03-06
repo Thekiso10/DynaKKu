@@ -13,12 +13,12 @@ class AutorService {
 	def grailsApplication
 	
 	//Validar el formulario de Autor
-	def validarForm(params){
+	def validarForm(params, boolean envioFormulario){
 		boolean error = false
 		def mensaje = null
 
 		//Validar la edad del Autor
-		def edad = calcularYears(params.fechaDeNacimento)
+		def edad = calcularYears(params.fechaDeNacimento, envioFormulario)
 		if(edad <= grailsApplication.config.dynaKKu.autores.edadMin || edad >= grailsApplication.config.dynaKKu.autores.edadMax){
 			error = true
 			mensaje = "autores.errores.edad"
@@ -78,17 +78,25 @@ class AutorService {
 		return (validoNombre && validoApellido ? true : false)
 	}
 
-	private calcularYears(def fecha){
-		//Fecha Actual
-		Calendar actual = Calendar.getInstance()
-		//Hacemos un Calendar a partir de un String
-		Calendar antiguo = Calendar.getInstance()
-		antiguo.setTime(new SimpleDateFormat('dd/MM/yy').parse(fecha))
-		//Calculamos la diferencia
-		def diff = actual.get(Calendar.YEAR) - antiguo.get(Calendar.YEAR)
-		//Ajustamos los años
-		if(antiguo.get(Calendar.DAY_OF_YEAR) > actual.get(Calendar.DAY_OF_YEAR)){
-			diff--
+	private calcularYears(def fecha, boolean envioFormulario){
+		//Lo iniciamos a -1 por si ocure una exception y no afectar al resto del codigo
+		def diff = -1
+		//Protegemos este trozo de codigo por si la variable de la fecha no es correcta
+		try{
+			//Fecha Actual
+			Calendar actual = Calendar.getInstance()
+			//Hacemos un Calendar a partir de un String
+			Calendar antiguo = Calendar.getInstance()
+			antiguo.setTime(new SimpleDateFormat((envioFormulario ? 'dd/MM/yy' : 'dd-MM-yy')).parse(fecha))
+			//Calculamos la diferencia
+			diff = actual.get(Calendar.YEAR) - antiguo.get(Calendar.YEAR)
+			//Ajustamos los años
+			if(antiguo.get(Calendar.DAY_OF_YEAR) > actual.get(Calendar.DAY_OF_YEAR)){
+				diff--
+			}
+		}catch (Exception e) {
+			e.getMessage()
+			e.getCause()
 		}
 
 		return diff

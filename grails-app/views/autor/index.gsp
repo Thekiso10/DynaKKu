@@ -43,9 +43,9 @@
 								</g:else>
 							</li>
 							<li>
-								<g:link class="btn btnMenu">
+								<button class="btn btnMenu" data-toggle="modal" data-target="#ImportAutoresModal">
 									<g:message code="autores.list.import.label" />
-								</g:link>
+								</button>
 							</li>
 						</ul>
 					</li>
@@ -218,6 +218,11 @@
 
 			</div>
 		</div>
+
+		<div id="ImportAutoresModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportAutoresModal" aria-hidden="true">
+			<g:render  template="templates/ImportAutoresModal"/>
+		</div>
+
 	</div>
 </body>
 </html>
