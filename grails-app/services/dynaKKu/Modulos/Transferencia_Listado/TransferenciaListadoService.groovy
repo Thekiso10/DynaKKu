@@ -1,6 +1,7 @@
 package dynaKKu.Modulos.Transferencia_Listado
 
 import Colecciones.Autor
+import Colecciones.GenerosMangas
 import grails.transaction.Transactional
 import org.apache.commons.io.FilenameUtils
 import org.springframework.web.multipart.commons.CommonsMultipartFile
@@ -19,8 +20,8 @@ class TransferenciaListadoService {
         def nameDoc = "ExportAutores-".concat(formatDate).concat('.xml')
         //Creamos el documento XML
         def fileWriter = new FileWriter(pathDoc + File.separator + nameDoc)
-        def peopleBuilder = new MarkupBuilder(fileWriter)
-        peopleBuilder.autores {
+        def autoreBuilder = new MarkupBuilder(fileWriter)
+        autoreBuilder.autores {
             listaAutores.each{ autorInstance ->
                 autor {
                     nombre(autorInstance?.nombre)
@@ -37,6 +38,50 @@ class TransferenciaListadoService {
         }
 
         fileWriter.close();
+
+        return [nameDoc: nameDoc, docXml: fileWriter]
+    }
+
+    def getExportListMangasXML(def listaMangas, def pathDoc){
+        def formatDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date())
+        def nameDoc = "ExportMangas-".concat(formatDate).concat('.xml')
+        //Crear documento XML
+        def fileWriter = new FileWriter(pathDoc + File.separator + nameDoc)
+        def managsBuilder = new MarkupBuilder(fileWriter)
+        //Generar la estructura del XML
+        managsBuilder.mangas {
+            listaMangas.each{ mangaInstance ->
+                manga {
+                    //Atributos basicos
+                    nombreManga(mangaInstance.nombreManga)
+                    completado(mangaInstance.completado)
+                    serieAcabada(mangaInstance.serieAcabada)
+                    serieConsecutiva(mangaInstance.serieConsecutiva)
+                    deseado(mangaInstance.deseado)
+                    numTomosActuales(mangaInstance.numTomosActuales)
+                    numTomosMaximos(mangaInstance.numTomosMaximos)
+                    precioTotal(mangaInstance.precioTotal)
+                    fechaInscripcion(mangaInstance.fechaInscripcion)
+                    ultimaModificacion(mangaInstance.ultimaModificacion)
+                    mangaSpinOff((mangaInstance.mangaSpinOff ? mangaInstance.mangaSpinOff?.nombreManga : 'null'))
+                    //Atributos Autor
+                    autor {
+                        nombreAutor(mangaInstance.autor?.nombre)
+                        apellidoAutor(mangaInstance.autor?.apellido)
+                    }
+                    //Atributos Demografia
+                    demografia {
+                        nombreDemografia(mangaInstance.demografia?.nombre)
+                    }
+                    //Atributos genero
+                    generos {
+                        GenerosMangas.findAllByMangas(mangaInstance).each { generoInstance ->
+                            nombreGenero(generoInstance.genero?.nombre)
+                        }
+                    }
+                }
+            }
+        }
 
         return [nameDoc: nameDoc, docXml: fileWriter]
     }
