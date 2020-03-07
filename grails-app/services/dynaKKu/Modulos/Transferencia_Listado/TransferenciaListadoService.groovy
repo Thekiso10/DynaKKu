@@ -36,9 +36,9 @@ class TransferenciaListadoService {
                 }
             }
         }
-
+        //Cerramos el fichero. Esto es importante porque sino no podemos borrar despues el fichero
         fileWriter.close();
-
+        //Devolvemos el fichero
         return [nameDoc: nameDoc, docXml: fileWriter]
     }
 
@@ -82,7 +82,9 @@ class TransferenciaListadoService {
                 }
             }
         }
-
+        //Cerramos el fichero. Esto es importante porque sino no podemos borrar despues el fichero
+        fileWriter.close();
+        //Devolvemos el fichero
         return [nameDoc: nameDoc, docXml: fileWriter]
     }
 
