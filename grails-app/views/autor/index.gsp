@@ -33,18 +33,18 @@
 							<li>
 								<g:if test="${autorInstanceList.size > 0}">
 									<g:link controller="transferenciaListado" action="ExportAutores" class="btn btnMenu">
-										<g:message code="autores.list.export.label" />
+										<g:message code="modulos.exportacionListado.export.label" args="${message(code: 'layoutMenu.botonesColeccion.autores')}"/>
 									</g:link>
 								</g:if>
 								<g:else>
 									<g:link class="btn btnMenu" disabled="disabled">
-										<g:message code="autores.list.export.label" />
+										<g:message code="modulos.exportacionListado.export.label" args="${message(code: 'layoutMenu.botonesColeccion.autores')}"/>
 									</g:link>
 								</g:else>
 							</li>
 							<li>
 								<button class="btn btnMenu" data-toggle="modal" data-target="#ImportAutoresModal">
-									<g:message code="autores.list.import.label" />
+									<g:message code="modulos.exportacionListado.import.label" args="${message(code: 'layoutMenu.botonesColeccion.autores')}"/>
 								</button>
 							</li>
 						</ul>
