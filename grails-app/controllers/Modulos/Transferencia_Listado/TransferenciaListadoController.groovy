@@ -95,7 +95,7 @@ class TransferenciaListadoController {
         if(!listaMangas && listaMangas?.size() <= 0){
             log.error "Han intentado generar la exportación de Mangas sin ningun manga"
             flash.message = message(code: 'modulos.exportacionListado.export.error.code01', args: [message(code: 'layoutMenu.botonesColeccion.mangas')])
-            redirect(controller: "mangas", action: "index", params: [registrado: true])
+            redirect(controller: "mangas", action: "index", params: [registrado: params.registrado])
             return
         }
 
@@ -104,7 +104,7 @@ class TransferenciaListadoController {
         if(!datosXML){
             log.error "No se ha podido generar el archivo"
             flash.message = message(code: 'modulos.exportacionListado.export.error.code02')
-            redirect(controller: "mangas", action: "index", params: [registrado: true])
+            redirect(controller: "mangas", action: "index", params: [registrado: params.registrado])
             return
         }
 
