@@ -9,7 +9,7 @@
             %{-- Cuerpo --}%
             <div class="modal-body">
 
-                <p><g:message code=""/></p>
+                <p><g:message code="modulos.exportacionListado.panelImport.import.parrafos"/></p>
                 <div class="body-container col-sm-12">
                     <div class="row">
                         <label for="archivoAutor" class="col-sm-3">
