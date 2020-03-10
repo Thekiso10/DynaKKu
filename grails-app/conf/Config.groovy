@@ -130,6 +130,7 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName  = 'Security.User
 grails.plugin.springsecurity.authority.className                = 'Security.Role'
 grails.plugin.springsecurity.logout.postOnly                    = false //Para permitir el acceso GET
 grails.plugin.springsecurity.securityConfigType                 = "Annotation"
+grails.plugin.springsecurity.useSecurityEventListener           = true //Activar la eschuca de los evenetos
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/assets/**':      ['permitAll'],

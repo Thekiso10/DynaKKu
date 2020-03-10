@@ -8,6 +8,7 @@ class Usuario implements Serializable {
     private static final long serialVersionUID = 1
 
     transient springSecurityService
+    transient localeResolver
 
     /* Valores basicos */
     String id
@@ -80,6 +81,26 @@ class Usuario implements Serializable {
         if (isDirty('password')) {
             encodePassword()
         }
+    }
+
+    def setLocalLanguage(){
+        Locale defaultLocale
+        switch (this.idiomaDefault){
+            case 'es':
+                defaultLocale = new Locale('es')
+                break
+            case 'ca':
+                defaultLocale = new Locale('ca','ES')
+                break
+            case 'en':
+                defaultLocale = new Locale('en','US')
+                break
+            default:
+                defaultLocale = new Locale('es')
+                break
+        }
+        //Cargamos el idioma en la sessión local del navegador del usuario
+        localeResolver.defaultLocale = defaultLocale
     }
 
     protected void encodePassword() {
