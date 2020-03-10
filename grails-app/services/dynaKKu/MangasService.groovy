@@ -3,6 +3,7 @@ package dynaKKu
 import Colecciones.Mangas
 import grails.transaction.Transactional
 import grails.util.Holders
+import org.apache.commons.validator.GenericValidator
 
 @Transactional
 class MangasService {
@@ -11,20 +12,26 @@ class MangasService {
         def error = false
         def mensaje = null
         //Comprobamos bloque 01 - Datos genericos
-        if(!params.nombreManga || !params.autor.id){
+        if(!params.nombreManga || !params.autor?.id){
             log.error "El campo del nombre del manga o el autor del manga son nullos o vacios"
             error = true
             mensaje = "mangas.error.campoNullo01" //Codigo del error
         }else{
             //Comprobamos bloque 04 - Generos y Demografia
-            if(!params.listOfGenders || !params.demografia.nombre){
+            if(!params.listOfGenders || !params.demografia?.nombre){
                 log.error "El campo de los generos o demografia son nullos o vacios"
                 error = true
                 mensaje = "mangas.error.campoNullo02" //Codigo del error
             }else{
                 //Comprobamos bloque 03 - Datos Monetarios
-                if(Integer.parseInt(params.numTomosMaximos) < 0 || Integer.parseInt(params.precioTotal) < 0 || Integer.parseInt(params.numTomosActuales) < 0){
-                    log.error "El campo de los Datos Especificos son negativos"
+                if(GenericValidator.isInt(params.numTomosMaximos) && GenericValidator.isInt(params.precioTotal) && GenericValidator.isInt(params.numTomosActuales)){
+                    if(Integer.parseInt(params.numTomosMaximos) < 0 || Integer.parseInt(params.precioTotal) < 0 || Integer.parseInt(params.numTomosActuales) < 0){
+                        log.error "El campo de los Datos Especificos son negativos"
+                        error = true
+                        mensaje = "mangas.error.monetarios.negativos" //Codigo del error
+                    }
+                }else{
+                    log.error "El campo de los Datos Especificos no son numeros"
                     error = true
                     mensaje = "mangas.error.monetarios.negativos" //Codigo del error
                 }
@@ -32,6 +39,44 @@ class MangasService {
         }
 
         return [error: error, mensaje: mensaje]
+    }
+
+    def validateLogic(params){
+        //Validar coerencia de los datos Especificso
+        if(params.completado){
+            params.serieAcabada = true
+            params.serieConsecutiva = true
+        }
+        //Validar la logica de los datos monetarios
+        if(params.deseado){
+            /*
+                No puede haber tomos en propieda
+                Puede ser 0 en el precio por tomo
+            */
+            if(Integer.parseInt(params.numTomosActuales) >= 1){
+                log.warn "Estan intentando actualizar un manga deseado con numero de tomos actuales mayor de 0"
+                params.numTomosActuales = '0'
+            }
+        }else if(params.completado){
+            /*
+               Los tomos en propiedad y tomos totales tienen que ser iguales.
+               Si no lo son, se le coloca el mismo valor a los tomos en propiedad.
+               No puede ser 0 en el precio por tomo
+            */
+            //Validar que el numero de tomos maximos no sea 0
+            if(Integer.parseInt(params.numTomosMaximos) == 0){
+                flash.error = message(code: 'mangas.error.especificos.tomosTotales.menos')
+                redirect(action: "edit", id:mangasInstance.id)
+                return
+            }
+
+            if(Integer.parseInt(params.numTomosMaximos) != Integer.parseInt(params.numTomosActuales)){
+                log.warn "Estan intentando actualizar un manga completado con diferentes numTomosMaximos y numTomosActuales"
+                params.numTomosActuales = params.numTomosMaximos
+            }
+        }
+
+        return params
     }
 
     def validateSpecificDates(params){
