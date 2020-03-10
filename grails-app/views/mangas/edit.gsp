@@ -60,7 +60,7 @@
 					<g:hiddenField name="id" value="${mangasInstance?.id}" />
 
 					<fieldset class="form">
-						<g:render template="form"/>
+						<g:render template="templates/form"/>
 					</fieldset>
 
 					<fieldset class="buttons">

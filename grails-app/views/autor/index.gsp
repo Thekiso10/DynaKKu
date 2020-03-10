@@ -220,7 +220,7 @@
 		</div>
 
 		<div id="ImportAutoresModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportAutoresModal" aria-hidden="true">
-			<g:render  template="templates/ImportAutoresModal"/>
+			<g:render  template="templates/modalImportAutores"/>
 		</div>
 
 	</div>

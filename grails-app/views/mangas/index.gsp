@@ -40,7 +40,7 @@
 									</g:else>
 								</li>
 								<li>
-									<button class="btn btnMenu" data-toggle="modal" data-target="#ImportAutoresModal">
+									<button class="btn btnMenu" data-toggle="modal" data-target="#ImportMangasModal">
 										<g:message code="modulos.exportacionListado.import.label" args="${message(code: 'layoutMenu.botonesColeccion.mangas')}"/>
 									</button>
 								</li>
@@ -150,6 +150,11 @@
 					<g:hiddenField name="registrado" value="${mangasInstanceCount}"/>
 				</div>
 			</div>
+
+			<div id="ImportMangasModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportMangasModal" aria-hidden="true">
+				<g:render  template="templates/modalImportMangas"/>
+			</div>
+
 		</div>
 	</body>
 </html>
