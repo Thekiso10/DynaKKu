@@ -52,6 +52,12 @@ class UsuarioController {
         userInstance.idiomaDefault = params.idioma
         userInstance.modoDark = (params.mode == 'true') ? true : false;
         userInstance.ultimaModificacion = new Date()
+        //Guardamos la instancia
+        if(!userInstance.save(flush: true)){
+            log.error("No se ha podido guardar el usuario")
+        }
+        //Vamos a cambiar el idioma del navegador
+        userInstance.setLocalLanguage()
 
         log.info "Se ha podido actualizar los datos del usuario correctamente"
 
