@@ -27,7 +27,6 @@ class BootStrap {
         }
 
         comprobarCarpetas() //Haremos la comprobacion de carpetas siempre
-        cargarIdioma() //Hacemos que cargue el idioma, en local, configurado por el usuario
 
         log.info "## Fin de cargar BootStrap ##"
     }
@@ -140,34 +139,6 @@ class BootStrap {
         listaGenero << new Genero(nombre:"Gore")
         //Llamar al metodo para guardar la lista
         guardarLista(listaGenero)
-    }
-
-    def cargarIdioma(){
-        log.info "</> Cargar idioma antes de arrancar la apliación </>"
-        //Buscamos, en la table Usuario, el idioma configurado por el usuario. Si es null, establecemos por defecto en 'Es'
-        def userInstance = (Usuario.first()) ?: null
-        def idioma = (userInstance) ? userInstance.idiomaDefault : 'null'
-        Locale defaultLocale
-        //Mostramos cual es el idioma en BBDD. Sale null si no se ha encontrada nada en la BBDD
-        log.info "</> Idioma detectado -> [" + idioma + "]"
-        //Configuramos la variable Locale a partir de la variable 'idioma'
-        switch (idioma){
-            case 'es':
-                defaultLocale = new Locale('es')
-                break
-            case 'ca':
-                defaultLocale = new Locale('ca','ES')
-                break
-            case 'en':
-                defaultLocale = new Locale('en','US')
-                break
-            default:
-                defaultLocale = new Locale('es')
-                break
-        }
-        //Cargamos el idioma en la sessión local del navegador del usuario
-        localeResolver.defaultLocale = defaultLocale
-        log.info "</> Cargar el Modo Visual </>"
     }
 
     def guardarLista(def lista){
