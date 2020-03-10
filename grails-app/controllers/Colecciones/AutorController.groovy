@@ -3,6 +3,8 @@ package Colecciones
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
+import java.text.SimpleDateFormat
+
 @Transactional(readOnly = true)
 class AutorController {
 
@@ -22,16 +24,13 @@ class AutorController {
 
 		if(params.search){
 			log.info "Se ha ejecutado el filtro de Autores"
-			if(params.nombre || params.apellido || params.edad){ //Para que no se de al filtro con los tres campos vacios 
+			if(params.nombre || params.apellido){ //Para que no se de al filtro con los tres campos vacios
 				//Ejecutar el createCriteria con los parametros nombre, apellido y edad
 				def autorFiltro = Autor.createCriteria() 
 				def listaFiltro = autorFiltro.list (max: params.max, offset:offset){ //Para la paginacion
 					ilike ("nombre", ("%" + params.nombre.toString() + "%"))
 					ilike ("apellido", ("%" + params.apellido.toString() + "%"))
 					eq("borrado", false)
-					if(params.edad){ //Por si el campo viene vacio
-						eq ("edad", Integer.parseInt(params.edad.toString()))
-					}
 				}
 				autorInstanceList = listaFiltro
 				autorPaginacion = autorInstanceList.totalCount // .totalCount
@@ -48,7 +47,6 @@ class AutorController {
 			//Ejecutar la limpieza de los parametros del filtro
 			params.nombre 	= ""
 			params.apellido = ""
-			params.edad 	= ""
 		}
 		
 		if(autorInstanceList.size() == 0){
@@ -79,8 +77,7 @@ class AutorController {
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
     def save(Autor autorInstance, params) {
-		def validadorForm = autorService.validarForm(params)
-		def validadorFoto = null
+		def validadorForm = autorService.validarForm(params, true)
 		//Validar los datos del formulario
         if (validadorForm.error) {
 			flash.error = message(code: validadorForm.mensaje)
@@ -100,7 +97,8 @@ class AutorController {
 			redirect(action: "create")
 			return
 		}
-		//Si hay foto guardarla en la carpeta configurada 
+		//Si hay foto guardarla en la carpeta configurada
+		def validadorFoto = null
 		def file = request.getFile('imagen')
 		if(!file.empty){
 			validadorFoto = coleccionesService.saveImg(file, params.nombre, params.apellido, false)
@@ -117,13 +115,20 @@ class AutorController {
 
 			autorInstance.fechaInscripcion = new Date()
 			autorInstance.ultimaModificacion = new Date()
+			autorInstance.fechaNacimento = new SimpleDateFormat("dd/MM/yy").parse(params.fechaDeNacimento)
 			autorInstance.difunto = (params.difunto.equals("true")?true:false)
 			if(autorInstance.save(flush:true)){
 				log.info "Creando entrada en el historial de un nuevo autor"
 				flash.message = message(code: "autores.message.save.ok", args: [nombreAutor])
 				registerHistorialService.registrarAutor(autorInstance, 0)
 			}else{
-				coleccionesService.deleteImage(validadorFoto.path)
+				if(!file.empty){
+					coleccionesService.deleteImage(validadorFoto.path)
+				}
+				log.error "No se ha podido guardar en base de datos el Autor"
+				flash.error = message(code: "autores.errores.save.bbdd")
+				redirect(action: "create")
+				return
 			}
 		}catch(Exception e){
 			log.error "No se ha podido guardar en base de datos " + e
@@ -157,7 +162,7 @@ class AutorController {
 			redirect(action: "index")
 			return
 		}
-		def validadorForm = autorService.validarForm(params)
+		def validadorForm = autorService.validarForm(params, true)
 		//Comprobar que no ha cambiado la version == problemas de concurrencia
 		if (params.version != null) {
 			if (autorInstance.version > Integer.parseInt(params.version.toString())) {
@@ -212,11 +217,17 @@ class AutorController {
 			def nombreAutor = params.nombre + " " + params.apellido
 
 			autorInstance.ultimaModificacion = new Date()
+			autorInstance.fechaNacimento = new SimpleDateFormat("dd/MM/yy").parse(params.fechaDeNacimento)
 			autorInstance.properties = params //Guardamos los datos restantes
 			if(autorInstance.save(flush:true)){
 				log.info "Creando entrada en el historial de una actualizacion de un autor"
 				flash.message = message(code: "autores.message.update.ok", args: [nombreAutor])
 				registerHistorialService.registrarAutor(autorInstance, 1)
+			}else{
+				log.error "No se ha podido guardar en base de datos el Autor"
+				flash.error = message(code: "autores.errores.update.bbdd")
+				redirect(action: "edit", id:autorInstance.id)
+				return
 			}
 		}catch(Exception e){
 			log.error "No se ha podido guardar en base de datos " + e

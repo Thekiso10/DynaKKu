@@ -139,18 +139,6 @@ class MangasController {
         if(params.completado){
             params.serieAcabada = true
             params.serieConsecutiva = true
-        }
-        //Validar la logica de los datos monetarios
-        if(params.deseado){
-            /*
-                No puede haber tomos en propieda
-                Puede ser 0 en el precio por tomo
-            */
-            if(Integer.parseInt(params.numTomosActuales) >= 1){
-                log.warn "Estan intentando crear un manga deseado con numero de tomos actuales mayor de 0"
-                params.numTomosActuales = '0'
-            }
-        }else if(params.completado){
             /*
                Los tomos en propiedad y tomos totales tienen que ser iguales.
                Si no lo son, se le coloca el mismo valor a los tomos en propiedad.
@@ -161,13 +149,23 @@ class MangasController {
                 flash.error = message(code: 'mangas.error.especificos.tomosTotales.menos')
                 redirect(action: "create")
                 return
-            }
-
-            if(Integer.parseInt(params.numTomosMaximos) != Integer.parseInt(params.numTomosActuales)){
-                log.warn "Estan intentando crear un manga completado con diferentes numTomosMaximos y numTomosActuales"
+            }else if(Integer.parseInt(params.numTomosMaximos) != Integer.parseInt(params.numTomosActuales)){
+                log.warn "Estan intentando actualizar un manga completado con diferentes numTomosMaximos y numTomosActuales"
                 params.numTomosActuales = params.numTomosMaximos
             }
         }
+        //Validar la logica de los datos monetarios
+        if(params.deseado){
+            /*
+                No puede haber tomos en propieda
+                Puede ser 0 en el precio por tomo
+            */
+            if(Integer.parseInt(params.numTomosActuales) >= 1){
+                log.warn "Estan intentando actualizar un manga deseado con numero de tomos actuales mayor de 0"
+                params.numTomosActuales = '0'
+            }
+        }
+
         //Comprobar logica con los Datos Especificos con respecto a los Datos monetarios
         def validarDatosMonetarios = mangasService.validateMonetaryData(params)
         if(validarDatosMonetarios.error){
@@ -312,6 +310,20 @@ class MangasController {
         if(params.completado){
             params.serieAcabada = true
             params.serieConsecutiva = true
+            /*
+               Los tomos en propiedad y tomos totales tienen que ser iguales.
+               Si no lo son, se le coloca el mismo valor a los tomos en propiedad.
+               No puede ser 0 en el precio por tomo
+            */
+            //Validar que el numero de tomos maximos no sea 0
+            if(Integer.parseInt(params.numTomosMaximos) == 0){
+                flash.error = message(code: 'mangas.error.especificos.tomosTotales.menos')
+                redirect(action: "edit", id:mangasInstance.id)
+                return
+            }else if(Integer.parseInt(params.numTomosMaximos) != Integer.parseInt(params.numTomosActuales)){
+                log.warn "Estan intentando actualizar un manga completado con diferentes numTomosMaximos y numTomosActuales"
+                params.numTomosActuales = params.numTomosMaximos
+            }
         }
         //Validar la logica de los datos monetarios
         if(params.deseado){
@@ -323,24 +335,8 @@ class MangasController {
                 log.warn "Estan intentando actualizar un manga deseado con numero de tomos actuales mayor de 0"
                 params.numTomosActuales = '0'
             }
-        }else if(params.completado){
-            /*
-               Los tomos en propiedad y tomos totales tienen que ser iguales.
-               Si no lo son, se le coloca el mismo valor a los tomos en propiedad.
-               No puede ser 0 en el precio por tomo
-            */
-            //Validar que el numero de tomos maximos no sea 0
-            if(Integer.parseInt(params.numTomosMaximos) == 0){
-                flash.error = message(code: 'mangas.error.especificos.tomosTotales.menos')
-                redirect(action: "edit", id:mangasInstance.id)
-                return
-            }
-
-            if(Integer.parseInt(params.numTomosMaximos) != Integer.parseInt(params.numTomosActuales)){
-                log.warn "Estan intentando actualizar un manga completado con diferentes numTomosMaximos y numTomosActuales"
-                params.numTomosActuales = params.numTomosMaximos
-            }
         }
+
         //Comprobar logica con los Datos Especificos con respecto a los Datos monetarios
         def validarDatosMonetarios = mangasService.validateMonetaryData(params)
         if(validarDatosMonetarios.error){
@@ -411,7 +407,7 @@ class MangasController {
                 log.info "Se ha podido actualizar un nuevo manga"
                 //Eliminar Generos Anteriores
                 GenerosMangas.findAllByMangas(mangasInstance).each { it.delete(flush:true) }
-                //Cargar nuevos generos
+                //Guardar los nuevos generos
                 listGeneros.each{
                     GenerosMangas nuevoGenero = new GenerosMangas(mangas: mangasInstance, genero: Genero.findWhere(id: it))
                     if(nuevoGenero.save(flush: true)){
@@ -423,7 +419,7 @@ class MangasController {
                 //Registra los cambios en el historial
                 registerHistorialService.registrarMangas(mangasInstance, mangasInstanceBackUp, 0)
                 flash.message = message(code: "mangas.message.save.ok", args: [mangasInstance.nombreManga])
-            }else{
+            }else{//Cargar nuevos generos
                 if(validarFoto?.path)coleccionesService.deleteImage(validarFoto.path)
                 log.info "No se ha podido actualizar un nuevo manga"
                 flash.error = message(code: "mangas.error.update.bbdd")

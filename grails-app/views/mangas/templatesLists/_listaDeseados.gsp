@@ -36,7 +36,7 @@
             </td>
 
             <td>
-                <button id="${mangasInstance.id}" class="btn btnConvert" data-toggle="modal" data-target="#modalPassDeseadoToRegister">
+                <button id="${mangasInstance.id}" class="btn btnConvert btnMenu" data-toggle="modal" data-target="#modalPassDeseadoToRegister">
                     <g:message code="mangas.list.pass.deseadoToRegister"/>
                 </button>
             </td>

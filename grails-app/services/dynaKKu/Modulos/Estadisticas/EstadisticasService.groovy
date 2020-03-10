@@ -11,11 +11,11 @@ class EstadisticasService {
     DecimalFormat formato = new DecimalFormat("#.##");
 
     def getMaxEdadAutor(){
-        return Autor.findByBorrado(false, [sort: 'edad', order: "desc"])?.edad
+        return Autor.findByBorrado(false, [sort: 'fechaNacimento', order: "asc"])
     }
 
     def getMinEdadAutor(){
-        Autor.findByBorrado(false, [sort: 'edad', order: "asc"])?.edad
+        Autor.findByBorrado(false, [sort: 'fechaNacimento', order: "desc"])
     }
 
     def getLastAutor(){
@@ -23,11 +23,11 @@ class EstadisticasService {
     }
 
     def getListAutorJoven(){
-        return Autor.findAllByEdad(getMinEdadAutor())
+        return Autor.findAllByFechaNacimento(getMinEdadAutor()?.fechaNacimento)
     }
 
     def getListAutorMayor(){
-        return Autor.findAllByEdad(getMaxEdadAutor())
+        return Autor.findAllByFechaNacimento(getMaxEdadAutor()?.fechaNacimento)
     }
 
     def getPorAutoresMasculinos(){

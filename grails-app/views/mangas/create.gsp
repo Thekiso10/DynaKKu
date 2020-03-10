@@ -70,7 +70,7 @@
                     </g:hasErrors>
 
                     <fieldset class="form">
-                        <g:render template="form"/>
+                        <g:render template="templates/form"/>
                     </fieldset>
                     <fieldset class="buttons">
                         <div class="col-sm-12 divButtonSave">

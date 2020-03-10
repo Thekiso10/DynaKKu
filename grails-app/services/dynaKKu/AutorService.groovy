@@ -4,6 +4,8 @@ import grails.transaction.Transactional
 import grails.util.Holders
 import Colecciones.Autor
 
+import java.text.SimpleDateFormat
+
 
 @Transactional
 class AutorService {
@@ -11,16 +13,18 @@ class AutorService {
 	def grailsApplication
 	
 	//Validar el formulario de Autor
-	def validarForm(params){
+	def validarForm(params, boolean envioFormulario){
 		boolean error = false
 		def mensaje = null
 
-		if(Integer.parseInt(params.edad) <= grailsApplication.config.dynaKKu.autores.edadMin || Integer.parseInt(params.edad) >= grailsApplication.config.dynaKKu.autores.edadMax){
+		//Validar la edad del Autor
+		def edad = calcularYears(params.fechaDeNacimento, envioFormulario)
+		if(edad <= grailsApplication.config.dynaKKu.autores.edadMin || edad >= grailsApplication.config.dynaKKu.autores.edadMax){
 			error = true
 			mensaje = "autores.errores.edad"
-			log.error "Han intentado introducir una edad no correcta ["+ params.edad + "]"
+			log.error "Han intentado introducir una edad no correcta ["+ edad + "]"
 		}
-		
+
 		if(!params.nacionalidad || !params.nombre || !params.apellido){
 			error = true
 			mensaje = "autores.errores.campo.vacia"
@@ -72,5 +76,29 @@ class AutorService {
 		def validoApellido = (apellido.length() <= Holders.config.dynaKKu.autores.longitut.nombreMax ? true : false)
 
 		return (validoNombre && validoApellido ? true : false)
+	}
+
+	private calcularYears(def fecha, boolean envioFormulario){
+		//Lo iniciamos a -1 por si ocure una exception y no afectar al resto del codigo
+		def diff = -1
+		//Protegemos este trozo de codigo por si la variable de la fecha no es correcta
+		try{
+			//Fecha Actual
+			Calendar actual = Calendar.getInstance()
+			//Hacemos un Calendar a partir de un String
+			Calendar antiguo = Calendar.getInstance()
+			antiguo.setTime(new SimpleDateFormat((envioFormulario ? 'dd/MM/yy' : 'dd-MM-yy')).parse(fecha))
+			//Calculamos la diferencia
+			diff = actual.get(Calendar.YEAR) - antiguo.get(Calendar.YEAR)
+			//Ajustamos los años
+			if(antiguo.get(Calendar.DAY_OF_YEAR) > actual.get(Calendar.DAY_OF_YEAR)){
+				diff--
+			}
+		}catch (Exception e) {
+			e.getMessage()
+			e.getCause()
+		}
+
+		return diff
 	}
 }

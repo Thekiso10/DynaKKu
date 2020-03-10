@@ -1,6 +1,8 @@
 package Colecciones
 
-import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Length
+
+import java.text.SimpleDateFormat;
 
 class Autor {
 	
@@ -11,10 +13,10 @@ class Autor {
 	String rutaImagen
 	String genero //Masculino o Femenino
 
-	int edad
 	boolean difunto //Hay dos estados: Si, no
 	boolean borrado //Marca si esta borrado o no
 
+	Date fechaNacimento
 	Date fechaInscripcion
 	Date ultimaModificacion
 	Date fechaBorrado
@@ -23,7 +25,7 @@ class Autor {
     	nombre 			nullable: true, blank: true
 		apellido		nullable: true, blank: true
 		rutaImagen  	nullable: true, blank: true
-		edad			nullable: true, blank: true
+		fechaNacimento	nullable: true, blank: true
 		difunto 		nullable: true, blank: true
 		nacionalidad	nullable: true, blank: true
 		genero			nullable: true, blank: true
@@ -43,5 +45,21 @@ class Autor {
 	@Override
 	String toString(){
 		return nombre + " " + apellido
+	}
+
+	def getEdadAutor(){
+		//Fecha Actual
+		Calendar actual = Calendar.getInstance()
+		//Hacemos un Calendar a partir de un String
+		Calendar antiguo = Calendar.getInstance()
+		antiguo.setTime(this.fechaNacimento)
+		//Calculamos la diferencia
+		def diff = actual.get(Calendar.YEAR) - antiguo.get(Calendar.YEAR)
+		//Ajustamos los años
+		if(antiguo.get(Calendar.DAY_OF_YEAR) > actual.get(Calendar.DAY_OF_YEAR)){
+			diff--
+		}
+
+		return diff
 	}
 }
