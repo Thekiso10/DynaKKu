@@ -42,13 +42,24 @@ class MangasService {
     }
 
     def validateLogic(params){
+        def error = false
         //Validar coerencia de los datos Especificso
-        if(params.completado){
+        if(params.completado == true){
             params.serieAcabada = true
             params.serieConsecutiva = true
-        }
-        //Validar la logica de los datos monetarios
-        if(params.deseado){
+            /*
+               Los tomos en propiedad y tomos totales tienen que ser iguales.
+               Si no lo son, se le coloca el mismo valor a los tomos en propiedad.
+               No puede ser 0 en el precio por tomo
+            */
+            //Validar que el numero de tomos maximos no sea 0
+            if(Integer.parseInt(params.numTomosMaximos) == 0){
+                error = true
+            }else if(Integer.parseInt(params.numTomosMaximos) != Integer.parseInt(params.numTomosActuales)){
+                log.warn "Estan intentando actualizar un manga completado con diferentes numTomosMaximos y numTomosActuales"
+                params.numTomosActuales = params.numTomosMaximos
+            }
+        }else if(params.deseado == true){  //Validar la logica de los datos monetarios
             /*
                 No puede haber tomos en propieda
                 Puede ser 0 en el precio por tomo
@@ -57,33 +68,16 @@ class MangasService {
                 log.warn "Estan intentando actualizar un manga deseado con numero de tomos actuales mayor de 0"
                 params.numTomosActuales = '0'
             }
-        }else if(params.completado){
-            /*
-               Los tomos en propiedad y tomos totales tienen que ser iguales.
-               Si no lo son, se le coloca el mismo valor a los tomos en propiedad.
-               No puede ser 0 en el precio por tomo
-            */
-            //Validar que el numero de tomos maximos no sea 0
-            if(Integer.parseInt(params.numTomosMaximos) == 0){
-                flash.error = message(code: 'mangas.error.especificos.tomosTotales.menos')
-                redirect(action: "edit", id:mangasInstance.id)
-                return
-            }
-
-            if(Integer.parseInt(params.numTomosMaximos) != Integer.parseInt(params.numTomosActuales)){
-                log.warn "Estan intentando actualizar un manga completado con diferentes numTomosMaximos y numTomosActuales"
-                params.numTomosActuales = params.numTomosMaximos
-            }
         }
 
-        return params
+        return [params: params, error: error]
     }
 
     def validateSpecificDates(params){
         def error = false
         def mensaje = null
 
-        if(params.deseado){
+        if(params?.deseado.equals('on') || params?.deseado == true){
             //Comprobar que solo este marcaco el parametro deseado
             if(params.completado || params.serieConsecutiva || params.serieAcabada){
                 log.error "Estan intentando crear un manga deseado con otras caracteristicas especificas"
@@ -92,10 +86,12 @@ class MangasService {
             }
         }else{
             //Validar que como minimo tenga mas de 0 en tomos actuales
-            if(Integer.parseInt(params.numTomosActuales) <= 0){
-                log.error "Estan intentando crear un manga con tomos actuales meñores de 0"
-                error = true
-                mensaje = "mangas.error.especificos.tomosActu.menos" //Codigo del error
+            if(GenericValidator.isInt(params?.numTomosActuales)){
+                if(Integer.parseInt(params?.numTomosActuales) <= 0){
+                    log.error "Estan intentando crear un manga con tomos actuales meñores de 0"
+                    error = true
+                    mensaje = "mangas.error.especificos.tomosActu.menos" //Codigo del error
+                }
             }
         }
 

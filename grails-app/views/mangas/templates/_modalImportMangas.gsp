@@ -1,5 +1,5 @@
 <div id="modalImportMangas" class="modal-dialog">
-    <g:form controller="transferenciaListado" action="ImportAutor" enctype='multipart/form-data'>
+    <g:form controller="transferenciaListado" action="ImportMangas" enctype='multipart/form-data'>
         <div id="modalConfiguracion" class="modal-content">
             %{-- Cabecera --}%
             <div class="modal-header">
@@ -22,6 +22,9 @@
                 </div>
 
             </div>
+
+            <g:hiddenField name="registrado" value="${mangasRegistrados}"/>
+
             %{-- Pie --}%
             <div class="modal-footer">
                 <button id="btnSubmitUser" type="submit" class="btn btnCommit"><g:message code="default.button.create.label"/></button>

@@ -157,45 +157,28 @@ class TransferenciaListadoService {
     }
 
     def importListMangasFormFileXMl(CommonsMultipartFile file){
-        def listaMangasConSpinOff = []
-        def listaMangasSinSpinOff = []
         def numeroMangasImportados = 0
         def codigoError = null
+        def importSpinnOff = false
         //Definir la instancia para manejar el Archivo
         InputStream inputStream =  new BufferedInputStream(file.getInputStream())
         def mangas = new XmlParser().parse(inputStream)
         if(mangas){
-            //Colocamos los mangas en una lista para
+            //Importamos los mangas con
             mangas.each { manga ->
-                (manga.mangaSpinOff.equals('null') ? listaMangasSinSpinOff << [nodoManga: manga] : listaMangasConSpinOff << [nodoManga: manga])
-            }
-            //Ahora vamos a guardar primero los mangas sin Spinn-off y despues los que si tienen
-            listaMangasSinSpinOff.each { nodo ->
-                def resultado = validarManga(nodo.nodoManga)
-                if(resultado?.correcto){
-                    if(resultado.mangaInstance.save(flush: true)){
-                        if(!(validarGeneros(resultado.listOfGenders, resultado.mangaInstance))){
-                            resultado.mangaInstance.delete()
-                        }else{
-                            numeroMangasImportados++
-                        }
-                    }
+                if(manga.mangaSpinOff.text().equals('null')){
+                    def correcto = configurarValidarManga(manga, false)
+                    if(correcto) numeroMangasImportados++
+                }else{
+                    importSpinnOff = true
                 }
             }
 
-            listaMangasConSpinOff.each { nodo ->
-                def resultado = validarManga(nodo.nodoManga)
-                if(resultado?.correcto){
-                    def validarMangaSpinOff = validarSpinOff(resultado.mangaInstance, nodo.nodoManga?.mangaSpinOff)
-                    if(validarMangaSpinOff.errorSpinOff == false){
-                        resultado.mangaInstance.mangaSpinOff = validarMangaSpinOff.mangaSpinOff
-                        if(resultado.mangaInstance.save(flush: true)){
-                            if(!(validarGeneros(resultado.listOfGenders, resultado.mangaInstance))){
-                                resultado.mangaInstance.delete()
-                            }else{
-                                numeroMangasImportados++
-                            }
-                        }
+            if(importSpinnOff){
+                mangas.each { manga ->
+                    if(manga.mangaSpinOff.text().equals('null') == false){
+                        def correcto = configurarValidarManga(manga, true)
+                        if(correcto) numeroMangasImportados++
                     }
                 }
             }
@@ -217,7 +200,35 @@ class TransferenciaListadoService {
         return correcto
     }
 
-    private def validarManga(Node manga){
+    private def configurarValidarManga(def manga, def validarSpinnOff){
+        def correcto = true
+        def resultado = validarManga(manga)
+        if(resultado?.correcto){
+            if(validarSpinnOff){
+                def validarMangaSpinOff = validarSpinOff(resultado.mangaInstance, manga?.mangaSpinOff.text())
+                if(validarMangaSpinOff.errorSpinOff == false){
+                    resultado.mangaInstance.mangaSpinOff = validarMangaSpinOff.mangaSpinOff
+                }else{
+                    correcto = false
+                }
+            }
+        }else{
+            correcto = false
+        }
+
+        if(correcto){
+            if(resultado.mangaInstance.save(flush: true)){
+                if(!(validarGeneros(resultado.listOfGenders, resultado.mangaInstance))){
+                    resultado.mangaInstance.delete()
+                    correcto = false
+                }
+            }
+        }
+
+        return correcto
+    }
+
+    private def validarManga(def manga){
         def correcto = false
         def errorSpinOff = false
         def params = []
@@ -226,34 +237,41 @@ class TransferenciaListadoService {
 
         try{
             //Definir los elementos del Manga
-            params =   ['autor' : Autor.findByNombreAndApellido(manga.autor?.nombreAutor, manga.autor?.apellidoAutor), 'nombreManga': manga.nombreManga,
-                        'numTomosMaximos': manga.numTomosMaximos, 'precioTotal': manga?.precioTotal, 'numTomosActuales': manga.numTomosActuales,
+            params =   ['autor' : Autor.findByNombreAndApellido(manga.autor?.nombreAutor.text(), manga.autor?.apellidoAutor.text()), 'nombreManga': manga.nombreManga.text(),
+                        'numTomosMaximos': manga.numTomosMaximos.text(), 'precioTotal': manga?.precioTotal.text(), 'numTomosActuales': manga.numTomosActuales.text(),
                         'completado': Boolean.parseBoolean(manga?.completado?.text()?.toLowerCase()), 'serieAcabada': Boolean.parseBoolean(manga?.serieAcabada?.text()?.toLowerCase()),
                         'serieConsecutiva': Boolean.parseBoolean(manga?.serieConsecutiva?.text()?.toLowerCase()), 'deseado': Boolean.parseBoolean(manga?.deseado?.text()?.toLowerCase()),
-                        'demografia': Demografia.findByNombre(manga.demografia?.nombreDemografia), 'listOfGenders': []]
+                        'demografia': Demografia.findByNombre(manga.demografia?.nombreDemografia.text()), 'listOfGenders': []]
             //Cogeremos los generos
-            manga.generos.each{ genero ->
-                Genero generoInstance = Genero.findByNombre(genero.nombreGenero)
-                params.listOfGenders << ['id': generoInstance.id]
+            manga?.generos?.nombreGenero?.each{ genero ->
+                Genero generoInstance = Genero.findByNombre(genero?.text())
+                params.listOfGenders << ['id': generoInstance?.id]
             }
             //Pasar el primer filtro
             if(mangasService.validateForm(params)?.error == false){
                 //Pasar el segundo filtro
-                if(mangasService.validateSpecificDates(params) == false){
+                if(mangasService.validateSpecificDates(params)?.error == false){
                     //Validar coerencia de los datos Especificso y validar la logica de los datos monetarios
-                    params = mangasService.validateLogic(params)
-                    //Pasar el tercer filtro
-                    if(mangasService.validateMonetaryData(params)?.error == false){
-                        //Pasar el cuarto filtro
-                        if(mangasService.validateName(params)?.error == false){
-                            //pasar el quinto filtro
-                            if(params.listOfGenders.size() <= Holders.config.dynaKKu.mangas.longitut.generosMax){
-                                mangaInstance.properties = params
-                                //Seteamos la hora
-                                mangaInstance.fechaInscripcion = new SimpleDateFormat("dd-MM-yy HH:mm:ss").parse(manga?.fechaInscripcion?.text())
-                                mangaInstance.ultimaModificacion = new SimpleDateFormat("dd-MM-yy HH:mm:ss").parse(manga?.ultimaModificacion?.text())
-                                //Decir que ha ido bien
-                                correcto = true
+                    def validarLogica = mangasService.validateLogic(params)
+                    if(validarLogica.error == false){
+                        params = validarLogica.params
+                        //Pasar el tercer filtro
+                        if(mangasService.validateMonetaryData(params)?.error == false){
+                            //Pasar el cuarto filtro
+                            if(mangasService.validateName(params)?.error == false){
+                                //pasar el quinto filtro
+                                if(params.listOfGenders.size() <= Holders.config.dynaKKu.mangas.longitut.generosMax){
+                                    mangaInstance.properties = params
+                                    //Setear valores numericos
+                                    mangaInstance.numTomosActuales = Integer.parseInt(params.numTomosActuales)
+                                    mangaInstance.numTomosMaximos  = Integer.parseInt(params.numTomosMaximos)
+                                    mangaInstance.precioTotal      = Integer.parseInt(params.precioTotal)
+                                    //Seteamos la hora
+                                    mangaInstance.fechaInscripcion = new SimpleDateFormat("dd-MM-yy HH:mm:ss").parse(manga?.fechaInscripcion?.text())
+                                    mangaInstance.ultimaModificacion = new SimpleDateFormat("dd-MM-yy HH:mm:ss").parse(manga?.ultimaModificacion?.text())
+                                    //Decir que ha ido bien
+                                    correcto = true
+                                }
                             }
                         }
                     }
@@ -269,32 +287,31 @@ class TransferenciaListadoService {
 
     private def validarGeneros(def listOfGenders, Mangas mangaInstance){
         def validadoGeneros = true
-        GenerosMangas[] listaGeneros = []
         //Validamos la existencia de los generos
         try{
-            listOfGenders.each{
-                GenerosMangas nuevoGenero = new GenerosMangas(mangas: mangaInstance, genero: Genero.findWhere(id: it))
+            listOfGenders.each{ generoId ->
+                println generoId
+                GenerosMangas nuevoGenero = new GenerosMangas(mangas: mangaInstance, genero: Genero.get(generoId?.id))
                 if(nuevoGenero){
-                    listaGeneros << nuevoGenero
+                    if(nuevoGenero.save(flush: true)){
+                        log.info "Se ha podido guardar un genero ["+ nuevoGenero.id + "] al manga ["+mangaInstance.nombreManga+"]"
+                    }else{
+                        validadoGeneros = false
+                        log.error "No se ha podido guardar un genero ["+ nuevoGenero.id + "] al manga ["+mangaInstance.nombreManga+"]"
+                    }
                 }else{
                     validadoGeneros = false
                 }
             }
+
+            if(!validadoGeneros){
+                GenerosMangas.findAllByMangas(mangasInstance).each { it.delete(flush:true) }
+            }
+
         }catch (Exception e) {
             log.error e.getMessage()
             log.error e.getCause()
             validadoGeneros = false
-        }
-
-        if(validarManga()){
-            listaGeneros.each { nuevoGenero ->
-                if(nuevoGenero.save(flush: true)){
-                    log.info "Se ha podido guardar un genero ["+ nuevoGenero.id + "] al manga ["+mangaInstance.nombreManga+"]"
-                }else{
-                    validadoGeneros = false
-                    log.error "No se ha podido guardar un genero ["+ nuevoGenero.id + "] al manga ["+mangaInstance.nombreManga+"]"
-                }
-            }
         }
 
         return validadoGeneros
