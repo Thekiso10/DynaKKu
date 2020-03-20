@@ -29,7 +29,7 @@
 			
 			<nav id="layout-menu" class="col-sm-12">
 				<div class="container">
-					<div class="collapse navbar-collapse">
+					<div class="navbar-collapse">
 						<ul class="nav navbar-nav" id="BotonesColeccion">
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

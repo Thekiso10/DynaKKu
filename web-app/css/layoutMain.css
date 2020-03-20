@@ -17,14 +17,17 @@ body a:hover, a:focus {color:white;}
 #layout-container #grailsLogo {border-bottom: 12px solid;}
 
 #layout-container #grailsLogo #BannerLogo {display: flex; align-items: center; margin: 1em 0 1em 0; padding: 0;}
-#layout-container #grailsLogo #BannerLogo #LogoLayoutMain {width: 19%;}
-#layout-container #grailsLogo #BannerLogo h1 {font-size: 48px; margin:0; padding:0;}
+#layout-container #grailsLogo #BannerLogo #LogoLayoutMain {width: 13.5%;}
+#layout-container #grailsLogo #BannerLogo h1 {font-size: 3.25em; margin:0; padding:0;}
 
 #layout-container #grailsLogo #BannerI18n {text-align: right; margin: 1em 0 1em 0; padding: 1em 2em 1em 0;}
 #layout-container #grailsLogo #BannerI18n span {font-size: 24px; margin-left: 0.5em; line-height: 2em;}
 #layout-container #grailsLogo #BannerI18n .borderI18n {border-right: 2px solid; padding-right: 0.5em}
 
 /*************  Barra de menu *************/
+
+#layout-container #layout-menu,
+#layout-container div.menu {display: flex; align-items: center; align-content: center; flex-wrap: wrap;}
 
 #layout-container #layout-menu a {font-family: 'Open Sans Semibold', sans-serif; line-height: 1.42857143;}
 
@@ -75,8 +78,9 @@ body a:hover, a:focus {color:white;}
 #Footer .row .col-sm-4 .boldText {font-family: 'Open Sans Semibold', sans-serif;}
 #Footer .row .col-sm-4 h4,
 #Footer .row .col-sm-4 h5 {margin: 0;}
+#Footer .row .col-sm-4 a {color: #49abff;}
 
-/*************  Spinner *************/
+    /*************  Spinner *************/
 .spinner {
     background: url(../images/imgWeb/spinner.gif) 50% 50% no-repeat #B1B4B64d;
     padding: 0em;
@@ -91,4 +95,69 @@ body a:hover, a:focus {color:white;}
     overflow: visible;
     width: 100%;;
     height: 100%;;
+}
+
+/*************  Responsive *************/
+
+@media only screen and (min-width: 320px) and (max-width: 359px){
+    /*************  Banner *************/
+    #layout-container #grailsLogo #BannerI18n .borderI18n {font-size: 0.65em !important;}
+    #layout-container #grailsLogo #BannerLogo h1 {font-size: 1.35em !important;}
+}
+
+@media only screen and (min-width: 360px) and (max-width: 399px){
+    /*************  Banner *************/
+    #layout-container #grailsLogo #BannerI18n .borderI18n {font-size: 0.85em !important;}
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px){
+    /*************  Banner *************/
+    #layout-container #grailsLogo {border-bottom: 8px solid;}
+    #layout-container #grailsLogo #BannerLogo {margin: 0.5em 0 0.5em 0;}
+    #layout-container #grailsLogo #BannerLogo h1 {font-size: 1.5em;}
+    #layout-container #grailsLogo #BannerLogo #LogoLayoutMain {width: 23%;}
+
+
+    #layout-container #grailsLogo #BannerI18n {padding: 0.5em 0; margin: 0.5em 0 0.5em 0;}
+    #layout-container #grailsLogo #BannerI18n .borderI18n {font-size: 1.15em;}
+
+    /*************  Barra de menu *************/
+    #layout-container #layout-menu #BotonesColeccion .btn, #layout-container #layout-menu #BotonesExtra .btn {font-size: 1.05em;}
+
+    /*************  Footer *************/
+    #Footer .row {display: contents;}
+    #Footer .row div {margin-bottom: 2em; text-align: center;}
+    #Footer .row .imgLogo #imgLogoFooter {width: 100%;}
+    #Footer .row .textCentral .subTitle {font-size: 1.5em;}
+    #Footer .row .textCentral span {font-size: 1.25em;}
+    #Footer .row .textCentral a,
+    #Footer .row .textVersion h5 {font-size: 1.35em;}
+    #Footer .row .textVersion h4 {font-size: 1.5em;}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /*************  Banner *************/
+    #layout-container #grailsLogo #BannerLogo h1 {font-size: 2.25em;}
+    #layout-container #grailsLogo #BannerLogo #LogoLayoutMain {width: 21%;}
+
+    /*************  Barra de menu *************/
+    #layout-container #layout-menu #BotonesColeccion .btn, #layout-container #layout-menu #BotonesExtra .btn {font-size: 0.75em;}
+    #layout-container .menu ul .btn {font-size: 0.75em !important;}
+
+    /*************  Footer *************/
+    #Footer .row .textCentral .subTitle {font-size: 1em;}
+    #Footer .row .textCentral span,
+    #Footer .row .textCentral a {font-size: 0.95em;}
+    #Footer .row .textVersion h4 {font-size: 1em;}
+    #Footer .row .textVersion h5 {font-size: 0.95em;}
+    #Footer .row .imgLogo #imgLogoFooter {width: 100%;}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    /*************  Banner *************/
+    #layout-container #grailsLogo #BannerLogo #LogoLayoutMain {width: 16.5% !important;}
+
+    /*************  Barra de menu *************/
+    #layout-container #layout-menu #BotonesColeccion .btn, #layout-container #layout-menu #BotonesExtra .btn {font-size: 1.05em;}
+
 }

@@ -5,7 +5,8 @@
 #layout-container label {color: #d9dfe6;}
 
 /************* HEADER ***************/
-#layout-container, html {background-color: #15202B;}
+body,
+#layout-container, html {background-color: #15202B !important;}
 #layout-container #grailsLogo {border-color: #13658e;}
 #layout-container #grailsLogo #BannerI18n span,
 #layout-container #grailsLogo #BannerLogo h1 {color: #fff;}
