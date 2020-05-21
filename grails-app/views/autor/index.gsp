@@ -31,7 +31,7 @@
 						<g:message code="autores.list.manage.label" /></a>
 						<ul class="dropdown-menu styleDropdown">
 							<li>
-								<g:if test="${autorInstanceList.size > 0}">
+								<g:if test="${autorInstanceList?.size > 0}">
 									<g:link controller="transferenciaListado" action="ExportAutores" class="btn btnMenu">
 										<g:message code="modulos.exportacionListado.export.label" args="${message(code: 'layoutMenu.botonesColeccion.autores')}"/>
 									</g:link>
