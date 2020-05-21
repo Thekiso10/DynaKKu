@@ -29,7 +29,15 @@
 			
 			<nav id="layout-menu" class="col-sm-12">
 				<div class="container">
-					<div class="navbar-collapse">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main-colleciones" aria-expanded="false">
+							<span class="glyphicon glyphicon-chevron-down"/>
+							<span class="sr-only">Toggle navigation</span>
+						</button>
+					</div>
+
+					<div class="collapse navbar-collapse" id="navbar-main-colleciones">
 						<ul class="nav navbar-nav" id="BotonesColeccion">
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -38,7 +46,7 @@
 									<li><g:link class="btn btnMenu" controller="mangas" action="create"><g:message code="layoutMenu.botonesColeccion.mangas.crear"/></g:link></li>
 									<li><g:link class="btn btnMenu" controller="mangas" action="index" params="[registrado: true]"><g:message code="layoutMenu.botonesColeccion.mangas.lista"/></g:link></li>
 									<li><g:link class="btn btnMenu" controller="mangas" action="index" params="[registrado: false]"><g:message code="layoutMenu.botonesColeccion.mangas.listaDeseados"/></g:link></li>
-								</ul>	
+								</ul>
 							</li>
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -46,7 +54,7 @@
 								<ul class="dropdown-menu styleDropdown">
 									<li><g:link class="btn btnMenu" action="create" controller="Autor"><g:message code="layoutMenu.botonesColeccion.autores.crear"/></g:link></li>
 									<li><g:link class="btn btnMenu" action="index" controller="Autor"><g:message code="layoutMenu.botonesColeccion.autores.lista"/></g:link></li>
-								</ul>	
+								</ul>
 							</li>
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -70,12 +78,12 @@
 								</g:link>
 							</li>
 							<li>
-								<button class="btn btnOpcions" id="showMe" data-toggle="modal" data-target="#modalConfiguracion">
+								<a href="#" class="btn btnOpcions" id="showMe" data-toggle="modal" data-target="#modalConfiguracion">
 									<span class="glyphicon glyphicon-cog"></span>
-								</button>
+								</a>
 							</li>
 						</ul>
-					</div>					
+					</div>
 				</div>
 			</nav>
 			
