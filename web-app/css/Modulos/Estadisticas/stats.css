@@ -45,3 +45,10 @@
 #layout-container #bodyStats .row .estiloPor {font-size: 1em; cursor: context-menu;}
 #layout-container #bodyStats .row .estiloNum:hover,
 #layout-container #bodyStats .row .estiloPor:hover {text-decoration: underline;}
+
+@media only screen and (min-width: 320px) and (max-width: 767px){
+    #layout-container .menu ul {display: flex; flex-direction: column; align-items: stretch;}
+
+    #layout-container .menu ul .btnSelect,
+    #layout-container .menu ul .btnAccion {margin-right: auto; margin-bottom: 0.25em;}
+}
