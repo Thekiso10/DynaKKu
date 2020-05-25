@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.numero.hoy" args='${[message(code: 'stats.code.autor')]}'/>:
@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.numero" args='${[message(code: 'stats.code.esta'), message(code: 'stats.code.semana'), message(code: 'stats.code.autor')]}'/>:
@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.numero" args='${[message(code: 'stats.code.este'), message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
@@ -68,7 +68,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.numero" args='${[message(code: 'stats.code.este'), message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
@@ -84,7 +84,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.media" args='${[message(code: 'stats.code.semana'), message(code: 'stats.code.autor')]}'/>:
@@ -97,7 +97,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.media" args='${[message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
@@ -110,7 +110,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.media" args='${[message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
@@ -125,7 +125,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.numero.hoy" args='${[message(code: 'stats.code.manga')]}'/>:
@@ -138,7 +138,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.numero" args='${[message(code: 'stats.code.esta'), message(code: 'stats.code.semana'), message(code: 'stats.code.manga')]}'/>:
@@ -151,7 +151,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.numero" args='${[message(code: 'stats.code.este'), message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
@@ -164,7 +164,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.numero" args='${[message(code: 'stats.code.este'), message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:
@@ -180,7 +180,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.media" args='${[message(code: 'stats.code.semana'), message(code: 'stats.code.manga')]}'/>:
@@ -193,7 +193,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.media" args='${[message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
@@ -206,7 +206,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.consulta.media" args='${[message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:
@@ -232,7 +232,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media.full" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes')]}'/>:
@@ -245,7 +245,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
@@ -258,7 +258,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
@@ -275,7 +275,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media.full" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano')]}'/>:
@@ -288,7 +288,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
@@ -301,7 +301,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:
@@ -318,7 +318,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media.full" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes')]}'/>:
@@ -331,7 +331,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
@@ -344,7 +344,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
@@ -361,7 +361,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media.full" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano')]}'/>:
@@ -374,7 +374,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
@@ -387,7 +387,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.media" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:
@@ -415,7 +415,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje.full" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes')]}'/>:
@@ -428,7 +428,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
@@ -441,7 +441,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
@@ -458,7 +458,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje.full" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano')]}'/>:
@@ -471,7 +471,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
@@ -484,7 +484,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.historial'), message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:
@@ -501,7 +501,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje.full" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes')]}'/>:
@@ -514,7 +514,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes'), message(code: 'stats.code.autor')]}'/>:
@@ -527,7 +527,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.mes'), message(code: 'stats.code.manga')]}'/>:
@@ -544,7 +544,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje.full" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano')]}'/>:
@@ -557,7 +557,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano'), message(code: 'stats.code.autor')]}'/>:
@@ -570,7 +570,7 @@
                 <div class="row">
                     <div class="col-sm-1 col-xs-2">
                         <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
-                        <span class="glyphicon glyphicon-asterisk hidden-sm"></span>
+                        <span class="glyphicon glyphicon-asterisk hidden-sm stylePoint"></span>
                     </div>
                     <div class="col-sm-11 col-xs-11 enumStat">
                         <g:message code="stats.general.funciones.porcentaje" args='${[message(code: 'stats.code.reporte'), message(code: 'stats.code.ano'), message(code: 'stats.code.manga')]}'/>:

@@ -65,7 +65,9 @@
     #layout-container #stats-autor h3, #layout-container #stats-mangas h3, #layout-container #stats-general h3 {font-size: 1.5em;}
     #layout-container #bodyStats .row .iconStatsRombo {display: none;}
     #layout-container #bodyStats .row .enumStat {font-size: 1.15em;}
-    #layout-container #bodyStats .row span {font-size: 1.25em;}
+    #layout-container #bodyStats .row span {font-size: 1em;}
+    #layout-container #bodyStats .row span.stylePoint {font-size: 1.25em;}
+    #layout-container #bodyStats .row .globoDatos {font-size: 0.75em;}
 
     #layout-container #bodyStats .row .col-sm-1 {text-align: center;}
 
