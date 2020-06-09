@@ -3,3 +3,25 @@
 
 #layout-container #login .loginBox {padding: 1em; margin-top: 0.5em; border: 3px solid #83D2FF; border-radius: 10px 10px 7px 7px;}
 #layout-container #login .loginBox .buttons .btnLogin {padding: 0.5em 6em; font-size: 1.5em; border: 3px solid; font-weight: 600; transition: 1s;}
+
+/*************  Responsive *************/
+@media only screen and (min-width: 320px) and (max-width: 374px){
+    #layout-container #login .form-group .titleLogin {font-size: 1.25em;}
+    #layout-container #login .loginBox .form-group .buttons .btnLogin {font-size: 0.95em;}
+}
+
+@media only screen and (min-width: 375px) and (max-width: 767px){
+    #layout-container #login .form-group .titleLogin {font-size: 1.75em;}
+    #layout-container #login .loginBox .form-group .buttons .btnLogin {font-size: 1.25em;}
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px){
+    #layout-container #login .loginBox {text-align: center;}
+    #layout-container #login .loginBox .form-group .checkbox {text-align: center;}
+    #layout-container #login .loginBox .form-group .buttons  {text-align: center;}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    #layout-container #login .form-group .titleLogin {font-size: 1.75em;}
+    #layout-container #login .loginBox .buttons .btnLogin {font-size: 1.25em;}
+}

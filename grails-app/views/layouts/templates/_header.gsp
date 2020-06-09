@@ -1,10 +1,10 @@
 <div id="header">
     <div class="container">
-        <div id="grailsLogo" class="col-sm-12" role="banner">
+        <div id="grailsLogo" class="col-xs-12" role="banner">
             <g:link controller="estadisticas" action="index">
-                <div class="col-sm-6" id="BannerLogo">
-                    <g:img id="LogoLayoutMain" class="col-sm-3" dir="images/imgWeb" file="LogoLayoutMain.png"/>
-                    <h1 class="col-sm-9"><g:message code="grailsLogo.bannerLogo.nombrePrograma"/></h1>
+                <div class="col-sm-6 col-xs-7" id="BannerLogo">
+                    <g:img id="LogoLayoutMain" dir="images/imgWeb" file="LogoLayoutMain.png"/>
+                    <h1><g:message code="grailsLogo.bannerLogo.nombrePrograma"/></h1>
                 </div>
 
                 <%
@@ -33,10 +33,10 @@
                     linkEn 	+= "?lang=en_US" + parametres.toString()
                 %>
 
-                <div class="col-sm-6" id="BannerI18n">
-                    <g:link url="${linkEs}"><span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.es"/></span></g:link>
-                    <g:link url="${linkCat}"><span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.cat"/></span></g:link>
-                    <g:link url="${linkEn}"><span><g:message code="grailsLogo.bannerLogo.idiomaLink.eng"/></span></g:link>
+                <div class="col-sm-6 col-xs-5" id="BannerI18n">
+                    <g:link url="${linkEs}">  <span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.es"/>  </span></g:link>
+                    <g:link url="${linkCat}"> <span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.cat"/> </span></g:link>
+                    <g:link url="${linkEn}">  <span class="borderI18n"><g:message code="grailsLogo.bannerLogo.idiomaLink.eng"/>                    </span></g:link>
                 </div>
             </g:link>
         </div>
