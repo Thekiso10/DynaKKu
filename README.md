@@ -5,7 +5,7 @@ Este es una Gestor de Mangas Web personal.
 Verión Actual: **0.7.0-develop**
 ## Creators
   * [**Diogo Assunção**](https://github.com/Thekiso10)
----
+
 ## Main Technologies
 ### Backend
 Para el desarrollo de la parte de negocio de DynaKKu utilizo las siguientes tecnologías:
@@ -17,7 +17,7 @@ Para el desarrollo de la interfaz web de DynaKKu utilizo las siguientes tecnolog
 - [X] **HTML 5**
 - [X] **CSS 3**
 - [X] **Bootstrap 4.3.1**
----
+
 ## License
 
 Copyright (c) **DynaKKu.com**
