@@ -17,6 +17,7 @@ Para el desarrollo de la interfaz web de DynaKKu utilizo las siguientes tecnolog
 - [X] **HTML 5**
 - [X] **CSS 3**
 - [X] **Bootstrap 4.3.1**
+- [X] **Font Awesome 5.13.0**
 
 ## License
 
