@@ -50,7 +50,7 @@ class UsuarioController {
         userInstance.password = params.password
         userInstance.mail = params.email
         userInstance.idiomaDefault = params.idioma
-        userInstance.modoDark = (params.mode == 'true') ? true : false;
+        userInstance.modoDark = (params.mode == 'true') ? true : false
         userInstance.ultimaModificacion = new Date()
         //Guardamos la instancia
         if(!userInstance.save(flush: true)){
