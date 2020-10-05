@@ -9,15 +9,15 @@ Verión Actual: **0.7.0-develop**
 ## Main Technologies
 ### Backend
 Para el desarrollo de la parte de negocio de DynaKKu utilizo las siguientes tecnologías:
-- [X] **Grails 3.3.17**
-- [X] **Spring-security-core - 3.2.3**
-- [X] **itextpdf - 5.5.13.1**
+- [X] **Grails - 2.4.2**
+- [X] **Spring Security Core - 2.0-RC5**
+- [X] **iTextpdf - 5.5.13.1**
+- [X] **Commons io - 2.4**
 ### Frontend
 Para el desarrollo de la interfaz web de DynaKKu utilizo las siguientes tecnologías:
 - [X] **HTML 5**
 - [X] **CSS 3**
-- [X] **Bootstrap 4.3.1**
-- [X] **Font Awesome 5.13.0**
+- [X] **Bootstrap 3.3.4**
 
 ## License
 
