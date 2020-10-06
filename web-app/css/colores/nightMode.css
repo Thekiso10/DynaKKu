@@ -28,8 +28,13 @@ body,
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#fff;}
 
 /*************  Footer *************/
-
 #Footer {background-color: #040709; color: #d9dfe6;}
+
+/*************  Cookies *************/
+#cookiesPopUp #popUp{ background-color:#13658e87; color: white;}
+#cookiesPopUp #popUp .btnCookie{ background-color: transparent; color: white; border-color: white;}
+#cookiesPopUp #popUp .btnCookie:hover{ background-color: #ffffffde; border-color: #ffffffde; color: black;}
+#cookiesAccept:HOVER :VISITED{background-color: #21b6ff; color: white;}
 
 /*************  Configuracion *************/
 
