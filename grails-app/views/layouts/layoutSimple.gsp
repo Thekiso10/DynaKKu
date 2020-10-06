@@ -26,5 +26,12 @@
         </div>
         %{--    Footer    --}%
         <g:render template="/layouts/templates/footer"/>
+
+        <div id="cookiesPopUp">
+            <g:render template="/layouts/templates/popUpCookies" ></g:render>
+        </div>
+
+        <%-- Hacer la importacion de archivos --%>
+        <g:javascript src="CookiesService.js"/>
     </body>
 </html>

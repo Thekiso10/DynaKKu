@@ -80,7 +80,18 @@ body a:hover, a:focus {color:white;}
 #Footer .row .col-sm-4 h5 {margin: 0;}
 #Footer .row .col-sm-4 a {color: #49abff;}
 
-    /*************  Spinner *************/
+/*************  Cookies *************/
+#cookiesPopUp #popUp{ background-color:#13658e87; height:auto; position: fixed; bottom:0%; width:100%; color: white; text-align: center; visibility: hidden; z-index:2;}
+#cookiesPopUp #popUp .btnCookie{ background-color: transparent; margin-left: 0.5em; color: white; padding: 0.5em 2em 0.5em 2em; display: inline-block; margin-top: 0.5em; margin-bottom: 0.5em; cursor: pointer; border-radius: 0.2em; border: 2px solid; text-transform: uppercase;}
+#cookiesPopUp #popUp .btnCookie:hover{ background-color: #ffffffde; border-color: #ffffffde; color: black; transition:0.6s;}
+#cookiesPopUp #popUp .textCookies{padding-top:0.5em; margin-top: 10px;}
+#cookiesPopUp #popUp .btnCookieRow{margin-top:1em; padding-bottom: 1em;}
+
+@media screen and (max-width: 900px) {
+    #popUp{height: 120px;}
+}
+
+/*************  Spinner *************/
 .spinner {
     background: url(../images/imgWeb/spinner.gif) 50% 50% no-repeat #B1B4B64d;
     padding: 0em;
