@@ -1,5 +1,6 @@
 import Colecciones.Demografia
 import Colecciones.Genero
+import Modulos.Gestor_Modulos.GestorModulos
 import Security.*
 import Modulos.Personalizacion_Usuario.Usuario
 import groovy.time.TimeDuration
@@ -26,7 +27,10 @@ class BootStrap {
             //Por si algun dia lo necesitamos
         }
 
-        comprobarCarpetas() //Haremos la comprobacion de carpetas siempre
+        /* Haremos la comprobacion de carpetas siempre */
+        comprobarCarpetas()
+        /* Cargar la lista de variables para los modulos */
+        cargarVariablesGestorModulos()
 
         log.info "## Fin de cargar BootStrap ##"
     }
@@ -104,9 +108,7 @@ class BootStrap {
             log.error se
         }
         //Ejecutar calculo de comparacion
-        def timeStop = new Date()
-        TimeDuration duration = TimeCategory.minus(timeStop, timeStart)
-        log.info "</> Fin de hacer comprobacion de Carpetas | Tiempo de duracion: ["+ duration +"] </>"
+        log.info "</> Fin de hacer comprobacion de Carpetas | Tiempo de duracion: ["+ TimeCategory.minus(new Date(), timeStart) +"] </>"
     }
     //Cargar la lista de demografias
     def cargarDemografias(){
@@ -140,8 +142,39 @@ class BootStrap {
         //Llamar al metodo para guardar la lista
         guardarLista(listaGenero)
     }
+    //Cargar la lista de variables para los modulos
+    def cargarVariablesGestorModulos(){
+        def timeStart = new Date()
+        log.info "</> Comprobar Gestor de Modulos </>"
+        //Definimos los terminos de busqueda
+        def search = "enable"
+        def nameI18n = "title"
+        //Vamos a recoger el bucle de los modulos
+        def listModules = grailsApplication.config.dynaKKu.listModules
+        listModules.each { module ->
+            String nameModule = "dynaKKu.$module.$search"
+            if(!GestorModulos.findByConfigModulo(nameModule)){
+                GestorModulos gestorInstance = new GestorModulos()
+                //Guardar datos
+                gestorInstance.configModulo         = nameModule
+                gestorInstance.nombreModulo         = "modulos.$module.$nameI18n"
+                gestorInstance.valorModulo          = grailsApplication.config.getProperty(nameModule)
+                gestorInstance.fechaCreacion        = new Date()
+                gestorInstance.ultimaModificacion   = new Date()
+                //Guardamos la instacia
+                if(gestorInstance.save(flush: true)){
+                    log.info "</> Generado el modulo -> $nameModule </>"
+                }else{
+                    log.error "</> No se ha podido generar el modulo -> $nameModule </>"
+                }
+            }
+        }
 
-    def guardarLista(def lista){
+        log.info "</> Fin de la Comprobación del Gestor de Modulos | Tiempo de duracion: ["+ TimeCategory.minus(new Date(), timeStart) +"] </>"
+    }
+
+
+    def private guardarLista(def lista){
         lista.each {
             if(!it.save()){
                 log.error "[Alerta] No se ha podido guardar la demografia -> " + it.nombre

@@ -145,7 +145,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 /*==================================================================*/
 /* 		                        Modo                       			*/
 /*==================================================================*/
-dynaKKu.version.app = null
+dynaKKu.version.app         = null
+dynaKKu.listModules         = ["estadisticas", "historialActividad", "exportacionListado"]
 
 /*==================================================================*/
 /* 		                       Autores                     			*/
@@ -164,9 +165,20 @@ dynaKKu.mangas.longitut.nombreMax  = 50 //Especificar la logitut maxima del nomb
 dynaKKu.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos permitidos para un mismo Manga
 
 /*==================================================================*/
-/* 		                        PDF                        			*/
+/* 		                Historial Actividad                			*/
 /*==================================================================*/
+dynaKKu.historialActividad.enable = true //Activar el modulo de Historial
 dynaKKu.pdfConf.pathBanner = "images/imgWeb/pdf/bannerPDF.png"
+
+/*==================================================================*/
+/* 		                   Estadisticas                  			*/
+/*==================================================================*/
+dynaKKu.estadisticas.enable = true //Activar el modulo de Estadisticas
+
+/*==================================================================*/
+/* 		              Transferencia Listado                			*/
+/*==================================================================*/
+dynaKKu.exportacionListado.enable = true //Activar el modulo de Estadisticas
 
 /*==================================================================*/
 /* 					   Cargar Config Externa       					*/
