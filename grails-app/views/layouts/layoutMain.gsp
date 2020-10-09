@@ -60,6 +60,9 @@
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 									<span class="glyphicon glyphicon-chevron-down"></span><g:message code="layoutMenu.botonesColeccion.funciones"/></a>
 								<ul class="dropdown-menu styleDropdown">
+									<sec:ifAnyGranted roles="ROLE_ADMIN">
+										<li><g:link class="btn btnMenu" action="panel" controller="gestorModulos"><g:message code="modulos.gestorModulos.title"/></g:link></li>
+									</sec:ifAnyGranted>
 									<li><g:link class="btn btnMenu" action="general" controller="Estadisticas"><g:message code="layoutMenu.botonesColeccion.funciones.stats"/></g:link></li>
 									<li><g:link class="btn btnMenu" action="index" controller="historial"><g:message code="layoutMenu.botonesColeccion.funciones.historial"/></g:link></li>
 								</ul>
