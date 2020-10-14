@@ -7,9 +7,14 @@ import grails.plugin.springsecurity.annotation.Secured
 class TransferenciaListadoController {
 
     def transferenciaListadoService
+    def gestorModulosService
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def ExportAutores() {
+        if(!gestorModulosService.validatePermission("dynaKKu.exportacionListado.enable")) {
+            redirect(controller: "usuario", action: "index")
+        }
+
         def listaAutores = Autor.findAllByBorrado(false)
         def pathDoc = request.getSession().getServletContext().getRealPath(('/'))
         //Variables especificas
@@ -57,6 +62,10 @@ class TransferenciaListadoController {
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def ImportAutor(){
+        if(!gestorModulosService.validatePermission("dynaKKu.exportacionListado.enable")) {
+            redirect(controller: "usuario", action: "index")
+        }
+
         //Validar el archivo
         def file = request.getFile('archivoAutor')
         if(file){
@@ -82,6 +91,10 @@ class TransferenciaListadoController {
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def ExportMangas(){
+        if(!gestorModulosService.validatePermission("dynaKKu.exportacionListado.enable")) {
+            redirect(controller: "usuario", action: "index")
+        }
+
         def listaMangas = Mangas.findAllByBorrado(false)
         def pathDoc = request.getSession().getServletContext().getRealPath(('/'))
         //Variables especificas
@@ -129,6 +142,10 @@ class TransferenciaListadoController {
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def ImportMangas(){
+        if(!gestorModulosService.validatePermission("dynaKKu.exportacionListado.enable")) {
+            redirect(controller: "usuario", action: "index")
+        }
+
         //Validar el archivo
         def file = request.getFile('archivoMangas')
         if(file){

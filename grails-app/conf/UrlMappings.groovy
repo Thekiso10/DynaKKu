@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-		"/"(controller:"estadisticas", action:"index")
+		"/"(controller:"usuario", action:"index")
 		//Redireccionar a las vistas de errores		
         "500"(view:'/error')
 		"404"(view:'/error404')

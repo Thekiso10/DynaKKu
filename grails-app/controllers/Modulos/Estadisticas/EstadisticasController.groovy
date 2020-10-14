@@ -1,23 +1,37 @@
 package Modulos.Estadisticas
 
+import Modulos.Gestor_Modulos.GestorModulos
 import grails.plugin.springsecurity.annotation.Secured
 
 class EstadisticasController {
 
 	def estadisticasService
+	def gestorModulosService
 
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
 	def index() {
-		redirect(action: "general")
+		if(gestorModulosService.validatePermission("dynaKKu.estadisticas.enable")){
+			redirect(action: "general")
+		}else{
+			redirect(controller: "usuario", action: "index")
+		}
 	}
 
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
 	def general() {
-		render (view:"general", model:[])
+		if(gestorModulosService.validatePermission("dynaKKu.estadisticas.enable")){
+			render (view:"general", model:[])
+		}else{
+			redirect(controller: "usuario", action: "index")
+		}
 	}
 
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
 	def statsAutor() {
+		if(!gestorModulosService.validatePermission("dynaKKu.estadisticas.enable")) {
+			redirect(controller: "usuario", action: "index")
+		}
+
 		def listaValores = []
 		//Coger valor maximo de la edad de los Autores
 		def edadMax = estadisticasService.getMaxEdadAutor()?.getEdadAutor()
@@ -55,6 +69,10 @@ class EstadisticasController {
 
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
 	def statsMangas() {
-		render (view:"statsMangas", model:[])
+		if(gestorModulosService.validatePermission("dynaKKu.estadisticas.enable")) {
+			render (view:"statsMangas", model:[])
+		}else{
+			redirect(controller: "usuario", action: "index")
+		}
 	}
 }

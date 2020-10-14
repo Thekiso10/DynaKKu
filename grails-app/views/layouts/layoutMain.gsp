@@ -1,4 +1,5 @@
 <%@ page import="Modulos.Personalizacion_Usuario.Usuario"%>
+<%@ page import="Modulos.Gestor_Modulos.GestorModulos"%>
 
 <!DOCTYPE html>
 <html lang="es" class="no-js">
@@ -63,8 +64,14 @@
 									<sec:ifAnyGranted roles="ROLE_ADMIN">
 										<li><g:link class="btn btnMenu" action="panel" controller="gestorModulos"><g:message code="modulos.gestorModulos.title"/></g:link></li>
 									</sec:ifAnyGranted>
-									<li><g:link class="btn btnMenu" action="general" controller="Estadisticas"><g:message code="layoutMenu.botonesColeccion.funciones.stats"/></g:link></li>
-									<li><g:link class="btn btnMenu" action="index" controller="historial"><g:message code="layoutMenu.botonesColeccion.funciones.historial"/></g:link></li>
+
+									<g:if test="${GestorModulos.findByConfigModulo("dynaKKu.estadisticas.enable").valorModulo}">
+										<li><g:link class="btn btnMenu" action="general" controller="Estadisticas"><g:message code="layoutMenu.botonesColeccion.funciones.stats"/></g:link></li>
+									</g:if>
+
+									<g:if test="${GestorModulos.findByConfigModulo("dynaKKu.historialActividad.enable").valorModulo}">
+										<li><g:link class="btn btnMenu" action="index" controller="historial"><g:message code="layoutMenu.botonesColeccion.funciones.historial"/></g:link></li>
+									</g:if>
 								</ul>
 							</li>
 						</ul>
