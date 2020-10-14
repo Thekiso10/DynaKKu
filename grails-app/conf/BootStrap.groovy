@@ -146,6 +146,7 @@ class BootStrap {
     def cargarVariablesGestorModulos(){
         def timeStart = new Date()
         log.info "</> Comprobar Gestor de Modulos </>"
+        def confMap = grailsApplication.getFlatConfig()
         //Definimos los terminos de busqueda
         def search = "enable"
         def nameI18n = "title"
@@ -158,7 +159,7 @@ class BootStrap {
                 //Guardar datos
                 gestorInstance.configModulo         = nameModule
                 gestorInstance.nombreModulo         = "modulos.$module.$nameI18n"
-                gestorInstance.valorModulo          = grailsApplication.config.getProperty(nameModule)
+                gestorInstance.valorModulo          = confMap["${nameModule}"]
                 gestorInstance.fechaCreacion        = new Date()
                 gestorInstance.ultimaModificacion   = new Date()
                 //Guardamos la instacia
