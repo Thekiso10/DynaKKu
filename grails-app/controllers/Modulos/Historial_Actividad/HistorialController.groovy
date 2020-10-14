@@ -9,9 +9,14 @@ import org.springframework.web.servlet.support.RequestContextUtils
 class HistorialController {
 
     def historialService
+    def gestorModulosService
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def index(Integer max) {
+        if(!gestorModulosService.validatePermission("dynaKKu.historialActividad.enable")) {
+            redirect(controller: "usuario", action: "index")
+        }
+
         params.max = Math.min(max ?: 20, 100)
         def offset = (params.offset? Integer.parseInt(params.offset) : 0)
         Locale defaultLocale = RequestContextUtils.getLocale(request)
@@ -31,6 +36,10 @@ class HistorialController {
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def createPDF(){
+        if(!gestorModulosService.validatePermission("dynaKKu.historialActividad.enable")) {
+            redirect(controller: "usuario", action: "index")
+        }
+
         Locale defaultLocale = RequestContextUtils.getLocale(request)
         //Obtener la lista de las funciones
         def listaFuncionesMangas  = historialService.getListFunctionsMangas(defaultLocale)
@@ -44,6 +53,10 @@ class HistorialController {
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def generateHistorialPDF() {
+        if(!gestorModulosService.validatePermission("dynaKKu.historialActividad.enable")) {
+            redirect(controller: "usuario", action: "index")
+        }
+
         //Definir variables
         Document documento
         FileInputStream fileInputStream

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'datePicker/datepicker.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'Modulos/Historial/historial.css')}" type="text/css">
-    <g:set var="entityName" value="${message(code: 'modulos.historial.lable', default: 'historial')}" />
+    <g:set var="entityName" value="${message(code: 'modulos.historialActividad.title', default: 'historial')}" />
     <title><g:message code="default.list.generatePDF.label" args="[entityName]"/></title>
 </head>
 <body>

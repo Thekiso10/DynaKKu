@@ -2,13 +2,17 @@ package Modulos.Personalizacion_Usuario
 
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
-import grails.converters.JSON
-import Modulos.Personalizacion_Usuario.Usuario
-
 
 class UsuarioController {
 
     def springSecurityService
+
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
+    def index(){
+        //Aqui ira la Portada del usuario
+        //Cogemos al usuario logueado
+        def userInstance = springSecurityService.currentUser
+    }
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     @Transactional
