@@ -14,6 +14,7 @@ class AutorController {
 	def autorService
 	def coleccionesService
 	def registerHistorialService
+	def gestorModulosService
 
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def index(Integer max) {
@@ -53,7 +54,10 @@ class AutorController {
 			flash.warn = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.autores")])
 		}
 
-        respond autorInstanceList, model:[autorInstanceCount: autorPaginacion]
+		//Validamos si podemos mostrar o no la exportación de listas
+		def valorExportaListaConf = gestorModulosService.validatePermission("dynaKKu.exportacionListado.enable")
+
+        respond autorInstanceList, model:[autorInstanceCount: autorPaginacion, valorExportaListaConf: valorExportaListaConf]
     }
 
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
