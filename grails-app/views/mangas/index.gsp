@@ -22,6 +22,13 @@
 					</ul>
 
 					<g:if test="${valorExportaListaConf}">
+
+						<ul class="navbar-nav">
+							<li><g:link class="btn btnLlist" controller="transferenciaListado" action="ExportarPdfManga">
+								<g:message code="modulos.listadoPDF.title" />
+							</g:link></li>
+						</ul>
+
 						<ul class="navbar-nav">
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
