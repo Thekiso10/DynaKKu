@@ -6,8 +6,9 @@
 	<title><g:message code="springSecurity.login.title"/></title>
 </head>
 <body>
+
 <div id='login' class="container">
-	<div class="col-sm-12">
+	<div class="">
 
 		<div class="form-group">
 			<h2 class="text-center titleLogin">
@@ -62,6 +63,7 @@
 		
 	</div>
 </div>
+
 <script type='text/javascript'>
 	<!--
 	(function() {

@@ -1,17 +1,17 @@
-/**** Layout ****/
-/************* Por defecto ***************/
+/*!**** Layout ****!
+!************* Por defecto ***************!
 #layout-container input {background-color: #0e2033; color:#5aacff; border-color: #4380A3;}
 #layout-container h2 {color: #d8d8d8;}
 #layout-container label {color: #d9dfe6;}
 
-/************* HEADER ***************/
+!************* HEADER ***************!
 body,
 #layout-container, html {background-color: #15202B !important;}
 #layout-container #grailsLogo {border-color: #13658e;}
 #layout-container #grailsLogo #BannerI18n span,
 #layout-container #grailsLogo #BannerLogo h1 {color: #fff;}
 #layout-container #grailsLogo #BannerI18n .borderI18n {border-color: #13658e;}
-/*************  Barra de menu *************/
+!*************  Barra de menu *************!
 #layout-container #layout-menu {background-image: linear-gradient(#2990C4 0%, #68C8FF 50%, #2990C4 100%); border-color: #166088;}
 
 #layout-container #layout-menu #BotonesColeccion .btnExtra {border-color: #20354C; background-color: #2a343ee6; color:#fff;}
@@ -27,16 +27,16 @@ body,
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #2A343E; color:#2990C4; border-color:#2990C4}
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#fff;}
 
-/*************  Footer *************/
+!*************  Footer *************!
 #Footer {background-color: #040709; color: #d9dfe6;}
 
-/*************  Cookies *************/
+!*************  Cookies *************!
 #cookiesPopUp #popUp{ background-color:#13658e87; color: white;}
 #cookiesPopUp #popUp .btnCookie{ background-color: transparent; color: white; border-color: white;}
 #cookiesPopUp #popUp .btnCookie:hover{ background-color: #ffffffde; border-color: #ffffffde; color: black;}
 #cookiesAccept:HOVER :VISITED{background-color: #21b6ff; color: white;}
 
-/*************  Configuracion *************/
+!*************  Configuracion *************!
 
 #layout-container #modalConfiguracion .modal-header {background-color: #1B5C7D; color: #E9EAEB; border-bottom: 3px solid #10384c;}
 #layout-container #modalConfiguracion .modal-header .close {color: #E9EAEB;}
@@ -55,7 +55,7 @@ body,
 #layout-container #modalConfiguracion .modal-footer .btnCommit:hover,
 #layout-container #modalConfiguracion .modal-footer .btnSkip:hover {background-color: #2a343e52; border-color: #013a73;}
 
-/**     Tablas      **/
+!**     Tablas      **!
 #layout-container div.tableDynamic {border-color: #2A343E;}
 #layout-container div.tableDynamic .table .btnMenu {background-color: #68C8FF; border: 2px solid #4380A3; color: #4E5052; transition: 1s;}
 #layout-container div.tableDynamic .table .btnMenu:hover {background-color: transparent; color: white;}
@@ -75,36 +75,36 @@ body,
 #layout-container .tablaGenericoa div.paginacion span {color: #4CB1F7; font-weight: 600;}
 #layout-container .tablaGenericoa div.paginacion a {color: #fff;}
 
-/*************  Login *************/
+!*************  Login *************!
 #layout-container #login .loginBox {background-color: #13425A; border-color: #83D2FF;}
 #layout-container #login .loginBox .buttons .btnLogin {background-color: #2276A1; color: white; border-color: #1d536f !important;}
 #layout-container #login .loginBox .buttons .btnLogin:hover {background: #1699dc; border-color: #2990C4;}
 
-/*** Estadisticas ***/
-/* Barra de menu estandar*/
+!*** Estadisticas ***!
+!* Barra de menu estandar*!
 #layout-container div.menu ul .btnSelect {background-color: #04a1fb9c; color: white; border-color: #014e7b;}
 #layout-container div.menu ul .btnAccion {background-color: #2990c4a6; color: white; border-color: #12689f;}
 
 #layout-container div.menu ul .btnSelect:hover {background-color: #2a343e52;}
 #layout-container div.menu ul .btnAccion:hover {background-color: #2a343e52; border-color: #013a73;}
 
-/* Title */
+!* Title *!
 #layout-container #stats-autor h2,
 #layout-container #stats-general h2,
 #layout-container #stats-mangas h2 {color: #2d97ce;}
 
-/* SubTitle */
+!* SubTitle *!
 #layout-container #stats-autor h3,
 #layout-container #stats-mangas h3,
 #layout-container #stats-general h3 {color: #68C8FF;}
 
-/* Cuerpo de las estadisticas */
+!* Cuerpo de las estadisticas *!
 #layout-container #bodyStats .enumStat {color: #fff;}
 #layout-container #bodyStats #consultaFuncionesStats .marginDiv,
 #layout-container #bodyStats #consultaFuncionesPorStats .marginDiv,
 #layout-container #bodyStats #consultaColeccionesStats .marginDiv {color: #68C8FF;}
 
-/* Estilo de los datos */
+!* Estilo de los datos *!
 #layout-container #bodyStats .row .dontStats {color: #68C8FF;}
 #layout-container #bodyStats .row .mostrarNum {color: #2990C4;}
 #layout-container #bodyStats .row .estiloNum,
@@ -113,8 +113,8 @@ body,
 #layout-container #bodyStats .row span.globoDatos:hover {background-color: transparent;}
 #layout-container #bodyStats .row span.globoDatos a {color: #cbecff;}
 
-/*** Colecciones ***/
-/* Barra de menu estandar*/
+!*** Colecciones ***!
+!* Barra de menu estandar*!
 #layout-container div.menu {background: linear-gradient(to bottom, #68C8FF 0%, #29b4db 50%, #1b5c7d 100%); border-color:#166088;}
 #layout-container tr .menu {background-color: transparent; border-color: transparent;}
 
@@ -137,8 +137,8 @@ body,
 #layout-container div.menu ul .btnSkip:HOVER,
 #layout-container #formCreateAutor .buttons .btnSave:HOVER {background-color: #2a343e52; border-color: #013a73;}
 
-/*** Autores ***/
-/** Crear y Editar Autor **/
+!*** Autores ***!
+!** Crear y Editar Autor **!
 #layout-container #edit-autor #formEditAutor.container .divButtonSave,
 #layout-container #create-autor #formCreateAutor .container .divButtonSave {background: #166088; border-color: #114d72;}
 
@@ -166,7 +166,7 @@ body,
 #layout-container #edit-autor #formEditAutor .panel-form .fieldcontain .imgAutorInfo,
 #layout-container #create-autor #formCreateAutor .panel-form .fieldcontain .imgAutorInfo {color: #fff;}
 
-/** Lista de los Autor **/
+!** Lista de los Autor **!
 #layout-container #list-autor h2 {color:#d8d8d8; border-bottom-color: #d8d8d8;}
 #layout-container #list-autor .borderTransparent {border-color: transparent !important;}
 
@@ -181,19 +181,19 @@ body,
 #layout-container #list-autor #filtroAutor .btn-filter:hover,
 #layout-container #list-autor #filtroAutor .btn-reset:hover {background-color: transparent; color:#fff; transition: 0.7s;}
 
-/** Mostrar un Autor **/
+!** Mostrar un Autor **!
 #layout-container #ver-autor h2 {color: #d8d8d8; border-bottom: 1px solid #d8d8d8;}
 
-#layout-container #ver-autor div#panel-ver-autor {color:#fff;} /*Que el color de los textos sea blanco*/
+#layout-container #ver-autor div#panel-ver-autor {color:#fff;} !*Que el color de los textos sea blanco*!
 #layout-container #ver-autor div#panel-ver-autor h3 {border-color: #fff;}
 #layout-container #ver-autor div#panel-ver-autor #infoAutor {background-color: #14587C; border-color: #114663; box-shadow: 0 1px 15px 9px #114663;}
 #layout-container #ver-autor div#panel-ver-autor.panel-show-autor {background-color: #166088; border-color: #114D72; box-shadow: 0 1px 7px 3px #114663;}
 
 #layout-container #ver-autor div#panel-ver-autor #imgAutor img {border-color: #1B2228; box-shadow: 0 1px 11px 3px #1B2228;}
 
-/*** Mangas ***/
+!*** Mangas ***!
 
-/** Modals **/
+!** Modals **!
 #layout-container .modal-header {background-color: #1B5C7D; color: #E9EAEB; border-bottom: 3px solid #10384c;}
 #layout-container .modal-header .close {color: #E9EAEB;}
 #layout-container .modal-body {background-color: #1f2e3e; color: #E9EAEB;}
@@ -210,7 +210,7 @@ body,
 #layout-container .modal-footer .btnCommit:hover,
 #layout-container .modal-footer .btnSkip:hover {background-color: #2a343e52; border-color: #013a73; transition: 1s;}
 
-/** Crear y Editar Mangas **/
+!** Crear y Editar Mangas **!
 #layout-container .form  h3,
 #layout-container #edit-mangas #formEditMangas h2,
 #layout-container #create-mangas #formCreateMagas h2 {color: #d8d8d8;}
@@ -243,7 +243,7 @@ body,
 #layout-container #edit-mangas #formEditMangas  .buttons .divButtonSave .btnSave:hover,
 #layout-container #create-mangas #formCreateMagas .buttons .divButtonSave .btnSave:hover {background: #1699dc; border-color: #2990C4;}
 
-/** Lista Mangas **/
+!** Lista Mangas **!
 #layout-container #list-mangas h2 {color:#d8d8d8; border-bottom-color: #d8d8d8;}
 
 #layout-container div#list-mangas #filtroMangas {background-color: #13425A; border-color: #081B24;}
@@ -255,11 +255,11 @@ body,
 #layout-container div#list-mangas #filtroMangas .btn-reset {background-color: #83D2FF; border: 2px solid #396E8C; color: #24517f;}
 #layout-container div#list-mangas #filtroMangas .btn-filter {background-color: #0F3548; border-color: #1E698F; color: #ecf5ff;}
 
-/** Ver Mangas **/
+!** Ver Mangas **!
 #layout-container #ver-manga h2 {color: #d8d8d8;}
 #layout-container #ver-manga div.menu .dropdown .styleDropdown li .btnMenu {background-color: #2276a1f5;}
 
-#layout-container #ver-manga div#panel-ver-mangas {color:#fff;} /*Que el color de los textos sea blanco*/
+#layout-container #ver-manga div#panel-ver-mangas {color:#fff;} !*Que el color de los textos sea blanco*!
 #layout-container #ver-manga div#panel-ver-mangas h3 {border-color: #fff;}
 #layout-container #ver-manga div#panel-ver-mangas.panel-show-mangas {background-color: #166088; border-color: #114D72; box-shadow: 0 1px 7px 3px #114663;}
 #layout-container #ver-manga div#panel-ver-mangas .infoMangas {background-color: #14587C; border-color: #114663; box-shadow: 0 1px 15px 9px #114663;}
@@ -267,7 +267,7 @@ body,
 
 #layout-container #ver-manga div#panel-ver-mangas #imgMangas img {border-color: #1B2228; box-shadow: 0 1px 11px 3px #1B2228;}
 
-/*** Modulo - Historial ***/
+!*** Modulo - Historial ***!
 #layout-container #list-historia h2,
 #layout-container #Generate-Historial-PDF h2 {color:#d8d8d8; border-bottom-color: #d8d8d8;}
 
@@ -280,7 +280,7 @@ body,
 
 #layout-container #List-Historial-PDF h2 {color:#d8d8d8; border-bottom-color: #d8d8d8;}
 
-/*** Errores ***/
+!*** Errores ***!
 #Error-404 .container .col-sm-6 .btnInicio {background-color: #2276A1; border: 3px solid #63AED4; color: #fff;}
 #Error-404 .container .col-sm-6 .btnBack {background-color: #273039; border: 3px solid #646B72; color: #fff;}
 
@@ -292,3 +292,14 @@ body,
 
 .notfound a {color:#fff; background:#2a343e; border: 4px solid #20354C; border-radius: 5px;}
 .notfound a:hover{border-color:#114D72;background:transparent;}
+*/
+
+/*** Nueva versión colores ***/
+
+/* Tag basicos */
+body a {color: #fff;}
+body a:hover {border-bottom-color: #337ab7; color: #337ab7 !important; }
+
+/*!************* HEADER ***************!*/
+ body, html {background-color: #15202B !important;}
+ body #header {border-bottom: solid 5px #13658e;}

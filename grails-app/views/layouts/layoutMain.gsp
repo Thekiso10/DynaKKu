@@ -23,10 +23,18 @@
 		<asset:javascript src="application.js"/>
 		<g:layoutHead/>
 	</head>
-	<body>
-		<div id="layout-container" class="container-fluid">
-			%{--	Header Template	--}%
-			<g:render  template="/layouts/templates/header"/>
+	<body class="is-preload">
+		<div id="wrapper">
+
+			<!-- Main -->
+			<div id="main">
+				<div class="inner">
+					%{--	Header Template	--}%
+					<g:render  template="/layouts/templates/header"/>
+
+				</div>
+			</div>
+
 			
 			<nav id="layout-menu" class="col-sm-12">
 				<div class="container">

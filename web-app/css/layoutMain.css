@@ -1,3 +1,5 @@
+@import url(template.css);
+
 /*Definir la fuente*/
 @font-face {font-family: 'Open Sans'; src: url('../fonts/opensans-light-webfont.woff2') format('woff2');}
 @font-face {font-family: 'Open Sans Regular'; src: url('../fonts/opensans-regular-webfont.woff2') format('woff2');}
@@ -11,9 +13,14 @@ body a:hover, a:focus {color:white;}
 
 /************* HEADER ***************/
 
+#header .logo img {width: 50px; height: 50px;}
+#header .icons a {border: none;}
+#header .icons a .label {font-size: 1.50em;}
+
+/*
 #layout-container {padding: 0 1em;}
 
-/*Banner de los logos*/
+!*Banner de los logos*!
 #layout-container #grailsLogo {border-bottom: 12px solid;}
 
 #layout-container #grailsLogo #BannerLogo {display: flex; align-items: center; margin: 1em 0 1em 0; padding: 0;}
@@ -23,11 +30,15 @@ body a:hover, a:focus {color:white;}
 #layout-container #grailsLogo #BannerI18n {text-align: right; margin: 1em 0 1em 0; padding: 1em 2em 1em 0;}
 #layout-container #grailsLogo #BannerI18n span {font-size: 24px; margin-left: 0.5em; line-height: 2em;}
 #layout-container #grailsLogo #BannerI18n .borderI18n {border-right: 2px solid; padding-right: 0.5em}
+*/
 
 /*************  Barra de menu *************/
 
-/*#layout-container #layout-menu,*/
-/*#layout-container div.menu {display: flex; align-items: center; align-content: center; flex-wrap: wrap;}*/
+/*
+#layout-container #layout-menu,
+#layout-container div.menu {display: flex; align-items: center; align-content: center; flex-wrap: wrap;}
+*/
+/*
 
 #layout-container #layout-menu a {font-family: 'Open Sans Semibold', sans-serif; line-height: 1.42857143;}
 
@@ -47,7 +58,7 @@ body a:hover, a:focus {color:white;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions {padding: 0.25em 0.35em; margin: 1em 0.5em; border: 3px solid; border-radius: 10px; transition: 1s;}
 #layout-container #layout-menu #BotonesExtra .btnOpcions span.glyphicon {top: 4px; font-size: 1.2em;}
 
-/*************  Configuracion *************/
+!*************  Configuracion *************!
 
 #layout-container #modalConfiguracion .modal-header {}
 #layout-container #modalConfiguracion .modal-header .close {margin-top: 2px; font-size: 2em;}
@@ -70,7 +81,7 @@ body a:hover, a:focus {color:white;}
 #layout-container #modalConfiguracion .modal-footer .btnCommit,
 #layout-container #modalConfiguracion .modal-footer .btnSkip {border: 2px solid; transition: 1s;}
 
-/*************  Footer *************/
+!*************  Footer *************!
 
 #Footer {margin-top: 2em; padding: 1em;}
 #Footer .row {display: flex; align-items: center;}
@@ -80,7 +91,7 @@ body a:hover, a:focus {color:white;}
 #Footer .row .col-sm-4 h5 {margin: 0;}
 #Footer .row .col-sm-4 a {color: #49abff;}
 
-/*************  Cookies *************/
+!*************  Cookies *************!
 #cookiesPopUp #popUp{ background-color:#13658e87; height:auto; position: fixed; bottom:0%; width:100%; color: white; text-align: center; visibility: hidden; z-index:2;}
 #cookiesPopUp #popUp .btnCookie{ background-color: transparent; margin-left: 0.5em; color: white; padding: 0.5em 2em 0.5em 2em; display: inline-block; margin-top: 0.5em; margin-bottom: 0.5em; cursor: pointer; border-radius: 0.2em; border: 2px solid; text-transform: uppercase;}
 #cookiesPopUp #popUp .btnCookie:hover{ background-color: #ffffffde; border-color: #ffffffde; color: black; transition:0.6s;}
@@ -91,7 +102,7 @@ body a:hover, a:focus {color:white;}
     #popUp{height: 120px;}
 }
 
-/*************  Spinner *************/
+!*************  Spinner *************!
 .spinner {
     background: url(../images/imgWeb/spinner.gif) 50% 50% no-repeat #B1B4B64d;
     padding: 0em;
@@ -108,21 +119,21 @@ body a:hover, a:focus {color:white;}
     height: 100%;;
 }
 
-/*************  Responsive *************/
+!*************  Responsive *************!
 
 @media only screen and (min-width: 320px) and (max-width: 359px){
-    /*************  Banner *************/
+    !*************  Banner *************!
     #layout-container #grailsLogo #BannerI18n .borderI18n {font-size: 0.65em !important;}
     #layout-container #grailsLogo #BannerLogo h1 {font-size: 1.35em !important;}
 }
 
 @media only screen and (min-width: 360px) and (max-width: 399px){
-    /*************  Banner *************/
+    !*************  Banner *************!
     #layout-container #grailsLogo #BannerI18n .borderI18n {font-size: 0.85em !important;}
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px){
-    /*************  Banner *************/
+    !*************  Banner *************!
     #layout-container #grailsLogo {border-bottom: 8px solid;}
     #layout-container #grailsLogo #BannerLogo {margin: 0.5em 0 0.5em 0;}
     #layout-container #grailsLogo #BannerLogo h1 {font-size: 1.5em;}
@@ -132,7 +143,7 @@ body a:hover, a:focus {color:white;}
     #layout-container #grailsLogo #BannerI18n {padding: 0.5em 0; margin: 0.5em 0 0.5em 0;}
     #layout-container #grailsLogo #BannerI18n .borderI18n {font-size: 1.15em;}
 
-    /*************  Barra de menu *************/
+    !*************  Barra de menu *************!
     #layout-container #layout-menu {padding-right: 0;}
     #layout-container #layout-menu #BotonesExtra {align-items: stretch; flex-direction: column;}
     #layout-container #layout-menu #BotonesExtra .btnExtra {margin: 0.5em 0.5em;}
@@ -144,7 +155,7 @@ body a:hover, a:focus {color:white;}
     #layout-container #layout-menu .navbar-header .navbar-toggle {margin: 0; padding: 0; }
     #layout-container #layout-menu .navbar-collapse {box-shadow: none; border: none;}
 
-    /*************  Footer *************/
+    !*************  Footer *************!
     #Footer .row {display: contents;}
     #Footer .row div {margin-bottom: 2em; text-align: center;}
     #Footer .row .imgLogo #imgLogoFooter {width: 100%;}
@@ -156,15 +167,15 @@ body a:hover, a:focus {color:white;}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    /*************  Banner *************/
+    !*************  Banner *************!
     #layout-container #grailsLogo #BannerLogo h1 {font-size: 2.25em;}
     #layout-container #grailsLogo #BannerLogo #LogoLayoutMain {width: 21%;}
 
-    /*************  Barra de menu *************/
+    !*************  Barra de menu *************!
     #layout-container #layout-menu #BotonesColeccion .btn, #layout-container #layout-menu #BotonesExtra .btn {font-size: 0.75em;}
     #layout-container .menu ul .btn {font-size: 0.75em !important;}
 
-    /*************  Footer *************/
+    !*************  Footer *************!
     #Footer .row .textCentral .subTitle {font-size: 1em;}
     #Footer .row .textCentral span,
     #Footer .row .textCentral a {font-size: 0.95em;}
@@ -174,10 +185,11 @@ body a:hover, a:focus {color:white;}
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    /*************  Banner *************/
+    !*************  Banner *************!
     #layout-container #grailsLogo #BannerLogo #LogoLayoutMain {width: 16.5% !important;}
 
-    /*************  Barra de menu *************/
+    !*************  Barra de menu *************!
     #layout-container #layout-menu #BotonesColeccion .btn, #layout-container #layout-menu #BotonesExtra .btn {font-size: 1.05em;}
 
 }
+*/
