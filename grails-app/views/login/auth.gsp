@@ -8,7 +8,7 @@
 <body>
 
 <div id='login' class="container">
-	<div class="">
+	<div class="container-login">
 
 		<div class="form-group">
 			<h2 class="text-center titleLogin">
@@ -22,7 +22,7 @@
 			</div>
 		</g:if>
 
-		<form action="${postUrl}" method="POST" id="loginForm" class="form-horizontal loginBox" autocomplete="off">
+		<form action="${postUrl}" method="POST" id="loginForm" class="form-horizontal" autocomplete="off">
 
 			<div class="form-group">
 				<label for="username" class="col-sm-4 control-label">
@@ -46,7 +46,7 @@
 				<div class="col-sm-offset-4 col-sm-7">
 					<div class="checkbox text-left">
 						<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' checked/>
-						<label class="remember_me">
+						<label class="remember_me" for="remember_me">
 							<g:message code="springSecurity.login.remember.me.label"/>
 						</label>
 					</div>
@@ -54,8 +54,8 @@
 			</div>
 
 			<div class="form-group">
-				<div class="col-sm-offset-4 col-sm-7 text-left buttons">
-					<input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}' class="btn btnLogin"/>
+				<div class="col-sm-offset-4 col-sm-7">
+					<input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}' class="button large"/>
 				</div>
 			</div>
 
