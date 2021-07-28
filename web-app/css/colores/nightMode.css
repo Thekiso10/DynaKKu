@@ -297,9 +297,16 @@ body,
 /*** Nueva versión colores ***/
 
 /* Tag basicos */
+/** Titles **/
+body h1, body h2, body h3, body h4, body h5 {color: #fff;}
+/** Cuerpo **/
+body label, body p {color: #fff;}
+/** Link **/
 body a {color: #fff;}
 body a:hover {border-bottom-color: #337ab7; color: #337ab7 !important; }
+/** checkbox **/
+body input[type="checkbox"]:checked + label:before, input[type="radio"]:checked + label:before {background: #4F6D7A; border-color: #4F6D7A; color: #ffffff;}
 
-/*!************* HEADER ***************!*/
+/***    HEADER    ***/
  body, html {background-color: #15202B !important;}
  body #header {border-bottom: solid 5px #13658e;}

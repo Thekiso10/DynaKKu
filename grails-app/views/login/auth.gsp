@@ -45,8 +45,8 @@
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-7">
 					<div class="checkbox text-left">
+						<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' checked/>
 						<label class="remember_me">
-							<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me'/>
 							<g:message code="springSecurity.login.remember.me.label"/>
 						</label>
 					</div>

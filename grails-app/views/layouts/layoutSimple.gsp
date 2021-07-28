@@ -20,23 +20,22 @@
                 <div class="inner">
                     %{--	Header Template	--}%
                     <g:render  template="/layouts/templates/header"/>
+
+                    %{--    Cuerpo de las vistas    --}%
+                    <g:layoutBody/>
+
+                    <g:render template="/layouts/templates/footer"/>
+
+                    <div id="cookiesPopUp">
+                        <g:render template="/layouts/templates/popUpCookies" ></g:render>
+                    </div>
                 </div>
             </div>
 
-            %{--    Cuerpo de las vistas    --}%
-            <g:layoutBody/>
             %{--    Spinner    --}%
             <div id="spinner" class="spinner" style="display:none;">
                 <img id="img-spinner" src="${resource(dir: 'images/imgWeb', file: 'spinner.gif')}" alt="Loading"/>
             </div>
-
-            %{--
-            <g:render template="/layouts/templates/footer"/>
-
-            <div id="cookiesPopUp">
-                <g:render template="/layouts/templates/popUpCookies" ></g:render>
-            </div>
-            --}%
 
         </div>
 
