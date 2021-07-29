@@ -1,6 +1,6 @@
 @import url(template.css);
 
-/*Definir la fuente*/
+/******* Definir la fuente *******/
 @font-face {font-family: 'Open Sans'; src: url('../fonts/opensans-light-webfont.woff2') format('woff2');}
 @font-face {font-family: 'Open Sans Regular'; src: url('../fonts/opensans-regular-webfont.woff2') format('woff2');}
 @font-face {font-family: 'Open Sans Semibold'; src: url('../fonts/opensans-semibold-webfont.woff2') format('woff2');}
@@ -8,14 +8,35 @@
 @font-face {font-family: 'Open Sans Extrabold'; src: url('../fonts/opensans-extrabold-webfont.woff2') format('woff2');}
 body, body input, body a, body button, body p, body span, body h1, body h2, body h3, body h4, body h5 {font-family: 'Open Sans', sans-serif;}
 body a:hover, a:focus {color:white;}
-/*Clases simples*/
+
+/******* Clases simples *******/
 .padding-left-0 {padding-left: 0 !important;}
+.padding-top-1  {padding-top: 1em !important;}
 
 /************* HEADER ***************/
-
 #header .logo img {width: 50px; height: 50px;}
 #header .icons a {border: none;}
 #header .icons a .label {font-size: 1.50em;}
+
+/*!*************  Footer *************!*/
+#Footer {padding: 1em;}
+#Footer .row {display: flex; align-items: center;}
+#Footer .row .col-sm-4 .subTitle {margin-bottom: 0.25em;}
+#Footer .row .col-sm-4 .boldText {font-family: 'Open Sans Semibold', sans-serif;}
+#Footer .row .col-sm-4 h4,
+#Footer .row .col-sm-4 h5 {margin: 0;}
+/* Hacer que el footer este siempre abajo */
+html, body {height: 100%;}
+body #main {display: flex; flex-direction: column;}
+.inner {flex: 1 0 auto;}
+#footer {flex-shrink: 0;}
+
+/*!*************  Cookies *************!*/
+#cookiesPopUp #popUp { background-color:#13658e87; height:auto; position: fixed; bottom:0%; width:100%; color: white; text-align: center; visibility: hidden; z-index:2;}
+#cookiesPopUp #popUp .btnCookie{ background-color: transparent; margin-left: 0.5em; color: white; padding: 0.5em 2em 0.5em 2em; display: inline-block; margin-top: 0.5em; margin-bottom: 0.5em; cursor: pointer; border-radius: 0.2em; border: 2px solid; text-transform: uppercase;}
+#cookiesPopUp #popUp .btnCookie:hover{ background-color: #ffffffde; border-color: #ffffffde; color: black; transition:0.6s;}
+#cookiesPopUp #popUp .textCookies{padding-top:0.5em; margin-top: 10px;}
+#cookiesPopUp #popUp .btnCookieRow{margin-top:1em; padding-bottom: 1em;}
 
 /*
 #layout-container {padding: 0 1em;}
@@ -80,23 +101,6 @@ body a:hover, a:focus {color:white;}
 #layout-container #modalConfiguracion .modal-footer .btn {padding: 0.5em 1.25em; font-weight: 600; font-size: 1.1em}
 #layout-container #modalConfiguracion .modal-footer .btnCommit,
 #layout-container #modalConfiguracion .modal-footer .btnSkip {border: 2px solid; transition: 1s;}
-
-!*************  Footer *************!
-
-#Footer {margin-top: 2em; padding: 1em;}
-#Footer .row {display: flex; align-items: center;}
-#Footer .row .col-sm-4 .subTitle {margin-bottom: 0.25em;}
-#Footer .row .col-sm-4 .boldText {font-family: 'Open Sans Semibold', sans-serif;}
-#Footer .row .col-sm-4 h4,
-#Footer .row .col-sm-4 h5 {margin: 0;}
-#Footer .row .col-sm-4 a {color: #49abff;}
-
-!*************  Cookies *************!
-#cookiesPopUp #popUp{ background-color:#13658e87; height:auto; position: fixed; bottom:0%; width:100%; color: white; text-align: center; visibility: hidden; z-index:2;}
-#cookiesPopUp #popUp .btnCookie{ background-color: transparent; margin-left: 0.5em; color: white; padding: 0.5em 2em 0.5em 2em; display: inline-block; margin-top: 0.5em; margin-bottom: 0.5em; cursor: pointer; border-radius: 0.2em; border: 2px solid; text-transform: uppercase;}
-#cookiesPopUp #popUp .btnCookie:hover{ background-color: #ffffffde; border-color: #ffffffde; color: black; transition:0.6s;}
-#cookiesPopUp #popUp .textCookies{padding-top:0.5em; margin-top: 10px;}
-#cookiesPopUp #popUp .btnCookieRow{margin-top:1em; padding-bottom: 1em;}
 
 @media screen and (max-width: 900px) {
     #popUp{height: 120px;}

@@ -320,4 +320,5 @@ body, html {background-color: #15202B !important;}
 body #header {border-bottom: solid 5px #13658e;}
 
 /*    FOOTER   */
-body, #Footer {background-color: #040709; color: #d9dfe6;}
+body #Footer {background-color: #040709; color: #d9dfe6;}
+body #Footer .row .col-sm-4 a {color: #49abff;}

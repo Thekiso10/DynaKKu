@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" class="no-js">
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,17 +14,16 @@
         <asset:javascript src="application.js"/>
         <g:layoutHead/>
     </head>
+
     <body class="">
         <div id="wrapper">
-
             <div id="main">
+
                 <div class="inner">
                     %{--	Header Template	--}%
                     <g:render  template="/layouts/templates/header"/>
-
                     %{--    Cuerpo de las vistas    --}%
                     <g:layoutBody/>
-
                 </div>
 
                 <g:render template="/layouts/templates/footer"/>
@@ -33,15 +33,13 @@
                 </div>
 
             </div>
-
             %{--    Spinner    --}%
             <div id="spinner" class="spinner" style="display:none;">
                 <img id="img-spinner" src="${resource(dir: 'images/imgWeb', file: 'spinner.gif')}" alt="Loading"/>
             </div>
-
         </div>
-
         <%-- Hacer la importacion de archivos --%>
         <g:javascript src="CookiesService.js"/>
     </body>
+
 </html>
