@@ -318,3 +318,6 @@ body input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]
 /*    HEADER    */
 body, html {background-color: #15202B !important;}
 body #header {border-bottom: solid 5px #13658e;}
+
+/*    FOOTER   */
+body, #Footer {background-color: #040709; color: #d9dfe6;}

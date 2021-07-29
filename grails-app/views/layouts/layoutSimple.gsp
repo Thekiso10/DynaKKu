@@ -24,12 +24,14 @@
                     %{--    Cuerpo de las vistas    --}%
                     <g:layoutBody/>
 
-                    <g:render template="/layouts/templates/footer"/>
-
-                    <div id="cookiesPopUp">
-                        <g:render template="/layouts/templates/popUpCookies" ></g:render>
-                    </div>
                 </div>
+
+                <g:render template="/layouts/templates/footer"/>
+
+                <div id="cookiesPopUp">
+                    <g:render template="/layouts/templates/popUpCookies" ></g:render>
+                </div>
+
             </div>
 
             %{--    Spinner    --}%
