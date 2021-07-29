@@ -1,3 +1,9 @@
 #login .container-login {margin-top: 5em; margin-bottom: 5em;}
 #login .flash {margin-bottom: 1em;}
 #login .form-group .titleLogin {padding-bottom: 0.25em; margin-bottom: 0.75em;}
+
+/* Hacer que el footer este siempre abajo */
+html, body {height: 100%;}
+body #main {display: flex; flex-direction: column;}
+.inner {flex: 1 0 auto;}
+#footer {flex-shrink: 0;}

@@ -34,7 +34,15 @@
 				</div>
 			</div>
 
-			<g:render  template="/layouts/templates/naving"/>
+			<div id="sidebar">
+				<div class="inner">
+					<g:render  template="/layouts/templates/naving"/>
+				</div>
+			</div>
+
+			<g:link class="btn btnOpcions" controller="logout">
+				<span class="glyphicon glyphicon-log-out"></span>
+			</g:link>
 			
 			<g:layoutBody/>
 
@@ -60,5 +68,11 @@
 		<g:javascript src="layoutMain.js"/>
 		<g:javascript src="spinner.js"/>
 		<g:javascript src="CookiesService.js"/>
+		<%-- JS del template --%>
+		<g:javascript src="template/breakpoints.min.js"/>
+		<g:javascript src="template/browser.min.js"/>
+		<g:javascript src="template/main.js"/>
+		<g:javascript src="template/util.js"/>
+
 	</body>
 </html>
