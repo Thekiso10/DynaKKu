@@ -31,6 +31,8 @@
 					%{--	Header Template	--}%
 					<g:render  template="/layouts/templates/header"/>
 
+					<g:layoutBody/>
+
 				</div>
 			</div>
 
@@ -39,12 +41,6 @@
 					<g:render  template="/layouts/templates/naving"/>
 				</div>
 			</div>
-
-			<g:link class="btn btnOpcions" controller="logout">
-				<span class="glyphicon glyphicon-log-out"></span>
-			</g:link>
-			
-			<g:layoutBody/>
 
 			<sec:ifLoggedIn>
 				<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,7 +61,6 @@
 		</div>
 
 		<%-- Hacer la importacion de archivos --%>
-		<g:javascript src="layoutMain.js"/>
 		<g:javascript src="spinner.js"/>
 		<g:javascript src="CookiesService.js"/>
 		<%-- JS del template --%>

@@ -1,4 +1,5 @@
-/*!**** Layout ****!
+/*
+!**** Layout ****!
 !************* Por defecto ***************!
 #layout-container input {background-color: #0e2033; color:#5aacff; border-color: #4380A3;}
 #layout-container h2 {color: #d8d8d8;}
@@ -27,16 +28,16 @@ body,
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu {background-color: #2A343E; color:#2990C4; border-color:#2990C4}
 #layout-container #layout-menu #BotonesColeccion .dropdown .btnMenu:HOVER {background-color: #101A26c7; border-color: #0e8bd8; color:#fff;}
 
-!*************  Footer *************!
+*************  Footer *************
 #Footer {background-color: #040709; color: #d9dfe6;}
 
-!*************  Cookies *************!
+*************  Cookies *************
 #cookiesPopUp #popUp{ background-color:#13658e87; color: white;}
 #cookiesPopUp #popUp .btnCookie{ background-color: transparent; color: white; border-color: white;}
 #cookiesPopUp #popUp .btnCookie:hover{ background-color: #ffffffde; border-color: #ffffffde; color: black;}
 #cookiesAccept:HOVER :VISITED{background-color: #21b6ff; color: white;}
 
-!*************  Configuracion *************!
+*************  Configuracion *************
 
 #layout-container #modalConfiguracion .modal-header {background-color: #1B5C7D; color: #E9EAEB; border-bottom: 3px solid #10384c;}
 #layout-container #modalConfiguracion .modal-header .close {color: #E9EAEB;}
@@ -316,8 +317,17 @@ body input[type="submit"], input[type="reset"], input[type="button"], button, .b
 body input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, button:hover, .button:hover {background-color: #1699dc0d;}
 
 /*    HEADER    */
-body, html {background-color: #15202B !important;}
+body, html {background-color: #223344 !important;}
 body #header {border-bottom: solid 5px #13658e;}
+
+/*    Sidebar   */
+body #sidebar {background-color: #151E28;}
+body header.major > :last-child {border-color: #13658e;}
+
+body #menu ul {color: #2990C4;}
+body #menu > ul > li {border-color: #154A65;}
+body #menu ul a, #menu ul span, body #menu ul a.opener:before, body #menu ul span.opener:before {color: #56AFDC}
+body #menu ul a:hover, #menu ul span:hover, body #menu ul a.opener:hover:before, body #menu ul span.opener:hover:before {color: #99CFEA;}
 
 /*    FOOTER   */
 body #Footer {background-color: #040709; color: #d9dfe6;}
