@@ -22,6 +22,13 @@
 					</ul>
 
 					<g:if test="${valorExportaListaConf}">
+
+						<ul class="navbar-nav">
+							<li><g:link class="btn btnLlist" controller="transferenciaListado" action="ExportarPdfManga">
+								<g:message code="modulos.listadoPDF.title" />
+							</g:link></li>
+						</ul>
+
 						<ul class="navbar-nav">
 							<li class="dropdown">
 								<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -33,18 +40,18 @@
 									<li>
 										<g:if test="${mangasInstanceList?.size > 0}">
 											<g:link controller="transferenciaListado" action="ExportMangas" params="[registrado: mangasRegistrados]" class="btn btnMenu">
-												<g:message code="modulos.exportacionListado.export.label" args="${message(code: 'layoutMenu.botonesColeccion.mangas')}"/>
+												<g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.mangas')]}"/>
 											</g:link>
 										</g:if>
 										<g:else>
 											<g:link class="btn btnMenu" disabled="disabled">
-												<g:message code="modulos.exportacionListado.export.label" args="${message(code: 'layoutMenu.botonesColeccion.mangas')}"/>
+												<g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.mangas')]}"/>
 											</g:link>
 										</g:else>
 									</li>
 									<li>
 										<button class="btn btnMenu" data-toggle="modal" data-target="#ImportMangasModal">
-											<g:message code="modulos.exportacionListado.import.label" args="${message(code: 'layoutMenu.botonesColeccion.mangas')}"/>
+											<g:message code="modulos.exportacionListado.import.label" args="${[message(code: 'layoutMenu.botonesColeccion.mangas')]}"/>
 										</button>
 									</li>
 								</ul>

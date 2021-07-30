@@ -179,7 +179,7 @@ dynaKKu.estadisticas.enable = true //Activar el modulo de Estadisticas
 /*==================================================================*/
 /* 		              Transferencia Listado                			*/
 /*==================================================================*/
-dynaKKu.exportacionListado.enable = true //Activar el modulo de Estadisticas
+dynaKKu.exportacionListado.enable = true //Activar el modulo de Tranferencia de Listados
 
 /*==================================================================*/
 /* 					   Cargar Config Externa       					*/

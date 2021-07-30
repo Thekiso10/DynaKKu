@@ -24,32 +24,36 @@
 								   args="[entityName]" />
 					</g:link></li>
 				</ul>
-				<ul class="navbar-nav">
-					<li class="dropdown">
-						<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-						<span class="glyphicon glyphicon-chevron-down"></span>
-						<g:message code="autores.list.manage.label" /></a>
-						<ul class="dropdown-menu styleDropdown">
-							<li>
-								<g:if test="${autorInstanceList?.size > 0}">
-									<g:link controller="transferenciaListado" action="ExportAutores" class="btn btnMenu">
-										<g:message code="modulos.exportacionListado.export.label" args="${message(code: 'layoutMenu.botonesColeccion.autores')}"/>
-									</g:link>
-								</g:if>
-								<g:else>
-									<g:link class="btn btnMenu" disabled="disabled">
-										<g:message code="modulos.exportacionListado.export.label" args="${message(code: 'layoutMenu.botonesColeccion.autores')}"/>
-									</g:link>
-								</g:else>
-							</li>
-							<li>
-								<button class="btn btnMenu" data-toggle="modal" data-target="#ImportAutoresModal">
-									<g:message code="modulos.exportacionListado.import.label" args="${message(code: 'layoutMenu.botonesColeccion.autores')}"/>
-								</button>
-							</li>
-						</ul>
-					</li>
-				</ul>
+
+				<g:if test="${valorExportaListaConf}">
+					<ul class="navbar-nav">
+						<li class="dropdown">
+							<a href="#" class="btn btnExtra" onclick="modificarIconoMenu(this)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<span class="glyphicon glyphicon-chevron-down"></span>
+							<g:message code="autores.list.manage.label" /></a>
+							<ul class="dropdown-menu styleDropdown">
+								<li>
+									<g:if test="${autorInstanceList?.size > 0}">
+										<g:link controller="transferenciaListado" action="ExportAutores" class="btn btnMenu">
+											<g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>
+										</g:link>
+									</g:if>
+									<g:else>
+										<g:link class="btn btnMenu" disabled="disabled">
+											<g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>
+										</g:link>
+									</g:else>
+								</li>
+								<li>
+									<button class="btn btnMenu" data-toggle="modal" data-target="#ImportAutoresModal">
+										<g:message code="modulos.exportacionListado.import.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>
+									</button>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</g:if>
+
 				<ul class="navbar-nav navbar-right">
 					<li>
 						<a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()">
