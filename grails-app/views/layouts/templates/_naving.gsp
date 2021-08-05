@@ -67,18 +67,20 @@
 
     <ul>
         <li>
+            <g:link controller="usuario" action="index">
+                <g:message code="modulos.usuarios.portada.title"/>
+            </g:link>
+        </li>
+
+        <li>
             <a href="#" class="" id="showMe" data-toggle="modal" data-target="#modalConfiguracion">
-                <span class="icon solid fa-user-cog">
-                    <g:message code="layoutMenu.configuracion.titulo.usuario"/>
-                </span>
+                <g:message code="layoutMenu.configuracion.titulo.usuario"/>
             </a>
         </li>
 
         <li>
             <g:link controller="logout">
-                <span class="icon solid fa-sign-out-alt">
-                    <g:message code="layoutMenu.menu.user.signOut.label"/>
-                </span>
+                <g:message code="layoutMenu.menu.user.signOut.label"/>
             </g:link>
         </li>
     </ul>
