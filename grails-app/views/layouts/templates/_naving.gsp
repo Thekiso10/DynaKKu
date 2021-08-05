@@ -36,6 +36,14 @@
             </ul>
         </li>
 
+        <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.estadisticas.enable").valorModulo}">
+            <li>
+                <g:link action="general" controller="Estadisticas">
+                    <g:message code="layoutMenu.botonesColeccion.funciones.stats"/>
+                </g:link>
+            </li>
+        </g:if>
+
         <li>
             <span class="opener"><g:message code="layoutMenu.botonesColeccion.funciones"/></span>
             <ul>
@@ -43,27 +51,35 @@
                     <li><g:link action="panel" controller="gestorModulos"><g:message code="modulos.gestorModulos.title"/></g:link></li>
                 </sec:ifAnyGranted>
 
-                <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.estadisticas.enable").valorModulo}">
-                    <li><g:link action="general" controller="Estadisticas"><g:message code="layoutMenu.botonesColeccion.funciones.stats"/></g:link></li>
-                </g:if>
-
                 <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.historialActividad.enable").valorModulo}">
                     <li><g:link action="index" controller="historial"><g:message code="layoutMenu.botonesColeccion.funciones.historial"/></g:link></li>
                 </g:if>
             </ul>
         </li>
+    </ul>
 
+    <!-- Usuario -->
+    <header class="major padding-top-3">
+        <h2>
+            <g:message code="layoutMenu.menu.user.label"/>
+        </h2>
+    </header>
 
+    <ul>
         <li>
-            <g:link class="" controller="logout">
-                <span class="glyphicon glyphicon-log-out"></span>
-            </g:link>
+            <a href="#" class="" id="showMe" data-toggle="modal" data-target="#modalConfiguracion">
+                <span class="icon solid fa-user-cog">
+                    <g:message code="layoutMenu.configuracion.titulo.usuario"/>
+                </span>
+            </a>
         </li>
 
         <li>
-            <a href="#" class="" id="showMe" data-toggle="modal" data-target="#modalConfiguracion">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
+            <g:link controller="logout">
+                <span class="icon solid fa-sign-out-alt">
+                    <g:message code="layoutMenu.menu.user.signOut.label"/>
+                </span>
+            </g:link>
         </li>
     </ul>
 
