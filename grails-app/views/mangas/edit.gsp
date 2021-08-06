@@ -4,7 +4,6 @@
 	<head>
 		<meta name="layout" content="layoutMain">
 		<g:set var="entityName" value="${message(code: 'layoutMenu.botonesColeccion.manga', default: 'Mangas')}" />
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mangas.css')}" type="text/css">
 		<title><g:message code="default.edit.label" args="${[entityName, "${mangasInstance.nombreManga}"]}" /></title>
 	</head>

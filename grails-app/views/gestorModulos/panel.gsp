@@ -2,7 +2,6 @@
 <html>
   <head>
       <meta name="layout" content="layoutMain"/>
-      <link rel="stylesheet" href="${resource(dir: 'css', file: 'colecciones.css')}" type="text/css">
       <link rel="stylesheet" href="${resource(dir: 'css', file: 'Modulos/GestorModulos/panel.css')}" type="text/css">
       <title><g:message code="modulos.gestorModulos.title"/></title>
   </head>
