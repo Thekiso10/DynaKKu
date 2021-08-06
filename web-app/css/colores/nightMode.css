@@ -306,9 +306,8 @@ body label, body p {color: #fff;}
 body a {color: #fff;}
 body a:hover {border-bottom-color: #337ab7; color: #337ab7 !important; }
 /** Inputs **/
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus,
-input[type="search"]:focus, input[type="url"]:focus, select:focus, textarea:focus {border-color: #24557F; box-shadow: 0 0 0 1px #24557F;}
-
+body input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus,
+body input[type="search"]:focus, input[type="url"]:focus, select:focus, textarea:focus {border-color: #24557F; box-shadow: 0 0 0 1px #24557F;}
 body input[type="checkbox"]:checked + label:before, input[type="radio"]:checked + label:before {background: #5F9FD3; border-color: #5F9FD3; color: #ffffff;}
 body input[type="checkbox"]:focus + label:before, input[type="radio"]:focus + label:before {border-color: #24557F; box-shadow: 0 0 0 1px #24557F;}
 
@@ -328,6 +327,11 @@ body #menu ul {color: #2990C4;}
 body #menu > ul > li {border-color: #154A65;}
 body #menu ul a, #menu ul span, body #menu ul a.opener:before, body #menu ul span.opener:before {color: #56AFDC}
 body #menu ul a:hover, #menu ul span:hover, body #menu ul a.opener:hover:before, body #menu ul span.opener:hover:before {color: #99CFEA;}
+
+/* Forms */
+body .form .imgAutorInfo {color: #d8d8d8;}
+body .form label {color: #d9dfe6;}
+body .form input, body .form select {background-color: #10171E; border-color: #272829; color: #2990C4 !important;}
 
 /*    FOOTER   */
 body #Footer {background-color: #040709; color: #d9dfe6;}

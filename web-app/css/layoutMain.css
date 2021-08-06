@@ -19,6 +19,9 @@ body a:hover, a:focus {color:white;}
 #header .icons a {border: none;}
 #header .icons a .label {font-size: 1.25em;}
 
+/************* Forms ***************/
+section .buttonForms {text-align: center; padding-top: 2em;}
+
 /*!*************  Footer *************!*/
 #Footer {padding: 1em;}
 #Footer .row {display: flex; align-items: center;}
