@@ -54,10 +54,7 @@ class AutorController {
 			flash.warn = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.autores")])
 		}
 
-		//Validamos si podemos mostrar o no la exportación de listas
-		def valorExportaListaConf = gestorModulosService.validatePermission("dynaKKu.exportacionListado.enable")
-
-        respond autorInstanceList, model:[autorInstanceCount: autorPaginacion, valorExportaListaConf: valorExportaListaConf]
+        respond autorInstanceList, model:[autorInstanceCount: autorPaginacion]
     }
 
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])

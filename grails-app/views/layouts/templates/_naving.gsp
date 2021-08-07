@@ -1,4 +1,9 @@
 <%@ page import="Modulos.Gestor_Modulos.GestorModulos"%>
+<%@ page import="dynaKKu.AutorService" %>
+
+<%
+    def autorService = grailsApplication.classLoader.loadClass('dynaKKu.AutorService').newInstance()
+%>
 
 <nav id="menu" class="">
     <!-- Menu -->
@@ -9,6 +14,7 @@
     </header>
 
     <ul>
+        %{-- Mangas --}%
         <li>
             <span class="opener"><g:message code="layoutMenu.botonesColeccion.mangas"/></span>
             <ul>
@@ -24,6 +30,7 @@
             </ul>
         </li>
 
+        %{-- Autores --}%
         <li>
             <span class="opener"><g:message code="layoutMenu.botonesColeccion.autores"/></span>
             <ul>
@@ -33,9 +40,35 @@
                 <li>
                     <g:link action="index" controller="Autor"><g:message code="layoutMenu.botonesColeccion.autores.lista"/></g:link>
                 </li>
+
+                <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.exportacionListado.enable").valorModulo}">
+                    <li>
+                        <g:link action=""><g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.autores', default: 'Autor')}"]' /></g:link>
+                    </li>
+
+                    <li>
+                        <g:if test="${autorService.getSizeAutorWithBorrados() > 0}">
+                            <g:link controller="transferenciaListado" action="ExportAutores">
+                                <g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>
+                            </g:link>
+                        </g:if>
+                        <g:else>
+                            <g:link disabled="disabled">
+                                <g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>
+                            </g:link>
+                        </g:else>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#ImportAutoresModal">
+                            <g:message code="modulos.exportacionListado.import.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>
+                        </a>
+                    </li>
+                </g:if>
+
             </ul>
         </li>
 
+        %{-- Estadisticas --}%
         <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.estadisticas.enable").valorModulo}">
             <li>
                 <g:link action="general" controller="Estadisticas">
@@ -44,6 +77,7 @@
             </li>
         </g:if>
 
+        %{-- Modulos --}%
         <li>
             <span class="opener"><g:message code="layoutMenu.botonesColeccion.funciones"/></span>
             <ul>
@@ -86,3 +120,8 @@
     </ul>
 
 </nav>
+
+%{-- Modales --}%
+<div id="ImportAutoresModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportAutoresModal" aria-hidden="true">
+    <g:render  template="/autor/templates/modalImportAutores"/>
+</div>

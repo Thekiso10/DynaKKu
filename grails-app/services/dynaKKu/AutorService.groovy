@@ -83,6 +83,10 @@ class AutorService {
 		return finalList
 	}
 
+	def getSizeAutorWithBorrados(){
+		return Autor.findAllByBorrado(false).size()
+	}
+
 	/* Funciones internas */
 
 	private comprobarLongitutNombre(def nombre, def apellido) {
