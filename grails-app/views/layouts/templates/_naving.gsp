@@ -5,6 +5,11 @@
     def autorService = grailsApplication.classLoader.loadClass('dynaKKu.AutorService').newInstance()
 %>
 
+%{-- Modales --}%
+<div id="ImportAutoresModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportAutoresModal" aria-hidden="true">
+    <g:render  template="/autor/templates/modalImportAutores"/>
+</div>
+
 <nav id="menu" class="">
     <!-- Menu -->
     <header class="major">
@@ -120,8 +125,3 @@
     </ul>
 
 </nav>
-
-%{-- Modales --}%
-<div id="ImportAutoresModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportAutoresModal" aria-hidden="true">
-    <g:render  template="/autor/templates/modalImportAutores"/>
-</div>
