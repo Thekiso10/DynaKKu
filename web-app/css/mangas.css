@@ -89,7 +89,7 @@
 #layout-container #ver-manga #panel-ver-mangas .last-box {margin-bottom: 2em;}
 */
 
-#formCreateMagas .gtr-uniform .button-genero-manga {display: flex; align-items: flex-end;}
-#formCreateMagas .gtr-uniform #boxesGeneros {display: flex; padding: 1em 2em 0em 2em;}
-#formCreateMagas .gtr-uniform #boxesGeneros .boxGenero {display: flex; align-items: center; padding: 0.25em 1em; border: 2px solid; border-radius: 5px; font-size: 17px; margin-right: 1em;}
-#formCreateMagas .gtr-uniform #boxesGeneros .close {margin-left: 0.5em; box-shadow: none;}
+.gtr-uniform .button-genero-manga {display: flex; align-items: flex-end;}
+.gtr-uniform #boxesGeneros {display: flex; padding: 1em 2em 0em 2em;}
+.gtr-uniform #boxesGeneros .boxGenero {display: flex; align-items: center; padding: 0.25em 1em; border: 2px solid; border-radius: 5px; font-size: 17px; margin-right: 1em;}
+.gtr-uniform #boxesGeneros .close {margin-left: 0.5em; box-shadow: none;}

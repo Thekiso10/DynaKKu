@@ -361,5 +361,5 @@ body #Footer .row .col-sm-4 a {color: #49abff;}
 #autor-show article .content p {border-bottom-color: #fff; color: #68B7DF;}
 
 /*   Mangas   */
-#formCreateMagas .gtr-uniform #boxesGeneros div.boxGenero {border-color: #3C9AC9; color: #fff;}
-#formCreateMagas .gtr-uniform #boxesGeneros .close {color: #fff;}
+.gtr-uniform #boxesGeneros div.boxGenero {border-color: #3C9AC9; color: #fff;}
+.gtr-uniform #boxesGeneros .close {color: #fff;}
