@@ -23,10 +23,7 @@
 			</g:if>
 
 			<%-- Filtro --%>
-			<h3 class="text-center">
-				<g:message code="default.filter.label" args="[entityName]" />
-			</h3>
-			<g:form action="index" name="filterAutor" class="box form">
+			<g:form action="index" name="filterAutor" class="form">
 				<div id="filtroAutor" class="row gtr-uniform">
 					<div class="col-3 col-12-xsmall">
 						<g:textField name="nombre" value="${params?.nombre}"

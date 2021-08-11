@@ -21,8 +21,7 @@ body a:hover, a:focus {color:white;}
 
 /************* Forms ***************/
 section .buttonForms {text-align: center; padding-top: 2em;}
-
-
+section form.form {padding: 1em; margin: 1em 0 1em 0;}
 /************* List ***************/
 section table a {border: 0;}
 
