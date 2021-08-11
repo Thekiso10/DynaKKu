@@ -48,9 +48,114 @@
 							<g:message code="default.button.show.all.label" default="Show All" />
 						</button>
 					</div>
-
 				</div>
 			</g:form>
+
+			<%-- Lista de Usuarios --%>
+			<div class="table-wrapper ${!autorInstanceList? 'hide':''}">
+				<table>
+					<thead>
+						<tr>
+							<g:sortableColumn scope="col" property="nombre"
+											  title="${message(code: 'autor.nombre.label', default: 'Nombre')}" />
+
+							<g:sortableColumn scope="col" property="apellido"
+											  title="${message(code: 'autor.apellido.label', default: 'Apellido')}" />
+
+							<g:sortableColumn scope="col" property="fechaNacimiento"
+											  title="${message(code: 'autor.fechaNacimento.label', default: 'Edad')}" />
+
+							<g:sortableColumn scope="col" property="nacionalidad"
+											  title="${message(code: 'autor.nacionalidad.label', default: 'nacionalidad')}" />
+
+							<g:sortableColumn scope="col" property="genero"
+											  title="${message(code: 'autor.genero.label', default: 'genero')}" />
+
+							<g:sortableColumn scope="col" property="difunto"
+											  title="${message(code: 'autor.difunto.label', default: 'Difunto')}" />
+
+							<g:sortableColumn scope="col" property="rutaImagen"
+											  title="${message(code: 'autor.imagen.label', default: 'Ruta Imagen')}" />
+							<%-- Este Th es solo para estetica --%>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<g:each in="${autorInstanceList}" status="i" var="autorInstance">
+							<tr>
+
+								<td>
+									<g:link action="show" id="${autorInstance.id}">
+										${fieldValue(bean: autorInstance, field: "nombre")}
+									</g:link>
+								</td>
+
+								<td>
+									<g:link action="show" id="${autorInstance.id}">
+										${fieldValue(bean: autorInstance, field: "apellido")}
+									</g:link>
+								</td>
+
+								<td>
+									<g:formatDate format="dd/MM/yyyy" date="${autorInstance.fechaNacimento}"/>
+								</td>
+
+								<td>
+									<g:country code="${autorInstance.nacionalidad}"/>
+								</td>
+
+								<td>
+									<g:if test="${autorInstance.genero == "Masculino"}">
+										<g:message code="autores.estado.masculino"/>
+									</g:if>
+									<g:else>
+										<g:message code="autores.estado.femenido"/>
+									</g:else>
+								</td>
+
+								<td>
+									<g:if test="${!autorInstance.difunto}">
+										<g:message code="autores.estado.vivo" default="Vivo" />
+									</g:if>
+									<g:else>
+										<g:message code="autores.estado.muerto" default="Muerto" />
+									</g:else>
+								</td>
+
+								<td>
+									<g:if test="${!autorInstance.rutaImagen}">
+										<g:message code="autor.rutaImagen.label.noFoto"
+												   default="No hay Foto" />
+									</g:if>
+									<g:else>
+										<g:message code="autor.rutaImagen.label.siFoto"
+												   default="Tiene Foto" />
+									</g:else>
+								</td>
+
+								<td>
+									<g:link class="button small" action="show" id="${autorInstance.id}">
+										<g:message code="default.list.show.label" args="[entityName]" />
+									</g:link>
+								</td>
+
+							</tr>
+						</g:each>
+					</tbody>
+				</table>
+			</div>
+
+			<g:if test="${flash.warn}">
+				<div class="flash warn iconoWarning media" role="status">
+					${flash.warn}
+				</div>
+			</g:if>
+
+			<div class="col-sm-12 paginacion menu ${autorInstanceCount <= 10 ? 'hidden':''}">
+				<div class="pagination row">
+					<g:paginate total="${autorInstanceCount ?: 0}" params="${params}" />
+				</div>
+			</div>
 
 		</section>
 	</body>

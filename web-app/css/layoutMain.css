@@ -22,6 +22,9 @@ body a:hover, a:focus {color:white;}
 /************* Forms ***************/
 section .buttonForms {text-align: center; padding-top: 2em;}
 
+/************* List ***************/
+section table a {border: 0;}
+
 /*!*************  Footer *************!*/
 #Footer {padding: 1em;}
 #Footer .row {display: flex; align-items: center;}
