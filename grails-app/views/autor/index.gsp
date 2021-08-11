@@ -151,8 +151,8 @@
 				</div>
 			</g:if>
 
-			<div class="col-sm-12 paginacion menu ${autorInstanceCount <= 10 ? 'hidden':''}">
-				<div class="pagination row">
+			<div class="col-sm-12 text-center ${autorInstanceCount <= 10 ? 'hidden':''}">
+				<div class="pagination">
 					<g:paginate total="${autorInstanceCount ?: 0}" params="${params}" />
 				</div>
 			</div>
