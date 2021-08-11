@@ -297,22 +297,24 @@ body,
 
 /*** Nueva versión colores ***/
 
-/* Tag basicos */
 /** Titles **/
 body h1, body h2, body h3, body h4, body h5 {color: #fff;}
+
 /** Cuerpo **/
 body label, body p {color: #fff;}
 body .box {border-color: #fff;}
+
 /** Link **/
 body a {color: #fff;}
 body a:hover {border-bottom-color: #337ab7; color: #1699dc; text-decoration: none;}
+
 /** Inputs **/
 body input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus,
 body input[type="search"]:focus, input[type="url"]:focus, select:focus, textarea:focus {border-color: #24557F; box-shadow: 0 0 0 1px #24557F;}
 body input[type="checkbox"]:checked + label:before, input[type="radio"]:checked + label:before {background: #5F9FD3; border-color: #5F9FD3; color: #ffffff;}
 body input[type="checkbox"]:focus + label:before, input[type="radio"]:focus + label:before {border-color: #24557F; box-shadow: 0 0 0 1px #24557F;}
 
-/* Buttons */
+/** Buttons **/
 body input[type="submit"], input[type="reset"], input[type="button"], body .prevLink, body .nextLink, body button, body .button, body .button{box-shadow: inset 0 0 0 2px #1699dc; color: #1699dc;}
 body input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, .prevLink:hover, .nextLink:hover, button:hover, .button:hover {background-color: #1699dc0d;}
 
@@ -354,3 +356,6 @@ body div.pagination span.currentStep:active {background-color: #1699dc;}
 /*    FOOTER   */
 body #Footer {background-color: #040709; color: #d9dfe6;}
 body #Footer .row .col-sm-4 a {color: #49abff;}
+
+/*   Autores   */
+#autor-show article .content p {border-bottom-color: #fff; color: #68B7DF;}
