@@ -302,6 +302,7 @@ body,
 body h1, body h2, body h3, body h4, body h5 {color: #fff;}
 /** Cuerpo **/
 body label, body p {color: #fff;}
+body .box {border-color: #fff;}
 /** Link **/
 body a {color: #fff;}
 body a:hover {border-bottom-color: #337ab7; color: #337ab7 !important; }
