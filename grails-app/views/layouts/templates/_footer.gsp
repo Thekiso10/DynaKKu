@@ -16,7 +16,7 @@
                 <div class="col-sm-4 text-right textVersion">
                     <h4><g:message code="footer.texto.version"/>: <span class="boldText">${grailsApplication.config.dynaKKu.version.app}</span></h4>
                     <h5>
-                        <a href="#"><g:message code="footer.texto.version.notas"/></a>
+                        <a href="${grailsApplication.config.dynaKKu.version.notas.url}" target="_blank"><g:message code="footer.texto.version.notas"/></a>
                     </h5>
                 </div>
             </div>

@@ -147,6 +147,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 /* 		                        Modo                       			*/
 /*==================================================================*/
 dynaKKu.version.app         = null
+dynaKKu.version.notas.url   = "https://github.com/Thekiso10/DynaKKu/releases"
 dynaKKu.listModules         = ["estadisticas", "historialActividad", "exportacionListado"]
 
 /*==================================================================*/
