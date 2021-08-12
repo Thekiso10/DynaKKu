@@ -139,7 +139,7 @@
         </li>
 
         <li>
-            <a href="#" class="" id="showMe" data-toggle="modal" data-target="#modalConfiguracion">
+            <a href="#" data-toggle="modal" data-target="#modalConfiguracion">
                 <g:message code="layoutMenu.configuracion.titulo.usuario"/>
             </a>
         </li>

@@ -33,6 +33,16 @@
 
 					<g:layoutBody/>
 
+					<sec:ifLoggedIn>
+						<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<g:render  template="/Usuario/configuracion"/>
+						</div>
+					</sec:ifLoggedIn>
+
+					<div id="spinner" class="spinner" style="display:none;">
+						<img id="img-spinner" src="${resource(dir: 'images/imgWeb', file: 'spinner.gif')}" alt="Loading"/>
+					</div>
+
 				</div>
 			</div>
 
@@ -40,16 +50,6 @@
 				<div class="inner">
 					<g:render  template="/layouts/templates/naving"/>
 				</div>
-			</div>
-
-			<sec:ifLoggedIn>
-				<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<g:render  template="/Usuario/configuracion"/>
-				</div>
-			</sec:ifLoggedIn>
-
-			<div id="spinner" class="spinner" style="display:none;">
-				<img id="img-spinner" src="${resource(dir: 'images/imgWeb', file: 'spinner.gif')}" alt="Loading"/>
 			</div>
 
 		</div>
