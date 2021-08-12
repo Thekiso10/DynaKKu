@@ -9,8 +9,6 @@
                 <div class="col-sm-4 text-center textCentral">
                     <h4 class="text-center subTitle"><g:message code="footer.texto.titulo"/></h4>
                     <span><g:message code="footer.texto.titulo.subText01"/></span>
-                    <span><g:message code="footer.texto.titulo.subText02"/>:</span>
-                    <a href="mailto:${message(code: "footer.texto.mailContacto")}"><g:message code="footer.texto.mailContacto"/></a>
                 </div>
 
                 <div class="col-sm-4 text-right textVersion">

@@ -93,3 +93,5 @@
 .gtr-uniform #boxesGeneros {display: flex; padding: 1em 2em 0em 2em;}
 .gtr-uniform #boxesGeneros .boxGenero {display: flex; align-items: center; padding: 0.25em 1em; border: 2px solid; border-radius: 5px; font-size: 17px; margin-right: 1em;}
 .gtr-uniform #boxesGeneros .close {margin-left: 0.5em; box-shadow: none;}
+
+section #imgMangas img {width: 230px; height: 330px;}
