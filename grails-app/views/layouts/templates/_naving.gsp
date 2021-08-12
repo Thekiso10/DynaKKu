@@ -1,13 +1,19 @@
 <%@ page import="Modulos.Gestor_Modulos.GestorModulos"%>
 <%@ page import="dynaKKu.AutorService" %>
+<%@ page import="dynaKKu.MangasService" %>
 
 <%
     def autorService = grailsApplication.classLoader.loadClass('dynaKKu.AutorService').newInstance()
+    def mangasService = grailsApplication.classLoader.loadClass('dynaKKu.MangasService').newInstance()
 %>
 
 %{-- Modales --}%
 <div id="ImportAutoresModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportAutoresModal" aria-hidden="true">
     <g:render  template="/autor/templates/modalImportAutores"/>
+</div>
+
+<div id="ImportMangasModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportMangasModal" aria-hidden="true">
+    <g:render  template="/mangas/templates/modalImportMangas"/>
 </div>
 
 <nav id="menu" class="">
@@ -26,12 +32,37 @@
                 <li>
                     <g:link controller="mangas" action="create"><g:message code="layoutMenu.botonesColeccion.mangas.crear"/></g:link>
                 </li>
+
                 <li>
                     <g:link controller="mangas" action="index" params="[registrado: true]"><g:message code="layoutMenu.botonesColeccion.mangas.lista"/></g:link>
                 </li>
+
                 <li>
                     <g:link controller="mangas" action="index" params="[registrado: false]"><g:message code="layoutMenu.botonesColeccion.mangas.listaDeseados"/></g:link>
                 </li>
+
+                <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.exportacionListado.enable").valorModulo}">
+                    <li>
+                        <g:link controller="transferenciaListado" action="ExportarPdfManga">
+                            <g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.mangas', default: 'mangas')}"]' />
+                        </g:link>
+                    </li>
+
+                    <li>
+                        <g:if test="${mangasService.getSizeMangasWithBorrados() > 0}">
+                            <g:link controller="transferenciaListado" action="ExportMangas">
+                                <g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.mangas')]}"/>
+                            </g:link>
+                        </g:if>
+                    </li>
+
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#ImportMangasModal">
+                            <g:message code="modulos.exportacionListado.import.label" args="${[message(code: 'layoutMenu.botonesColeccion.mangas')]}"/>
+                        </a>
+                    </li>
+                </g:if>
+
             </ul>
         </li>
 
@@ -48,7 +79,7 @@
 
                 <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.exportacionListado.enable").valorModulo}">
                     <li>
-                        <g:link action=""><g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.autores', default: 'Autor')}"]' /></g:link>
+                        <g:link action=""><g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.autores', default: 'autor')}"]' /></g:link>
                     </li>
 
                     <li>
@@ -57,12 +88,8 @@
                                 <g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>
                             </g:link>
                         </g:if>
-                        <g:else>
-                            <g:link disabled="disabled">
-                                <g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>
-                            </g:link>
-                        </g:else>
                     </li>
+
                     <li>
                         <a href="#" data-toggle="modal" data-target="#ImportAutoresModal">
                             <g:message code="modulos.exportacionListado.import.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>

@@ -84,7 +84,7 @@ class AutorService {
 	}
 
 	def getSizeAutorWithBorrados(){
-		return Autor.findAllByBorrado(false).size()
+		return Autor.findAllByBorrado(false)?.size()
 	}
 
 	/* Funciones internas */

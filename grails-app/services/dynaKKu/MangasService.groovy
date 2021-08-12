@@ -144,6 +144,10 @@ class MangasService {
         return finalList
     }
 
+    def getSizeMangasWithBorrados(){
+        return Mangas.findAllByBorrado(false)?.size()
+    }
+
     /* Funciones internas */
     private comprobarNombreDiferente(def nombre){
         def buscarAutor = Mangas.findWhere(nombreManga: nombre, borrado: false)
