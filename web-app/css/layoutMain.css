@@ -26,6 +26,7 @@ section .buttonForms {text-align: center; padding-top: 2em;}
 section form.form {padding: 1em; margin: 1em 0 1em 0;}
 section form.form .button-filter {display: flex; align-items: center; justify-content: flex-end;}
 section form.form .button-filter button.primary {margin-right: 1em;}
+section form.form .checkBox {display: flex; align-items: center;}
 /************* List ***************/
 section table a {border: 0;}
 

@@ -9,139 +9,101 @@
     <title><g:message code="default.list.generatePDF.label" args="[entityName]"/></title>
 </head>
 <body>
-    <div id="Generate-Historial-PDF" class="col-sm-12" role="main">
-        <g:form url="[action:'generateHistorialPDF']" enctype='multipart/form-data' id="formGenerateHistorialPDF" class="form-principal">
-            %{-- Panel de navegación --}%
-            <div class="menu navbar-collapse" role="navigation">
-                <div class="container">
-                    <ul class="navbar-nav">
-                        <li>
-                            <g:submitButton name="generatePDF_Menu" class="btn btnSave" value="${message(code: 'default.generate.pdf.label')}"/>
-                        </li>
-                        <li>
-                            <g:link class="btn btnLlist" controller="historial" action="index">
-                                <g:message code="modulos.historial.lable.HISTORIAL_ACTIVIDAD"/>
-                            </g:link>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav navbar-right">
-                        <li>
-                            <a href="#" class="btn btnSkip" tabindex="-1" onclick="history.back()">
-                                <g:message code="default.link.skip.label" default="Skip to content&hellip;" />
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <section role="main">
+        <g:form url="[action:'generateHistorialPDF']" enctype='multipart/form-data' id="formGenerateHistorialPDF" class="form">
 
-            <div class="container">
-
-                <h2>
+            <header class="main">
+                <h1>
                     <g:message code="default.list.generatePDF.label" args="[entityName]" />
-                </h2>
+                </h1>
+            </header>
 
-                <g:if test="${flash.message}">
-                    <div class="flash mensajes iconoMensajes" role="status">${flash.message}</div>
-                </g:if>
+            <g:if test="${flash.message}">
+                <div class="flash mensajes iconoMensajes" role="status">${flash.message}</div>
+            </g:if>
 
-                <g:if test="${flash.error}">
-                    <div class="flash errors iconoError" role="status">${flash.error}</div>
-                </g:if>
+            <g:if test="${flash.error}">
+                <div class="flash errors iconoError" role="status">${flash.error}</div>
+            </g:if>
 
-                <fieldset class="form">
-                    <div class="panel-form row">
-                        <h3>
-                            <g:message code="modulos.historial.generate.pdf.params" args=""/>
-                        </h3>
+            <fieldset class="form">
 
-                        <div class="col-sm-12 borderBox modal-body">
-                            <div class="col-sm-4 text-center blockInpunts">
-                                <label for="tipoHistorial">
-                                    <g:message code="modulos.historial.createPDF.tipoHistorial.label" default="tipo de historial"/>:
-                                </label>
-                                <select name="tipoHistorial" id="tipoHistorial">
-                                    <option value="0"><g:message code="layoutMenu.botonesColeccion.mangas" default="manga" /></option>
-                                    <option value="1"><g:message code="layoutMenu.botonesColeccion.autores" default="autor" /></option>
-                                    <option value="2"><g:message code="layoutMenu.botonesColeccion.funciones" default="modulos" /></option>
-                                </select>
-                            </div>
+                <header class="major">
+                    <h3>
+                        <g:message code="modulos.historial.generate.pdf.params" args=""/>
+                    </h3>
+                </header>
 
-                            <div class="col-sm-4 text-center blockInpunts">
-                                <label for="tipoHistorial">
-                                    <g:message code="layoutMenu.botonesColeccion.funciones" default="tipo de historial"/>:
-                                </label>
-                                <g:select name="functionMangas" from="${listaFuncionesMangas}" optionKey="key" optionValue="value"/>
-                                <g:select name="functionAutores" from="${listaFuncionesAutores}" optionKey="key" optionValue="value" class="hide"/>
-                                <g:select name="functionModulos" from="${listaFuncionesModulos}" optionKey="key" optionValue="value" class="hide"/>
-                            </div>
+                <div class="row gtr-uniform">
 
-                            <div class="col-sm-4 text-center blockInpunts">
-                                <label for="selectIdiomas">
-                                    <g:message code="layoutMenu.configuracion.titulo.idioma" default="tipo de historial"/>:
-                                </label>
-                                <select name="selectIdiomas" id="selectIdiomas">
-                                    <option value="es">
-                                        <g:message code="grailsLogo.bannerLogo.idiomaLink.espanol"/>
-                                    </option>
-                                    <option value="cat">
-                                        <g:message code="grailsLogo.bannerLogo.idiomaLink.catalan"/>
-                                    </option>
-                                    <option value="en">
-                                        <g:message code="grailsLogo.bannerLogo.idiomaLink.ingles"/>
-                                    </option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="col-sm-12 borderBox modal-body">
-                            <div class="col-sm-6 text-center borderBox marginRight">
-                                <div class="col-sm-6 blockInpunts">
-                                    <label for="startDate">
-                                        <g:message code="modulos.historial.createPDF.fecha.inicio.label" default="tipo de historial"/>:
-                                    </label>
-                                    <input type="text" id="startDate" name="startDate" class="datepicker" size="10" data-date-format="dd/MM/yyyy" placeholder="${message(code:'modulos.historial.createPDF.fecha.inicio.label')}"/>
-                                </div>
-                                <div class="col-sm-6 blockInpunts">
-                                    <label for="endDate">
-                                        <g:message code="modulos.historial.createPDF.fecha.final.label" default="tipo de historial"/>:
-                                    </label>
-                                    <input type="text" id="endDate" name="endDate" class="datepicker" size="10" data-date-format="dd/MM/yyyy" placeholder="${message(code:'modulos.historial.createPDF.fecha.final.label')}"/>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 text-center borderBox">
-
-                                <div class="col-sm-6 blockInpunts padding">
-                                    <label for="allFunction">
-                                        <g:message code="modulos.historial.createPDF.allFunction.label" default="tipo de historial"/>:
-                                    </label>
-                                    <g:checkBox name="allFunction" />
-                                </div>
-
-                                <div class="col-sm-6 blockInpunts padding">
-                                    <label for="allHistorial">
-                                        <g:message code="modulos.historial.createPDF.allHistorial.label" default="tipo de historial"/>:
-                                    </label>
-                                    <g:checkBox name="allHistorial" />
-                                </div>
-                            </div>
-
-                        </div>
-
+                    <div class="col-4 col-12-xsmall">
+                        <label for="tipoHistorial">
+                            <g:message code="modulos.historial.createPDF.tipoHistorial.label" default="tipo de historial"/>:
+                        </label>
+                        <select name="tipoHistorial" id="tipoHistorial">
+                            <option value="0"><g:message code="layoutMenu.botonesColeccion.mangas" default="manga" /></option>
+                            <option value="1"><g:message code="layoutMenu.botonesColeccion.autores" default="autor" /></option>
+                            <option value="2"><g:message code="layoutMenu.botonesColeccion.funciones" default="modulos" /></option>
+                        </select>
                     </div>
-                </fieldset>
 
-                <fieldset class="buttons">
-                    <div class="col-sm-12 divButtonSave">
-                        <g:submitButton name="generatePDF" class="btn btnSave" value="${message(code: 'default.generate.pdf.label')}" formtarget="_blank"/>
+                    <div class="col-4 col-12-xsmall">
+                        <label for="tipoHistorial">
+                            <g:message code="default.funciones.label" default="tipo de historial"/>:
+                        </label>
+                        <g:select name="functionMangas" from="${listaFuncionesMangas}" optionKey="key" optionValue="value"/>
+                        <g:select name="functionAutores" from="${listaFuncionesAutores}" optionKey="key" optionValue="value" class="hide"/>
+                        <g:select name="functionModulos" from="${listaFuncionesModulos}" optionKey="key" optionValue="value" class="hide"/>
                     </div>
-                </fieldset>
 
-            </div>
+                    <div class="col-4 col-12-xsmall">
+                        <label for="selectIdiomas">
+                            <g:message code="layoutMenu.configuracion.titulo.idioma" default="tipo de historial"/>:
+                        </label>
+                        <select name="selectIdiomas" id="selectIdiomas">
+                            <option value="es">
+                                <g:message code="grailsLogo.bannerLogo.idiomaLink.espanol"/>
+                            </option>
+                            <option value="cat">
+                                <g:message code="grailsLogo.bannerLogo.idiomaLink.catalan"/>
+                            </option>
+                            <option value="en">
+                                <g:message code="grailsLogo.bannerLogo.idiomaLink.ingles"/>
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-3 col-12-xsmall">
+                        <input type="text" id="startDate" name="startDate" class="datepicker" size="10" data-date-format="dd/MM/yyyy" placeholder="${message(code:'modulos.historial.createPDF.fecha.inicio.label')}"/>
+                    </div>
+
+                    <div class="col-3 col-12-xsmall">
+                        <input type="text" id="endDate" name="endDate" class="datepicker" size="10" data-date-format="dd/MM/yyyy" placeholder="${message(code:'modulos.historial.createPDF.fecha.final.label')}"/>
+                    </div>
+
+                    <div class="col-3 col-12-xsmall checkBox">
+                        <g:checkBox name="allFunction" />
+                        <label for="allFunction">
+                            <g:message code="modulos.historial.createPDF.allFunction.label" default="tipo de historial"/>
+                        </label>
+                    </div>
+
+                    <div class="col-3 col-12-xsmall checkBox">
+                        <g:checkBox name="allHistorial" />
+                        <label for="allHistorial">
+                            <g:message code="modulos.historial.createPDF.allHistorial.label" default="tipo de historial"/>
+                        </label>
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <fieldset class="buttonForms">
+                <g:submitButton name="generatePDF" class="button fit" value="${message(code: 'default.generate.pdf.label')}" formtarget="_blank"/>
+            </fieldset>
 
         </g:form>
-    </div>
+    </section>
 
     <script>
         $( document ).ready(function() {

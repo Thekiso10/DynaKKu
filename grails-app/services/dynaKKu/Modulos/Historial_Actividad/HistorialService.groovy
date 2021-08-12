@@ -116,7 +116,7 @@ class HistorialService {
     def getListFunctionsModulos(Locale defaultLocale) {
         def list = []
         //Agregamos las funciones
-        list << [value: messageSource.getMessage("stats.header.title.general.label", null, defaultLocale), key: HistorialModulos.Modulos.ESTADISTICAS]
+        list << [value: messageSource.getMessage("modulos.estadisticas.title", null, defaultLocale), key: HistorialModulos.Modulos.ESTADISTICAS]
         list << [value: messageSource.getMessage("modulos.historial.lable.HISTORIAL_ACTIVIDAD", null, defaultLocale), key: HistorialModulos.Modulos.HISTORIAL_ACTIVIDAD]
         list << [value: messageSource.getMessage("modulos.exportacionListado.title", null, defaultLocale), key: HistorialModulos.Modulos.EXPORTACION_LISTADO]
         list << [value: messageSource.getMessage("modulos.listadoPDF.title", null, defaultLocale), key: HistorialModulos.Modulos.LISTADO_PDF]
