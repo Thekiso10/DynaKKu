@@ -34,7 +34,7 @@
 									 placeholder="${message(code: 'default.filter.placeholder.label', args: [message(code: 'autor.apellido.label')])}" />
 					</div>
 
-					<div class="col-6 col-12-xsmall text-right">
+					<div class="button-filter col-6 col-12-xsmall text-right">
 						<button type="submit" class="button primary small" name="search" value="search">
 							<span class="glyphicon glyphicon-search"></span>
 							<g:message code="default.button.filter" default="Filter" />
