@@ -135,6 +135,7 @@
 
 				%{-- Datos Especificos Personales --}%
 				<article>
+					<span class="icon icon-article fas fa-id-card"></span>
 					<div class="content">
 						<header class="major">
 							<h2>
@@ -170,7 +171,8 @@
 
 				%{-- Datos Monetarios --}%
 				<g:if test="${!mangasInstance?.deseado}">
-					<article>
+					<article class="${!mangasInstance?.deseado ? 'move-article' : ''}">
+						<span class="icon icon-article solid fa-money-check-alt"></span>
 						<div class="content">
 							<header class="major">
 								<h2>
@@ -203,7 +205,8 @@
 				</g:if>
 
 				%{-- Generos y Demografia --}%
-				<article>
+				<article class="${mangasInstance?.deseado ? 'move-article' : ''}">
+					<span class="icon icon-article solid fa-dragon"></span>
 					<div class="content">
 						<header class="major">
 							<h2>

@@ -363,3 +363,9 @@ body #Footer .row .col-sm-4 a {color: #49abff;}
 /*   Mangas   */
 .gtr-uniform #boxesGeneros div.boxGenero {border-color: #3C9AC9; color: #fff;}
 .gtr-uniform #boxesGeneros .close {color: #fff;}
+
+section article .content p {color: #68B7DF;}
+section article .content p span {color: #fff;}
+section div.features article .icon-article:before {color: #fff;}
+section article .content a {color: #ADE1FF;}
+section article .content a:hover {color: #C2E9FF;}
