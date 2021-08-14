@@ -33,19 +33,19 @@
                 </li>
 
                 <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.exportacionListado.enable").valorModulo}">
-                    <li>
-                        <g:link controller="transferenciaListado" action="ExportarPdfManga">
-                            <g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.mangas', default: 'mangas')}"]' />
-                        </g:link>
-                    </li>
+                    <g:if test="${mangasService.getSizeMangasWithBorrados() > 0}">
+                        <li>
+                            <g:link controller="transferenciaListado" action="ExportarCollectionPdf" params="[collection: 'mangas']">
+                                <g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.mangas', default: 'mangas')}"]' />
+                            </g:link>
+                        </li>
 
-                    <li>
-                        <g:if test="${mangasService.getSizeMangasWithBorrados() > 0}">
+                        <li>
                             <g:link controller="transferenciaListado" action="ExportMangas">
                                 <g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.mangas')]}"/>
                             </g:link>
-                        </g:if>
-                    </li>
+                        </li>
+                    </g:if>
 
                     <li>
                         <a href="#" data-toggle="modal" data-target="#ImportMangasModal">
@@ -69,17 +69,19 @@
                 </li>
 
                 <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.exportacionListado.enable").valorModulo}">
-                    <li>
-                        <g:link action=""><g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.autores', default: 'autor')}"]' /></g:link>
-                    </li>
+                    <g:if test="${autorService.getSizeAutorWithBorrados() > 0}">
+                        <li>
+                            <g:link controller="transferenciaListado" action="ExportarCollectionPdf" params="[collection: 'autores']">
+                                <g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.autores', default: 'autor')}"]' />
+                            </g:link>
+                        </li>
 
-                    <li>
-                        <g:if test="${autorService.getSizeAutorWithBorrados() > 0}">
+                        <li>
                             <g:link controller="transferenciaListado" action="ExportAutores">
                                 <g:message code="modulos.exportacionListado.export.label" args="${[message(code: 'layoutMenu.botonesColeccion.autores')]}"/>
                             </g:link>
-                        </g:if>
-                    </li>
+                        </li>
+                    </g:if>
 
                     <li>
                         <a href="#" data-toggle="modal" data-target="#ImportAutoresModal">
