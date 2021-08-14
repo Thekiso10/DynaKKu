@@ -2,6 +2,7 @@ package Modulos.Transferencia_Listado
 
 import Colecciones.Autor
 import Colecciones.Mangas
+import com.itextpdf.text.Document
 import grails.plugin.springsecurity.annotation.Secured
 
 class TransferenciaListadoController {
@@ -167,5 +168,22 @@ class TransferenciaListadoController {
         }
 
         redirect(controller: "mangas", action: "index", params: [registrado: params.registrado])
+    }
+
+    @Secured (['ROLE_ADMIN', 'ROLE_USER'])
+    def ExportarPdfManga() {
+        if (!gestorModulosService.validatePermission("dynaKKu.exportacionListado.enable")) {
+            redirect(controller: "usuario", action: "index")
+        }
+        //Definir variables
+        Document documento
+        FileInputStream fileInputStream
+        OutputStream responseOutputStream
+        File pdfFile
+        def docName
+        //Definir la ruta del banner
+        def imgBanner = request.getSession().getServletContext().getRealPath((grailsApplication.config.dynaKKu.pdfConf.pathBanner))
+        def pathDoc = request.getSession().getServletContext().getRealPath(('/'))
+        //Obtener el PDF
     }
 }

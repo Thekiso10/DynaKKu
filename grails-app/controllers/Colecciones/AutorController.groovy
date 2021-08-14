@@ -14,6 +14,7 @@ class AutorController {
 	def autorService
 	def coleccionesService
 	def registerHistorialService
+	def gestorModulosService
 
 	@Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def index(Integer max) {

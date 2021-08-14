@@ -1,5 +1,6 @@
 package dynaKKu
 
+import Colecciones.Mangas
 import grails.transaction.Transactional
 import grails.util.Holders
 import Colecciones.Autor
@@ -67,6 +68,23 @@ class AutorService {
 		}
 		
 		return [correcto: correcto, mensaje: mensaje]
+	}
+
+	def getFullListWithFormat(){
+		//Defimimos la lista final
+		def finalList = []
+		//Cogemos todos los Mangas, excepto los borrados
+		def pureList = Autor.findAllByBorrado(false)
+		//Formateamos la lista
+		pureList.each { autor ->
+			finalList << ["nombreAutor": "${autor.nombre} ${autor.apellido}", "genero": autor.genero, "difunto": autor.difunto, "fechaNacimento": autor.fechaNacimento]
+		}
+
+		return finalList
+	}
+
+	def getSizeAutorWithBorrados(){
+		return Autor.findAllByBorrado(false)?.size()
 	}
 
 	/* Funciones internas */

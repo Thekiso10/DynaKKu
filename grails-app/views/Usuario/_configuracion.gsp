@@ -1,131 +1,107 @@
 <%@ page import="Modulos.Personalizacion_Usuario.Usuario" %>
 
-<sec:ifLoggedIn>
+<g:set var="usuarioInstance" value="${Usuario.findById(sec.loggedInUserInfo(['field': 'id']))}"/>
 
-    <g:set var="usuarioInstance" value="${Usuario.findById(sec.loggedInUserInfo(['field': 'id']))}"/>
-
-    <div id="modalDatosUsuario" class="modal-dialog">
-        <g:formRemote name="updateMe" url="[controller: 'usuario', action: 'updateMe']" update="[success: 'textCorrecto', failure: 'textError']"
-                        onLoading="resetFlashMessage(); callSpinner();" onComplete="stopSpinner();" onSuccess="showFlashMessage(); stopSpinner();" onFailure="showFlashError(); stopSpinner();">
-            <!-- Modal content-->
-            <div class="modal-content">
-                %{-- Cabecera --}%
-                <div class="modal-header">
-                    <button id="closePopupUser" type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><g:message code="layoutMenu.configuracion.titulo"/></h4>
-                </div>
-                %{-- Cuerpo --}%
-                <div class="modal-body">
-
-                    %{-- Flash message --}%
-                    <div id="userFlashCorrecto" class="flash mensajes iconoMensajes hidden" role="status">
-                        <button id="closerFlashGood" type="button" class="close">&times;</button>
-                        <span id="textCorrecto"></span>
-                    </div>
-
-                    <div id="userFlashError" class="flash errors iconoError hidden" role="status">
-                        <button id="closerFlashError" type="button" class="close">&times;</button>
-                        <span id="textError"></span>
-                    </div>
-
-                    <h5 id="tituloUser" class="title-body"><g:message code="layoutMenu.configuracion.titulo.usuario"/></h5>
-                    <div class="body-container col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="col-sm-5 label-body">
-                                    <span><g:message code="layoutMenu.configuracion.username"/>:</span>
-                                </div>
-                                <g:textField name="username" class="col-sm-7" required="" value="${usuarioInstance?.username}"/>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="col-sm-5 label-body">
-                                    <span><g:message code="layoutMenu.configuracion.mail"/>:</span>
-                                </div>
-                                <g:field type="email" name="email" class="col-sm-7" required="" value="${usuarioInstance?.mail}"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="col-sm-5 label-body">
-                                    <span><g:message code="autor.nombre.label"/>:</span>
-                                </div>
-                                <g:textField name="nombre" class="col-sm-7" required="" value="${usuarioInstance?.nombre}"/>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="col-sm-5 label-body">
-                                    <span><g:message code="autor.apellido.label"/>:</span>
-                                </div>
-                                <g:textField name="apellido" class="col-sm-7" required="" value="${usuarioInstance?.apellido}"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="changePassword" class="body-container col-sm-12 hidden">
-                        <g:hiddenField name="changePasswordParam" value="false"/>
-
-                        <div class="row">
-                            <div class="col-sm-4 label-body">
-                                <span><g:message code="layoutMenu.configuracion.password"/>:</span>
-                            </div>
-                            <g:passwordField id="password" name="password" class="col-sm-7"/>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-4 label-body">
-                                <span><g:message code="layoutMenu.configuracion.repitPass"/>:</span>
-                            </div>
-                            <g:passwordField id="repitPassword" name="repitPassword" class="col-sm-7"/>
-                        </div>
-                    </div>
-
-                    <h5 class="title-body"><g:message code="layoutMenu.configuracion.titulo.idioma"/></h5>
-                    <div id="formIdioma" class="body-container col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-4 text-right input-idioma">
-                                <label><g:message code="grailsLogo.bannerLogo.idiomaLink.espanol"/></label>
-                                <g:radio name="idioma" value="es" checked="${(usuarioInstance?.idiomaDefault.equals('es') ? 'true' : '')}"/>
-                            </div>
-                            <div class="col-sm-4 text-center input-idioma">
-                                <label><g:message code="grailsLogo.bannerLogo.idiomaLink.catalan"/></label>
-                                <g:radio name="idioma" value="cat" checked="${(usuarioInstance?.idiomaDefault.equals('cat') ? 'true' : '')}"/>
-                            </div>
-                            <div class="col-sm-4 text-left input-idioma">
-                                <label><g:message code="grailsLogo.bannerLogo.idiomaLink.ingles"/></label>
-                                <g:radio name="idioma" value="en" checked="${(usuarioInstance?.idiomaDefault.equals('en') ? 'true' : '')}"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h5 class="title-body"><g:message code="layoutMenu.configuracion.titulo.mode"/></h5>
-                    <div id="formMode" class="body-container col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-6 text-right input-idioma">
-                                <label><g:message code="layoutMenu.configuracion.modeDark"/></label>
-                                <g:radio name="mode" value="true" checked="${(usuarioInstance?.modoDark ? 'true' : '')}"/>
-                            </div>
-                            <div class="col-sm-6 text-left input-idioma">
-                                <label><g:message code="layoutMenu.configuracion.modeLight"/></label>
-                                <g:radio name="mode" value="false" checked="${(!usuarioInstance?.modoDark ? 'true' : '')}"/>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                %{-- Pie --}%
-                <div class="modal-footer">
-                    <button id="btnSubmitUser" type="submit" class="btn btnCommit"><g:message code="default.button.create.label"/></button>
-                    <button id="btnChangePass" type="button" class="btn btnCommit"><g:message code="layoutMenu.configuracion.changePass"/></button>
-                    <button id="btnBackUser" type="button" class="btn btnSkip" data-dismiss="modal"><g:message code="default.link.skip.label"/></button>
-                </div>
+<div id="modalDatosUsuario" class="modal-dialog form">
+    <g:formRemote name="updateMe" url="[controller: 'usuario', action: 'updateMe']" update="[success: 'textCorrecto', failure: 'textError']"
+                  onLoading="resetFlashMessage(); callSpinner();" onComplete="stopSpinner();" onSuccess="showFlashMessage(); stopSpinner();" onFailure="showFlashError(); stopSpinner();">
+        <!-- Modal content-->
+        <div class="modal-content ">
+            %{-- Cabecera --}%
+            <div class="modal-header">
+                <span id="closePopupUser" class="close" data-dismiss="modal">&times;</span>
+                <h4 class="modal-title"><g:message code="layoutMenu.configuracion.titulo"/></h4>
             </div>
+            %{-- Cuerpo --}%
+            <div class="modal-body">
+                %{-- Flash message --}%
+                <div id="userFlashCorrecto" class="flash mensajes iconoMensajes hidden" role="status">
+                    <span id="closerFlashGood" class="close">&times;</span>
+                    <span id="textCorrecto"></span>
+                </div>
 
-            <g:hiddenField name="id" value="${usuarioInstance.id}"/>
+                <div id="userFlashError" class="flash errors iconoError hidden" role="status">
+                    <span id="closerFlashError" class="close">&times;</span>
+                    <span id="textError"></span>
+                </div>
 
-        </g:formRemote>
-    </div>
-</sec:ifLoggedIn>
+                <h4 id="tituloUser" class="title-body"><g:message code="layoutMenu.configuracion.titulo.usuario"/></h4>
+                <div class="body-container row gtr-uniform padding-right-1">
+                    <div class="col-6 col-12-xsmall">
+                        <span><g:message code="layoutMenu.configuracion.username"/>:</span>
+                        <g:textField name="username" required="" value="${usuarioInstance?.username}"/>
+                    </div>
+
+                    <div class="col-6 col-12-xsmall">
+                        <span><g:message code="layoutMenu.configuracion.mail"/>:</span>
+                        <g:field type="email" name="email" required="" value="${usuarioInstance?.mail}"/>
+                    </div>
+
+                    <div class="col-6 col-12-xsmall">
+                        <span><g:message code="autor.nombre.label"/>:</span>
+                        <g:textField name="nombre" required="" value="${usuarioInstance?.nombre}"/>
+                    </div>
+
+                    <div class="col-6 col-12-xsmall">
+                        <span><g:message code="autor.apellido.label"/>:</span>
+                        <g:textField name="apellido" required="" value="${usuarioInstance?.apellido}"/>
+                    </div>
+                </div>
+
+                <div id="changePassword" class="row gtr-uniform hidden padding-right-1">
+                    <g:hiddenField name="changePasswordParam" value="false"/>
+
+                    <div class="col-6 col-12-xsmall">
+                        <span><g:message code="layoutMenu.configuracion.password"/>:</span>
+                        <g:passwordField id="password" name="password"/>
+                    </div>
+
+                    <div class="col-6 col-12-xsmall">
+                        <span><g:message code="layoutMenu.configuracion.repitPass"/>:</span>
+                        <g:passwordField id="repitPassword" name="repitPassword"/>
+                    </div>
+                </div>
+
+                <h4 class="title-body"><g:message code="layoutMenu.configuracion.titulo.idioma"/></h4>
+                <div id="formIdioma" class="row gtr-uniform">
+                    <div class="col-4 col-12-xsmall">
+                        <g:radio id="idiomaEs" name="idioma" value="es" checked="${(usuarioInstance?.idiomaDefault.equals('es') ? 'true' : '')}"/>
+                        <label for="idiomaEs"><g:message code="grailsLogo.bannerLogo.idiomaLink.espanol"/></label>
+                    </div>
+                    <div class="col-4 col-12-xsmall">
+                        <g:radio id="idiomaCat" name="idioma" value="cat" checked="${(usuarioInstance?.idiomaDefault.equals('cat') ? 'true' : '')}"/>
+                        <label for="idiomaCat"><g:message code="grailsLogo.bannerLogo.idiomaLink.catalan"/></label>
+                    </div>
+                    <div class="col-4 col-12-xsmall">
+                        <g:radio id="idiomaEn" name="idioma" value="en" checked="${(usuarioInstance?.idiomaDefault.equals('en') ? 'true' : '')}"/>
+                        <label for="idiomaEn"><g:message code="grailsLogo.bannerLogo.idiomaLink.ingles"/></label>
+                    </div>
+                </div>
+
+                <h4 class="title-body"><g:message code="layoutMenu.configuracion.titulo.mode"/></h4>
+                <div id="formMode" class="row gtr-uniform">
+                    <div class="col-6 col-12-xsmall">
+                        <g:radio id="modeDark" name="mode" value="true" checked="${(usuarioInstance?.modoDark ? 'true' : '')}"/>
+                        <label for="modeDark"><g:message code="layoutMenu.configuracion.modeDark"/></label>
+                    </div>
+                    <div class="col-6 col-12-xsmall">
+                        <g:radio id="modeLight" name="mode" value="false" checked="${(!usuarioInstance?.modoDark ? 'true' : '')}"/>
+                        <label for="modeLight"><g:message code="layoutMenu.configuracion.modeLight"/></label>
+                    </div>
+                </div>
+
+            </div>
+            %{-- Pie --}%
+            <div class="modal-footer">
+                <button id="btnChangePass" type="button" class="button small"><g:message code="layoutMenu.configuracion.changePass"/></button>
+                <button id="btnSubmitUser" type="submit" class="button primary small"><g:message code="default.button.create.label"/></button>
+            </div>
+        </div>
+
+        <g:hiddenField name="id" value="${usuarioInstance.id}"/>
+
+    </g:formRemote>
+</div>
 
 <g:javascript src="Usuarios.js"/>
 

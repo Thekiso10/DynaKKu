@@ -131,8 +131,24 @@ class MangasService {
         return [error: error, mensaje: mensaje]
     }
 
-    /* Funciones internas */
+    def getFullListWithFormat(){
+        //Defimimos la lista final
+        def finalList = []
+        //Cogemos todos los Mangas, excepto los borrados
+        def pureList = Mangas.findAllByBorrado(false)
+        //Formateamos la lista
+        pureList.each { manga ->
+            finalList << ["nombreManga": manga.nombreManga, "deseado": manga.deseado, "tomosActuales": manga.numTomosActuales, "tomosMaximos": manga.numTomosMaximos]
+        }
 
+        return finalList
+    }
+
+    def getSizeMangasWithBorrados(){
+        return Mangas.findAllByBorrado(false)?.size()
+    }
+
+    /* Funciones internas */
     private comprobarNombreDiferente(def nombre){
         def buscarAutor = Mangas.findWhere(nombreManga: nombre, borrado: false)
         return (!buscarAutor ? true : false)

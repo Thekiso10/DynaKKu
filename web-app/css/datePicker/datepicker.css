@@ -49,6 +49,7 @@
 }
 .datepicker td,
 .datepicker th {
+  color: #444;
   text-align: center;
   width: 20px;
   height: 20px;
@@ -110,6 +111,7 @@
   background-color: #003399 \9;
 }
 .datepicker td span {
+  color: #444;
   display: block;
   width: 47px;
   height: 54px;
@@ -210,15 +212,19 @@
 }
 /* Barra de canvi de mes datepicker */
 .datepicker.dropdown-menu{padding: 0px; margin: 0px;}
+
+.datepicker .datepicker-days table tbody tr {background-color: #fff;}
 .datepicker .datepicker-days table thead tr:FIRST-CHILD{background-color: #2990C4;}
 .datepicker .datepicker-days table thead tr:FIRST-CHILD th{color: #d8d8d8;-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;}
 .datepicker .datepicker-days table thead tr:FIRST-CHILD th:HOVER{background-color: #1b5c7d; color:#d8d8d8;}
 .datepicker .datepicker-days table thead tr th.dow{background-color: #333; color: #EEE;-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;}
 
+.datepicker .datepicker-months table tbody tr {background-color: #fff;}
 .datepicker .datepicker-months table thead tr:FIRST-CHILD{background-color: #2990C4;}
 .datepicker .datepicker-months table thead tr:FIRST-CHILD th{color: #d8d8d8;-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;}
 .datepicker .datepicker-months table thead tr:FIRST-CHILD th:HOVER{background-color: #1b5c7d; color:#d8d8d8;}
 
+.datepicker .datepicker-years table tbody tr {background-color: #fff;}
 .datepicker .datepicker-years table thead tr:FIRST-CHILD{background-color: #2990C4;}
 .datepicker .datepicker-years table thead tr:FIRST-CHILD th{color: #d8d8d8;-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;}
 .datepicker .datepicker-years table thead tr:FIRST-CHILD th:HOVER{background-color: #1b5c7d; color:#d8d8d8;}

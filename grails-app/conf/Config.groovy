@@ -139,6 +139,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**/fonts/**':    ['permitAll'],
         '/**/css/**':      ['permitAll'],
         '/**/images/**':   ['permitAll'],
+        '/**/webfonts/**': ['permitAll'],
         '/**/favicon.ico': ['permitAll']
 ]
 
@@ -146,6 +147,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 /* 		                        Modo                       			*/
 /*==================================================================*/
 dynaKKu.version.app         = null
+dynaKKu.version.notas.url   = "https://github.com/Thekiso10/DynaKKu/releases"
 dynaKKu.listModules         = ["estadisticas", "historialActividad", "exportacionListado"]
 
 /*==================================================================*/
@@ -178,7 +180,7 @@ dynaKKu.estadisticas.enable = true //Activar el modulo de Estadisticas
 /*==================================================================*/
 /* 		              Transferencia Listado                			*/
 /*==================================================================*/
-dynaKKu.exportacionListado.enable = true //Activar el modulo de Estadisticas
+dynaKKu.exportacionListado.enable = true //Activar el modulo de Tranferencia de Listados
 
 /*==================================================================*/
 /* 					   Cargar Config Externa       					*/

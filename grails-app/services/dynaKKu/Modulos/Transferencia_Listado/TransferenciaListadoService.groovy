@@ -200,6 +200,25 @@ class TransferenciaListadoService {
         return correcto
     }
 
+    def generateListadoPDF(def collection){
+        def list = []
+        def doc = null
+
+        switch (collection){
+            case "mangas":
+                list = mangasService.getFullListWithFormat()
+                //Llamamos a la funcion de creación del PDF que nos devolvera el PDF
+
+                break
+            case "autores":
+                list = autorService.getFullListWithFormat()
+                //Llamamos a la funcion de creación del PDF que nos devolvera el PDF
+                break
+        }
+
+        return doc
+    }
+
     private def configurarValidarManga(def manga, def validarSpinnOff){
         def correcto = true
         def resultado = validarManga(manga)

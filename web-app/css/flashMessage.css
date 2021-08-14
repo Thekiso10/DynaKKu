@@ -1,32 +1,32 @@
 /** CSS de los Flash Message and Errors **/
 
-#layout-container .flash {
+body .flash {
 	position: relative; 
 	padding: .75rem 1.25rem; 
-	margin: 1.5em 0.25em 0.25em 0.25em; 
+	margin: 1.5em 0.25em 1.5em 0.25em;
 	border: 1px solid transparent; 
 	border-radius: 10px; 
 	font-size: 1.10em;
 }
-#layout-container .iconoMensajes{
+body .iconoMensajes{
 	background: url(../images/imgWeb/icons/information.png) 0.5em 50% no-repeat; 
 	padding-left: 2em; 
 	padding-right: 1em;
 }
 
-#layout-container .iconoError{
+body .iconoError{
 	background: url(../images/imgWeb/icons/error.png) 0.5em 50% no-repeat; 
 	padding-left: 2em; 
 	padding-right: 1em;
 }
 
-#layout-container .iconoWarning{
+body .iconoWarning{
 	background: url(../images/imgWeb/icons/warning.png) 0.5em 50% no-repeat; 
 	padding-left: 2em; 
 	padding-right: 1em;
 }
 
-#layout-container .flash.errors {
+body .flash.errors {
 	color:#E53030; 
 	background-color: #fbcdcd; 
 	border-color: #ff8888; 
@@ -35,7 +35,7 @@
 	-webkit-box-shadow: 0 0 0.5em 0.01em #ff8888;
 	font-weight: bold;
 }
-#layout-container .flash.mensajes {
+body .flash.mensajes {
 	background-color: #E0F3F7;
 	font-weight: 600; 
 	border: 1px solid #b2d1ff; 
@@ -45,7 +45,7 @@
     box-shadow: 0 0 0.5em 0.01em #b2d1ff;
 }
 
-#layout-container .flash.warn{
+body .flash.warn{
 	background-color: #fff3cd;
 	font-weight: 600; 
 	border: 1px solid #ffeeba; 
@@ -55,8 +55,12 @@
     box-shadow: 0 0 0.5em 0.01em #ffeeba;
 }
 
-#layout-container #userFlashError,
-#layout-container #userFlashCorrecto {
+body #userFlashError,
+body #userFlashCorrecto {
 	margin-bottom: 1em;
 	margin-top: 0.25em;
+}
+
+form .modal-body .flash{
+	font-size: 0.85em;
 }

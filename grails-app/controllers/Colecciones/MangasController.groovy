@@ -63,10 +63,8 @@ class MangasController {
         if(mangasInstanceCount == 0){
             flash.warn = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.mangas")])
         }
-        //Validamos si podemos mostrar o no la exportación de listas
-        def valorExportaListaConf = gestorModulosService.validatePermission("dynaKKu.exportacionListado.enable")
 
-        respond mangasInstanceList, model: [mangasInstanceCount: mangasInstanceCount, mangasRegistrados: registrados, valorExportaListaConf: valorExportaListaConf]
+        respond mangasInstanceList, model: [mangasInstanceCount: mangasInstanceCount, mangasRegistrados: registrados]
     }
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
