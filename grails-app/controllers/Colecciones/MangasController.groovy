@@ -540,15 +540,13 @@ class MangasController {
         def registrado = mangasInstance.deseado
         def nombreManga = mangasInstance.nombreManga
         def path = mangasInstance.urlImg
-        //Eliminar Generos Anteriores
-        GenerosMangas.findAllByMangas(mangasInstance).each { it.delete(flush:true) }
         //Borrar el Manga
         try{
             mangasInstance.borrado = true
             mangasInstance.fechaBorrado = new Date()
             mangasInstance.save(flush:true)
 
-            //Comprobamos que si tiene foto hay que borrarla
+            //TODO Esto se tendra que eliminar cuando se modifique el guardado de imagen
             if(path){
                 if(coleccionesService.deleteImage(path)){
                     flash.error = message(code: "mangas.errores.update.noDeleteFoto")
