@@ -132,16 +132,11 @@ class MangasService {
     }
 
     def getFullListWithFormat(){
-        //Defimimos la lista final
-        def finalList = []
-        //Cogemos todos los Mangas, excepto los borrados
-        def pureList = Mangas.findAllByBorrado(false)
-        //Formateamos la lista
-        pureList.each { manga ->
-            finalList << ["nombreManga": manga.nombreManga, "deseado": manga.deseado, "tomosActuales": manga.numTomosActuales, "tomosMaximos": manga.numTomosMaximos]
-        }
+        return generateFormatFromListPDF(Mangas.findAllByBorrado(false))
+    }
 
-        return finalList
+    def getListWithFormat(boolean deseados){
+        return generateFormatFromListPDF(Mangas.findAllByBorradoAndDeseado(false, deseados))
     }
 
     def getSizeMangasWithBorrados(){
@@ -156,5 +151,16 @@ class MangasService {
 
     private comprobarLongitutNombre(def nombre) {
         return (nombre.length() <= Holders.config.dynaKKu.mangas.longitut.nombreMax ? true : false)
+    }
+
+    private generateFormatFromListPDF(def list){
+        //Defimimos la lista final
+        def finalList = []
+        //Formateamos la lista
+        list.each { manga ->
+            finalList << ["nombreManga": manga.nombreManga, "deseado": manga.deseado, "tomosActuales": manga.numTomosActuales, "tomosMaximos": manga.numTomosMaximos]
+        }
+        //Devolvemos la lista final
+        return finalList
     }
 }

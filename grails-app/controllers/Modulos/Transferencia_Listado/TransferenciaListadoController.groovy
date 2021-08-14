@@ -4,6 +4,7 @@ import Colecciones.Autor
 import Colecciones.Mangas
 import com.itextpdf.text.Document
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.web.servlet.support.RequestContextUtils as RCU
 
 class TransferenciaListadoController {
 
@@ -185,5 +186,35 @@ class TransferenciaListadoController {
         def imgBanner = request.getSession().getServletContext().getRealPath((grailsApplication.config.dynaKKu.pdfConf.pathBanner))
         def pathDoc = request.getSession().getServletContext().getRealPath(('/'))
         //Obtener el PDF
+        def doc = transferenciaListadoService.generateListadoPDF("mangas", RCU.getLocale(request), imgBanner, pathDoc)
+
+        try{
+            docName = doc?.docName
+
+            pdfFile = new File(pathDoc + File.separator + docName);
+
+            response.setContentType("application/pdf");
+            response.addHeader("Content-Disposition", "filename=\"" + docName + "\"")
+            response.setContentLength((int) pdfFile.length())
+            response.setHeader("Pragma", "no-cache")
+
+            fileInputStream = new FileInputStream(pdfFile);
+            responseOutputStream = response.getOutputStream();
+
+            int bytes
+            while ((bytes = fileInputStream.read()) != -1) {
+                responseOutputStream.write(bytes)
+            }
+
+        } catch (Exception e){
+            log.warn "Error descargando pdf generado"
+            log.error e.getMessage()
+            log.error e.getCause()
+        }finally{
+            fileInputStream.close()
+            responseOutputStream.close()
+            //Delete pdf file
+            pdfFile?.delete()
+        }
     }
 }

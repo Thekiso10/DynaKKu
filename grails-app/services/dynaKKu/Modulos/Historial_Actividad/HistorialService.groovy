@@ -76,6 +76,7 @@ class HistorialService {
     def getAllListHistorial(Locale defaultLocale){
         def listAllHistorial = []
         def tipo = null
+
         /* Bucle del historial de Mangas */
         tipo = messageSource.getMessage("layoutMenu.botonesColeccion.mangas", null, defaultLocale)
         getHistorialMangas().each { actividad ->
@@ -85,6 +86,7 @@ class HistorialService {
             HistorialActividadBean historialBean = new HistorialActividadBean(type: tipo, accion: accion, message: mensaje, date: actividad.fecha)
             listAllHistorial << historialBean
         }
+
         /* Bucle del historial de Autores */
         tipo = messageSource.getMessage("layoutMenu.botonesColeccion.autores", null, defaultLocale)
         getHistorialAutores().each { actividad ->
@@ -94,7 +96,8 @@ class HistorialService {
             HistorialActividadBean historialBean = new HistorialActividadBean(type: tipo, accion: accion, message: mensaje, date: actividad.fecha)
             listAllHistorial << historialBean
         }
-        /* Bucle del historial de Autores */
+
+        /* Bucle del historial de los Modulos */
         //TODO: Pendiente de integrar
 
         return listAllHistorial

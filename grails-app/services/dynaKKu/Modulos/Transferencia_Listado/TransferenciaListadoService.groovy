@@ -18,6 +18,7 @@ class TransferenciaListadoService {
 
     def autorService
     def mangasService
+    def pdfService
 
     def getExportListAutoresXML(def listaAutores, def pathDoc){
         def formatDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date())
@@ -200,18 +201,16 @@ class TransferenciaListadoService {
         return correcto
     }
 
-    def generateListadoPDF(def collection){
-        def list = []
+    def generateListadoPDF(def collection, Locale idioma, def imgBanner, def pathDoc){
         def doc = null
 
         switch (collection){
             case "mangas":
-                list = mangasService.getFullListWithFormat()
                 //Llamamos a la funcion de creación del PDF que nos devolvera el PDF
-
+                doc = pdfService.generateListMangasPDF(mangasService.getListWithFormat(false), mangasService.getListWithFormat(true), idioma, imgBanner, pathDoc)
                 break
             case "autores":
-                list = autorService.getFullListWithFormat()
+                def list = autorService.getFullListWithFormat()
                 //Llamamos a la funcion de creación del PDF que nos devolvera el PDF
                 break
         }
