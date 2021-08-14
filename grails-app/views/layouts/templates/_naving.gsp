@@ -35,7 +35,7 @@
                 <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.exportacionListado.enable").valorModulo}">
                     <g:if test="${mangasService.getSizeMangasWithBorrados() > 0}">
                         <li>
-                            <g:link controller="transferenciaListado" action="ExportarPdfManga">
+                            <g:link controller="transferenciaListado" action="ExportarCollectionPdf" params="[collection: 'mangas']">
                                 <g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.mangas', default: 'mangas')}"]' />
                             </g:link>
                         </li>
@@ -71,7 +71,9 @@
                 <g:if test="${GestorModulos.findByConfigModulo("dynaKKu.exportacionListado.enable").valorModulo}">
                     <g:if test="${autorService.getSizeAutorWithBorrados() > 0}">
                         <li>
-                            <g:link action=""><g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.autores', default: 'autor')}"]' /></g:link>
+                            <g:link controller="transferenciaListado" action="ExportarCollectionPdf" params="[collection: 'autores']">
+                                <g:message code="default.list.generatePDF.label" args='["${message(code: 'layoutMenu.botonesColeccion.autores', default: 'autor')}"]' />
+                            </g:link>
                         </li>
 
                         <li>

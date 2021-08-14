@@ -210,8 +210,8 @@ class TransferenciaListadoService {
                 doc = pdfService.generateListMangasPDF(mangasService.getListWithFormat(false), mangasService.getListWithFormat(true), idioma, imgBanner, pathDoc)
                 break
             case "autores":
-                def list = autorService.getFullListWithFormat()
                 //Llamamos a la funcion de creación del PDF que nos devolvera el PDF
+                doc = pdfService.generateListAutoresPDF(autorService.getFullListWithFormat(), idioma, imgBanner, pathDoc)
                 break
         }
 

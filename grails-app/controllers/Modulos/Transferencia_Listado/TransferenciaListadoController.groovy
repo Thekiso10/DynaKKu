@@ -172,12 +172,12 @@ class TransferenciaListadoController {
     }
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
-    def ExportarPdfManga() {
+    def ExportarCollectionPdf(){
         if (!gestorModulosService.validatePermission("dynaKKu.exportacionListado.enable")) {
             redirect(controller: "usuario", action: "index")
         }
+
         //Definir variables
-        Document documento
         FileInputStream fileInputStream
         OutputStream responseOutputStream
         File pdfFile
@@ -186,7 +186,7 @@ class TransferenciaListadoController {
         def imgBanner = request.getSession().getServletContext().getRealPath((grailsApplication.config.dynaKKu.pdfConf.pathBanner))
         def pathDoc = request.getSession().getServletContext().getRealPath(('/'))
         //Obtener el PDF
-        def doc = transferenciaListadoService.generateListadoPDF("mangas", RCU.getLocale(request), imgBanner, pathDoc)
+        def doc = transferenciaListadoService.generateListadoPDF(params.collection, RCU.getLocale(request), imgBanner, pathDoc)
 
         try{
             docName = doc?.docName
@@ -216,5 +216,6 @@ class TransferenciaListadoController {
             //Delete pdf file
             pdfFile?.delete()
         }
+
     }
 }

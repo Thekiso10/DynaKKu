@@ -84,6 +84,53 @@ class PdfService {
         return [document: document, docName:docName]
     }
 
+    def generateListAutoresPDF(def listaAutores, Locale locale, def imgBanner, def pathDoc){
+        log.info "Generando PDF del Listado de Autores"
+        //Crear formato fecha actual
+        def formatDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date())
+        //Definir el nombre del doc
+        def docName = 'listAutoresPDF_'.concat(formatDate).concat('.pdf')
+        //Definir variables iniciales
+        document = new com.itextpdf.text.Document(PageSize.A4, 36, 36, 95, 65)
+        defaultLocale = locale
+        //Crear documento
+        try {
+            //------------------ Se crea el documento -------------------------
+            PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(new File(pathDoc + File.separator + docName)))
+
+            //------------------ Setear tanto el Headre como Footer -----------
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
+            writer.setPageEvent(event)
+            // Se abre el documento
+            document.open()
+            //Document metadata
+            document.addTitle(messageSource.getMessage("modulos.listadoPDF.title", null, defaultLocale) + ' - '.concat(formatDate))
+            document.addSubject(docName)
+
+            //------------------ Imagen de cabecera del pdf -------------------
+            Image imageHeader = Image.getInstance(imgBanner)
+            float scaler = ((document.getPageSize().getWidth() - document.leftMargin()- document.rightMargin()) / imageHeader.getWidth()) * 100
+            imageHeader.scalePercent(scaler)
+            document.add(imageHeader)
+
+            //------------------ Ejecutar logica ------------------------------
+            //Colocar la cabezera informativa
+            generateCabezeraListPDF()
+            //Colocar la tabla con la info
+            generateBodyListAutoresPDF(listaAutores)
+
+            //------------------ Cerrar el nuevo documento --------------------
+            document.close()
+
+        }catch(Exception e){
+            log.error e.getCause()
+            log.error e.getMessage()
+            return null
+        }
+
+        return [document: document, docName:docName]
+    }
+
     def generateListMangasPDF(def listaMangasRegistrados, def listaMangasDeseados, Locale locale, def imgBanner, def pathDoc){
         log.info "Generando PDF del Listado de Mangas"
         //Crear formato fecha actual
@@ -115,7 +162,7 @@ class PdfService {
 
             //------------------ Ejecutar logica ------------------------------
             //Colocar la cabezera informativa
-            generateCabezeraListMangasPDF()
+            generateCabezeraListPDF()
             //Colocar la tabla con la info
             generateBodyListMangasPDF(listaMangasRegistrados)
             generateBodyListMangasPDF(listaMangasDeseados)
@@ -130,6 +177,57 @@ class PdfService {
         }
 
         return [document: document, docName:docName]
+    }
+
+    private generateBodyListAutoresPDF(def listAutores){
+        //Colores
+        BaseColor azulClaro = new BaseColor (19, 101, 142)
+        BaseColor negro     = new BaseColor (68, 68, 68)
+        //Fuentes
+        Font smallBaseBlack = FontFactory.getFont(FontFactory.HELVETICA, 10, negro)
+        Font smallBoldBlue = FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD, azulClaro)
+
+        //Definir la propiedades de la tabla
+        PdfPTable table = new PdfPTable(4)
+        table.setWidthPercentage(100)
+        //Definir las cellas
+        PdfPCell cell = new PdfPCell()
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER)
+        cell.setVerticalAlignment(Element.ALIGN_CENTER)
+        cell.setPaddingTop(6)
+        cell.setPaddingBottom(10)
+
+        //Definimos el titulo de la tablas
+        def listTitel = []
+        listTitel << (new Paragraph((messageSource.getMessage("autor.nombre.label", null, defaultLocale)), smallBoldBlue))
+        listTitel << (new Paragraph((messageSource.getMessage("autor.genero.label", null, defaultLocale)), smallBoldBlue))
+        listTitel << (new Paragraph((messageSource.getMessage("autor.difunto.label", null, defaultLocale)), smallBoldBlue))
+        listTitel << (new Paragraph((messageSource.getMessage("autor.fechaNacimento.label", null, defaultLocale)), smallBoldBlue))
+        saveCellToTable(listTitel, table, cell)
+
+        //Bucle con la info de los mangas
+        listAutores.each{ autorJson ->
+            def text
+            def listText = []
+
+            //Nombre del Autor
+            text = new Paragraph((autorJson.nombreAutor ?: messageSource.getMessage("modulos.historial.createPDF.fecha.noIndicado.label")), smallBaseBlack)
+            listText << text
+            //Genero
+            text = new Paragraph((autorJson.genero == 'Masculino' ? (messageSource.getMessage("autores.estado.masculino", null, defaultLocale)) : (messageSource.getMessage("autores.estado.femenido", null, defaultLocale))), smallBaseBlack)
+            listText << text
+            //Estado
+            text = new Paragraph((autorJson.difunto ? (messageSource.getMessage("autores.estado.muerto", null, defaultLocale)) : (messageSource.getMessage("autores.estado.vivo", null, defaultLocale))), smallBaseBlack)
+            listText << text
+            //Fecha de Nacimiento
+            text = new Paragraph(new SimpleDateFormat("dd/MM/yy").format(autorJson.fechaNacimento), smallBaseBlack)
+            listText << text
+
+            saveCellToTable(listText, table, cell)
+        }
+
+        document.add(table)
+        document.add(Chunk.NEWLINE)
     }
 
     private def generateBodyListMangasPDF(def listaMangas){
@@ -157,11 +255,7 @@ class PdfService {
         listTitel << (new Paragraph((messageSource.getMessage("mangas.deseado.label", null, defaultLocale)), smallBoldBlue))
         listTitel << (new Paragraph((messageSource.getMessage("mangas.numTomosActuales.label", null, defaultLocale)), smallBoldBlue))
         listTitel << (new Paragraph((messageSource.getMessage("mangas.numTomosMaximos.label", null, defaultLocale)), smallBoldBlue))
-
-        listTitel.each {
-            cell.setPhrase(it)
-            table.addCell(cell)
-        }
+        saveCellToTable(listTitel, table, cell)
 
         //Bucle con la info de los mangas
         listaMangas.each{ mangaJson ->
@@ -170,33 +264,26 @@ class PdfService {
             def listText = []
 
             //Nombre del Manga
-            //text = new Paragraph((messageSource.getMessage("mangas.nombreManga.label", null, defaultLocale).concat(": ")), smallBoldBlue)
             text = new Paragraph((mangaJson["nombreManga"] ?: messageSource.getMessage("modulos.historial.createPDF.fecha.noIndicado.label")), smallBaseBlack)
             listText << text
             //Registrado
-            //text = new Paragraph((messageSource.getMessage("mangas.deseado.label", null, defaultLocale).concat(": ")), smallBoldBlue)
             text = new Paragraph((mangaJson["deseado"] ? (messageSource.getMessage("default.si.label", null, defaultLocale)) : (messageSource.getMessage("default.no.label", null, defaultLocale))), smallBaseBlack)
             listText << text
             //Tomos actuales
-            ///text = new Paragraph((messageSource.getMessage("mangas.numTomosActuales.label", null, defaultLocale).concat(": ")), smallBoldBlue)
             text = new Paragraph((mangaJson["tomosActuales"] ? mangaJson["tomosActuales"].toString() : messageSource.getMessage("modulos.historial.createPDF.fecha.noIndicado.label", null, defaultLocale)), smallBaseBlack)
             listText << text
             //Tomos Maximos
-            //text = new Paragraph((messageSource.getMessage("mangas.numTomosMaximos.label", null, defaultLocale).concat(": ")), smallBoldBlue)
             text = new Paragraph((mangaJson["tomosMaximos"] ? mangaJson["tomosMaximos"].toString() : messageSource.getMessage("modulos.historial.createPDF.fecha.noIndicado.label", null, defaultLocale)), smallBaseBlack)
             listText << text
 
-            listText.each {textCell ->
-                cell.setPhrase(textCell)
-                table.addCell(cell)
-            }
+            saveCellToTable(listText, table, cell)
         }
 
         document.add(table)
         document.add(Chunk.NEWLINE)
     }
 
-    private def generateCabezeraListMangasPDF(){
+    private def generateCabezeraListPDF(){
         //Color
         BaseColor negro = new BaseColor (68, 68, 68)
         //Fuentes
@@ -509,6 +596,13 @@ class PdfService {
         subTitle.setAlignment(Element.ALIGN_CENTER)
         subTitle.setSpacingBefore(20f)
         document.add(subTitle)
+    }
+
+    private def saveCellToTable(def list, def table, def cell){
+        list.each {
+            cell.setPhrase(it)
+            table.addCell(cell)
+        }
     }
 
 }

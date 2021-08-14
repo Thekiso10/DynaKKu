@@ -77,7 +77,7 @@ class AutorService {
 		def pureList = Autor.findAllByBorrado(false)
 		//Formateamos la lista
 		pureList.each { autor ->
-			finalList << ["nombreAutor": "${autor.nombre} ${autor.apellido}", "genero": autor.genero, "difunto": autor.difunto, "fechaNacimento": autor.fechaNacimento]
+			finalList << ["nombreAutor": "${autor.toString()}", "genero": autor.genero, "difunto": autor.difunto, "fechaNacimento": autor.fechaNacimento]
 		}
 
 		return finalList
