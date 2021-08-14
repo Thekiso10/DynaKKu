@@ -7,15 +7,6 @@
     def mangasService = grailsApplication.classLoader.loadClass('dynaKKu.MangasService').newInstance()
 %>
 
-%{-- Modales --}%
-<div id="ImportAutoresModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportAutoresModal" aria-hidden="true">
-    <g:render  template="/autor/templates/modalImportAutores"/>
-</div>
-
-<div id="ImportMangasModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportMangasModal" aria-hidden="true">
-    <g:render  template="/mangas/templates/modalImportMangas"/>
-</div>
-
 <nav id="menu" class="">
     <!-- Menu -->
     <header class="major">

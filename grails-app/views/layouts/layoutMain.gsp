@@ -33,8 +33,17 @@
 
 					<g:layoutBody/>
 
+					%{-- Modales --}%
+					<div id="ImportAutoresModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportAutoresModal" aria-hidden="true">
+						<g:render template="/autor/templates/modalImportAutores"/>
+					</div>
+
+					<div id="ImportMangasModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ImportMangasModal" aria-hidden="true">
+						<g:render template="/mangas/templates/modalImportMangas"/>
+					</div>
+
 					<sec:ifLoggedIn>
-						<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalConfiguracion" aria-hidden="true">
 							<g:render  template="/Usuario/configuracion"/>
 						</div>
 					</sec:ifLoggedIn>
