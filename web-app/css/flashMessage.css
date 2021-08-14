@@ -60,3 +60,7 @@ body #userFlashCorrecto {
 	margin-bottom: 1em;
 	margin-top: 0.25em;
 }
+
+form .modal-body .flash{
+	font-size: 0.85em;
+}

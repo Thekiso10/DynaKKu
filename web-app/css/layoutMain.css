@@ -10,9 +10,10 @@ body, body input, body a, body button, body p, body span, body h1, body h2, body
 body a:hover, a:focus {color:white;}
 
 /******* Clases simples *******/
-.padding-left-0 {padding-left: 0 !important;}
-.padding-top-1  {padding-top: 1em !important;}
-.padding-top-3  {padding-top: 3em !important;}
+.padding-left-0  {padding-left: 0 !important;}
+.padding-right-1 {padding-right: 1em !important;}
+.padding-top-1   {padding-top: 1em !important;}
+.padding-top-3   {padding-top: 3em !important;}
 
 .italic {font-style: italic;}
 
@@ -29,6 +30,10 @@ section form.form .button-filter button.primary {margin-right: 1em;}
 section form.form .checkBox {display: flex; align-items: center;}
 /************* List ***************/
 section table a {border: 0;}
+
+/************* Modales ***************/
+form .modal-content .modal-title {font-size: 1.15em;}
+form .modal-body .title-body {margin-top: 1.25em;}
 
 /*!*************  Footer *************!*/
 #Footer {padding: 1em;}

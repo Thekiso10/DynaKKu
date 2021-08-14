@@ -353,6 +353,15 @@ body div.pagination span.currentStep {background-color: #1699dc; color: #ffffff 
 body div.pagination span.currentStep:hover {background-color: #1699dc;}
 body div.pagination span.currentStep:active {background-color: #1699dc;}
 
+/*  Modales   */
+form .modal-header {background-color: #1B5C7D; color: #E9EAEB; border-bottom: 3px solid #10384c;}
+form .modal-header .close {color: #E9EAEB;}
+
+form .modal-body {background-color: #1f2e3e; color: #E9EAEB;}
+form .modal-body .title-body {color: #E9EAEB; border-bottom: 2px solid #E9EAEB;}
+
+form .modal-footer {background-color: #212427;}
+
 /*    FOOTER   */
 body #Footer {background-color: #040709; color: #d9dfe6;}
 body #Footer .row .col-sm-4 a {color: #49abff;}
