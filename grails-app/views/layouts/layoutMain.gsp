@@ -49,7 +49,7 @@
 					</sec:ifLoggedIn>
 
 					<div id="spinner" class="spinner" style="display:none;">
-						<img id="img-spinner" src="${resource(dir: 'images/imgWeb', file: 'spinner.gif')}" alt="Loading"/>
+						<img id="img-spinner" src="${resource(dir: '/images/imgWeb', file: 'spinnerWeb.gif')}" alt="Loading"/>
 					</div>
 
 				</div>
