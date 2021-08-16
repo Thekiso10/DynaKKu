@@ -47,7 +47,7 @@
 
                             <td>
                                 <p>
-                                    ${message(code: (module.valorModulo ? "default.deshabilitado.label" : "default.habilitado.label"))}
+                                    ${message(code: (module.valorModulo ? "default.habilitado.label" : "default.deshabilitado.label"))}
                                 </p>
                             </td>
 
