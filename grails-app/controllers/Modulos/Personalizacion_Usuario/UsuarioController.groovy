@@ -6,6 +6,7 @@ import grails.transaction.Transactional
 class UsuarioController {
 
     def springSecurityService
+    def usuarioService
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def index(){
@@ -37,8 +38,15 @@ class UsuarioController {
             if(!params.password || !params.repitPassword){
                 render (status:403, text: message(code: 'layoutMenu.configuracion.save.error.code01'))
                 return
-            }else if (!params.password.equals(params.repitPassword)){
+            }
+
+            if (!params.password.equals(params.repitPassword)){
                 render (status:403, text: message(code: 'layoutMenu.configuracion.save.error.code03'))
+                return
+            }
+
+            if(!usuarioService.validatePassword(params.password)){
+                render (status:403, text: message(code: 'layoutMenu.configuracion.save.error.code05'))
                 return
             }
         }
