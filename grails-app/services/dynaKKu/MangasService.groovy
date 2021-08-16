@@ -30,6 +30,13 @@ class MangasService {
                         error = true
                         mensaje = "mangas.error.monetarios.negativos" //Codigo del error
                     }
+
+                    if(Integer.parseInt(params.numTomosMaximos) > Holders.config.dynaKKu.mangas.longitut.tomosMax ||
+                            Integer.parseInt(params.numTomosActuales) > Holders.config.dynaKKu.mangas.longitut.tomosMax){
+                        log.error "Se ha superado el limite de tomos permitidos"
+                        error = true
+                        mensaje = "mangas.error.especificos.tomosTotales.max" //Codigo del error
+                    }
                 }else{
                     log.error "El campo de los Datos Especificos no son numeros"
                     error = true
@@ -43,6 +50,7 @@ class MangasService {
 
     def validateLogic(params){
         def error = false
+        def msgError = null
         //Validar coerencia de los datos Especificso
         if(params.completado == true){
             params.serieAcabada = true
@@ -54,6 +62,7 @@ class MangasService {
             */
             //Validar que el numero de tomos maximos no sea 0
             if(Integer.parseInt(params.numTomosMaximos) == 0){
+                msgError = 'mangas.error.especificos.tomosTotales.menos'
                 error = true
             }else if(Integer.parseInt(params.numTomosMaximos) != Integer.parseInt(params.numTomosActuales)){
                 log.warn "Estan intentando actualizar un manga completado con diferentes numTomosMaximos y numTomosActuales"
@@ -70,7 +79,7 @@ class MangasService {
             }
         }
 
-        return [params: params, error: error]
+        return [params: params, error: error, msgError: msgError]
     }
 
     def validateSpecificDates(params){
