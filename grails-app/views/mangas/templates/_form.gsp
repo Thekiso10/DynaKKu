@@ -20,11 +20,11 @@
 			  class="many-to-one" noSelection="['null': '']"/>
 </div>
 
-<div class="col-4 col-12-xsmall ${hasErrors(bean: mangasInstance, field: 'urlImg', 'error')}">
-	<label for="imagen">
-		<g:message code="mangas.urlImg.label" default="Url Img" />:
-	</label>
+<div class="col-4 col-12-xsmall ${mangasInstance?.urlImg ? 'checkBox' : ''} ${hasErrors(bean: mangasInstance, field: 'urlImg', 'error')}">
 	<g:if test="${!mangasInstance?.urlImg}">
+		<label for="imagen">
+			<g:message code="mangas.urlImg.label" default="Url Img" />:
+		</label>
 		<g:field type="file" name="imagen"  accept="image/*"/>
 		<div class="small imgAutorInfo">
 			<span>
@@ -35,7 +35,7 @@
 	<g:else>
 		<g:hiddenField name="checkImg" value="${true}"/>
 		<g:checkBox name="CheckboxImg"/>
-		<label for="checkImg">
+		<label for="CheckboxImg">
 			<g:message code="mangas.message.checBoxDelete"/>
 		</label>
 	</g:else>

@@ -165,6 +165,7 @@ dynaKKu.autores.longitut.nombreMax = 25 //Especificar la logitut maxima del nomb
 dynaKKu.mangas.rutaImg = "web-app\\images\\imgMangas" //Ruta para guardar las imagenes de cada manga
 dynaKKu.mangas.longitut.nombreMax  = 50 //Especificar la logitut maxima del nombre
 dynaKKu.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos permitidos para un mismo Manga
+dynaKKu.mangas.longitut.tomosMax   = 150 //Especificar el numero maximo de tomos que puedes registrar
 
 /*==================================================================*/
 /* 		                Historial Actividad                			*/
