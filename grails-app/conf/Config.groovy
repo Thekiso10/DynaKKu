@@ -184,6 +184,11 @@ dynaKKu.estadisticas.enable = true //Activar el modulo de Estadisticas
 dynaKKu.exportacionListado.enable = true //Activar el modulo de Tranferencia de Listados
 
 /*==================================================================*/
+/* 					   Configuración interna       					*/
+/*==================================================================*/
+app.rutaConfig.ruta = System.getProperty("personalitzacio") ?: "pre"
+
+/*==================================================================*/
 /* 					   Cargar Config Externa       					*/
 /*==================================================================*/
 Properties props = new Properties()
