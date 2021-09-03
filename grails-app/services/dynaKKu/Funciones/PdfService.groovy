@@ -19,7 +19,6 @@ import com.itextpdf.text.pdf.PdfWriter
 import com.itextpdf.text.Document
 import com.itextpdf.text.pdf.PdfPCell
 import com.itextpdf.text.pdf.PdfPTable
-import dynaKKu.Funciones.ClasesJavaPDF.HeaderFooterPageEvent
 
 @Transactional
 class PdfService {
@@ -98,7 +97,7 @@ class PdfService {
             PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(new File(pathDoc + File.separator + docName)))
 
             //------------------ Setear tanto el Headre como Footer -----------
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale), imgBanner)
+            HeaderFooterPageEventGroovy eventGroovy = new HeaderFooterPageEventGroovy(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
             writer.setPageEvent(event)
             // Se abre el documento
             document.open()
@@ -145,7 +144,7 @@ class PdfService {
             PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(new File(pathDoc + File.separator + docName)))
 
             //------------------ Setear tanto el Headre como Footer -----------
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
+            HeaderFooterPageEventGroovy eventGroovy = new HeaderFooterPageEventGroovy(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
             writer.setPageEvent(event)
             // Se abre el documento
             document.open()
