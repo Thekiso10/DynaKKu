@@ -1,8 +1,7 @@
 package dynaKKu.Funciones
 
-
 import Modulos.Historial_Actividad.HistorialMangasActividad
-
+import iTextEvents.HeaderFooterPageEventGroovy
 import grails.transaction.Transactional
 import java.text.SimpleDateFormat
 import org.springframework.context.MessageSource
@@ -44,8 +43,8 @@ class PdfService {
             //------------------ Se crea el documento -------------------------
             PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(new File(pathDoc + File.separator + docName)))
             //------------------ Setear tanto el Headre como Footer -----------
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
-            writer.setPageEvent(event)
+            HeaderFooterPageEventGroovy eventGroovy = new HeaderFooterPageEventGroovy(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
+            writer.setPageEvent(eventGroovy)
             // Se abre el documento
             document.open()
             //Document metadata
@@ -99,7 +98,7 @@ class PdfService {
             PdfWriter writer = PdfWriter.getInstance(document,new FileOutputStream(new File(pathDoc + File.separator + docName)))
 
             //------------------ Setear tanto el Headre como Footer -----------
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale), imgBanner)
             writer.setPageEvent(event)
             // Se abre el documento
             document.open()
