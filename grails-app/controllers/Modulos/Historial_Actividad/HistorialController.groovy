@@ -27,7 +27,7 @@ class HistorialController {
         listaHistorial = listaHistorial.subList(offset, Math.min (offset + params.max, listaHistorial.size()))
         /* Comprobar que la lista no este vacia */
         if(listaHistorialCount == 0){
-            flash.warn = message(code: "default.list.notSize", args:[message(code: "layoutMenu.botonesColeccion.autores")])
+            flash.warn = message(code: "default.list.notSize", args:[message(code: "modulos.historialActividad.title")])
         }
 
         //Hacer render de la vista
