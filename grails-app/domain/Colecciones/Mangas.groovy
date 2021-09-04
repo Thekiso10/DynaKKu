@@ -14,7 +14,7 @@ class Mangas {
 	
 	int numTomosActuales
 	int numTomosMaximos
-	int precioTotal
+	float precioTotal
 
 	Date fechaInscripcion
 	Date ultimaModificacion
