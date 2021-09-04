@@ -36,7 +36,7 @@ class Mangas {
 
 		numTomosActuales	nullable: true, blank: true
 		numTomosMaximos		nullable: true, blank: true
-		precioTotal			nullable: true, blank: true
+		precioTotal			nullable: true, blank: true, scale: 2 //Scale limite en numero de decimales permitido
 
 		fechaInscripcion	nullable: true, blank: true
 		ultimaModificacion	nullable: true, blank: true
