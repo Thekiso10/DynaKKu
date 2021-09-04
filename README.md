@@ -2,7 +2,9 @@ DynaKKu.com
 ==========
 Este es una Gestor de Mangas Web personal.
 ## Version
-Verión Actual: **0.7.0-develop**
+Verión Actual: **0.7.1** [Notas del parche](https://github.com/Thekiso10/DynaKKu/releases/tag/v0.7.1-beta)
+
+Lanzamiento: **04 Septiembre del 2021**
 ## Creators
   * [**Diogo Assunção**](https://github.com/Thekiso10)
 
@@ -18,6 +20,7 @@ Para el desarrollo de la interfaz web de DynaKKu utilizo las siguientes tecnolog
 - [X] **HTML 5**
 - [X] **CSS 3**
 - [X] **Bootstrap 3.3.4**
+- [X] **Template HTML5UP - Editorial**
 
 ## License
 

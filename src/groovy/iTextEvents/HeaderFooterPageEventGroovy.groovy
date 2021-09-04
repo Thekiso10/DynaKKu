@@ -1,26 +1,39 @@
-package dynaKKu.Funciones.ClasesJavaPDF;
+package iTextEvents
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
+
 import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.BaseColor
+import com.itextpdf.text.DocumentException
+import com.itextpdf.text.Element
+import com.itextpdf.text.ExceptionConverter
+import com.itextpdf.text.Font
+import com.itextpdf.text.Image
+import com.itextpdf.text.Phrase
+import com.itextpdf.text.pdf.PdfContentByte
+import com.itextpdf.text.pdf.PdfPageEventHelper
+import com.itextpdf.text.pdf.PdfTemplate
+import com.itextpdf.text.pdf.PdfWriter
+import com.itextpdf.text.Document
+import com.itextpdf.text.pdf.PdfPCell
+import com.itextpdf.text.pdf.PdfPTable
+import com.itextpdf.text.pdf.ColumnText
+import com.itextpdf.text.pdf.PdfName
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.codehaus.groovy.grails.web.servlet.mvc.GrailsWebRequest
+import org.codehaus.groovy.grails.web.util.WebUtils
 
-class HeaderFooterPageEvent extends PdfPageEventHelper{
+import java.text.SimpleDateFormat
+
+class HeaderFooterPageEventGroovy extends PdfPageEventHelper{
     private PdfTemplate t;
     private Image total;
     private String nombreAplicacion;
 
-    public HeaderFooterPageEvent(String nombreAplicacion) {
+    public HeaderFooterPageEventGroovy(def nombreAplicacion) {
         this.nombreAplicacion = nombreAplicacion;
     }
 
-    public void onOpenDocument(PdfWriter writer, Document document) {
+    void onOpenDocument(PdfWriter writer, Document document) {
         t = writer.getDirectContent().createTemplate(30, 16);
         try {
             total = Image.getInstance(t);
@@ -31,7 +44,7 @@ class HeaderFooterPageEvent extends PdfPageEventHelper{
     }
 
     @Override
-    public void onEndPage(PdfWriter writer, Document document) {
+    void onEndPage(PdfWriter writer, Document document) {
         addHeader(writer);
         addFooter(writer);
     }
@@ -40,17 +53,22 @@ class HeaderFooterPageEvent extends PdfPageEventHelper{
         PdfPTable header = new PdfPTable(2);
         try {
             // set defaults
-            header.setWidths(new int[]{2, 24});
-            header.setTotalWidth(527);
+            int[] widths = [2, 24].toArray()
+            header.setWidths(widths)
+            header.setTotalWidth(527)
             header.setLockedWidth(false);
             header.getDefaultCell().setFixedHeight(40);
             header.getDefaultCell().setBorder(Rectangle.BOTTOM);
             header.getDefaultCell().setBorderColor(new BaseColor(19, 101, 142));
 
             // add image
-            Image logo = Image.getInstance(HeaderFooterPageEvent.class.getResource("/web-app/images/imgWeb/pdf/headerPDF.png"));
-            header.addCell(logo);
 
+            GrailsWebRequest webUtils = WebUtils.retrieveGrailsWebRequest()
+            def request = webUtils.getCurrentRequest()
+            def img = request.getSession().getServletContext().getRealPath("/images/imgWeb/pdf/headerPDF.png")
+
+            Image logo = Image.getInstance(img)
+            header.addCell(logo);
             // set Date
             String formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss a, z").format(new Date());
             String textSecundario = "PDF generado el dia ".concat(formatDate);
@@ -80,7 +98,8 @@ class HeaderFooterPageEvent extends PdfPageEventHelper{
         PdfPTable footer = new PdfPTable(3);
         try {
             // set defaults
-            footer.setWidths(new int[]{24, 2, 1});
+            int[] widths = [24, 2, 1].toArray()
+            footer.setWidths(widths);
             footer.setTotalWidth(527);
             footer.setLockedWidth(true);
             footer.getDefaultCell().setFixedHeight(40);
@@ -110,7 +129,7 @@ class HeaderFooterPageEvent extends PdfPageEventHelper{
         }
     }
 
-    public void onCloseDocument(PdfWriter writer, Document document) {
+    void onCloseDocument(PdfWriter writer, Document document) {
         int totalLength = String.valueOf(writer.getPageNumber()).length();
         int totalWidth = totalLength * 5;
         ColumnText.showTextAligned(t, Element.ALIGN_RIGHT,
