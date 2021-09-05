@@ -64,7 +64,7 @@
 
 				<article>
 					<span id="imgAutor" class="image icon">
-						<g:if test="${autorInstance?.rutaImagen}">
+						<g:if test="${autorInstance?.imageAutor}">
 							<img src="${createLink(controller:'Autor', action:'autor_image', id:autorInstance.id)}" alt="${autorInstance?.nombre}"/>
 						</g:if>
 						<g:else>

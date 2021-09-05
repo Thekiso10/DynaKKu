@@ -168,6 +168,11 @@ dynaKKu.mangas.longitut.generosMax = 5 //Especificar el numero maximo de generos
 dynaKKu.mangas.longitut.tomosMax   = 150 //Especificar el numero maximo de tomos que puedes registrar
 
 /*==================================================================*/
+/* 		                     Imagenes                      			*/
+/*==================================================================*/
+dynaKKu.colecciones.photoSize	= 4 * 1024 * 1024 	// Tamaño maximo de la foto (4MB)
+
+/*==================================================================*/
 /* 		                Historial Actividad                			*/
 /*==================================================================*/
 dynaKKu.historialActividad.enable = true //Activar el modulo de Historial

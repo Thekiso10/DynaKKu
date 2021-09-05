@@ -4,7 +4,8 @@ class Mangas {
 	
 	String id
 	String nombreManga
-	String urlImg
+
+	Image imageManga
 	
 	boolean completado
 	boolean serieAcabada
@@ -25,8 +26,8 @@ class Mangas {
 	Mangas mangaSpinOff
 	
 	static constraints = {
-		nombreManga	nullable: true, blank: true
-		urlImg		nullable: true, blank: true
+		nombreManga		nullable: true, blank: true
+		imageManga		nullable: true, blank: true
 
 		completado			nullable: true, blank: true
 		serieAcabada		nullable: true, blank: true

@@ -10,8 +10,9 @@ class Autor {
 	String nombre
 	String apellido
 	String nacionalidad
-	String rutaImagen
 	String genero //Masculino o Femenino
+
+	Image imageAutor
 
 	boolean difunto //Hay dos estados: Si, no
 	boolean borrado //Marca si esta borrado o no
@@ -24,7 +25,7 @@ class Autor {
     static constraints = {
     	nombre 			nullable: true, blank: true
 		apellido		nullable: true, blank: true
-		rutaImagen  	nullable: true, blank: true
+		imageAutor  	nullable: true, blank: true
 		fechaNacimento	nullable: true, blank: true
 		difunto 		nullable: true, blank: true
 		nacionalidad	nullable: true, blank: true

@@ -1,5 +1,6 @@
 package dynaKKu.Funciones
 
+import Colecciones.Image
 import grails.transaction.Transactional
 import grails.util.Holders
 import org.apache.commons.io.FilenameUtils
@@ -22,8 +23,32 @@ class ColeccionesService {
 
         return error
     }
+
+    def saveImgWithBBDD(def img){
+        def error = false
+        def mensaje = null
+        Image imageInstance = new Image()
+
+        if(img?.getBytes()?.size()){
+            def extensiones = FilenameUtils.getExtension(img.originalFilename)
+            if(!extensiones.toLowerCase().equals("jpg") && !extensiones.toLowerCase().equals("jpeg") && !extensiones.toLowerCase().equals("png")){
+                error = true
+                mensaje = "autores.errores.img.formato"
+                log.error "Han intentado introducir un formato invalido de imagen [" + extensiones + "]"
+            }else {
+                imageInstance.image = img.getBytes()
+                imageInstance.imageType = img.getContentType()
+            }
+        }else{
+            error = true
+            log.error "[Colecciones] Validar rutas de la foto a fallado."
+        }
+
+        return [error: error, imageInstance: imageInstance, mensaje: mensaje]
+    }
+
     //Guardar la foto
-    def saveImg(def foto, def nombre, def nombre02, def mangas){
+    def saveImgWithServer(def foto, def nombre, def nombre02, def mangas){
         def error = false
         def path = null
         def mensaje = null
