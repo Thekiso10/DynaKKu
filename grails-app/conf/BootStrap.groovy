@@ -85,8 +85,10 @@ class BootStrap {
         //Definir la lista de files
         ArrayList<File> listaCarpetas = []
         //Definir la ruta de las carpetas que hay que comprobar y Colocar los files en la lista
+        /*
         listaCarpetas << new File(grailsApplication.config.dynaKKu.autores.rutaImg)
         listaCarpetas << new File(grailsApplication.config.dynaKKu.mangas.rutaImg)
+        */
         //Ejecutar las comparaciones
         try{
             listaCarpetas.each { folder ->
