@@ -71,7 +71,7 @@
 							<g:sortableColumn scope="col" property="difunto"
 											  title="${message(code: 'autor.difunto.label', default: 'Difunto')}" />
 
-							<g:sortableColumn scope="col" property="rutaImagen"
+							<g:sortableColumn scope="col" property="imageAutor"
 											  title="${message(code: 'autor.imagen.label', default: 'Ruta Imagen')}" />
 							<%-- Este Th es solo para estetica --%>
 							<th></th>
@@ -120,7 +120,7 @@
 								</td>
 
 								<td>
-									<g:if test="${!autorInstance.rutaImagen}">
+									<g:if test="${!autorInstance.imageAutor}">
 										<g:message code="autor.rutaImagen.label.noFoto"
 												   default="No hay Foto" />
 									</g:if>

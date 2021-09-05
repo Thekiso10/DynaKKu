@@ -575,19 +575,17 @@ class MangasController {
     /*----------------------------------------------------------*/
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def poster_image() {
-
         def mangasInstance = Mangas.get(params.id)
-
-        def rutaImg = mangasInstance.urlImg
-        File file = new File(rutaImg)
-
-        if (!file) {
+        def imageInstance = mangasInstance.imageManga
+        if (!imageInstance) {
             response.sendError(404)
             return "no photo"
         }
 
+        response.contentType = imageInstance.imageType
+        response.contentLength = imageInstance.image.size()
         OutputStream out = response.outputStream
-        out.write(file.bytes)
+        out.write(imageInstance.image)
         out.close()
     }
 }

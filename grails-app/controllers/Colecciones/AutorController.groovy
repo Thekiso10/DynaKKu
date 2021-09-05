@@ -116,6 +116,11 @@ class AutorController {
 			try{
 				if(imageInstance.save(flush: true)){
 					autorInstance.imageAutor = imageInstance
+				}else{
+					log.error("No se ha podido guardar la imagen")
+					flash.message = message(code:'autores.errores.img.saveFolder')
+					redirect(action: "create")
+					return
 				}
 			}catch(Exception e){
 				flash.message = message(code:'autores.errores.img.saveFolder')
@@ -230,6 +235,11 @@ class AutorController {
 				try{
 					if(imageInstance.save(flush: true)){
 						autorInstance.imageAutor = imageInstance
+					}else{
+						log.error("No se ha podido guardar la imagen")
+						flash.message = message(code:'autores.errores.img.saveFolder')
+						redirect(action: "create")
+						return
 					}
 				}catch(Exception e){
 					flash.message = message(code:'autores.errores.img.saveFolder')
@@ -280,12 +290,15 @@ class AutorController {
             return
         }
 		//Si tiene foto, la borramos de la carpeta.
-		if(autorInstance.rutaImagen){
-			if(coleccionesService.deleteImage(autorInstance.rutaImagen)){
+		if(autorInstance.imageAutor){
+			def imageInstance = autorInstance.imageAutor
+			if(!imageInstance.delete(flush: true)){
 				flash.error = message(code: "autores.errores.update.noDeleteFoto")
-				redirect(action: "show", id:autorInstance.id)
+				redirect(action: "edit", id:autorInstance.id)
 				return
 			}
+			//Quitamos la ruta en BBDD
+			autorInstance.imageAutor = null
 		}
         try{
 			autorInstance.borrado = true
@@ -314,17 +327,16 @@ class AutorController {
 	def autor_image() {
 		
 		def autorInstance = Autor.get(params.id)
-		
-		def rutaImg = autorInstance.rutaImagen
-		File file = new File(rutaImg)
-		
-		if (!file) {
+		def imageInstance = autorInstance.imageAutor
+		if (!imageInstance) {
 			response.sendError(404)
 			return "no photo"
 		}
-		
+
+		response.contentType = imageInstance.imageType
+		response.contentLength = imageInstance.image.size()
 		OutputStream out = response.outputStream
-		out.write(file.bytes)
+		out.write(imageInstance.image)
 		out.close()
 	}
 }

@@ -60,7 +60,7 @@
 	<label for="imagen" class="text-right">
 		<g:message code="autor.imagen.label" default="Ruta Imagen"/>:
 	</label>
-	<g:if test="${!autorInstance?.rutaImagen}">
+	<g:if test="${!autorInstance?.imageAutor}">
 		<div class="box">
 			<g:field type="file" name="imagen" id="imgAutor" accept="image/*" class="tamanoInput"/>
 			<div class="imgAutorInfo small">
