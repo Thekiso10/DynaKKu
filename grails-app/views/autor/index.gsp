@@ -102,12 +102,7 @@
 								</td>
 
 								<td>
-									<g:if test="${autorInstance.genero == "Masculino"}">
-										<g:message code="autores.estado.masculino"/>
-									</g:if>
-									<g:else>
-										<g:message code="autores.estado.femenido"/>
-									</g:else>
+									<g:message code="autores.estado.${autorInstance?.genero}"/>
 								</td>
 
 								<td>

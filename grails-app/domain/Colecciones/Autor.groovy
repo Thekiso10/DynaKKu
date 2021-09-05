@@ -5,12 +5,16 @@ import org.hibernate.validator.constraints.Length
 import java.text.SimpleDateFormat;
 
 class Autor {
-	
+
+	enum Generos {
+		MASCULINO, FEMENINO
+	}
+
 	String id
 	String nombre
 	String apellido
 	String nacionalidad
-	String genero //Masculino o Femenino
+	Generos genero
 
 	Image imageAutor
 
