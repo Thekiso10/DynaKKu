@@ -208,14 +208,10 @@ class AutorController {
 		//Condicional para saber como trabajar con las imagenes
 		if(params.checkImg){
 			if(params.CheckboxImg){ //Tiene foto y la quiere borrar
-				def imageInstance = autorInstance.imageAutor
-				if(!imageInstance.delete(flush: true)){
-					flash.error = message(code: "autores.errores.update.noDeleteFoto")
-					redirect(action: "edit", id:autorInstance.id)
-					return
-				}
 				//Quitamos la ruta en BBDD
+				def imageInstance = autorInstance.imageAutor
 				autorInstance.imageAutor = null
+				imageInstance.delete()
 			}
 		}else{ //No tiene foto
 			//Si hay foto guardarla en la carpeta configurada
@@ -289,17 +285,7 @@ class AutorController {
             redirect(action: "show", id:autorInstance.id)
             return
         }
-		//Si tiene foto, la borramos de la carpeta.
-		if(autorInstance.imageAutor){
-			def imageInstance = autorInstance.imageAutor
-			if(!imageInstance.delete(flush: true)){
-				flash.error = message(code: "autores.errores.update.noDeleteFoto")
-				redirect(action: "edit", id:autorInstance.id)
-				return
-			}
-			//Quitamos la ruta en BBDD
-			autorInstance.imageAutor = null
-		}
+		
         try{
 			autorInstance.borrado = true
 			autorInstance.fechaBorrado = new Date()
