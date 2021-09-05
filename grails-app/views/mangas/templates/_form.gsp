@@ -20,8 +20,8 @@
 			  class="many-to-one" noSelection="['null': '']"/>
 </div>
 
-<div class="col-4 col-12-xsmall ${mangasInstance?.urlImg ? 'checkBox' : ''} ${hasErrors(bean: mangasInstance, field: 'urlImg', 'error')}">
-	<g:if test="${!mangasInstance?.urlImg}">
+<div class="col-4 col-12-xsmall ${mangasInstance?.imageManga ? 'checkBox' : ''} ${hasErrors(bean: mangasInstance, field: 'urlImg', 'error')}">
+	<g:if test="${!mangasInstance?.imageManga}">
 		<label for="imagen">
 			<g:message code="mangas.urlImg.label" default="Url Img" />:
 		</label>

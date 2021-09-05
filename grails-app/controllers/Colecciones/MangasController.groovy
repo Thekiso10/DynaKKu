@@ -189,16 +189,33 @@ class MangasController {
             return
         }
         //Si hay foto guardarla en la carpeta configurada
+        def imageInstance = null
         def file = request.getFile('imagen')
-        def validarFoto
+        def validarFoto = null
         if(!file.empty){
-            validarFoto = coleccionesService.saveImg(file, params.nombreManga, null, true)
+            validarFoto = coleccionesService.saveImgWithBBDD(file)
             if (validarFoto.error) {
                 flash.error = message(code: validarFoto.mensaje)
                 redirect(action: "create")
                 return
             }
-            mangasInstance.urlImg = validarFoto.path
+
+            imageInstance = validarFoto.imageInstance
+            imageInstance.imgManga = mangasInstance
+            try{
+                if(imageInstance.save(flush: true)){
+                    mangasInstance.imageManga = imageInstance
+                }else{
+                    log.error("No se ha podido guardar la imagen")
+                    flash.message = message(code:'autores.errores.img.saveFolder')
+                    redirect(action: "create")
+                    return
+                }
+            }catch(Exception e){
+                flash.message = message(code:'autores.errores.img.saveFolder')
+                redirect(action: "create")
+                return
+            }
         }
         //Inicializaremos los valores de la instancia
         mangasInstance.nombreManga = params.nombreManga
@@ -365,27 +382,37 @@ class MangasController {
         def validarFoto
         if(params.checkImg){
             if(params.CheckboxImg){ //Tiene foto y la quiere borrar
-                if(coleccionesService.deleteImage(mangasInstance.urlImg)){
-                    flash.error = message(code: "mangas.errores.update.noDeleteFoto")
-                    redirect(action: "edit", id:mangasInstance.id)
-                    return
-                }
-                //Quitamos la ruta en BBDD
-                mangasInstance.urlImg = null
-            }else if(params.nombreManga != mangasInstance.nombreManga){
-                def changeFoto = coleccionesService.changeNameImg(mangasInstance.urlImg, params.nombreManga, true)
-                mangasInstance.urlImg = changeFoto.path
+                def imageInstance = mangasInstance.imageManga
+                mangasInstance.imageManga = null
+                imageInstance.delete()
             }
         }else{
+            def imageInstance = null
             def file = request.getFile('imagen')
             if (!file.empty) {
-                validarFoto = coleccionesService.saveImg(file, params.nombreManga, null, true)
+                validarFoto = coleccionesService.saveImgWithBBDD(file)
                 if (validarFoto.error) {
                     flash.error = message(code: validarFoto.mensaje)
                     redirect(action: "create")
                     return
                 }
-                mangasInstance.urlImg = validarFoto.path
+
+                imageInstance = validarFoto.imageInstance
+                imageInstance.imgManga = mangasInstance
+                try{
+                    if(imageInstance.save(flush: true)){
+                        mangasInstance.imageManga = imageInstance
+                    }else{
+                        log.error("No se ha podido guardar la imagen")
+                        flash.message = message(code:'autores.errores.img.saveFolder')
+                        redirect(action: "create")
+                        return
+                    }
+                }catch(Exception e){
+                    flash.message = message(code:'autores.errores.img.saveFolder')
+                    redirect(action: "create")
+                    return
+                }
             }
         }
         //Vamos hacer un BackUp de la intancias para poder comparar los cambios realizados en el Historial
@@ -541,21 +568,12 @@ class MangasController {
         //Definir variables
         def registrado = mangasInstance.deseado
         def nombreManga = mangasInstance.nombreManga
-        def path = mangasInstance.urlImg
         //Borrar el Manga
         try{
             mangasInstance.borrado = true
             mangasInstance.fechaBorrado = new Date()
             mangasInstance.save(flush:true)
 
-            //TODO Esto se tendra que eliminar cuando se modifique el guardado de imagen
-            if(path){
-                if(coleccionesService.deleteImage(path)){
-                    flash.error = message(code: "mangas.errores.update.noDeleteFoto")
-                    redirect(action: "show", id:mangasInstance.id)
-                    return
-                }
-            }
             //Registrar su eliminacion
             registerHistorialService.registrarMangas(mangasInstance, 2)
             flash.message = message(code: "mangas.message.delete.ok", args: [nombreManga])

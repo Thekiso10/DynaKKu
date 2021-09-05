@@ -89,7 +89,7 @@
 				<article>
 
 					<span id="imgMangas" class="image icon">
-						<g:if test="${mangasInstance?.urlImg}">
+						<g:if test="${mangasInstance?.imageManga}">
 							<img class="img-responsive" src="${createLink(controller:'mangas', action:'poster_image', id:mangasInstance.id)}" alt="${mangasInstance?.nombreManga}"/>
 						</g:if>
 						<g:else>

@@ -285,7 +285,7 @@ class AutorController {
             redirect(action: "show", id:autorInstance.id)
             return
         }
-		
+
         try{
 			autorInstance.borrado = true
 			autorInstance.fechaBorrado = new Date()
