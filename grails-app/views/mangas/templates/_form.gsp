@@ -97,7 +97,7 @@
 		<g:message code="mangas.precioTotal.label" default="Precio Total" />:
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="precioTotal" type="number" value="${mangasInstance.precioTotal}" required=""/>
+	<g:field name="precioTotal" type="number" step=".01" value="${mangasInstance.precioTotal}" required=""/>
 </div>
 
 <header class="major col-12">
