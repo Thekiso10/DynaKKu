@@ -31,8 +31,9 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<select name="genero" id="genero">
-		<option value="Masculino" ${autorInstance?.genero == 'Masculino' ? 'selected="selected"':''}><g:message code="autores.estado.masculino" default="masculino" /></option>
-		<option value="Femenino" ${autorInstance?.genero == 'Femenino' ? 'selected="selected"':''}><g:message code="autores.estado.femenido" default="femenido" /></option>
+		<option value="-"></option>
+		<option value="${Autor.Generos.MASCULINO}" ${autorInstance?.genero == Autor.Generos.MASCULINO ? 'selected="selected"':''}><g:message code="autores.estado.MASCULINO" default="masculino" /></option>
+		<option value="${Autor.Generos.FEMENINO}" ${autorInstance?.genero == Autor.Generos.FEMENINO ? 'selected="selected"':''}><g:message code="autores.estado.FEMENINO" default="femenido" /></option>
 	</select>
 </div>
 

@@ -107,7 +107,7 @@
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
                         <div class="col-sm-11 enumStat">
-                            <g:message code="stats.autores.porcentajes.generico" args='${[message(code: 'autor.genero.label'), message(code: 'autores.estado.masculino')]}'/>:
+                            <g:message code="stats.autores.porcentajes.generico" args='${[message(code: 'autor.genero.label'), message(code: 'autores.estado.MASCULINO')]}'/>:
                             <g:if test="${listaPorcetajes[0]}">
                                 <span class="estiloPor">${listaPorcetajes[0]}</span>
                             </g:if>
@@ -122,7 +122,7 @@
                             <g:img class="iconStatsRombo" dir="images/imgWeb/icons/" file="rombo.png"/>
                         </div>
                         <div class="col-sm-11 enumStat">
-                            <g:message code="stats.autores.porcentajes.generico" args='${[message(code: 'autor.genero.label'), message(code: 'autores.estado.femenido')]}'/>:
+                            <g:message code="stats.autores.porcentajes.generico" args='${[message(code: 'autor.genero.label'), message(code: 'autores.estado.FEMENINO')]}'/>:
                             <g:if test="${listaPorcetajes[1]}">
                                 <span class="estiloPor">${listaPorcetajes[1]}</span>
                             </g:if>

@@ -105,7 +105,8 @@
 						<p id="genero-label">
 							<g:message code="autor.genero.label" default="genero" />:
 							<span aria-labelledby="genero-label">
-								<g:message code="${autorInstance?.genero == "Masculino" ? "autores.estado.masculino" : "autores.estado.femenido"}" default="sin especificar" />
+								<g:message code="autores.estado.${autorInstance?.genero}" default="sin especificar" />
+								%{--<g:message code="${autorInstance?.genero == "Masculino" ? "autores.estado.MASCULINO" : "autores.estado.FEMENINO"}" default="sin especificar" />--}%
 							</span
 						</p>
 

@@ -98,7 +98,7 @@ class PdfService {
 
             //------------------ Setear tanto el Headre como Footer -----------
             HeaderFooterPageEventGroovy eventGroovy = new HeaderFooterPageEventGroovy(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
-            writer.setPageEvent(event)
+            writer.setPageEvent(eventGroovy)
             // Se abre el documento
             document.open()
             //Document metadata
@@ -145,7 +145,7 @@ class PdfService {
 
             //------------------ Setear tanto el Headre como Footer -----------
             HeaderFooterPageEventGroovy eventGroovy = new HeaderFooterPageEventGroovy(messageSource.getMessage("grailsLogo.bannerLogo.nombrePrograma", null, defaultLocale))
-            writer.setPageEvent(event)
+            writer.setPageEvent(eventGroovy)
             // Se abre el documento
             document.open()
             //Document metadata
@@ -212,7 +212,7 @@ class PdfService {
             text = new Paragraph((autorJson.nombreAutor ?: messageSource.getMessage("modulos.historial.createPDF.fecha.noIndicado.label")), smallBaseBlack)
             listText << text
             //Genero
-            text = new Paragraph((autorJson.genero == 'Masculino' ? (messageSource.getMessage("autores.estado.masculino", null, defaultLocale)) : (messageSource.getMessage("autores.estado.femenido", null, defaultLocale))), smallBaseBlack)
+            text = new Paragraph((messageSource.getMessage("autores.estado.${autorJson.genero}", null, defaultLocale)), smallBaseBlack)
             listText << text
             //Estado
             text = new Paragraph((autorJson.difunto ? (messageSource.getMessage("autores.estado.muerto", null, defaultLocale)) : (messageSource.getMessage("autores.estado.vivo", null, defaultLocale))), smallBaseBlack)
