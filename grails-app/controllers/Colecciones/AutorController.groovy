@@ -98,18 +98,33 @@ class AutorController {
 			redirect(action: "create")
 			return
 		}
+
 		//Si hay foto guardarla en la carpeta configurada
+		def imageInstance = null
 		def validadorFoto = null
 		def file = request.getFile('imagen')
 		if(!file.empty){
-			validadorFoto = coleccionesService.saveImg(file, params.nombre, params.apellido, false)
+			validadorFoto = coleccionesService.saveImgWithBBDD(file)
 			if (validadorFoto.error) {
 				flash.error = message(code: validadorFoto.mensaje)
 				redirect(action: "create")
 				return
 			}
-			autorInstance.rutaImagen = validadorFoto.path
+
+			imageInstance = validadorFoto.imageInstance
+			imageInstance.imgAutor = autorInstance
+			try{
+				if(imageInstance.save(flush: true)){
+					autorInstance.imageAutor = imageInstance
+				}
+			}catch(Exception e){
+				flash.message = message(code:'autores.errores.img.saveFolder')
+				redirect(action: "create")
+				return
+			}
+
 		}
+
 		//Guardar en base de datos
 		try{
 			def nombreAutor = autorInstance.nombre + " " + autorInstance.apellido
@@ -124,7 +139,7 @@ class AutorController {
 				registerHistorialService.registrarAutor(autorInstance, 0)
 			}else{
 				if(!file.empty){
-					coleccionesService.deleteImage(validadorFoto.path)
+					imageInstance?.delete()
 				}
 				log.error "No se ha podido guardar en base de datos el Autor"
 				flash.error = message(code: "autores.errores.save.bbdd")
@@ -188,29 +203,40 @@ class AutorController {
 		//Condicional para saber como trabajar con las imagenes
 		if(params.checkImg){
 			if(params.CheckboxImg){ //Tiene foto y la quiere borrar
-				if(coleccionesService.deleteImage(autorInstance.rutaImagen)){
+				def imageInstance = autorInstance.imageAutor
+				if(!imageInstance.delete(flush: true)){
 					flash.error = message(code: "autores.errores.update.noDeleteFoto")
 					redirect(action: "edit", id:autorInstance.id)
 					return
 				}
 				//Quitamos la ruta en BBDD
-				autorInstance.rutaImagen = null
-			}else if(autorInstance.toString() != (params.nombre + " " + params.apellido)){
-                def nombreNuevo = params.nombre + " " + params.apellido
-                def changeFoto = coleccionesService.changeNameImg(autorInstance.rutaImagen, nombreNuevo, false)
-                autorInstance.rutaImagen = changeFoto.path
-            }
+				autorInstance.imageAutor = null
+			}
 		}else{ //No tiene foto
 			//Si hay foto guardarla en la carpeta configurada
+			def imageInstance = null
+			def validadorFoto = null
 			def file = request.getFile('imagen')
 			if(!file.empty){
-				def validadorFoto = coleccionesService.saveImg(file, params.nombre, params.apellido, false)
+				validadorFoto = coleccionesService.saveImgWithBBDD(file)
 				if (validadorFoto.error) {
 					flash.error = message(code: validadorFoto.mensaje)
-					redirect(action: "edit", id:autorInstance.id)
+					redirect(action: "create")
 					return
 				}
-				autorInstance.rutaImagen = validadorFoto.path
+
+				imageInstance = validadorFoto.imageInstance
+				imageInstance.imgAutor = autorInstance
+				try{
+					if(imageInstance.save(flush: true)){
+						autorInstance.imageAutor = imageInstance
+					}
+				}catch(Exception e){
+					flash.message = message(code:'autores.errores.img.saveFolder')
+					redirect(action: "create")
+					return
+				}
+
 			}
 		}
 		//Actualizar el nuevo Autor
