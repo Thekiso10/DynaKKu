@@ -197,7 +197,8 @@
 							<p>
 								<g:message code="mangas.precioTotal.label" default="nombre" />:
 								<span aria-labelledby="precioTotal-label">
-									${mangasInstance.precioTotal}€
+									%{--${mangasInstance.precioTotal}€--}%
+									<g:formatNumber number="${mangasInstance.precioTotal}" type="currency" currencyCode="EUR" currencySymbol="€"/>
 								</span>
 							</p>
 						</div>

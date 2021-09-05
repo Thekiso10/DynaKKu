@@ -24,8 +24,8 @@ class MangasService {
                 mensaje = "mangas.error.campoNullo02" //Codigo del error
             }else{
                 //Comprobamos bloque 03 - Datos Monetarios
-                if(GenericValidator.isInt(params.numTomosMaximos) && GenericValidator.isInt(params.precioTotal) && GenericValidator.isInt(params.numTomosActuales)){
-                    if(Integer.parseInt(params.numTomosMaximos) < 0 || Integer.parseInt(params.precioTotal) < 0 || Integer.parseInt(params.numTomosActuales) < 0){
+                if(GenericValidator.isInt(params.numTomosMaximos) && GenericValidator.isInt(params.numTomosActuales) && GenericValidator.isDouble(params.precioTotal)){
+                    if(Integer.parseInt(params.numTomosMaximos) < 0 || Integer.parseInt(params.numTomosActuales) < 0 || Double.parseDouble(params.precioTotal) < 0){
                         log.error "El campo de los Datos Especificos son negativos"
                         error = true
                         mensaje = "mangas.error.monetarios.negativos" //Codigo del error

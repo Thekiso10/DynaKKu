@@ -167,7 +167,7 @@ class RegisterHistorialService {
 			list << [Integer.toString(params?.numTomosMaximos), Integer.toString(manga?.numTomosMaximos), HistorialMangasActividad.Index.TOMOS_MAX]
 		}
 		if(manga?.precioTotal != params?.precioTotal){
-			list << [Integer.toString(params?.precioTotal), Integer.toString(manga?.precioTotal), HistorialMangasActividad.Index.PRECIO_TOMO]
+			list << [Double.toString(params?.precioTotal), manga?.precioTotal.toString(), HistorialMangasActividad.Index.PRECIO_TOMO]
 		}
 		//Buscar cambios en los datos especificos
 		if(manga?.completado != params?.completado){

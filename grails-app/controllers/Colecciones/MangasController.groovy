@@ -209,7 +209,7 @@ class MangasController {
         mangasInstance.deseado = (params.deseado? true : false)
         mangasInstance.numTomosActuales = Integer.parseInt(params.numTomosActuales)
         mangasInstance.numTomosMaximos = Integer.parseInt(params.numTomosMaximos)
-        mangasInstance.precioTotal = Integer.parseInt(params.precioTotal)
+        mangasInstance.precioTotal = BigDecimal.valueOf(Double.valueOf(params.precioTotal))
         mangasInstance.demografia = Demografia.findWhere(id: params.demografia.nombre)
         mangasInstance.fechaInscripcion = new Date()
         mangasInstance.ultimaModificacion = new Date()
@@ -399,7 +399,8 @@ class MangasController {
         mangasInstance.deseado = (params.deseado? true : false)
         mangasInstance.numTomosActuales = Integer.parseInt(params.numTomosActuales)
         mangasInstance.numTomosMaximos = Integer.parseInt(params.numTomosMaximos)
-        mangasInstance.precioTotal = Integer.parseInt(params.precioTotal)
+        println params.precioTotal
+        mangasInstance.precioTotal = BigDecimal.valueOf(Double.valueOf(params.precioTotal))
         mangasInstance.demografia = Demografia.findWhere(id: params.demografia.nombre)
         mangasInstance.ultimaModificacion = new Date()
         //Guardar la instancia
@@ -429,6 +430,7 @@ class MangasController {
             }
         }catch(Exception e){
             log.error "No se ha podido actualizar en base de datos: " + e
+            e.printStackTrace()
             flash.error = message(code: "mangas.error.update.bbdd")
             redirect(action: "edit", id:mangasInstance.id)
             return

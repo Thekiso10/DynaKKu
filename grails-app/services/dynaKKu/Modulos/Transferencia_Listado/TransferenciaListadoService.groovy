@@ -283,7 +283,7 @@ class TransferenciaListadoService {
                                     //Setear valores numericos
                                     mangaInstance.numTomosActuales = Integer.parseInt(params.numTomosActuales)
                                     mangaInstance.numTomosMaximos  = Integer.parseInt(params.numTomosMaximos)
-                                    mangaInstance.precioTotal      = Integer.parseInt(params.precioTotal)
+                                    mangaInstance.precioTotal      = BigDecimal.valueOf(Double.valueOf(params.precioTotal))
                                     //Seteamos la hora
                                     mangaInstance.fechaInscripcion = new SimpleDateFormat("dd-MM-yy HH:mm:ss").parse(manga?.fechaInscripcion?.text())
                                     mangaInstance.ultimaModificacion = new SimpleDateFormat("dd-MM-yy HH:mm:ss").parse(manga?.ultimaModificacion?.text())
