@@ -17,8 +17,7 @@ class HistorialAutor {
     static constraints = {
 		tipoAccion 	nullable: true, blank: true
 		fecha  		nullable: true, blank: true
-		
-		autor	nullable: true, blank: true
+		autor		nullable: true, blank: true
     }
 	
 	static mapping = {
