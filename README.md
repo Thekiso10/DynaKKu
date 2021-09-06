@@ -1,16 +1,17 @@
 DynaKKu.com
 ==========
-Este es una Gestor de Mangas Web personal.
+Este es una Gestor de Mangas Web, enfocado al registro de los mangas en propiedad. Es una aplicación que se tiene que ejecutar de manera local en el PC-
 ## Version
 Verión Actual: **0.7.1** [Notas del parche](https://github.com/Thekiso10/DynaKKu/releases/tag/v0.7.1-beta)
 
 Lanzamiento: **04 Septiembre del 2021**
-## Creators
+## Creator
   * [**Diogo Assunção**](https://github.com/Thekiso10)
 
 ## Main Technologies
 ### Backend
 Para el desarrollo de la parte de negocio de DynaKKu utilizo las siguientes tecnologías:
+- [X] **Base de Datos optimizado - MySQL 5.7** *(Esta preparado para poder usar cualquier base de datos)*
 - [X] **Grails - 2.4.2**
 - [X] **Spring Security Core - 2.0-RC5**
 - [X] **iTextpdf - 5.5.13.1**
@@ -20,10 +21,9 @@ Para el desarrollo de la interfaz web de DynaKKu utilizo las siguientes tecnolog
 - [X] **HTML 5**
 - [X] **CSS 3**
 - [X] **Bootstrap 3.3.4**
-- [X] **Template HTML5UP - Editorial**
+- [X] **Template HTML5 UP - Editorial**
 
 ## License
-
 Copyright (c) **DynaKKu.com**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
