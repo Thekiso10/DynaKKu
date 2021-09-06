@@ -5,10 +5,16 @@ import Colecciones.Mangas
 import Modulos.Historial_Actividad.HistorialAutor
 import Modulos.Historial_Actividad.HistorialMangas
 import Modulos.Historial_Actividad.HistorialMangasActividad
+import Modulos.Historial_Actividad.HistorialUsuario
+import Modulos.Personalizacion_Usuario.Usuario
 import grails.transaction.Transactional
 
 @Transactional
 class RegisterHistorialService {
+
+	def registrarUser(Usuario user, HistorialUsuario.Status action){
+		saveRegisterUser(user, action)
+	}
 
 	def registrarAutor(Autor autor, int accion) {
 		//Definimos las diferentes opciones
@@ -91,6 +97,14 @@ class RegisterHistorialService {
 			guardarRegistroMangasActividad(accion, tipoActividad, params, manga, historial)
 		}
 
+	}
+
+	private saveRegisterUser(Usuario user, HistorialUsuario.Status action){
+		if(new HistorialUsuario(typeAction: action, user: user, date: new Date()).save(flush: true)){
+			log.info "Se ha creado la entrada de [${action}] de ${user?.toString()} correctamente"
+		}else {
+			log.error "No se ha creado la entrada de [${action}] de ${user?.toString()} correctamente"
+		}
 	}
 
 	private def guardarRegistroMangasActividad(HistorialMangas historial, def valorAntiguo, def valorNuevo, def tipoAccion, Mangas manga){
