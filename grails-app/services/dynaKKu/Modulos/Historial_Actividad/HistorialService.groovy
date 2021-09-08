@@ -91,7 +91,7 @@ class HistorialService {
         tipo = messageSource.getMessage("layoutMenu.botonesColeccion.autores", null, defaultLocale)
         getHistorialAutores().each { actividad ->
             def accion = messageSource.getMessage("modulos.historial.label.${actividad.tipoAccion}", null, defaultLocale)
-            def mensaje = messageSource.getMessage("modulos.historial.pdf.texto.autor.ACCION", [actividad?.autor?.toString(), actividad.fecha] as Object[], defaultLocale)
+            def mensaje = messageSource.getMessage("modulos.historial.pdf.texto.autor.${actividad.autor?.genero}.ACCION", [actividad?.autor?.toString(), actividad.fecha] as Object[], defaultLocale)
             // Guardar el Bean
             HistorialActividadBean historialBean = new HistorialActividadBean(type: tipo, accion: accion, message: mensaje, date: actividad.fecha)
             listAllHistorial << historialBean

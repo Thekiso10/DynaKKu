@@ -460,7 +460,7 @@ class PdfService {
                 Paragraph text = generateStructureMessageBasic(params, actividad)
                 def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
                 // Generar el mensaje de los Autores
-                text.add(" " + messageSource.getMessage("modulos.historial.pdf.texto.autor.${actividad.tipoAccion}", [actividad?.autor?.toString(), formatDate] as Object[], defaultLocale))
+                text.add(" " + messageSource.getMessage("modulos.historial.pdf.texto.autor.${actividad?.autor?.genero}.${actividad.tipoAccion}", [actividad?.autor?.toString(), formatDate] as Object[], "No hay texto", defaultLocale))
                 // Colocarlo en el documento
                 document.add(text)
             }
