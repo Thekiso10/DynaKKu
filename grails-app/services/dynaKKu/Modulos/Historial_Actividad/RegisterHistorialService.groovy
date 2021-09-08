@@ -5,6 +5,7 @@ import Colecciones.Mangas
 import Modulos.Historial_Actividad.HistorialAutor
 import Modulos.Historial_Actividad.HistorialMangas
 import Modulos.Historial_Actividad.HistorialMangasActividad
+import Modulos.Historial_Actividad.HistorialModulos
 import Modulos.Historial_Actividad.HistorialUsuario
 import Modulos.Personalizacion_Usuario.Usuario
 import grails.transaction.Transactional
@@ -14,6 +15,14 @@ class RegisterHistorialService {
 
 	def registrarUser(Usuario user, HistorialUsuario.Status action){
 		saveRegisterUser(user, action)
+	}
+
+	def registerModule(HistorialModulos.Modulos module){
+		if(new HistorialModulos(modulos: module, fecha: new Date()).save(flush: true)){
+			log.info "Se ha creado la entrada de [${module} correctamente"
+		}else{
+			log.error "No se ha creado la entrada de [${module} correctamente"
+		}
 	}
 
 	def registrarAutor(Autor autor, int accion) {

@@ -1,8 +1,11 @@
 package Modulos.Gestor_Modulos
 
+import Modulos.Historial_Actividad.HistorialModulos
 import grails.plugin.springsecurity.annotation.Secured
 
 class GestorModulosController {
+
+    def registerHistorialService
 
     @Secured (['ROLE_ADMIN'])
     def panel() {
@@ -12,6 +15,9 @@ class GestorModulosController {
         if(listModules.size() == 0){
             flash.message = message(code: "default.list.notSize", args:[message(code: "modulos.gestorModulos.title")])
         }
+
+        //Registrar acceso
+        registerHistorialService.registerModule(HistorialModulos.Modulos.GESTOR_MODULOS)
 
         render (view: "panel", model:[listModules: listModules])
     }
