@@ -55,7 +55,12 @@
 
 			<header class="main">
 				<h1>
-					<g:message code="default.show.label" args="${[message(code: 'layoutMenu.botonesColeccion.autor')]}" /> -
+					<g:if test="${autorInstance.genero == Colecciones.Autor.Generos.MASCULINO}">
+						<g:message code="default.show.label" args="${[message(code: 'layoutMenu.botonesColeccion.autor')]}" /> -
+					</g:if>
+					<g:elseif test="${autorInstance.genero == Colecciones.Autor.Generos.FEMENINO}">
+						<g:message code="default.show.femenino.label" args="${[message(code: 'layoutMenu.botonesColeccion.autora')]}" /> -
+					</g:elseif>
 					${autorInstance?.nombre} ${autorInstance?.apellido}
 				</h1>
 			</header>

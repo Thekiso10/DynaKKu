@@ -14,7 +14,12 @@
 			<g:form url="[action:'updateAutor']" enctype='multipart/form-data' id="formEditAutor">
 				<header class="main">
 					<h1>
-						<g:message code="default.edit.label" args="${[message(code: 'layoutMenu.botonesColeccion.autor'), "${autorInstance?.nombre + ' ' + autorInstance?.apellido}"]}" />
+						<g:if test="${autorInstance.genero == Colecciones.Autor.Generos.MASCULINO}">
+							<g:message code="default.edit.label" args="${[message(code: 'layoutMenu.botonesColeccion.autor'), "${autorInstance?.nombre + ' ' + autorInstance?.apellido}"]}" />
+						</g:if>
+						<g:elseif test="${autorInstance.genero == Colecciones.Autor.Generos.FEMENINO}">
+							<g:message code="default.edit.femenino.label" args="${[message(code: 'layoutMenu.botonesColeccion.autora'), "${autorInstance?.nombre + ' ' + autorInstance?.apellido}"]}" />
+						</g:elseif>
 					</h1>
 				</header>
 
