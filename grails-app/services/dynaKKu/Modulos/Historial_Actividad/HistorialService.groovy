@@ -128,6 +128,7 @@ class HistorialService {
         //Agregamos las funciones
         list << [value: messageSource.getMessage("modulos.estadisticas.title", null, defaultLocale), key: HistorialModulos.Modulos.ESTADISTICAS]
         list << [value: messageSource.getMessage("modulos.historial.label.HISTORIAL_ACTIVIDAD", null, defaultLocale), key: HistorialModulos.Modulos.HISTORIAL_ACTIVIDAD]
+        list << [value: messageSource.getMessage("modulos.historial.label.HISTORIAL_ACTIVIDAD_PDF", null, defaultLocale), key: HistorialModulos.Modulos.HISTORIAL_ACTIVIDAD_PDF]
         list << [value: messageSource.getMessage("modulos.listadoPDF.title", null, defaultLocale), key: HistorialModulos.Modulos.LISTADO_PDF]
         list << [value: messageSource.getMessage("modulos.gestorModulos.title", null, defaultLocale), key: HistorialModulos.Modulos.GESTOR_MODULOS]
 
@@ -172,11 +173,11 @@ class HistorialService {
         return fecha
     }
 
-    private def executeCreateCriteriaHistorial(def funcion, def startDate, def endDate, HibernateCriteriaBuilder historial){
+    private def executeCreateCriteriaHistorial(def funcion, def startDate, def endDate, HibernateCriteriaBuilder historial, boolean action){
         def lista = historial.list {
             // Filtrar por funciones
             if(funcion){
-                eq("tipoAccion", funcion)
+                eq("${action ? 'tipoAccion' : 'modulos'}", funcion)
             }
             // Filtrar por fecha
             if(startDate && endDate){
@@ -198,7 +199,7 @@ class HistorialService {
         def endDate   = getParseDate(dataFinal)
         //Crear el create criteria
         def c = HistorialMangas.createCriteria()
-        def lista = executeCreateCriteriaHistorial(HistorialMangas.Status.valueOf(funcion), startDate, endDate, c)
+        def lista = executeCreateCriteriaHistorial((!funcion ? null : HistorialMangas.Status.valueOf(funcion)), startDate, endDate, c, true)
 
         return lista
     }
@@ -208,7 +209,7 @@ class HistorialService {
         def endDate   = getParseDate(dataFinal)
         //Crear el create criteria
         def c = HistorialAutor.createCriteria()
-        def lista = executeCreateCriteriaHistorial(HistorialAutor.Status.valueOf(funcion), startDate, endDate, c)
+        def lista = executeCreateCriteriaHistorial((!funcion ? null : HistorialAutor.Status.valueOf(funcion)), startDate, endDate, c, true)
 
         return lista
     }
@@ -218,7 +219,7 @@ class HistorialService {
         def endDate   = getParseDate(dataFinal)
         //Crear el create criteria
         def c = HistorialModulos.createCriteria()
-        def lista = executeCreateCriteriaHistorial(HistorialModulos.Modulos.valueOf(funcion), startDate, endDate, c)
+        def lista = executeCreateCriteriaHistorial((!funcion ? null : HistorialModulos.Modulos.valueOf(funcion)), startDate, endDate, c, false)
 
         return lista
     }
