@@ -66,7 +66,7 @@ class Usuario implements Serializable {
 
     @Override
     String toString() {
-        username
+        (nombre && apellido ? nombre + " " + apellido : username)
     }
 
     Set<Role> getAuthorities() {
