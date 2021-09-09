@@ -388,7 +388,7 @@ class PdfService {
         /* Generar bucle de actividad*/
         if(historialMangas){
             historialMangas.each{ actividad ->
-                Paragraph text = generateStructureMessageBasic(params, actividad)
+                Paragraph text = generateStructureMessageBasic(params, actividad, true)
                 def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
                 def titulo = null
                 def valor01 = null
@@ -457,7 +457,7 @@ class PdfService {
         /* Generar bucle de actividad*/
         if(historialAutores){
             historialAutores.each{ actividad ->
-                Paragraph text = generateStructureMessageBasic(params, actividad)
+                Paragraph text = generateStructureMessageBasic(params, actividad, true)
                 def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
                 // Generar el mensaje de los Autores
                 text.add(" " + messageSource.getMessage("modulos.historial.pdf.texto.autor.${actividad?.autor?.genero}.${actividad.tipoAccion}", [actividad?.autor?.toString(), formatDate] as Object[], "No hay texto", defaultLocale))
@@ -478,11 +478,10 @@ class PdfService {
         /* Generar bucle de actividad*/
         if(historialModulos){
             historialModulos.each{ actividad ->
-                Paragraph text = generateStructureMessageBasic(params, actividad)
+                Paragraph text = generateStructureMessageBasic(params, actividad, false)
                 def formatDate = new SimpleDateFormat("dd/MM/yyyy").format(actividad.fecha)
                 // Generar el mensaje de los Autores
-
-                //TODO: Pendiente de integrar
+                text.add(" " + messageSource.getMessage("modulos.historial.pdf.texto.module.${actividad.modulos}", [formatDate] as Object[], "No hay texto", defaultLocale))
 
                 // Colocarlo en el documento
                 document.add(text)
@@ -492,7 +491,7 @@ class PdfService {
         }
     }
 
-    private def generateStructureMessageBasic(def params, def actividad){
+    private def generateStructureMessageBasic(def params, def actividad, boolean action){
         //Colores
         BaseColor azul01  = new BaseColor (13, 52, 78)
         BaseColor azul02  = new BaseColor (42, 52, 62)
@@ -514,7 +513,7 @@ class PdfService {
         def textoClase = "[" + getTypeHistorial(params, true) +"]"
         chunk.append(textoClase)
         //El tipo de funcion
-        def textoFuncion = "[" + messageSource.getMessage("modulos.historial.label.${actividad.tipoAccion}", null, defaultLocale) +"]"
+        def textoFuncion = "[" + messageSource.getMessage("modulos.historial.label.${(action ? actividad.tipoAccion : actividad.modulos)}", null, defaultLocale) +"]"
         chunk.append(textoFuncion)
         //Colocar textos en el PDF
         text.add(chunk)

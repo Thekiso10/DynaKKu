@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.RequestContextUtils
 class HistorialController {
 
     def historialService
+    def registerHistorialService
     def gestorModulosService
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
@@ -29,6 +30,9 @@ class HistorialController {
         if(listaHistorialCount == 0){
             flash.warn = message(code: "default.list.notSize", args:[message(code: "modulos.historialActividad.title")])
         }
+
+        //Registrar acceso
+        registerHistorialService.registerModule(HistorialModulos.Modulos.HISTORIAL_ACTIVIDAD)
 
         //Hacer render de la vista
         render (view: 'index', model:[listaHistorial: listaHistorial, listaHistorialCount: listaHistorialCount])
@@ -74,6 +78,9 @@ class HistorialController {
             redirect(action: "createPDF")
             return
         }
+
+        //Registrar acceso
+        registerHistorialService.registerModule(HistorialModulos.Modulos.HISTORIAL_ACTIVIDAD_PDF)
 
         try{
 

@@ -2,6 +2,7 @@ package Modulos.Transferencia_Listado
 
 import Colecciones.Autor
 import Colecciones.Mangas
+import Modulos.Historial_Actividad.HistorialModulos
 import com.itextpdf.text.Document
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.web.servlet.support.RequestContextUtils as RCU
@@ -10,6 +11,7 @@ class TransferenciaListadoController {
 
     def transferenciaListadoService
     def gestorModulosService
+    def registerHistorialService
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def ExportAutores() {
@@ -38,6 +40,9 @@ class TransferenciaListadoController {
             redirect(controller: "autor", action: "index")
             return
         }
+
+        //Registrar acceso
+        registerHistorialService.registerModule(HistorialModulos.Modulos.EXPORTACION_LISTADO_AUTOR)
 
         try{
             def docName = datosXML?.nameDoc
@@ -88,6 +93,9 @@ class TransferenciaListadoController {
             flash.message = message(code: 'modulos.exportacionListado.export.error.code03')
         }
 
+        //Registrar acceso
+        registerHistorialService.registerModule(HistorialModulos.Modulos.IMPORACION_LISTADO_AUTOR)
+
         redirect(controller: 'autor', action: 'index')
     }
 
@@ -118,6 +126,9 @@ class TransferenciaListadoController {
             redirect(controller: "mangas", action: "index", params: [registrado: params.registrado])
             return
         }
+
+        //Registrar acceso
+        registerHistorialService.registerModule(HistorialModulos.Modulos.EXPORTACION_LISTADO_MANGAS)
 
         try{
             def docName = datosXML?.nameDoc
@@ -168,6 +179,9 @@ class TransferenciaListadoController {
             flash.message = message(code: 'modulos.exportacionListado.export.error.code03')
         }
 
+        //Registrar acceso
+        registerHistorialService.registerModule(HistorialModulos.Modulos.IMPORACION_LISTADO_MANGAS)
+
         redirect(controller: "mangas", action: "index", params: [registrado: params.registrado])
     }
 
@@ -187,6 +201,9 @@ class TransferenciaListadoController {
         def pathDoc = request.getSession().getServletContext().getRealPath(('/'))
         //Obtener el PDF
         def doc = transferenciaListadoService.generateListadoPDF(params.collection, RCU.getLocale(request), imgBanner, pathDoc)
+
+        //Registrar acceso
+        registerHistorialService.registerModule(HistorialModulos.Modulos.LISTADO_PDF)
 
         try{
             docName = doc?.docName
