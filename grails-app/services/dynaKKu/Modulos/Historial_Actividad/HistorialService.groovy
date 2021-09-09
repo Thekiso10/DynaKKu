@@ -98,7 +98,6 @@ class HistorialService {
         }
 
         /* Bucle del historial de los Modulos */
-        //TODO: Pendiente de integrar
         tipo = messageSource.getMessage("layoutMenu.botonesColeccion.funciones", null, defaultLocale)
         getHistorialModulos().each { actividad ->
             def action = messageSource.getMessage("layoutMenu.botonesColeccion.funciones", null, defaultLocale)
@@ -128,7 +127,7 @@ class HistorialService {
         def list = []
         //Agregamos las funciones
         list << [value: messageSource.getMessage("modulos.estadisticas.title", null, defaultLocale), key: HistorialModulos.Modulos.ESTADISTICAS]
-        list << [value: messageSource.getMessage("modulos.historial.lable.HISTORIAL_ACTIVIDAD", null, defaultLocale), key: HistorialModulos.Modulos.HISTORIAL_ACTIVIDAD]
+        list << [value: messageSource.getMessage("modulos.historial.label.HISTORIAL_ACTIVIDAD", null, defaultLocale), key: HistorialModulos.Modulos.HISTORIAL_ACTIVIDAD]
         list << [value: messageSource.getMessage("modulos.listadoPDF.title", null, defaultLocale), key: HistorialModulos.Modulos.LISTADO_PDF]
         list << [value: messageSource.getMessage("modulos.gestorModulos.title", null, defaultLocale), key: HistorialModulos.Modulos.GESTOR_MODULOS]
 
@@ -219,7 +218,7 @@ class HistorialService {
         def endDate   = getParseDate(dataFinal)
         //Crear el create criteria
         def c = HistorialModulos.createCriteria()
-        def lista = executeCreateCriteriaHistorial(HistorialModulos.Status.valueOf(funcion), startDate, endDate, c)
+        def lista = executeCreateCriteriaHistorial(HistorialModulos.Modulos.valueOf(funcion), startDate, endDate, c)
 
         return lista
     }

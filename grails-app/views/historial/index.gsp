@@ -3,8 +3,8 @@
 <head>
     <meta name="layout" content="layoutMain" />
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'Modulos/Historial/historial.css')}" type="text/css">
-    <g:set var="entityName" value="${message(code: 'modulos.historial.lable.HISTORIAL_ACTIVIDAD', default: 'historial')}" />
-    <title><g:message code="modulos.historial.lable.HISTORIAL_ACTIVIDAD"/></title>
+    <g:set var="entityName" value="${message(code: 'modulos.historial.label.HISTORIAL_ACTIVIDAD', default: 'historial')}" />
+    <title><g:message code="modulos.historial.label.HISTORIAL_ACTIVIDAD"/></title>
 </head>
 <body>
     <section id="List-Historial-PDF" role="main">
