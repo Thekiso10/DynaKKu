@@ -33,7 +33,13 @@
                             <div id="Radial-Bar-Mangas-Completos" class="col-4 col-12-xsmall"></div>
 
                             <div class="col-4 col-12-xsmall">
-
+                                %{--
+                                    Tiene que contener los siguientes datos:
+                                        Nombre y apellido del usuario
+                                        Numeros de tomos en propiedad / Numero de tomoso totales
+                                        Numeros de colecciones
+                                        Numeros de colecciones completados
+                                --}%
                             </div>
 
                         </div>
