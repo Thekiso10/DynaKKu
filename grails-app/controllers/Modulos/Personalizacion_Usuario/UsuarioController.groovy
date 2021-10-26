@@ -15,8 +15,9 @@ class UsuarioController {
         def userInstance = springSecurityService.currentUser
         def valueTomos = estadisticasService.getPercentCompletedTomosMangas()
         def valueMangasCompleted = estadisticasService.getPercentCompletedMangas()
+        def valueMangasConcluded = estadisticasService.getPercentConcludedMangas()
 
-        render(view: 'index', model: [userInstance: userInstance, valueTomos: valueTomos, valueMangasCompleted: valueMangasCompleted])
+        render(view: 'index', model: [userInstance: userInstance, valueTomos: valueTomos, valueMangasCompleted: valueMangasCompleted, valueMangasConcluded: valueMangasConcluded])
     }
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])

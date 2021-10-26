@@ -163,17 +163,17 @@ class MangasService {
     }
 
     def getValueMangasCompletos(){
-        def numMangasCompletos = 0
-        def listMangas = Mangas.findAllByBorrado(false)
-        def listMangasSize = listMangas.size()
-
-        listMangas.each { manga ->
-            if(manga.completado){
-                numMangasCompletos+=1
-            }
-        }
+        def numMangasCompletos = Mangas.findAllByBorradoAndCompletado(false, true).size()
+        def listMangasSize =Mangas.findAllByBorrado(false).size()
 
         return [numMangasCompletos: numMangasCompletos, totalMangas: listMangasSize]
+    }
+
+    def getValueConcludedMangas(){
+        def numMnagsConcluded = Mangas.findAllByBorradoAndSerieAcabada(false, true).size()
+        def listMangasSize = Mangas.findAllByBorrado(false).size()
+
+        return [numMnagsConcluded: numMnagsConcluded, totalMangas: listMangasSize]
     }
 
     /* Funciones internas */

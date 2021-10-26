@@ -17,6 +17,11 @@ class EstadisticasService {
         return [percent: calcPercent(getValueMangas.totalMangas, getValueMangas.numMangasCompletos), numMangasCompletos: getValueMangas.numMangasCompletos]
     }
 
+    def getPercentConcludedMangas(){
+        def getConcluded = mangasService.getValueConcludedMangas()
+        return [percent: calcPercent(getConcluded.totalMangas, getConcluded.numMnagsConcluded), numMangasCompletos: getConcluded.numMangasCompletos]
+    }
+
     private def calcPercent(int total, int num){
         return (total > 0) ? ((num * 100) / total): 0
     }
