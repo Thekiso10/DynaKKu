@@ -152,6 +152,30 @@ class MangasService {
         return Mangas.findAllByBorrado(false)?.size()
     }
 
+    def getValueTomosMangas(){
+        def list = [tomosMaximos: 0, tomosActuales: 0]
+        Mangas.findAllByBorrado(false).each {manga ->
+            list.tomosMaximos   = list.tomosMaximos + manga.numTomosMaximos
+            list.tomosActuales  = list.tomosActuales + manga.numTomosActuales
+        }
+
+        return list
+    }
+
+    def getValueMangasCompletos(){
+        def numMangasCompletos = Mangas.findAllByBorradoAndCompletado(false, true).size()
+        def listMangasSize =Mangas.findAllByBorrado(false).size()
+
+        return [numMangasCompletos: numMangasCompletos, totalMangas: listMangasSize]
+    }
+
+    def getValueConcludedMangas(){
+        def numMnagsConcluded = Mangas.findAllByBorradoAndSerieAcabada(false, true).size()
+        def listMangasSize = Mangas.findAllByBorrado(false).size()
+
+        return [numMnagsConcluded: numMnagsConcluded, totalMangas: listMangasSize]
+    }
+
     /* Funciones internas */
     private comprobarNombreDiferente(def nombre){
         def buscarAutor = Mangas.findWhere(nombreManga: nombre, borrado: false)

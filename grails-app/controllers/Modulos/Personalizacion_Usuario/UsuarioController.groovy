@@ -7,12 +7,17 @@ class UsuarioController {
 
     def springSecurityService
     def usuarioService
+    def estadisticasService
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
     def index(){
-        //Aqui ira la Portada del usuario
         //Cogemos al usuario logueado
         def userInstance = springSecurityService.currentUser
+        def valueTomos = estadisticasService.getPercentCompletedTomosMangas()
+        def valueMangasCompleted = estadisticasService.getPercentCompletedMangas()
+        def valueMangasConcluded = estadisticasService.getPercentConcludedMangas()
+
+        render(view: 'index', model: [userInstance: userInstance, valueTomos: valueTomos, valueMangasCompleted: valueMangasCompleted, valueMangasConcluded: valueMangasConcluded])
     }
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])
