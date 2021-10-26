@@ -2,8 +2,10 @@ function radialbar_basic() {
     return null;
 }
 
-function radialbar_gradient(percentTomoms, text, startAngle, endAngle) {
-    return {
+function radialbar_gradient(percentTomoms, modeDark, text, startAngle, endAngle) {
+    var listColors = getColorsRadialbar(modeDark);
+
+    var objectRadialbar = {
         series: [percentTomoms],
         chart: {
             height: 350,
@@ -31,7 +33,7 @@ function radialbar_gradient(percentTomoms, text, startAngle, endAngle) {
                     }
                 },
                 track: {
-                    background: '#fff',
+                    background: listColors.trackBackground,
                     strokeWidth: '67%',
                     margin: 0, // margin is in pixels
                     dropShadow: {
@@ -47,14 +49,14 @@ function radialbar_gradient(percentTomoms, text, startAngle, endAngle) {
                     name: {
                         offsetY: -10,
                         show: true,
-                        color: '#888',
+                        color: listColors.dataLabelsNameColor,
                         fontSize: '17px'
                     },
                     value: {
                         formatter: function(val) {
                             return parseInt(val) + '%';
                         },
-                        color: '#111',
+                        color: listColors.dataLabelsValueColor,
                         fontSize: '36px',
                         show: true,
                     }
@@ -67,7 +69,7 @@ function radialbar_gradient(percentTomoms, text, startAngle, endAngle) {
                 shade: 'dark',
                 type: 'horizontal',
                 shadeIntensity: 0.5,
-                gradientToColors: ['#13658e'],
+                gradientToColors: listColors.gradientToColors,
                 inverseColors: true,
                 opacityFrom: 1,
                 opacityTo: 1,
@@ -79,4 +81,21 @@ function radialbar_gradient(percentTomoms, text, startAngle, endAngle) {
         },
         labels: [text],
     };
+
+    return objectRadialbar;
+}
+
+function getColorsRadialbar(modeDark){
+    var listColors = {}; //Creamos a dicionario
+
+    if(modeDark == true){
+        listColors.gradientToColors = ['#56AFDC', '#2689BA'];
+        listColors.dataLabelsNameColor = '#fff';
+        listColors.dataLabelsValueColor = '#fff';
+        listColors.trackBackground = '#071922';
+    }else{
+        //TODO: Aquí va los colores en modo claro
+    }
+
+    return listColors;
 }
