@@ -40,6 +40,7 @@
                                         Numeros de colecciones
                                         Numeros de colecciones completados
                                 --}%
+
                             </div>
 
                         </div>
@@ -50,14 +51,15 @@
 
             <script>
                 $(document).ready(function(){
-                    radialBarNumTomos(${valueTomos.percent});
-                    radialBarMangasCompletos(${valueMangasCompleted.percent});
+                    radialBarNumTomos(${valueTomos.percent}, ${userInstance.modoDark}, "${message(code: "mangas.numTomosActuales.label")}");
+                    radialBarMangasCompletos(${valueMangasCompleted.percent}, ${userInstance.modoDark}, "${message(code: "mangas.completados.label")}");
                 });
             </script>
 
         </section>
 
         %{-- Import JS --}%
-        <g:javascript src="apexChartsClass.js"/>
+        <g:javascript src="library/apexCharts/apexChartsClass.js"/>
+        <g:javascript src="library/apexCharts/charts/radialbar.js"/>
     </body>
 </html>
