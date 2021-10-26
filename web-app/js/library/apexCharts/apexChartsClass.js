@@ -63,7 +63,7 @@ function radialBarNumTomos(percentTomoms, arrays_colores, arrays_textos){
                 shade: 'dark',
                 type: 'horizontal',
                 shadeIntensity: 0.5,
-                gradientToColors: ['#ABE5A1'],
+                gradientToColors: ['#13658e'],
                 inverseColors: true,
                 opacityFrom: 1,
                 opacityTo: 1,
@@ -145,7 +145,7 @@ function radialBarMangasCompletos(percentColleciones, arrays_colores, arrays_tex
                 shade: 'dark',
                 type: 'horizontal',
                 shadeIntensity: 0.5,
-                gradientToColors: ['#ABE5A1'],
+                gradientToColors: ['#13658e'],
                 inverseColors: true,
                 opacityFrom: 1,
                 opacityTo: 1,
@@ -155,7 +155,7 @@ function radialBarMangasCompletos(percentColleciones, arrays_colores, arrays_tex
         stroke: {
             lineCap: 'round'
         },
-        labels: ['Mangas Completos'],
+        labels: ['Colecciones Completadas'],
     };
 
     var chart = new ApexCharts(document.querySelector("#Radial-Bar-Mangas-Completos"), radialBarMangasCompletos);
