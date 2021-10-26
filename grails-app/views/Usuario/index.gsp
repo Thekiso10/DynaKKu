@@ -51,8 +51,8 @@
 
             <script>
                 $(document).ready(function(){
-                    radialBarNumTomos(${valueTomos.percent}, ${userInstance.modoDark}, "${message(code: "mangas.numTomosActuales.label")}");
-                    radialBarMangasCompletos(${valueMangasCompleted.percent}, ${userInstance.modoDark}, "${message(code: "mangas.completados.label")}");
+                    createRadialbarCharts(document.querySelector("#Radial-Bar-Num-Tomos"),${valueTomos.percent}, ${userInstance.modoDark}, "${message(code: "mangas.numTomosActuales.label")}:", 0, 360)
+                    createRadialbarCharts(document.querySelector("#Radial-Bar-Mangas-Completos"), ${valueMangasCompleted.percent}, ${userInstance.modoDark}, "${message(code: "mangas.completados.label")}:", 0, 360)
                 });
             </script>
 
