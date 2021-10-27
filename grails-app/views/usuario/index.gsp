@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="layoutMain"/>
-        <g:set var="entityName" value="${userInstance.toString()}" />
+        <g:set var="entityName" value="${userInstance?.toString()}" />
         <title><g:message code="modulos.usuarios.portada.title"/></title>
     </head>
 
@@ -15,14 +15,6 @@
             <g:if test="${flash.error}">
                 <div class="flash errors iconoError" role="status">${flash.error}</div>
             </g:if>
-
-            %{--
-                Tiene que contener los siguientes datos:
-                    Nombre y apellido del usuario
-                    Numeros de tomos en propiedad / Numero de tomoso totales
-                    Numeros de colecciones
-                    Numeros de colecciones completados
-           --}%
 
             <header class="main">
                 <h1>
@@ -54,9 +46,9 @@
 
             <script>
                 $(document).ready(function(){
-                    createRadialbarCharts(document.querySelector("#Radial-Bar-Num-Tomos"),${valueTomos.percent}, ${userInstance.modoDark}, "${message(code: "mangas.numTomosActuales.label")}:", 0, 360)
-                    createRadialbarCharts(document.querySelector("#Radial-Bar-Mangas-Completos"), ${valueMangasCompleted.percent}, ${userInstance.modoDark}, "${message(code: "mangas.completados.label")}:", 0, 360)
-                    createRadialbarCharts(document.querySelector("#Radial-Bar-Mangas-Finalizados"), ${valueMangasConcluded.percent}, ${userInstance.modoDark}, "${message(code: "mangas.serieAcabadas.label")}:", 0, 360)
+                    createRadialbarCharts(document.querySelector("#Radial-Bar-Num-Tomos"),${valueTomos.percent}, ${userInstance?.modoDark}, "${message(code: "mangas.numTomosActuales.label")}:", 0, 360)
+                    createRadialbarCharts(document.querySelector("#Radial-Bar-Mangas-Completos"), ${valueMangasCompleted.percent}, ${userInstance?.modoDark}, "${message(code: "mangas.completados.label")}:", 0, 360)
+                    createRadialbarCharts(document.querySelector("#Radial-Bar-Mangas-Finalizados"), ${valueMangasConcluded.percent}, ${userInstance?.modoDark}, "${message(code: "mangas.serieAcabadas.label")}:", 0, 360)
                 });
             </script>
 
