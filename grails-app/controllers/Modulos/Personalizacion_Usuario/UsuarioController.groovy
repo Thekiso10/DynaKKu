@@ -17,7 +17,10 @@ class UsuarioController {
         def valueMangasCompleted = estadisticasService.getPercentCompletedMangas()
         def valueMangasConcluded = estadisticasService.getPercentConcludedMangas()
 
-        render(view: 'index', model: [userInstance: userInstance, valueTomos: valueTomos, valueMangasCompleted: valueMangasCompleted, valueMangasConcluded: valueMangasConcluded])
+        log.info "Portada de Usuario - Cargamos la información del usuario ${userInstance.toString()}"
+
+        render(view: '/usuario/index', model: [userInstance: userInstance, valueTomos: valueTomos, valueMangasCompleted: valueMangasCompleted, valueMangasConcluded: valueMangasConcluded])
+        return true
     }
 
     @Secured (['ROLE_ADMIN', 'ROLE_USER'])

@@ -2,7 +2,7 @@ DynaKKu.com
 ==========
 Este es una Gestor de Mangas Web, enfocado al registro de los mangas en propiedad. Es una aplicación que se tiene que ejecutar de manera local en el PC-
 ## Version
-Verión Actual: **0.7.1** [Notas del parche](https://github.com/Thekiso10/DynaKKu/releases/tag/v0.7.1-beta)
+Verión Actual: **0.8.1** [Notas del parche](https://github.com/Thekiso10/DynaKKu/releases/tag/v0.8.1-beta)
 
 Lanzamiento: **04 Septiembre del 2021**
 ## Creator
