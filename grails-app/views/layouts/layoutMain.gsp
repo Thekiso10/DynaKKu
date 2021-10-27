@@ -46,7 +46,7 @@
 
 					<sec:ifLoggedIn>
 						<div id="modalConfiguracion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalConfiguracion" aria-hidden="true">
-							<g:render  template="/Usuario/configuracion"/>
+							<g:render  template="/usuario/configuracion"/>
 						</div>
 					</sec:ifLoggedIn>
 
